@@ -115,6 +115,37 @@ asides/googleplus.html, asides/weibo.html]
 是你的手机要有个好用的markdown编辑器.
 
 ** auto deploy octopress with travis ci [fn:1]
+- get github OAtuh token
+#+BEGIN_SRC sh
+curl -u 'your_github_name' -d '{"scopes":["public_repo"], "note":"Travis access"}' https://api.github.com/authorizations
+#+END_SRC
+
+- encypte your token
+#+BEGIN_SRC sh
+gem install travis
+travis encrypt GH_TOKEN=your_token --add
+#+END_SRC
+
+- setup in =.travis.yml=
+#+BEGIN_SRC yaml
+  ---
+  branches:
+    only:
+    - source
+  language: ruby
+  rvm:
+  - 1.9.3
+  before_script:
+  - export REPO_URL="https://$GH_TOKEN@github.com/$GH_REPO.git"
+  - rake setup_github_pages[$REPO_URL]
+  script:
+  - rake generate
+  after_script:
+  - rake deploy
+  env:
+    global:
+    - GH_REPO="geogeo.github.com"
+#+END_SRC
 
 
 ** Use Org-mode instead of Markdown 
