@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://geogeo.github.com
+url: http://oyanglul.us
 title: Jichao Ouyang's Journal
 subtitle: Code or Else.
 author: Jichao Ouyang
@@ -58,8 +58,8 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/twitter.ht
 # ----------------------- #
 
 # Github repositories
-github_user: oyanglulu@gmail.com
-github_repo_count: 4
+github_user: geogeo
+github_repo_count: 5
 github_show_profile_link: true
 github_skip_forks: true
 

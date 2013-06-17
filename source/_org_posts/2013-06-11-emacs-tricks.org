@@ -1,0 +1,58 @@
+#+BEGIN_HTML
+---
+layout: post
+title: "emacs tricks"
+date: 2013-06-11 17:17
+comments: true
+categories: 
+---
+#+END_HTML
+#+OPTIONS: toc:nil
+
+总结一下自己觉得有用的 emacs tricks
+
+首先, 上手最好先使用 emacs-starter-kit. 里面包含了emacs各种常用的的插
+件. 也就是说基本上所有可能会有用又好用的mode都已经安装了. 当然, 还是有
+一些需要手动安装盒根据自己习惯调整的地方.
+
+
+** Editting
+- Moving Ctrl Key: 将 =Caps= 定义成 Ctrl, 为虾米呢? 好吧, 来读读这篇
+  [[http://www.emacswiki.org/emacs/RepeatedStrainInjury][文章]], 再看看 HHBK 的键位.
+- zap-to-char
+- M-SPC: remove extra space
+*** mark
+- go back to place where you have edit
+insert register with =C-x r i=, =C-u C-SPC=
+- 
+- Use M-m instead of C-a TAB
+- bind RET to ='reindent-then-newline-and-indent=
+#+BEGIN_SRC lisp
+(global-set-key (kbd "RET") 'reindent-then-newline-and-indent).
+#+END_SRC
+- use =C-s C-w= to search current pointed word, and you can type
+  several times =C-w= to select more words.
+- auth-highlight-mode
+
+
+** Buffer and Files
+*** MaGit
+- Ediff with Git
+- Eshell: actually is shell implement in lisp
+- 
+
+** GTD
+- org-mode
+- markdown-mode
+** Appearance
+- ColorTheme
+*** Cursor
+#+BEGIN_SRC lisp
+(setq-default cursor-type 'box)
+(set-cursor-color "green")
+(blink-cursor-mode)
+#+END_SRC
+- 
+
+
+

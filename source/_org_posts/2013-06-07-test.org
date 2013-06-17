@@ -1,0 +1,10 @@
+#+BEGIN_HTML
+---
+layout: post
+title: "test"
+date: 2013-06-07 20:24
+comments: true
+categories: 
+---
+#+END_HTML
+#+OPTIONS: toc:nil
