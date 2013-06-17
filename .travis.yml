@@ -16,7 +16,7 @@ after_script:
 - rake deploy
 env:
   global:
-  - GH_REPO="geogeo.github.com"
+  - GH_REPO="geogeo/geogeo.github.com"
   - secure: ! 'UcwYke5vbuDVxFf8smJ2h8UkaVAdutc4hJ7WD06KKJlxQdGuF3rrG5rActpx
 
     5Np/gu1Nui3jnZv6jBnd9vJjKvwhPbpXBymlpoxo0tswhiAFAg5Tu8Zo50dF
