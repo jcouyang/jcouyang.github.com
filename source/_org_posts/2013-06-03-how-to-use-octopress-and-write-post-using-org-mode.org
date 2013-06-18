@@ -23,16 +23,14 @@ for ruby geeks, 因为可以用欢乐的rake <task> 来完成建立文章和发�
 会有神马曲线. 比如一个简单的 *加粗* 操
 作, 需要选中需要加粗的字, 点一下=B=. 这对一个程序员来说是有多么痛苦啊.
 
-好吧,如果你说wordpress也有快捷键, 那么bia代码肿么办, how to 快捷键.
+好吧,如果你说 wordpress 也有快捷键, 那么bia代码和插入图片肿么办.
 各种插件随之而来, 但是个人并没有发现更wsgiwyg编辑器任何高效的地方.
-一个高效的程序员不希望任何一只手离开键盘. 好吧, 这时候 [[http://github.github.com/github-flavored-markdown/][GitHub Flavored
-Markdown]] 和 [[http://pages.github.com/][GitHub Pages]] 冲出来解放程序员的鼠标手. 当然, Github Pages
-的原意是让程序员为自己的repository建立一个介绍的静态网页.
+一个高效的码农不希望任何一只手离开键盘. 好吧, 这时候 [[http://github.github.com/github-flavored-markdown/][GitHub Flavored
+Markdown]] 和 [[http://pages.github.com/][GitHub Pages]] 冲出来解放码农的鼠标手. 当然, Github Pages
+的原意是让程序员为自己的repository建立一个静态网页.
 
-于是乎, 有了octopress, hacker way.
-
-当然,如果你喜欢用wordpress, 同样可以用 prose.io + travis ci 实现.
-
+于是乎, 有了octopress, 简而言之,就是用 git 和你最喜欢的编辑器写博客.
+当然,就算你喜欢用wordpress, 同样可以用 prose.io + travis ci 实现[[*auto%20deploy%20octopress%20with%20travis%20ci%20%5Bfn:1%5D%20%5Bfn:2%5D][auto deploy octopress with travis ci {fn:1} {fn:2}]].
 
 *** 安装 octopress
 just do the following in your shell.
@@ -124,7 +122,7 @@ curl -u 'your_github_name' -d '{"scopes":["public_repo"], "note":"Travis access"
 - encypte your token
 #+BEGIN_SRC sh
 gem install travis
-travis encrypt GH_TOKEN=your_token --add
+travis encrypt GH_TOKEN=your_token --add # do this in your octopress dir
 #+END_SRC
 
 - setup in =.travis.yml=
@@ -154,18 +152,35 @@ travis encrypt GH_TOKEN=your_token --add
   
       nB//OpMAD8Yp30cUwZ7V7x46tikWAweZYpPGTRgfS5lU3ebA1js='
 #+END_SRC
-
+rakefile中需要做如下更改
 #+BEGIN_SRC diff
+  diff --git a/Rakefile b/Rakefile
+  index a57a56f..59b758a 100755
+  --- a/Rakefile
+  +++ b/Rakefile
+  @@ -9,10 +9,10 @@ ssh_port       = "22"
+   document_root  = "~/website.com/"
+   rsync_delete   = false
+   rsync_args     = ""  # Any extra arguments to pass to rsync
+  -deploy_default = "rsync"
+  +deploy_default = "push"
+  
+   # This will be configured for you when you run config_deploy
+  -deploy_branch  = "gh-pages"
+  +deploy_branch  = "master"
+  
+   ## -- Misc Configs -- ##
+  
   @@ -255,10 +255,10 @@ multitask :push do
        system "git add ."
        system "git add -u"
        puts "\n## Commiting: Site updated at #{Time.now.utc}"
-  -    message = "Site updated at #{Time.now.utc} [ci skip]"
-  +    message = "Site updated at #{Time.now.utc}"
+  -    message = "Site updated at #{Time.now.utc}"
+  +    message = "Site updated at #{Time.now.utc} [ci skip]"
        system "git commit -m \"#{message}\""
        puts "\n## Pushing generated #{deploy_dir} website"
-  -    system "git push origin #{deploy_branch} --force --quite"
-  +    system "git push origin #{deploy_branch} --force"
+  -    system "git push origin #{deploy_branch} --force"
+  +    system "git push origin #{deploy_branch} --force --quiet"
        puts "\n## Github Pages deploy complete"
      end
    end
@@ -173,8 +188,8 @@ travis encrypt GH_TOKEN=your_token --add
        puts "(For example, 'git@github.com:your_username/your_username.github.io)"
        repo_url = get_stdin("Repository url: ")
      end
-  -  user = repo_url.match(/[\/:]([^\/]+)\/[^\/]+$/)[1]
-  +  user = repo_url.match(/:([^\/]+)/)[1]
+  -  user = repo_url.match(/:([^\/]+)/)[1]
+  +  user = repo_url.match(/[\/:]([^\/]+)\/[^\/]+$/)[1]
      branch = (repo_url.match(/\/[\w-]+\.github\.(?:io|com)/).nil?) ? 'gh-pages' : 'master'
      project = (branch == 'gh-pages') ? repo_url.match(/\/([^\.]+)/)[1] : ''
      unless (`git remote -v` =~ /origin.+?octopress(?:\.git)?/).nil?
@@ -182,17 +197,17 @@ travis encrypt GH_TOKEN=your_token --add
          # If this is a user/organization pages repository, add the correct origin remote
          # and checkout the source branch for committing changes to the blog source.
          system "git remote add origin #{repo_url}"
-  -      puts "Added remote origin"
-  +      puts "Added remote #{repo_url} as origin"
+  -      puts "Added remote #{repo_url} as origin"
+  +      puts "Added remote origin"
          system "git config branch.master.remote origin"
          puts "Set origin as default remote"
          system "git branch -m master source"
-  @@ -341,3 +341,3 @@ task :setup_github_pages, :repo do |t, args|
+  @@ -341,7 +341,7 @@ task :setup_github_pages, :repo do |t, args|
        system "git init"
        system "echo 'My Octopress Page is coming soon &hellip;' > index.html"
        system "git add ."
-       -    system "git commit -m \"Octopress init[ci skip]\""
-  +    system "git commit -m \"Octopress init\""
+  -    system "git commit -m \"Octopress init\""
+  +    system "git commit -m \"Octopress init[ci skip]\""
        system "git branch -m gh-pages" unless branch == 'master'
        system "git remote add origin #{repo_url}"
        rakefile = IO.read(__FILE__)
@@ -200,50 +215,125 @@ travis encrypt GH_TOKEN=your_token --add
          f.write rakefile
        end
      end
-  -  puts "\n---\n## Now you can deploy to `rake deploy` ##"
-  +  puts "\n---\n## Now you can deploy to #{url} with `rake deploy` ##"
+  -  puts "\n---\n## Now you can deploy to #{url} with `rake deploy` ##"
+  +  puts "\n---\n## Now you can deploy to `rake deploy` ##"
    end
-  
-   def ok_failed(condition)
+#+END_SRC
+
+config文件中如下更改, 最后一行
+#+BEGIN_SRC diff
   diff --git a/_config.yml b/_config.yml
-  index 91db12e..c12cee9 100644
+  old mode 100755
+  new mode 100644
+  index 1397f8d..91db12e
   --- a/_config.yml
   +++ b/_config.yml
-  @@ -2,7 +2,7 @@
+  @@ -2,12 +2,12 @@
    #      Main Configs       #
    # ----------------------- #
   
-  -url: http://a3e7a269707a88afa72e25ab2f7637abfb5bf623@github.com.github.io
-  +url: http://geogeo.github.com
-   title: Jichao Ouyang's Journal
-   subtitle: Code or Else.
-   author: Jichao Ouyang
-  @@ -58,8 +58,8 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/twi
+  -url: http://yoursite.com
+  -title: My Octopress Blog
+  -subtitle: A blogging framework for hackers.
+  -author: Your Name
+  +url: http://a3e7a269707a88afa72e25ab2f7637abfb5bf623@github.com.github.io
+  +title: Jichao Ouyang's Journal
+  +subtitle: Code or Else.
+  +author: Jichao Ouyang
+   simple_search: http://google.com/search
+  -description:
+  +description: Jichao Ouyang's Journal/Blog/Whatever
+  
+   # Default date format is "ordinal" (resulting in "July 22nd 2007")
+   # You can customize the format as defined in
+  @@ -36,7 +36,7 @@ category_dir: blog/categories
+   markdown: rdiscount
+   pygments: false # default python pygments have been replaced by pygments.rb
+  
+  -paginate: 10          # Posts per page on the blog index
+  +paginate: 12          # Posts per page on the blog index
+   pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
+   recent_posts: 5       # Posts in the sidebar Recent Posts section
+   excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted
+   @@ -45,7 +45,7 @@ titlecase: true       # Converts page and post titles to titlecase
+    # To add custom asides, create files in /source/_includes/custom/asides/ and add them to t
+  -default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asid
+  +default_asides: [asides/recent_posts.html, asides/github.html, asides/twitter.html, asides
+  
+   # Each layout uses the default asides, but they can have their own asides instead. Simply
+   # and add an array with the asides you want to use.
+  @@ -58,26 +58,38 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/d
    # ----------------------- #
   
    # Github repositories
-  -github_user: geogeo
-  -github_repo_count: 5
-  +github_user: oyanglulu@gmail.com
-  +github_repo_count: 4
-  github_show_profile_link: true
+  -github_user:
+  -github_repo_count: 0
+  +github_user: geogeo
+  +github_repo_count: 5
+   github_show_profile_link: true
    github_skip_forks: true
   
-  @@ -105,14 +105,3 @@ google_analytics_tracking_id: UA-32314154-1
+   # Twitter
+  -twitter_user:
+  +twitter_user: oyanglulu
+  +twitter_tweet_count: 4
+  +twitter_show_replies: false
+  +twitter_follow_button: true
+  +twitter_show_follower_count: false
+   twitter_tweet_button: true
+  
+  +# weibo
+  +weibo_uid: 1336382145
+  +weibo_verifier: 1ca93bbd
+  +weibo_fansline: 0
+  +weibo_show: true
+  +weibo_pic: true
+  +weibo_skin: 10
+  +
+   # Google +1
+   -google_plus_one: false
+   +google_plus_one: true
+   google_plus_one_size: medium
+  
+   # Google Plus Profile
+   # Hidden: No visible button, just add author information to search results
+  -googleplus_user:
+  +googleplus_user: oyanglulu
+   googleplus_hidden: false
+  
+   # Pinboard
+  -pinboard_user:
+  +pinboard_user:
+   pinboard_count: 3
+  
+   # Delicious
+  @@ -85,11 +97,22 @@ delicious_user:
+   delicious_count: 3
+  
+   # Disqus Comments
+  -disqus_short_name:
+  -disqus_show_comment_count: false
+  +disqus_short_name: jcoysblog
+  +disqus_show_comment_count: true
+  
+   # Google Analytics
+  -google_analytics_tracking_id:
+  +google_analytics_tracking_id: UA-32314154-1
   
    # Facebook Like
-   facebook_like: true
-  -
-  -#prose.io settings
-  -prose:
-  -  rooturl: "source"
-  -  metadata:
-  -    "source/_posts": |
-  -      layout: post
-  -      title: "Title"
-  -      comments: true
-  -      categories:
-  -      published: true
+  -facebook_like: false
+  +facebook_like: true
+  +
+  +#prose.io settings
+  +prose:
+  +  rooturl: "source"
+  +  metadata:
+  +    "source/_posts": |
+  +      layout: post
+  +      title: "Title"
+  +      comments: true
+  +      categories:
+  +      published: true
 #+END_SRC
 ** Use Org-mode instead of Markdown 
 
