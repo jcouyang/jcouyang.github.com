@@ -88,7 +88,7 @@ end
 #+END_SRC
 
 
-*** [[http://gist.github.com][Gist]]
+*** [[Http://gist.github.com][Gist]]
 
 gist gist_id filename
 
@@ -238,7 +238,7 @@ config文件中如下更改, 最后一行
   -title: My Octopress Blog
   -subtitle: A blogging framework for hackers.
   -author: Your Name
-  +url: http://a3e7a269707a88afa72e25ab2f7637abfb5bf623@github.com.github.io
+  +url: http://oyanglul.us
   +title: Jichao Ouyang's Journal
   +subtitle: Code or Else.
   +author: Jichao Ouyang
@@ -266,76 +266,6 @@ config文件中如下更改, 最后一行
    # and add an array with the asides you want to use.
   @@ -58,26 +58,38 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/d
    # ----------------------- #
-  
-   # Github repositories
-  -github_user:
-  -github_repo_count: 0
-  +github_user: geogeo
-  +github_repo_count: 5
-   github_show_profile_link: true
-   github_skip_forks: true
-  
-   # Twitter
-  -twitter_user:
-  +twitter_user: oyanglulu
-  +twitter_tweet_count: 4
-  +twitter_show_replies: false
-  +twitter_follow_button: true
-  +twitter_show_follower_count: false
-   twitter_tweet_button: true
-  
-  +# weibo
-  +weibo_uid: 1336382145
-  +weibo_verifier: 1ca93bbd
-  +weibo_fansline: 0
-  +weibo_show: true
-  +weibo_pic: true
-  +weibo_skin: 10
-  +
-   # Google +1
-   -google_plus_one: false
-   +google_plus_one: true
-   google_plus_one_size: medium
-  
-   # Google Plus Profile
-   # Hidden: No visible button, just add author information to search results
-  -googleplus_user:
-  +googleplus_user: oyanglulu
-   googleplus_hidden: false
-  
-   # Pinboard
-  -pinboard_user:
-  +pinboard_user:
-   pinboard_count: 3
-  
-   # Delicious
-  @@ -85,11 +97,22 @@ delicious_user:
-   delicious_count: 3
-  
-   # Disqus Comments
-  -disqus_short_name:
-  -disqus_show_comment_count: false
-  +disqus_short_name: jcoysblog
-  +disqus_show_comment_count: true
-  
-   # Google Analytics
-  -google_analytics_tracking_id:
-  +google_analytics_tracking_id: UA-32314154-1
-  
-   # Facebook Like
-  -facebook_like: false
-  +facebook_like: true
-  +
-  +#prose.io settings
-  +prose:
-  +  rooturl: "source"
-  +  metadata:
-  +    "source/_posts": |
-  +      layout: post
-  +      title: "Title"
-  +      comments: true
-  +      categories:
-  +      published: true
 #+END_SRC
 ** Use Org-mode instead of Markdown 
 

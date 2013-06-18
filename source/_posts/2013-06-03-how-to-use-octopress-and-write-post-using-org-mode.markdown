@@ -143,7 +143,7 @@ will render as
 </div>
 
 <div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> <a href="http://gist.github.com">Gist</a></h3>
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> <a href="//gist.github.com">Gist</a></h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 gist gist<sub>id</sub> filename
@@ -201,6 +201,8 @@ asides/googleplus.html, asides/weibo.html]
 <pre class="src src-sh">curl -u <span style="color: #E6DB74;">'your_github_name'</span> -d <span style="color: #E6DB74;">'{"scopes":["public_repo"], "note":"Travis access"}'</span> https://api.github.com/authorizations
 </pre>
 </div>
+
+<!-- more -->
 
 <ul class="org-ul">
 <li>encypte your token
@@ -336,7 +338,7 @@ config文件中如下更改, 最后一行
 <span style="color: #F92672;">-</span><span style="color: #cd0000; font-weight: bold;">title: My Octopress Blog</span>
 <span style="color: #F92672;">-</span><span style="color: #cd0000; font-weight: bold;">subtitle: A blogging framework for hackers.</span>
 <span style="color: #F92672;">-</span><span style="color: #cd0000; font-weight: bold;">author: Your Name</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">url: http://a3e7a269707a88afa72e25ab2f7637abfb5bf623@github.com.github.io</span>
+<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">url: http://oyanglul.us</span>
 <span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">title: Jichao Ouyang's Journal</span>
 <span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">subtitle: Code or Else.</span>
 <span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">author: Jichao Ouyang</span>
@@ -364,76 +366,6 @@ config文件中如下更改, 最后一行
 <span style="color: #F8F8F2;"> # and add an array with the asides you want to use.</span>
 <span style="color: #AE81FF; background-color: #232526;">@@ -58,26 +58,38 @@</span><span style="color: #F8F8F2; background-color: #232526;"> default_asides: [asides/recent_posts.html, asides/github.html, asides/d</span>
 <span style="color: #F8F8F2;"> # ----------------------- #</span>
-
-<span style="color: #F8F8F2;"> # Github repositories</span>
-<span style="color: #F92672;">-</span><span style="color: #cd0000; font-weight: bold;">github_user:</span>
-<span style="color: #F92672;">-</span><span style="color: #cd0000; font-weight: bold;">github_repo_count: 0</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">github_user: geogeo</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">github_repo_count: 5</span>
-<span style="color: #F8F8F2;"> github_show_profile_link: true</span>
-<span style="color: #F8F8F2;"> github_skip_forks: true</span>
-
-<span style="color: #F8F8F2;"> # Twitter</span>
-<span style="color: #F92672;">-</span><span style="color: #cd0000; font-weight: bold;">twitter_user:</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">twitter_user: oyanglulu</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">twitter_tweet_count: 4</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">twitter_show_replies: false</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">twitter_follow_button: true</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">twitter_show_follower_count: false</span>
-<span style="color: #F8F8F2;"> twitter_tweet_button: true</span>
-
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;"># weibo</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">weibo_uid: 1336382145</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">weibo_verifier: 1ca93bbd</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">weibo_fansline: 0</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">weibo_show: true</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">weibo_pic: true</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">weibo_skin: 10</span>
-<span style="color: #A6E22E;">+</span>
-<span style="color: #F8F8F2;"> # Google +1</span>
-<span style="color: #F8F8F2;"> -google_plus_one: false</span>
-<span style="color: #F8F8F2;"> +google_plus_one: true</span>
-<span style="color: #F8F8F2;"> google_plus_one_size: medium</span>
-
-<span style="color: #F8F8F2;"> # Google Plus Profile</span>
-<span style="color: #F8F8F2;"> # Hidden: No visible button, just add author information to search results</span>
-<span style="color: #F92672;">-</span><span style="color: #cd0000; font-weight: bold;">googleplus_user:</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">googleplus_user: oyanglulu</span>
-<span style="color: #F8F8F2;"> googleplus_hidden: false</span>
-
-<span style="color: #F8F8F2;"> # Pinboard</span>
-<span style="color: #F92672;">-</span><span style="color: #cd0000; font-weight: bold;">pinboard_user:</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">pinboard_user:</span>
-<span style="color: #F8F8F2;"> pinboard_count: 3</span>
-
-<span style="color: #F8F8F2;"> # Delicious</span>
-<span style="color: #AE81FF; background-color: #232526;">@@ -85,11 +97,22 @@</span><span style="color: #F8F8F2; background-color: #232526;"> delicious_user:</span>
-<span style="color: #F8F8F2;"> delicious_count: 3</span>
-
-<span style="color: #F8F8F2;"> # Disqus Comments</span>
-<span style="color: #F92672;">-</span><span style="color: #cd0000; font-weight: bold;">disqus_short_name:</span>
-<span style="color: #F92672;">-</span><span style="color: #cd0000; font-weight: bold;">disqus_show_comment_count: false</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">disqus_short_name: jcoysblog</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">disqus_show_comment_count: true</span>
-
-<span style="color: #F8F8F2;"> # Google Analytics</span>
-<span style="color: #F92672;">-</span><span style="color: #cd0000; font-weight: bold;">google_analytics_tracking_id:</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">google_analytics_tracking_id: UA-32314154-1</span>
-
-<span style="color: #F8F8F2;"> # Facebook Like</span>
-<span style="color: #F92672;">-</span><span style="color: #cd0000; font-weight: bold;">facebook_like: false</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">facebook_like: true</span>
-<span style="color: #A6E22E;">+</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">#prose.io settings</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">prose:</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">  rooturl: "source"</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">  metadata:</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">    "source/_posts": |</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">      layout: post</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">      title: "Title"</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">      comments: true</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">      categories:</span>
-<span style="color: #A6E22E;">+</span><span style="color: #008b00; font-weight: bold;">      published: true</span>
 </pre>
 </div>
 </div>
