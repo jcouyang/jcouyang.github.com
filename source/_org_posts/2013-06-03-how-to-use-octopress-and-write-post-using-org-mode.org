@@ -119,6 +119,8 @@ asides/googleplus.html, asides/weibo.html]
 curl -u 'your_github_name' -d '{"scopes":["public_repo"], "note":"Travis access"}' https://api.github.com/authorizations
 #+END_SRC
 
+#+HTML: <!-- more -->
+
 - encypte your token
 #+BEGIN_SRC sh
 gem install travis
