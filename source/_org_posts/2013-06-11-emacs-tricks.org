@@ -1,10 +1,10 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: "emacs tricks"
+title: "emacs tricks (draft)"
 date: 2013-06-11 17:17
 comments: true
-categories: 
+categories: ["emacs"]
 ---
 #+END_HTML
 #+OPTIONS: toc:nil

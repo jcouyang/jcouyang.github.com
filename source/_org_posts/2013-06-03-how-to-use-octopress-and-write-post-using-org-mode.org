@@ -114,6 +114,12 @@ asides/googleplus.html, asides/weibo.html]
 是你的手机要有个好用的markdown编辑器.
 
 ** auto deploy octopress with travis ci [fn:1] [fn:2]
+用dropbox绝对不是让你 blog on the go 的最好方式, 因为你还需要打开电脑
+deploy 一下. 那么最给力的做法是使用 travis ci 自动的 rake deploy 你的
+文章. 再加上 prose.io, 简直就是wordpress, 你不需要任何push, 只要在
+prose.io 上编辑完成后点下 publish 即可. travis会自动给你发布hoho. 这样
+就可以随时随地发了hoho.
+
 - get github OAtuh token
 #+BEGIN_SRC sh
 curl -u 'your_github_name' -d '{"scopes":["public_repo"], "note":"Travis access"}' https://api.github.com/authorizations
@@ -332,6 +338,13 @@ html格式不会乱.
 
 因此, 前面所说的有些标签就得变成org-mode格式的. 例如 code block
 就需要用 =#+BEGIN_SRC= 来包住而不是 =```=, 快捷键 =<s TAB=
+
+** 为什么要用org-mode
+- org-babel mode 可以让你在 org 中嵌入各种语言的代码
+- 更多快捷键
+- 比markdown更丰富
+- for emacser
+
 
 * Footnotes
 

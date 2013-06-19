@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "emacs tricks"
+title: "emacs tricks (draft)"
 date: 2013-06-11 17:17
 comments: true
-categories: 
+categories: ["emacs"]
 ---
 <p>
 总结一下自己觉得有用的 emacs tricks
@@ -20,19 +20,27 @@ categories:
 <h2 id="sec-1"><span class="section-number-2">1</span> Editting</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li>Moving Ctrl Key: 将 <code>Caps</code> 定义成 Ctrl
+<li>Moving Ctrl Key: 将 <code>Caps</code> 定义成 Ctrl, 为虾米呢? 好吧, 来读读这篇
+  <a href="http://www.emacswiki.org/emacs/RepeatedStrainInjury">文章</a>, 再看看 HHBK 的键位.
 </li>
 <li>zap-to-char
 </li>
 <li>M-SPC: remove extra space
 </li>
-<li>mark: go back to place where you have edit
+</ul>
+</div>
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> mark</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>go back to place where you have edit
 </li>
 </ul>
 <p>
 insert register with <code>C-x r i</code>, <code>C-u C-SPC</code>
 </p>
 <ul class="org-ul">
+<li></li>
 <li>Use M-m instead of C-a TAB
 </li>
 <li>bind RET to ='reindent-then-newline-and-indent=
@@ -52,19 +60,22 @@ several times <code>C-w</code> to select more words.
 </ul>
 </div>
 </div>
+</div>
 
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2"><span class="section-number-2">2</span> Buffer and Files</h2>
 <div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> MaGit</h3>
+<div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
-<li>Git
-</li>
 <li>Ediff with Git
 </li>
 <li>Eshell: actually is shell implement in lisp
 </li>
 <li></li>
 </ul>
+</div>
 </div>
 </div>
 <div id="outline-container-sec-3" class="outline-2">
@@ -78,15 +89,28 @@ several times <code>C-w</code> to select more words.
 </ul>
 </div>
 </div>
+
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4"><span class="section-number-2">4</span> Appearance</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>ColorTheme
 </li>
-<li>Cursor
-</li>
+</ul>
+</div>
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Cursor</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span style="color: #7f7f7f;">(</span>setq-default cursor-type 'box<span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>set-cursor-color <span style="color: #E6DB74;">"green"</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>blink-cursor-mode<span style="color: #7f7f7f;">)</span>
+</pre>
+</div>
+<ul class="org-ul">
 <li></li>
 </ul>
+</div>
 </div>
 </div>

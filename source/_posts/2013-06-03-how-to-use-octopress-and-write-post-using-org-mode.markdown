@@ -192,6 +192,14 @@ asides/googleplus.html, asides/weibo.html]
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4"><span class="section-number-2">4</span> auto deploy octopress with travis ci <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup> <sup>, </sup><sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup></h2>
 <div class="outline-text-2" id="text-4">
+<p>
+用dropbox绝对不是让你 blog on the go 的最好方式, 因为你还需要打开电脑
+deploy 一下. 那么最给力的做法是使用 travis ci 自动的 rake deploy 你的
+文章. 再加上 prose.io, 简直就是wordpress, 你不需要任何push, 只要在
+prose.io 上编辑完成后点下 publish 即可. travis会自动给你发布hoho. 这样
+就可以随时随地发了hoho.
+</p>
+
 <ul class="org-ul">
 <li>get github OAtuh token
 </li>
@@ -456,6 +464,21 @@ html格式不会乱.
 因此, 前面所说的有些标签就得变成org-mode格式的. 例如 code block
 就需要用 <code>#+BEGIN_SRC</code> 来包住而不是 <code>```</code>, 快捷键 <code>&lt;s TAB</code>
 </p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 为什么要用org-mode</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>org-babel mode 可以让你在 org 中嵌入各种语言的代码
+</li>
+<li>更多快捷键
+</li>
+<li>比markdown更丰富
+</li>
+<li>for emacser
+</li>
+</ul>
 </div>
 </div>
 <div id="footnotes">
