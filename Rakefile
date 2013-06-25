@@ -21,8 +21,7 @@ source_dir      = "source"    # source file directory
 blog_index_dir  = 'source'    # directory for your blog's index page (if you put your index in source/blog/index.html, set this to 'source/blog')
 deploy_dir      = "_deploy"   # deploy directory (for Github pages deployment)
 stash_dir       = "_stash"    # directory to stash posts for speedy generation
-# posts_dir       = "_posts"    # directory for blog files
-posts_dir   = "_org_posts"
+posts_dir       = "_org_posts"    # directory for blog files
 themes_dir      = ".themes"   # directory for blog files
 new_post_ext    = "org"  # default new post file extension when using the new_post task
 new_page_ext    = "org"  # default new page file extension when using the new_page task
@@ -106,7 +105,7 @@ task :new_post, :title do |t, args|
   end
   puts "Creating new post: #{filename}"
   open(filename, 'w') do |post|
-    post.puts "#+BEGIN_HTML"
+    post.puts "#+BEGIN_HTML" 
     post.puts "---"
     post.puts "layout: post"
     post.puts "title: \"#{title.gsub(/&/,'&amp;')}\""
@@ -115,7 +114,7 @@ task :new_post, :title do |t, args|
     post.puts "categories: "
     post.puts "---"
     post.puts "#+END_HTML"
-    post.puts "#+OPTIONS: toc:nil"
+    post.puts "#+OPTIONS: toc:nil" # no table of content
   end
 end
 
@@ -259,10 +258,10 @@ multitask :push do
     system "git add ."
     system "git add -u"
     puts "\n## Commiting: Site updated at #{Time.now.utc}"
-    message = "Site updated at #{Time.now.utc}"
+    message = "Site updated at #{Time.now.utc} [ci skip]"
     system "git commit -m \"#{message}\""
     puts "\n## Pushing generated #{deploy_dir} website"
-    system "git push origin #{deploy_branch} --force"
+    system "git push origin #{deploy_branch} --force --quiet"
     puts "\n## Github Pages deploy complete"
   end
 end
@@ -311,7 +310,7 @@ task :setup_github_pages, :repo do |t, args|
     puts "(For example, 'git@github.com:your_username/your_username.github.io)"
     repo_url = get_stdin("Repository url: ")
   end
-  user = repo_url.match(/:([^\/]+)/)[1]
+  user = repo_url.match(/[\/:]([^\/]+)\/[^\/]+$/)[1]
   branch = (repo_url.match(/\/[\w-]+\.github\.(?:io|com)/).nil?) ? 'gh-pages' : 'master'
   project = (branch == 'gh-pages') ? repo_url.match(/\/([^\.]+)/)[1] : ''
   unless (`git remote -v` =~ /origin.+?octopress(?:\.git)?/).nil?
@@ -321,7 +320,7 @@ task :setup_github_pages, :repo do |t, args|
       # If this is a user/organization pages repository, add the correct origin remote
       # and checkout the source branch for committing changes to the blog source.
       system "git remote add origin #{repo_url}"
-      puts "Added remote #{repo_url} as origin"
+      puts "Added remote origin"
       system "git config branch.master.remote origin"
       puts "Set origin as default remote"
       system "git branch -m master source"
@@ -332,20 +331,20 @@ task :setup_github_pages, :repo do |t, args|
       end
     end
   end
-  url = "http://#{user}.github.io"
-  url += "/#{project}" unless project == ''
-  jekyll_config = IO.read('_config.yml')
-  jekyll_config.sub!(/^url:.*$/, "url: #{url}")
-  File.open('_config.yml', 'w') do |f|
-    f.write jekyll_config
-  end
+  # url = "http://#{user}.github.io"
+  # url += "/#{project}" unless project == ''
+  # jekyll_config = IO.read('_config.yml')
+  # jekyll_config.sub!(/^url:.*$/, "url: #{url}")
+  # File.open('_config.yml', 'w') do |f|
+    # f.write jekyll_config
+  # end
   rm_rf deploy_dir
   mkdir deploy_dir
   cd "#{deploy_dir}" do
     system "git init"
     system "echo 'My Octopress Page is coming soon &hellip;' > index.html"
     system "git add ."
-    system "git commit -m \"Octopress init\""
+    system "git commit -m \"Octopress init[ci skip]\""
     system "git branch -m gh-pages" unless branch == 'master'
     system "git remote add origin #{repo_url}"
     rakefile = IO.read(__FILE__)
@@ -355,7 +354,7 @@ task :setup_github_pages, :repo do |t, args|
       f.write rakefile
     end
   end
-  puts "\n---\n## Now you can deploy to #{url} with `rake deploy` ##"
+  puts "\n---\n## Now you can deploy to `rake deploy` ##"
 end
 
 def ok_failed(condition)
