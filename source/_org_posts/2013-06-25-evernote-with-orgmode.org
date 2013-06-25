@@ -1,0 +1,152 @@
+#+BEGIN_HTML
+---
+layout: post
+title: "evernote with orgmode"
+date: 2013-06-25 09:16
+comments: true
+categories: ['emacs','orgmode',evernote']
+---
+#+END_HTML
+#+OPTIONS: toc:nil
+
+[[http://code.google.com/p/emacs-evernote-mode/][evernote]]-mode 使得emacs用户可用直接用 orgmode 记笔记. here is how:
+
+** Install evernote-mode
+
+
+*** Install libgdbm
+The pre-installed ruby on Mac OS X does not contain GDBM bindings. Re-install ruby and GDBM by
+#+BEGIN_SRC sh
+rvm uninstall 1.9.3
+brew install gdbm
+rvm install 1.9.3
+#+END_SRC
+
+*** Install evernote-mode ruby script
+#+BEGIN_SRC sh
+cd evernote-mode/ruby
+ruby setup.rb
+cp evernote-mode.el <your emacs lisp load path>
+#+END_SRC
+
+*** Setup your evernote-mode
+first you need to change the way your evernote login
+https://github.com/kechako/emacs-evernote-mode-developer-token
+
+using developer token will be much more awesomer
+#+BEGIN_SRC diff https://raw.github.com/kechako/emacs-evernote-mode-developer-token/master/evernote-mode.patch
+  diff --git a/evernote-mode.el b/evernote-mode.el
+  index 313a1dc..e434841 100644
+  --- a/evernote-mode.el
+  +++ b/evernote-mode.el
+  @@ -162,6 +162,9 @@
+     "*Non-nil means that password cache is enabled.
+   It is recommended to encrypt the file with EasyPG.")
+   
+  +(defvar evernote-developer-token nil
+  +  "*An developer token of your evernote")
+  +
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;; Interface for evernote-browsing-mode.
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  @@ -550,6 +553,8 @@ It is recommended to encrypt the file with EasyPG.")
+     "Login"
+     (interactive)
+     (if (called-interactively-p) (enh-clear-onmem-cache))
+  +  (if evernote-developer-token
+  +      (enh-command-login-token evernote-developer-token) 
+       (unwind-protect
+           (let* ((cache (enh-password-cache-load))
+                  (usernames (mapcar #'car cache))
+  @@ -567,7 +572,7 @@ It is recommended to encrypt the file with EasyPG.")
+                 (enh-command-login username passwd)
+                 (setq evernote-username username)
+                 (enh-password-cache-save (enutil-aset username cache passwd)))))
+  -    (enh-password-cache-close)))
+  +      (enh-password-cache-close))))
+   
+   
+   (defun evernote-open-note (&optional ask-notebook)
+  @@ -1769,6 +1774,14 @@ It is recommended to encrypt the file with EasyPG.")
+              (enutil-to-ruby-string passwd))))
+   
+   
+  +(defun enh-command-login-token (token)
+  +  "Issue login command"
+  +  (enh-command-issue
+  +   (format ":class => %s, :auth_token => %s"
+  +           (enutil-to-ruby-string "AuthCommand")
+  +           (enutil-to-ruby-string token))))
+  +
+  +
+   (defun enh-command-get-notebook-attrs ()
+     "Issue listnotebooks command"
+     (let ((reply (enh-command-issue
+  diff --git a/ruby/bin/enclient.rb b/ruby/bin/enclient.rb
+  index 9067bad..a13ae8a 100755
+  --- a/ruby/bin/enclient.rb
+  +++ b/ruby/bin/enclient.rb
+  @@ -426,13 +426,17 @@ module EnClient
+   
+   
+     class AuthCommand < Command
+  -    attr_accessor :user, :passwd
+  +    attr_accessor :user, :passwd, :auth_token
+   
+       def exec_impl
+  -      Formatter.to_ascii @user, @passwd
+  +      Formatter.to_ascii @user, @passwd, @auth_token
+   
+         server_task do
+  +        if @auth_token
+  +          sm.authenticate_with_token @auth_token
+  +        else
+             sm.authenticate @user, @passwd
+  +        end
+           LOG.info "Auth successed: auth_token = '#{sm.auth_token}', shared_id = '#{sm.shared_id}'"
+           tm.put SyncTask.new(sm, dm, tm)
+           server_task true do # defer reply until first sync will be done.
+  @@ -1175,6 +1179,15 @@ module EnClient
+         @note_store = create_note_store @shared_id
+       end
+   
+  +    def authenticate_with_token(token)
+  +      @user_store = create_user_store
+  +      user = @user_store.getUser token
+  +      @auth_token = token
+  +      @shared_id = user.shardId if user
+  +      @expiration = 60 * 60 * 24 * 365
+  +      @note_store = create_note_store @shared_id
+  +    end
+  +
+       def refresh_authentication(current_time)
+         if current_time > @expiration - REFRESH_LIMIT_SEC * 1000
+           LOG.info "refresh authentication"
+#+END_SRC
+
+
+get developer token from
+https://www.evernote.com/api/DeveloperToken.action
+
+then paste it to starter-kit-evernote
+#+BEGIN_SRC lisp
+(require 'evernote-mode)
+(setq evernote-developer-token "paste your token here")
+(setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8")) ; optional
+(global-set-key "\C-cn" 'evernote-write-note)
+(provide 'starter-kit-evernote)
+#+END_SRC
+
+
+*** write note with orgmode
+
+-  随便开个orgmode
+-  用orgmode写完笔记以后 =C-c C-e t U= // 输出为utf-8文本
+-  =C-c n= // evernote buffer
+-  will create in evernote like this
+[[https://www.evernote.com/shard/s23/sh/e13e664c-2d1e-4a8b-9597-c062759b6732/19a4bd09e50725674caa5b17d7ee7655/deep/0/Screenshot%206/25/13%205:18%20PM.png]]
+
+#+BEGIN_QUOTE
+take note this way is awesome isn't it
+#+END_QUOTE
+

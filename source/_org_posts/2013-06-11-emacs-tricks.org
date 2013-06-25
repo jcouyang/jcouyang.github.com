@@ -11,29 +11,38 @@ categories: ["emacs"]
 
 总结一下自己觉得有用的 emacs tricks
 
+#+CAPTION: editors learning curve
+[[http://ergoemacs.org/emacs/i/emacs_learning_curves.png][editors learning curve]]
+
 首先, 上手最好先使用 emacs-starter-kit. 里面包含了emacs各种常用的的插
 件. 也就是说基本上所有可能会有用又好用的mode都已经安装了. 当然, 还是有
 一些需要手动安装盒根据自己习惯调整的地方.
 
-
 ** Editting
-- Moving Ctrl Key: 将 =Caps= 定义成 Ctrl, 为虾米呢? 好吧, 来读读这篇
-  [[http://www.emacswiki.org/emacs/RepeatedStrainInjury][文章]], 再看看 HHBK 的键位.
-- zap-to-char
-- M-SPC: remove extra space
+*** Moving Ctrl Key
+ 将 =Caps= 定义成 =Ctrl=, 为什么呢? 好吧, 来读读这篇
+  [[http://www.emacswiki.org/emacs/RepeatedStrainInjury][文章]], 再看看 [[http://www.pfu.fujitsu.com/hhkeyboard/][HHKB]] 的键位. 在mac下更换 =Caps= 是十分容易的,
+  Preference > keyboard > modify key 底下直接改就可以了. 
+*** zap-to-char =M-z=
+将光标至第一个出现你输入的字符中间都删除, 比如你的光标在 'abcdef' a 的位
+置上, =M-z d= 会变成 'ef'
+*** M-SPC: remove extra space
+这个将多余的空格去掉,只留一个.
 *** mark
-- go back to place where you have edit
-insert register with =C-x r i=, =C-u C-SPC=
-- 
-- Use M-m instead of C-a TAB
-- bind RET to ='reindent-then-newline-and-indent=
+这个太强势了.
+- =C-x r m= register 你的位置,给个名字,这叫bookmark, 并给他取一个名字. =C-x r b= + 名字, 回
+  到该bookmark
+- =C-u C-SPC= 可会上个编辑的地方,上上个编辑的地方,上上上个编辑的地方...
+*** Use M-m instead of C-a TAB
+当写程序的时候我们通常知道到代码行的头,而不是本行的最开始, 不要用
+=C-a TAB=, 因为 =M=m= 就是干这个的.对于写代码来说,  bind RET to
+='reindent-then-newline-and-indent= 将是一劳永逸的事情. 
 #+BEGIN_SRC lisp
 (global-set-key (kbd "RET") 'reindent-then-newline-and-indent).
 #+END_SRC
 - use =C-s C-w= to search current pointed word, and you can type
   several times =C-w= to select more words.
-- auth-highlight-mode
-
+- auto-highlight-mode
 
 ** Buffer and Files
 *** MaGit
