@@ -14,38 +14,68 @@ categories: ["emacs"]
 #+CAPTION: editors learning curve
 [[http://ergoemacs.org/emacs/i/emacs_learning_curves.png][editors learning curve]]
 
-显然, emacs 门槛要比vim低多了, 但是命令和插件巨多导致你永远到不了
-yoda 的境界.
+显然, emacs 门槛要比vim低多了, 甚至你把他当做 notepad 用也是完全可以的.
+但是命令和插件巨多导致你永远到不了yoda 的境界. emacs 被 vim 用户调侃是
+最好的os, vim才是最好的编辑器,就是因为可扩展性太强了.emacs插件众多,很
+多扩展也源于其他优秀编辑器如vim,textmate,sublime,idea. 因此你不但需要把 os 的东西搞熟练, 还要熟
+练上面的软件.
+
 首先, 上手最好先使用 emacs-starter-kit. 里面包含了emacs各种常用的的插
 件. 也就是说基本上所有可能会有用又好用的mode都已经安装了. 当然, 还是有
 一些需要手动安装盒根据自己习惯调整的地方.
 
-0. 自己编译 Aquamacs 3.0 from [[https://github.com/davidswelt/aquamacs-emacs.git][here]]. 因为3.0 based on emacs 24.3.
-1. 下列提及的插件凡是没有提及地址的,都能再 epla 找到.
+后来呢, 你会发现 starter-kit 弱弱的, 因为好多东西都在 24.3 集成了, 或
+者都已经在 elpa 里了. 这时候, 你可以...
+自己编译 Aquamacs 3.0 源代码 from [[https://github.com/davidswelt/aquamacs-emacs.git][here]]. 因为3.0 based on emacs 24.3.
 
+下面是我决定有用和可以装x的一些tricks. 
+下列提及的插件凡是没有提及地址的,都能再 epla 找到.[fn:1]
+
+以下trick或只在 aquamacs3.0 有用, 因为我没有测试其他环境.
 ** Editing
 *** Moving Ctrl Key
- 将 =Caps= 定义成 =Ctrl=, 为什么呢? 好吧, 来读读这篇
+first thing first, 使用 emacs 最常用的按键当然是 =Ctrl=, 但是不幸的是
+标准键位居然把这么重要一个按钮放到一个要扭曲小拇指才能够到的地方.
+因此,在使用 emacs 之前,将 =Caps= 定义成 =Ctrl=, 好吧, 具体详情来读读这篇
   [[http://www.emacswiki.org/emacs/RepeatedStrainInjury][文章]], 再看看 [[http://www.pfu.fujitsu.com/hhkeyboard/][HHKB]] 的键位. 在mac下更换 =Caps= 是十分容易的,
   Preference > keyboard > modify key 底下直接改就可以了. 
-*** zap-to-char =M-z=
-将光标至第一个出现你输入的字符中间都删除, 比如你的光标在 'abcdef' a 的位
+
+*** zap-to-char
+快捷键绑定  =M-z=.
+zap 是消除的意思. 将光标至第一个出现你输入的字符中间都删除, 比如你的光标在 'abcdef' a 的位
 置上, =M-z d= 会变成 'ef'
 
 *** iy-move-to-char
-跟 vim f 的功能一样
+跟 vim f 的功能一样...这个比较轻量一些, 当然有了后面说的
+ace-jump-mode 会让你的光标任意跳跃.
+
+| =C-c f= | 跳到后面第一个出现的字符 |
+|---------+--------------------------|
+| =C-c F=  | 跳到前面第一个出现的字符 |
+|--------+--------------------------  |
+| =;=     | 继续向前                 |
+|--------+--------------------------  |
+| =,=     | 继续向后                     |
+|         |                          |
 
 *** M-SPC: remove extra space
 这个将多余的空格去掉,只留一个.
 
 *** multiple-cursor
 一个比 rectange 更强势的批量编辑. 用了这个其他编辑器神马的都弱爆了
+rectangle text =C-x r t= 可以批量编辑规整的, 但是不规整的用
+multiple-cursor就碉堡了.
 
+下面绑定快捷键的 lisp 比较直白, 我就不翻译了.
+#+BEGIN_SRC lisp
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+#+END_SRC
 
-*** zencoding-mode
-用 css selector 写 html, zencoding + yas, 其他 html 编辑器都弱爆了,真的.
 
 *** mark
+这就算 vim 的 visual mode 吗?
 - =C-x r m= register 你的位置,给个名字,这叫bookmark, 并给他取一个名字. =C-x r b= + 名字, 回
   到该bookmark
 - =C-u C-SPC= 可会上个编辑的地方,上上个编辑的地方,上上上个编辑的地方...碉
@@ -68,30 +98,47 @@ yoda 的境界.
 键盘和旋. 让你定义同时按住两个键的快捷键, 或者一个按键两次.
 我想没有神马别的编辑器能干这个事情了.
 
-
 *** ace-jump-mode
+这个 mode 也是从 vim 那边剽窃过来的, 好吧, 也可以说是 share, 因为剽窃
+的话 vim 就再也没有这个插件了.
 
+是这样玩的, 在整个 frame[fn:2], 也可以是所有 window 里, 你只需敲3下, 就可以
+到你想要到达的地方.
+键入 =C-c SPC= 后, mini-buff 会问你单词第一个字符是啥,键入后整个页面会
+灰掉, 所有出现你输入的字符的位置会以 a-z 代替, 键入 你想去得位置的代码
+即可.
 
 ** language
 
 *** js2-mode
-best javascript mode
+best javascript modex
+
+
+*** [[https://github.com/rooney/zencoding][zencoding-mode]]
+a neat way to write markup quickly in emacs 
+用 css selector 写 html, zencoding + yas, 这个模式其他编辑器如vim
+sublime 也有插件, 非常好用.
+
+
+*** [[http://web-mode.org/][web-mode]]
+我认为比较好用的 web 编辑模式
+快捷键好多, 有的背了, whee....
 
 ** Buffer and Files
 *** MaGit
 - Ediff with Git
 - Eshell: actually it is shell implement in lisp
 
-
-
 ** Appearance
 *** ColorTheme
 monokai theme is the best
 
 *** power-line
-跟 vim 的powerline 一样, 让你的 mainline 带颜色
+跟 vim 的powerline 一样, 让你的 mainline 带颜色[fn:2]
+我喜欢骚青的 mainline
 
 *** Cursor
+我喜欢骚青的 cursor
 #+BEGIN_SRC lisp
 (setq-default cursor-type 'box)
 (set-cursor-color "green")
@@ -99,10 +146,24 @@ monokai theme is the best
 #+END_SRC
  
 
-** GTD
-- org-mode
+** org-mode
+
 - markdown-mode
 
 #+BEGIN_QUOTE
 tobe continue...
 #+END_QUOTE
+
+* Footnotes
+
+[fn:1] Emacs Lisp Package Archive: 这是一个放 package 的地方, 类似
+  apt-get 的源, 你可以用 list-package 列出 package 或者直接
+  package-install 来安装 package. 我用的源是 http://tromey.com/elpa/
+  和 http://melpa.milkbox.net
+
+[fn:2] emacs 各种名词 看这里
+
+[fn:3] [[http://emacsrocks.com/][emacs rocks cast]]
+
+[fn:4] [[http://www.emacswiki.org/EmacsNiftyTricks][emacs nifty tricks]]
+
