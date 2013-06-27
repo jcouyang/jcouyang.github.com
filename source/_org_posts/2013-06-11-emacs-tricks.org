@@ -14,11 +14,16 @@ categories: ["emacs"]
 #+CAPTION: editors learning curve
 [[http://ergoemacs.org/emacs/i/emacs_learning_curves.png][editors learning curve]]
 
+显然, emacs 门槛要比vim低多了, 但是命令和插件巨多导致你永远到不了
+yoda 的境界.
 首先, 上手最好先使用 emacs-starter-kit. 里面包含了emacs各种常用的的插
 件. 也就是说基本上所有可能会有用又好用的mode都已经安装了. 当然, 还是有
 一些需要手动安装盒根据自己习惯调整的地方.
 
-** Editting
+0. 自己编译 Aquamacs 3.0 from [[https://github.com/davidswelt/aquamacs-emacs.git][here]]. 因为3.0 based on emacs 24.3.
+1. 下列提及的插件凡是没有提及地址的,都能再 epla 找到.
+
+** Editing
 *** Moving Ctrl Key
  将 =Caps= 定义成 =Ctrl=, 为什么呢? 好吧, 来读读这篇
   [[http://www.emacswiki.org/emacs/RepeatedStrainInjury][文章]], 再看看 [[http://www.pfu.fujitsu.com/hhkeyboard/][HHKB]] 的键位. 在mac下更换 =Caps= 是十分容易的,
@@ -26,13 +31,28 @@ categories: ["emacs"]
 *** zap-to-char =M-z=
 将光标至第一个出现你输入的字符中间都删除, 比如你的光标在 'abcdef' a 的位
 置上, =M-z d= 会变成 'ef'
+
+*** iy-move-to-char
+跟 vim f 的功能一样
+
 *** M-SPC: remove extra space
 这个将多余的空格去掉,只留一个.
+
+*** multiple-cursor
+一个比 rectange 更强势的批量编辑. 用了这个其他编辑器神马的都弱爆了
+
+
+*** zencoding-mode
+用 css selector 写 html, zencoding + yas, 其他 html 编辑器都弱爆了,真的.
+
 *** mark
-这个太强势了.
 - =C-x r m= register 你的位置,给个名字,这叫bookmark, 并给他取一个名字. =C-x r b= + 名字, 回
   到该bookmark
-- =C-u C-SPC= 可会上个编辑的地方,上上个编辑的地方,上上上个编辑的地方...
+- =C-u C-SPC= 可会上个编辑的地方,上上个编辑的地方,上上上个编辑的地方...碉
+  堡了
+- expend-region
+ Increase selected region, 可以跟 IDEA 里的 =Command w= 一样选中
+
 *** Use M-m instead of C-a TAB
 当写程序的时候我们通常知道到代码行的头,而不是本行的最开始, 不要用
 =C-a TAB=, 因为 =M=m= 就是干这个的.对于写代码来说,  bind RET to
@@ -44,24 +64,45 @@ categories: ["emacs"]
   several times =C-w= to select more words.
 - auto-highlight-mode
 
+*** keychord
+键盘和旋. 让你定义同时按住两个键的快捷键, 或者一个按键两次.
+我想没有神马别的编辑器能干这个事情了.
+
+
+*** ace-jump-mode
+
+
+** language
+
+*** js2-mode
+best javascript mode
+
 ** Buffer and Files
 *** MaGit
 - Ediff with Git
-- Eshell: actually is shell implement in lisp
-- 
+- Eshell: actually it is shell implement in lisp
 
-** GTD
-- org-mode
-- markdown-mode
+
+
 ** Appearance
-- ColorTheme
+*** ColorTheme
+monokai theme is the best
+
+*** power-line
+跟 vim 的powerline 一样, 让你的 mainline 带颜色
+
 *** Cursor
 #+BEGIN_SRC lisp
 (setq-default cursor-type 'box)
 (set-cursor-color "green")
 (blink-cursor-mode)
 #+END_SRC
-- 
+ 
 
+** GTD
+- org-mode
+- markdown-mode
 
-
+#+BEGIN_QUOTE
+tobe continue...
+#+END_QUOTE
