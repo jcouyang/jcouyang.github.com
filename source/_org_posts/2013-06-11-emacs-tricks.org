@@ -12,7 +12,7 @@ categories: ["emacs"]
 总结一下自己觉得有用的 emacs tricks
 
 #+CAPTION: editors learning curve
-[[http://ergoemacs.org/emacs/i/emacs_learning_curves.png][editors learning curve]]
+[[http://ergoemacs.org/emacs/i/emacs_learning_curves.png]]
 
 显然, emacs 门槛要比vim低多了, 甚至你把他当做 notepad 用也是完全可以的.
 但是命令和插件巨多导致你永远到不了yoda 的境界. emacs 被 vim 用户调侃是
