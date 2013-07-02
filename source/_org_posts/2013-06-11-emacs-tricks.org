@@ -31,7 +31,9 @@ categories: ["emacs"]
 下面是我决定有用和可以装x的一些tricks. 
 下列提及的插件凡是没有提及地址的,都能再 epla 找到.[fn:1]
 
-以下trick或只在 aquamacs3.0 有用, 因为我没有测试其他环境.
+以下trick或只在 aquamacs3.0 有用, 因为我没有测试其他环境. 大部分来自
+emacsrocks[fn:3] 和 emacsniftytricks[fn:4]
+
 ** Editing
 *** Moving Ctrl Key
 first thing first, 使用 emacs 最常用的按键当然是 =Ctrl=, 但是不幸的是
@@ -48,15 +50,14 @@ zap 是消除的意思. 将光标至第一个出现你输入的字符中间都�
 *** iy-move-to-char
 跟 vim f 的功能一样...这个比较轻量一些, 当然有了后面说的
 ace-jump-mode 会让你的光标任意跳跃.
+#+BEGIN_SRC 
+(global-set-key (kbd "C-c f") 'iy-go-to-char)
+(global-set-key (kbd "C-c F") 'iy-go-to-char-backward)
+#+END_SRC
 
-| =C-c f= | 跳到后面第一个出现的字符 |
-|---------+--------------------------|
-| =C-c F=  | 跳到前面第一个出现的字符 |
-|--------+--------------------------  |
-| =;=     | 继续向前                 |
-|--------+--------------------------  |
-| =,=     | 继续向后                     |
-|         |                          |
+| =;= | 继续向前 |
+|-----+----------|
+| =,= | 继续向后 |
 
 *** M-SPC: remove extra space
 这个将多余的空格去掉,只留一个.
@@ -72,7 +73,6 @@ multiple-cursor就碉堡了.
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 #+END_SRC
-
 
 *** mark
 这就算 vim 的 visual mode 吗?
@@ -111,8 +111,7 @@ multiple-cursor就碉堡了.
 ** language
 
 *** js2-mode
-best javascript modex
-
+best javascript mode ever
 
 *** [[https://github.com/rooney/zencoding][zencoding-mode]]
 a neat way to write markup quickly in emacs 
@@ -124,17 +123,13 @@ sublime 也有插件, 非常好用.
 我认为比较好用的 web 编辑模式
 快捷键好多, 有的背了, whee....
 
-** Buffer and Files
-*** MaGit
-- Ediff with Git
-- Eshell: actually it is shell implement in lisp
 
 ** Appearance
 *** ColorTheme
 monokai theme is the best
 
 *** power-line
-跟 vim 的powerline 一样, 让你的 mainline 带颜色[fn:2]
+跟 vim 的 powerline 一样, 让你的 mainline 带颜色[fn:2]
 我喜欢骚青的 mainline
 
 *** Cursor
@@ -145,10 +140,14 @@ monokai theme is the best
 (blink-cursor-mode)
 #+END_SRC
  
-
-** org-mode
-
-- markdown-mode
+** mist
+*** org-mode
+**** capture note
+*** evernote-mode
+see this [[http://127.0.0.1:4000/blog/2013/06/25/evernote-with-orgmode/][take evernote with orgmode]]
+*** markdown-mode
+*** magit
+*** eshell
 
 #+BEGIN_QUOTE
 tobe continue...
@@ -163,7 +162,9 @@ tobe continue...
 
 [fn:2] emacs 各种名词 看这里
 
-[fn:3] [[http://emacsrocks.com/][emacs rocks cast]]
+[[https://www.evernote.com/shard/s23/sh/0c19ec76-9211-4c96-aa33-806ca3c870c8/a14eea2f025c6dcb30fb42ef5a8d5b06/deep/0/Screen%20Shot%202013-06-27%20at%209.47.17%20PM.png]]
 
+
+[fn:3] [[http://emacsrocks.com/][emacs rocks cast]]
 [fn:4] [[http://www.emacswiki.org/EmacsNiftyTricks][emacs nifty tricks]]
 

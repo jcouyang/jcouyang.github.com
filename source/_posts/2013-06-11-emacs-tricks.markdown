@@ -41,8 +41,10 @@ categories: ["emacs"]
 </p>
 
 <p>
-以下trick或只在 aquamacs3.0 有用, 因为我没有测试其他环境.
+以下trick或只在 aquamacs3.0 有用, 因为我没有测试其他环境. 大部分来自
+emacsrocks<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup> 和 emacsniftytricks<sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup>
 </p>
+
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1"><span class="section-number-2">1</span> Editing</h2>
 <div class="outline-text-2" id="text-1">
@@ -75,6 +77,10 @@ zap 是消除的意思. 将光标至第一个出现你输入的字符中间都�
 跟 vim f 的功能一样&#x2026;这个比较轻量一些, 当然有了后面说的
 ace-jump-mode 会让你的光标任意跳跃.
 </p>
+<pre class="example">
+(global-set-key (kbd "C-c f") 'iy-go-to-char)
+(global-set-key (kbd "C-c F") 'iy-go-to-char-backward)
+</pre>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -86,22 +92,10 @@ ace-jump-mode 会让你的光标任意跳跃.
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left"><code>C-c f</code></th>
-<th scope="col" class="left">跳到后面第一个出现的字符</th>
+<th scope="col" class="left"><code>;</code></th>
+<th scope="col" class="left">继续向前</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td class="left"><code>C-c F</code></td>
-<td class="left">跳到前面第一个出现的字符</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="left"><code>;</code></td>
-<td class="left">继续向前</td>
-</tr>
-</tbody>
 <tbody>
 <tr>
 <td class="left">=,=</td>
@@ -145,7 +139,6 @@ multiple-cursor就碉堡了.
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-1-6" class="outline-3">
 <h3 id="sec-1-6"><span class="section-number-3">1.6</span> mark</h3>
 <div class="outline-text-3" id="text-1-6">
@@ -205,7 +198,7 @@ several times <code>C-w</code> to select more words.
 </p>
 
 <p>
-是这样玩的, 在整个 frame<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>, 也可以是所有 window 里, 你只需敲3下, 就可以
+是这样玩的, 在整个 frame<sup><a id="fnr.4" name="fnr.4" class="footref" href="#fn.4">4</a></sup>, 也可以是所有 window 里, 你只需敲3下, 就可以
 到你想要到达的地方.
 键入 <code>C-c SPC</code> 后, mini-buff 会问你单词第一个字符是啥,键入后整个页面会
 灰掉, 所有出现你输入的字符的位置会以 a-z 代替, 键入 你想去得位置的代码
@@ -221,11 +214,10 @@ several times <code>C-w</code> to select more words.
 <h3 id="sec-2-1"><span class="section-number-3">2.1</span> js2-mode</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-best javascript modex
+best javascript mode ever
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-2-2" class="outline-3">
 <h3 id="sec-2-2"><span class="section-number-3">2.2</span> <a href="https://github.com/rooney/zencoding">zencoding-mode</a></h3>
 <div class="outline-text-3" id="text-2-2">
@@ -247,44 +239,30 @@ sublime 也有插件, 非常好用.
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Buffer and Files</h2>
+<h2 id="sec-3"><span class="section-number-2">3</span> Appearance</h2>
 <div class="outline-text-2" id="text-3">
 </div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> MaGit</h3>
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> ColorTheme</h3>
 <div class="outline-text-3" id="text-3-1">
-<ul class="org-ul">
-<li>Ediff with Git
-</li>
-<li>Eshell: actually it is shell implement in lisp
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Appearance</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> ColorTheme</h3>
-<div class="outline-text-3" id="text-4-1">
 <p>
 monokai theme is the best
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> power-line</h3>
-<div class="outline-text-3" id="text-4-2">
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> power-line</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
-跟 vim 的powerline 一样, 让你的 mainline 带颜色<sup><a id="fnr.2.100" name="fnr.2.100" class="footref" href="#fn.2">2</a></sup>
+跟 vim 的powerline 一样, 让你的 mainline 带颜色<sup><a id="fnr.4.100" name="fnr.4.100" class="footref" href="#fn.4">4</a></sup>
 我喜欢骚青的 mainline
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Cursor</h3>
-<div class="outline-text-3" id="text-4-3">
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Cursor</h3>
+<div class="outline-text-3" id="text-3-3">
 <p>
 我喜欢骚青的 cursor
 </p>
@@ -297,16 +275,27 @@ monokai theme is the best
 </div>
 </div>
 </div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> mist</h3>
+</div>
 </div>
 
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> org-mode</h2>
+</div>
 <div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> org-mode</h2>
-<div class="outline-text-2" id="text-5">
-<ul class="org-ul">
-<li>markdown-mode
-</li>
-</ul>
-
+<h2 id="sec-5"><span class="section-number-2">5</span> evernote-mode</h2>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> markdown-mode</h2>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> magit</h2>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> eshell</h2>
+<div class="outline-text-2" id="text-8">
 <blockquote>
 <p>
 tobe continue&#x2026;
@@ -326,8 +315,21 @@ package-install 来安装 package. 我用的源是 <a href="http://tromey.com/el
 </p></div>
 
 <div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
-emacs 各种名词 看这里
+<a href="http://emacsrocks.com/">emacs rocks cast</a>
 </p></div>
+
+<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p class="footpara">
+<a href="http://www.emacswiki.org/EmacsNiftyTricks">emacs nifty tricks</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.4" name="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p class="footpara">
+emacs 各种名词 看这里
+</p>
+
+
+<div class="figure">
+<p><img src="https://www.evernote.com/shard/s23/sh/0c19ec76-9211-4c96-aa33-806ca3c870c8/a14eea2f025c6dcb30fb42ef5a8d5b06/deep/0/Screen Shot 2013-06-27 at 9.47.17 PM.png"  alt="Screen Shot 2013-06-27 at 9.47.17 PM.png"/></p>
+</div></div>
 
 
 </div>
