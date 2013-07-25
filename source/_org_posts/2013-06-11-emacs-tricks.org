@@ -28,7 +28,7 @@ categories: ["emacs"]
 者都已经在 elpa 里了. 这时候, 你可以...
 自己编译 Aquamacs 3.0 源代码 from [[https://github.com/davidswelt/aquamacs-emacs.git][here]]. 因为3.0 based on emacs 24.3.
 
-下面是我决定有用和可以装x的一些tricks. 
+下面是我决定有用和可以装x的一些tricks.
 下列提及的插件凡是没有提及地址的,都能再 epla 找到.[fn:1]
 
 以下trick或只在 aquamacs3.0 有用, 因为我没有测试其他环境. 大部分来自
@@ -40,40 +40,10 @@ first thing first, 使用 emacs 最常用的按键当然是 =Ctrl=, 但是不幸
 标准键位居然把这么重要一个按钮放到一个要扭曲小拇指才能够到的地方.
 因此,在使用 emacs 之前,将 =Caps= 定义成 =Ctrl=, 好吧, 具体详情来读读这篇
   [[http://www.emacswiki.org/emacs/RepeatedStrainInjury][文章]], 再看看 [[http://www.pfu.fujitsu.com/hhkeyboard/][HHKB]] 的键位. 在mac下更换 =Caps= 是十分容易的,
-  Preference > keyboard > modify key 底下直接改就可以了. 
-
-*** zap-to-char
-快捷键绑定  =M-z=.
-zap 是消除的意思. 将光标至第一个出现你输入的字符中间都删除, 比如你的光标在 'abcdef' a 的位
-置上, =M-z d= 会变成 'ef'
-
-*** iy-move-to-char
-跟 vim f 的功能一样...这个比较轻量一些, 当然有了后面说的
-ace-jump-mode 会让你的光标任意跳跃.
-#+BEGIN_SRC 
-(global-set-key (kbd "C-c f") 'iy-go-to-char)
-(global-set-key (kbd "C-c F") 'iy-go-to-char-backward)
-#+END_SRC
-
-| =;= | 继续向前 |
-|-----+----------|
-| =,= | 继续向后 |
+  Preference > keyboard > modify key 底下直接改就可以了.
 
 *** M-SPC: remove extra space
-这个将多余的空格去掉,只留一个.
-
-*** multiple-cursor
-一个比 rectange 更强势的批量编辑. 用了这个其他编辑器神马的都弱爆了
-rectangle text =C-x r t= 可以批量编辑规整的, 但是不规整的用
-multiple-cursor就碉堡了.
-
-下面绑定快捷键的 lisp 比较直白, 我就不翻译了.
-#+BEGIN_SRC lisp
-  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-#+END_SRC
-
+reMove Space 这个将多余的空格去掉,只留一个.
 *** mark
 这就算 vim 的 visual mode 吗?
 - =C-x r m= register 你的位置,给个名字,这叫bookmark, 并给他取一个名字. =C-x r b= + 名字, 回
@@ -83,10 +53,45 @@ multiple-cursor就碉堡了.
 - expend-region
  Increase selected region, 可以跟 IDEA 里的 =Command w= 一样选中
 
+*** zap-to-char
+快捷键绑定  =M-z=.
+zap 是消除的意思. 将光标至第一个出现你输入的字符中间都删除, 比如你的光标在 'abcdef' a 的位
+置上, =M-z d= 会变成 'ef'
+
+*** follow-mode
+如果你的文件过长, 可以split 两个或多个window, 然后 M-x follow-mode
+
+*** iy-move-to-char
+跟 vim f 的功能一样...这个比较轻量一些, 当然有了后面说的
+ace-jump-mode 会让你的光标任意跳跃.
+#+BEGIN_SRC
+(global-set-key (kbd "C-c f") 'iy-go-to-char)
+(global-set-key (kbd "C-c F") 'iy-go-to-char-backward)
+#+END_SRC
+
+| =;= | 继续向前 |
+|-----+----------|
+| =,= | 继续向后 |
+
+*** multiple-cursor
+一个比 rectange 更强势的批量编辑. 用了这个其他编辑器神马的都弱爆了
+rectangle text =C-x r t= 可以批量编辑规整的, 但是不规整的用
+multiple-cursor就碉堡了.
+
+/下面/ 绑定快捷键的 lisp 比较直白, 我就不翻译了.
+#+BEGIN_SRC lisp
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+#+END_SRC
+
+*** anything
+anything 替换的是 ido mode, 包含 buffer, imenu 等一系列
+
 *** Use M-m instead of C-a TAB
 当写程序的时候我们通常知道到代码行的头,而不是本行的最开始, 不要用
 =C-a TAB=, 因为 =M=m= 就是干这个的.对于写代码来说,  bind RET to
-='reindent-then-newline-and-indent= 将是一劳永逸的事情. 
+='reindent-then-newline-and-indent= 将是一劳永逸的事情.
 #+BEGIN_SRC lisp
 (global-set-key (kbd "RET") 'reindent-then-newline-and-indent).
 #+END_SRC
@@ -108,50 +113,79 @@ multiple-cursor就碉堡了.
 灰掉, 所有出现你输入的字符的位置会以 a-z 代替, 键入 你想去得位置的代码
 即可.
 
-** language
+#+BEGIN_QUOTE
+tobe continue...以下大纲持续更新
+#+END_QUOTE
 
+** language
 *** js2-mode
 best javascript mode ever
+*** rewrepl
 
 *** [[https://github.com/rooney/zencoding][zencoding-mode]]
-a neat way to write markup quickly in emacs 
+a neat way to write markup quickly in emacs
 用 css selector 写 html, zencoding + yas, 这个模式其他编辑器如vim
 sublime 也有插件, 非常好用.
 
+*** ruby-mode
+
+*** python-mode
 
 *** [[http://web-mode.org/][web-mode]]
 我认为比较好用的 web 编辑模式
 快捷键好多, 有的背了, whee....
 
+*** magit
+magit 是 interactive 模式的 git 模式. 
+=C-x g= 绑定到 magit-status
+=s= stage this changes
+=u= unstage
+相应大写表示 stage/unstage 所有changes
+TAB 可以显示 diff
+=C=: Commit 所有 unstaged Changes
+=F=: pull
+=P=: push
+
 
 ** Appearance
 *** ColorTheme
-monokai theme is the best
+monokai theme is the best for any editor
 
 *** power-line
 跟 vim 的 powerline 一样, 让你的 mainline 带颜色[fn:2]
 我喜欢骚青的 mainline
 
 *** Cursor
-我喜欢骚青的 cursor
+我喜欢 _骚青的_ cursor
 #+BEGIN_SRC lisp
 (setq-default cursor-type 'box)
 (set-cursor-color "green")
 (blink-cursor-mode)
 #+END_SRC
- 
+设置 color 有可能被 color theme 覆盖, 最好直接加在你用的 color theme
+里.
 ** mist
 *** org-mode
 **** capture note
+
 *** evernote-mode
+
 see this [[http://127.0.0.1:4000/blog/2013/06/25/evernote-with-orgmode/][take evernote with orgmode]]
 *** markdown-mode
-*** magit
+
 *** eshell
 
-#+BEGIN_QUOTE
-tobe continue...
-#+END_QUOTE
+eshell 不是 shell 在 emacs 中的 simulator, eshell 是由 lisp 写的完整
+的shell.  因此, 由于emacs跨平台, eshell 也是跨平台的, 不管你是用何种操
+作系统, 都一样使用. 谁说 windows 下没有好用的 shell, 因为他们都用过
+eshell.
+
+下面是我的eshell 配置
+#+BEGIN_SRC lisp
+
+#+END_SRC
+
+另外, eshell 模式下用 git 没有颜色, 或者是我打开的方式不对. 还是用magit好吧.
 
 * Footnotes
 

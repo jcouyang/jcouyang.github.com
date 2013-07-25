@@ -36,7 +36,7 @@ categories: ["emacs"]
 </p>
 
 <p>
-下面是我决定有用和可以装x的一些tricks. 
+下面是我决定有用和可以装x的一些tricks.
 下列提及的插件凡是没有提及地址的,都能再 epla 找到.<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>
 </p>
 
@@ -56,13 +56,41 @@ first thing first, 使用 emacs 最常用的按键当然是 <code>Ctrl</code>, �
 标准键位居然把这么重要一个按钮放到一个要扭曲小拇指才能够到的地方.
 因此,在使用 emacs 之前,将 <code>Caps</code> 定义成 <code>Ctrl</code>, 好吧, 具体详情来读读这篇
   <a href="http://www.emacswiki.org/emacs/RepeatedStrainInjury">文章</a>, 再看看 <a href="http://www.pfu.fujitsu.com/hhkeyboard/">HHKB</a> 的键位. 在mac下更换 <code>Caps</code> 是十分容易的,
-  Preference &gt; keyboard &gt; modify key 底下直接改就可以了. 
+  Preference &gt; keyboard &gt; modify key 底下直接改就可以了.
 </p>
 </div>
 </div>
 <div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> zap-to-char</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> M-SPC: remove extra space</h3>
 <div class="outline-text-3" id="text-1-2">
+<p>
+reMove Space 这个将多余的空格去掉,只留一个.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> mark</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+这就算 vim 的 visual mode 吗?
+</p>
+<ul class="org-ul">
+<li><code>C-x r m</code> register 你的位置,给个名字,这叫bookmark, 并给他取一个名字. <code>C-x r b</code> + 名字, 回
+到该bookmark
+</li>
+<li><code>C-u C-SPC</code> 可会上个编辑的地方,上上个编辑的地方,上上上个编辑的地方&#x2026;碉
+堡了
+</li>
+<li>expend-region
+Increase selected region, 可以跟 IDEA 里的 <code>Command w</code> 一样选中
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> zap-to-char</h3>
+<div class="outline-text-3" id="text-1-4">
 <p>
 快捷键绑定  <code>M-z</code>.
 zap 是消除的意思. 将光标至第一个出现你输入的字符中间都删除, 比如你的光标在 'abcdef' a 的位
@@ -70,9 +98,17 @@ zap 是消除的意思. 将光标至第一个出现你输入的字符中间都�
 </p>
 </div>
 </div>
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> iy-move-to-char</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> follow-mode</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+如果你的文件过长, 可以split 两个或多个window, 然后 M-x follow-mode
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> iy-move-to-char</h3>
+<div class="outline-text-3" id="text-1-6">
 <p>
 跟 vim f 的功能一样&#x2026;这个比较轻量一些, 当然有了后面说的
 ace-jump-mode 会让你的光标任意跳跃.
@@ -101,26 +137,13 @@ ace-jump-mode 会让你的光标任意跳跃.
 <td class="left">=,=</td>
 <td class="left">继续向后</td>
 </tr>
-
-<tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-</tr>
 </tbody>
 </table>
 </div>
 </div>
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> M-SPC: remove extra space</h3>
-<div class="outline-text-3" id="text-1-4">
-<p>
-这个将多余的空格去掉,只留一个.
-</p>
-</div>
-</div>
-<div id="outline-container-sec-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> multiple-cursor</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> multiple-cursor</h3>
+<div class="outline-text-3" id="text-1-7">
 <p>
 一个比 rectange 更强势的批量编辑. 用了这个其他编辑器神马的都弱爆了
 rectangle text <code>C-x r t</code> 可以批量编辑规整的, 但是不规整的用
@@ -128,7 +151,7 @@ multiple-cursor就碉堡了.
 </p>
 
 <p>
-下面绑定快捷键的 lisp 比较直白, 我就不翻译了.
+<i>下面</i> 绑定快捷键的 lisp 比较直白, 我就不翻译了.
 </p>
 <div class="org-src-container">
 
@@ -139,32 +162,21 @@ multiple-cursor就碉堡了.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> mark</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-sec-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> anything</h3>
+<div class="outline-text-3" id="text-1-8">
 <p>
-这就算 vim 的 visual mode 吗?
+anything 替换的是 ido mode, 包含 buffer, imenu 等一系列
 </p>
-<ul class="org-ul">
-<li><code>C-x r m</code> register 你的位置,给个名字,这叫bookmark, 并给他取一个名字. <code>C-x r b</code> + 名字, 回
-到该bookmark
-</li>
-<li><code>C-u C-SPC</code> 可会上个编辑的地方,上上个编辑的地方,上上上个编辑的地方&#x2026;碉
-堡了
-</li>
-<li>expend-region
-Increase selected region, 可以跟 IDEA 里的 <code>Command w</code> 一样选中
-</li>
-</ul>
 </div>
 </div>
-<div id="outline-container-sec-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Use M-m instead of C-a TAB</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-sec-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Use M-m instead of C-a TAB</h3>
+<div class="outline-text-3" id="text-1-9">
 <p>
 当写程序的时候我们通常知道到代码行的头,而不是本行的最开始, 不要用
 <code>C-a TAB</code>, 因为 <code>M=m</code> 就是干这个的.对于写代码来说,  bind RET to
-='reindent-then-newline-and-indent= 将是一劳永逸的事情. 
+='reindent-then-newline-and-indent= 将是一劳永逸的事情.
 </p>
 <div class="org-src-container">
 
@@ -180,18 +192,18 @@ several times <code>C-w</code> to select more words.
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> keychord</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-sec-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> keychord</h3>
+<div class="outline-text-3" id="text-1-10">
 <p>
 键盘和旋. 让你定义同时按住两个键的快捷键, 或者一个按键两次.
 我想没有神马别的编辑器能干这个事情了.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> ace-jump-mode</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-sec-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> ace-jump-mode</h3>
+<div class="outline-text-3" id="text-1-11">
 <p>
 这个 mode 也是从 vim 那边剽窃过来的, 好吧, 也可以说是 share, 因为剽窃
 的话 vim 就再也没有这个插件了.
@@ -204,6 +216,12 @@ several times <code>C-w</code> to select more words.
 灰掉, 所有出现你输入的字符的位置会以 a-z 代替, 键入 你想去得位置的代码
 即可.
 </p>
+
+<blockquote>
+<p>
+tobe continue&#x2026;以下大纲持续更新
+</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -218,23 +236,51 @@ best javascript mode ever
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> <a href="https://github.com/rooney/zencoding">zencoding-mode</a></h3>
-<div class="outline-text-3" id="text-2-2">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> rewrepl</h3>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> <a href="https://github.com/rooney/zencoding">zencoding-mode</a></h3>
+<div class="outline-text-3" id="text-2-3">
 <p>
-a neat way to write markup quickly in emacs 
+a neat way to write markup quickly in emacs
 用 css selector 写 html, zencoding + yas, 这个模式其他编辑器如vim
 sublime 也有插件, 非常好用.
 </p>
 </div>
 </div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> ruby-mode</h3>
+</div>
 
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> <a href="http://web-mode.org/">web-mode</a></h3>
-<div class="outline-text-3" id="text-2-3">
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> python-mode</h3>
+</div>
+
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6"><span class="section-number-3">2.6</span> <a href="http://web-mode.org/">web-mode</a></h3>
+<div class="outline-text-3" id="text-2-6">
 <p>
 我认为比较好用的 web 编辑模式
 快捷键好多, 有的背了, whee&#x2026;.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-7" class="outline-3">
+<h3 id="sec-2-7"><span class="section-number-3">2.7</span> magit</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+magit 是 interactive 模式的 git 模式. 
+<code>C-x g</code> 绑定到 magit-status
+<code>s</code> stage this changes
+<code>u</code> unstage
+相应大写表示 stage/unstage 所有changes
+TAB 可以显示 diff
+<code>C</code>: Commit 所有 unstaged Changes
+<code>F</code>: pull
+<code>P</code>: push
 </p>
 </div>
 </div>
@@ -247,7 +293,7 @@ sublime 也有插件, 非常好用.
 <h3 id="sec-3-1"><span class="section-number-3">3.1</span> ColorTheme</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
-monokai theme is the best
+monokai theme is the best for any editor
 </p>
 </div>
 </div>
@@ -255,7 +301,7 @@ monokai theme is the best
 <h3 id="sec-3-2"><span class="section-number-3">3.2</span> power-line</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-跟 vim 的powerline 一样, 让你的 mainline 带颜色<sup><a id="fnr.4.100" name="fnr.4.100" class="footref" href="#fn.4">4</a></sup>
+跟 vim 的 powerline 一样, 让你的 mainline 带颜色<sup><a id="fnr.4.100" name="fnr.4.100" class="footref" href="#fn.4">4</a></sup>
 我喜欢骚青的 mainline
 </p>
 </div>
@@ -264,7 +310,7 @@ monokai theme is the best
 <h3 id="sec-3-3"><span class="section-number-3">3.3</span> Cursor</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
-我喜欢骚青的 cursor
+我喜欢 <span class="underline">骚青的</span> cursor
 </p>
 <div class="org-src-container">
 
@@ -273,34 +319,59 @@ monokai theme is the best
 <span style="color: #6b6b6b;">(</span>blink-cursor-mode<span style="color: #6b6b6b;">)</span>
 </pre>
 </div>
+<p>
+设置 color 有可能被 color theme 覆盖, 最好直接加在你用的 color theme
+里.
+</p>
 </div>
-</div>
-
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4"><span class="section-number-3">3.4</span> mist</h3>
 </div>
 </div>
 
 <div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> org-mode</h2>
+<h2 id="sec-4"><span class="section-number-2">4</span> mist</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> org-mode</h3>
+<div class="outline-text-3" id="text-4-1">
+</div><div id="outline-container-sec-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> capture note</h4>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> evernote-mode</h2>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> markdown-mode</h2>
-</div>
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> magit</h2>
-</div>
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8"><span class="section-number-2">8</span> eshell</h2>
-<div class="outline-text-2" id="text-8">
-<blockquote>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> evernote-mode</h3>
+<div class="outline-text-3" id="text-4-2">
 <p>
-tobe continue&#x2026;
+see this <a href="http://127.0.0.1:4000/blog/2013/06/25/evernote-with-orgmode/">take evernote with orgmode</a>
 </p>
-</blockquote>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> markdown-mode</h3>
+</div>
+
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> eshell</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+eshell 不是 shell 在 emacs 中的 simulator, eshell 是由 lisp 写的完整
+的shell.  因此, 由于emacs跨平台, eshell 也是跨平台的, 不管你是用何种操
+作系统, 都一样使用. 谁说 windows 下没有好用的 shell, 因为他们都用过
+eshell.
+</p>
+
+<p>
+下面是我的eshell 配置
+</p>
+<div class="org-src-container">
+
+<pre class="src src-lisp"></pre>
+</div>
+
+<p>
+另外, eshell 模式下用 git 没有颜色, 或者是我打开的方式不对. 还是用magit好吧.
+</p>
+</div>
 </div>
 </div>
 <div id="footnotes">
