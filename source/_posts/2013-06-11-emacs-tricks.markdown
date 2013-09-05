@@ -36,7 +36,7 @@ categories: ["emacs"]
 </p>
 
 <p>
-下面是我决定有用和可以装x的一些tricks.
+下面是我觉得有用和可以装x的一些tricks.
 下列提及的插件凡是没有提及地址的,都能再 epla 找到.<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>
 </p>
 
@@ -76,13 +76,17 @@ reMove Space 这个将多余的空格去掉,只留一个.
 这就算 vim 的 visual mode 吗?
 </p>
 <ul class="org-ul">
-<li><code>C-x r m</code> register 你的位置,给个名字,这叫bookmark, 并给他取一个名字. <code>C-x r b</code> + 名字, 回
+<li><code>C-x r m</code> :register 你的位置,给个名字,这叫bookmark, 并给他取一个名字. <code>C-x r b</code> + 名字, 回
+</li>
+</ul>
+<p>
 到该bookmark
+</p>
+<ul class="org-ul">
+<li><code>C-u C-SPC</code> :可会上个编辑的地方,上上个编辑的地方,上上上个编辑的地方&#x2026;碉
+堡了吧.
 </li>
-<li><code>C-u C-SPC</code> 可会上个编辑的地方,上上个编辑的地方,上上上个编辑的地方&#x2026;碉
-堡了
-</li>
-<li>expend-region
+<li>expend-region:
 Increase selected region, 可以跟 IDEA 里的 <code>Command w</code> 一样选中
 </li>
 </ul>
@@ -102,7 +106,7 @@ zap 是消除的意思. 将光标至第一个出现你输入的字符中间都�
 <h3 id="sec-1-5"><span class="section-number-3">1.5</span> follow-mode</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
-如果你的文件过长, 可以split 两个或多个window, 然后 M-x follow-mode
+如果你的文件过长,但你又想要看多几行,可以split 两个或多个window, 然后 M-x follow-mode
 </p>
 </div>
 </div>
@@ -117,41 +121,20 @@ ace-jump-mode 会让你的光标任意跳跃.
 (global-set-key (kbd "C-c f") 'iy-go-to-char)
 (global-set-key (kbd "C-c F") 'iy-go-to-char-backward)
 </pre>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col class="left"/>
-
-<col class="left"/>
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left"><code>;</code></th>
-<th scope="col" class="left">继续向前</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="left">=,=</td>
-<td class="left">继续向后</td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div id="outline-container-sec-1-7" class="outline-3">
 <h3 id="sec-1-7"><span class="section-number-3">1.7</span> multiple-cursor</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
-一个比 rectange 更强势的批量编辑. 用了这个其他编辑器神马的都弱爆了
+一个比 rectange 更强势的批量编辑. sublime也有同样的功能,同时产生多个光
+标同时编辑.
 rectangle text <code>C-x r t</code> 可以批量编辑规整的, 但是不规整的用
-multiple-cursor就碉堡了.
+multiple-cursor.
 </p>
 
 <p>
-<i>下面</i> 绑定快捷键的 lisp 比较直白, 我就不翻译了.
+下面绑定快捷键的 lisp 比较直白, 我就不翻译了.
 </p>
 <div class="org-src-container">
 
@@ -302,7 +285,7 @@ monokai theme is the best for any editor
 <div class="outline-text-3" id="text-3-2">
 <p>
 跟 vim 的 powerline 一样, 让你的 mainline 带颜色<sup><a id="fnr.4.100" name="fnr.4.100" class="footref" href="#fn.4">4</a></sup>
-我喜欢骚青的 mainline
+骚青的 mainline 可以让你一眼就知道目前工作在哪个buffer.
 </p>
 </div>
 </div>
@@ -326,7 +309,6 @@ monokai theme is the best for any editor
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4"><span class="section-number-2">4</span> mist</h2>
 <div class="outline-text-2" id="text-4">
@@ -365,7 +347,85 @@ eshell.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-lisp"></pre>
+<pre class="src src-lisp"><span style="color: #465457; font-style: italic;">;;; </span><span style="color: #465457; font-style: italic;">starter-kit-eshell.el --- Making the defaults a bit saner</span>
+<span style="color: #465457; font-style: italic;">;;</span>
+<span style="color: #465457; font-style: italic;">;; </span><span style="color: #465457; font-style: italic;">Part of the Emacs Starter Kit</span>
+
+<span style="color: #6b6b6b;">(</span>setq eshell-cmpl-cycle-completions nil
+      eshell-save-history-on-exit t
+      eshell-cmpl-dir-ignore <span style="color: #E6DB74;">"\\`</span><span style="color: #E6DB74; font-weight: bold;">\\</span><span style="color: #E6DB74; font-weight: bold;">(</span><span style="color: #E6DB74;">\\.\\.?</span><span style="color: #E6DB74; font-weight: bold;">\\</span><span style="color: #E6DB74; font-weight: bold;">|</span><span style="color: #E6DB74;">CVS</span><span style="color: #E6DB74; font-weight: bold;">\\</span><span style="color: #E6DB74; font-weight: bold;">|</span><span style="color: #E6DB74;">\\.svn</span><span style="color: #E6DB74; font-weight: bold;">\\</span><span style="color: #E6DB74; font-weight: bold;">|</span><span style="color: #E6DB74;">\\.git</span><span style="color: #E6DB74; font-weight: bold;">\\</span><span style="color: #E6DB74; font-weight: bold;">)</span><span style="color: #E6DB74;">/\\'"</span><span style="color: #6b6b6b;">)</span>
+
+<span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">eval-after-load</span> 'esh-opt
+  '<span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">progn</span>
+     <span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">require</span> '<span style="color: #AE81FF;">em-prompt</span><span style="color: #6b6b6b;">)</span>
+     <span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">require</span> '<span style="color: #AE81FF;">em-term</span><span style="color: #6b6b6b;">)</span>
+     <span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">require</span> '<span style="color: #AE81FF;">em-cmpl</span><span style="color: #6b6b6b;">)</span>
+     <span style="color: #6b6b6b;">(</span>setenv <span style="color: #E6DB74;">"PAGER"</span> <span style="color: #E6DB74;">"cat"</span><span style="color: #6b6b6b;">)</span>
+     <span style="color: #6b6b6b;">(</span>set-face-attribute 'eshell-prompt nil <span style="color: #A6E22E;">:foreground</span> <span style="color: #E6DB74;">"turquoise1"</span><span style="color: #6b6b6b;">)</span>
+     <span style="color: #6b6b6b;">(</span>add-hook 'eshell-mode-hook <span style="color: #465457; font-style: italic;">;; </span><span style="color: #465457; font-style: italic;">for some reason this needs to be a hook</span>
+               '<span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">lambda</span> <span style="color: #6b6b6b;">()</span> <span style="color: #6b6b6b;">(</span>eshell/export <span style="color: #E6DB74;">"TERM"</span> <span style="color: #E6DB74;">"dumb"</span><span style="color: #6b6b6b;">)))</span>
+     <span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">when</span> <span style="color: #6b6b6b;">(</span>&lt; emacs-major-version 23<span style="color: #6b6b6b;">)</span>
+       <span style="color: #6b6b6b;">(</span>add-hook 'eshell-mode-hook <span style="color: #465457; font-style: italic;">;; </span><span style="color: #465457; font-style: italic;">for some reason this needs to be a hook</span>
+                 '<span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">lambda</span> <span style="color: #6b6b6b;">()</span> <span style="color: #6b6b6b;">(</span>define-key eshell-mode-map <span style="color: #E6DB74;">"\C-a"</span> 'eshell-bol<span style="color: #6b6b6b;">)))</span>
+       <span style="color: #6b6b6b;">(</span>add-to-list 'eshell-output-filter-functions 'eshell-handle-ansi-color<span style="color: #6b6b6b;">))</span>
+
+     <span style="color: #465457; font-style: italic;">;; </span><span style="color: #FFFFFF; background-color: #333333;">TODO</span><span style="color: #465457; font-style: italic;">: submit these via M-x report-emacs-bug</span>
+     <span style="color: #6b6b6b;">(</span>add-to-list 'eshell-visual-commands <span style="color: #E6DB74;">"ssh"</span><span style="color: #6b6b6b;">)</span>
+     <span style="color: #6b6b6b;">(</span>add-to-list 'eshell-visual-commands <span style="color: #E6DB74;">"tail"</span><span style="color: #6b6b6b;">)</span>
+     <span style="color: #6b6b6b;">(</span>add-to-list 'eshell-command-completions-alist
+                  '<span style="color: #6b6b6b;">(</span><span style="color: #E6DB74;">"gunzip"</span> <span style="color: #E6DB74;">"gz\\'"</span><span style="color: #6b6b6b;">))</span>
+     <span style="color: #6b6b6b;">(</span>add-to-list 'eshell-command-completions-alist
+                  '<span style="color: #6b6b6b;">(</span><span style="color: #E6DB74;">"tar"</span> <span style="color: #E6DB74;">"</span><span style="color: #E6DB74; font-weight: bold;">\\</span><span style="color: #E6DB74; font-weight: bold;">(</span><span style="color: #E6DB74;">\\.tar|\\.tgz</span><span style="color: #E6DB74; font-weight: bold;">\\</span><span style="color: #E6DB74; font-weight: bold;">|</span><span style="color: #E6DB74;">\\.tar\\.gz</span><span style="color: #E6DB74; font-weight: bold;">\\</span><span style="color: #E6DB74; font-weight: bold;">)</span><span style="color: #E6DB74;">\\'"</span><span style="color: #6b6b6b;">))))</span>
+
+<span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">defun</span> <span style="color: #F92672; font-style: italic;">eshell/cds</span> <span style="color: #6b6b6b;">()</span>
+  <span style="color: #E6DB74; font-style: italic;">"Change directory to the project's root."</span>
+  <span style="color: #6b6b6b;">(</span>eshell/cd <span style="color: #6b6b6b;">(</span>locate-dominating-file default-directory <span style="color: #E6DB74;">"src"</span><span style="color: #6b6b6b;">)))</span>
+
+<span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">defun</span> <span style="color: #F92672; font-style: italic;">eshell/find</span> <span style="color: #6b6b6b;">(</span>dir <span style="color: #66D9EF;">&amp;rest</span> opts<span style="color: #6b6b6b;">)</span>
+  <span style="color: #6b6b6b;">(</span>find-dired dir <span style="color: #6b6b6b;">(</span>mapconcat 'identity opts <span style="color: #E6DB74;">" "</span><span style="color: #6b6b6b;">)))</span>
+
+  <span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">defmacro</span> <span style="color: #F92672; font-style: italic;">with-face</span> <span style="color: #6b6b6b;">(</span>str <span style="color: #66D9EF;">&amp;rest</span> properties<span style="color: #6b6b6b;">)</span>
+    `<span style="color: #6b6b6b;">(</span>propertize ,str 'face <span style="color: #6b6b6b;">(</span>list ,@properties<span style="color: #6b6b6b;">)))</span>
+
+<span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">defun</span> <span style="color: #F92672; font-style: italic;">shk-eshell-prompt</span> <span style="color: #6b6b6b;">()</span>
+    <span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">let</span> <span style="color: #6b6b6b;">((</span>header-bg <span style="color: #E6DB74;">"#7a378b"</span><span style="color: #6b6b6b;">))</span>
+      <span style="color: #6b6b6b;">(</span>concat
+       <span style="color: #6b6b6b;">(</span>with-face <span style="color: #6b6b6b;">(</span>concat <span style="color: #6b6b6b;">(</span>eshell/pwd<span style="color: #6b6b6b;">)</span> <span style="color: #E6DB74;">" "</span><span style="color: #6b6b6b;">)</span> <span style="color: #A6E22E;">:background</span> header-bg<span style="color: #6b6b6b;">)</span>
+       <span style="color: #6b6b6b;">(</span>with-face <span style="color: #6b6b6b;">(</span>format-time-string <span style="color: #E6DB74;">"(%Y-%m-%d %H:%M) "</span> <span style="color: #6b6b6b;">(</span>current-time<span style="color: #6b6b6b;">))</span> <span style="color: #A6E22E;">:background</span> header-bg <span style="color: #A6E22E;">:foreground</span> <span style="color: #E6DB74;">"#fff"</span><span style="color: #6b6b6b;">)</span>
+       <span style="color: #6b6b6b;">(</span>with-face
+        <span style="color: #6b6b6b;">(</span>or <span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">ignore-errors</span> <span style="color: #6b6b6b;">(</span>format <span style="color: #E6DB74;">"(%s)"</span> <span style="color: #6b6b6b;">(</span>vc-responsible-backend default-directory<span style="color: #6b6b6b;">)))</span> <span style="color: #E6DB74;">""</span><span style="color: #6b6b6b;">)</span>
+        <span style="color: #A6E22E;">:background</span> header-bg<span style="color: #6b6b6b;">)</span>
+       <span style="color: #6b6b6b;">(</span>with-face <span style="color: #E6DB74;">"\n"</span> <span style="color: #A6E22E;">:background</span> header-bg<span style="color: #6b6b6b;">)</span>
+       <span style="color: #465457; font-style: italic;">;; </span><span style="color: #465457; font-style: italic;">(with-face user-login-name :foreground "blue")</span>
+       <span style="color: #465457; font-style: italic;">;; </span><span style="color: #465457; font-style: italic;">"@"</span>
+       <span style="color: #465457; font-style: italic;">;; </span><span style="color: #465457; font-style: italic;">(with-face "localhost" :foreground "green")</span>
+       <span style="color: #6b6b6b;">(</span>curr-dir-git-branch-string <span style="color: #6b6b6b;">(</span>eshell/pwd<span style="color: #6b6b6b;">))</span>
+       <span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">if</span> <span style="color: #6b6b6b;">(</span>= eshell-last-command-status 0<span style="color: #6b6b6b;">)</span>
+           <span style="color: #6b6b6b;">(</span>with-face <span style="color: #E6DB74;">"O(&#8745;_&#8745;)O~ $"</span> <span style="color: #A6E22E;">:foreground</span> <span style="color: #E6DB74;">"green"</span><span style="color: #6b6b6b;">)</span>
+         <span style="color: #6b6b6b;">(</span>with-face <span style="color: #E6DB74;">"&#9582;o(&#65078;&#65087;&#65078;)o #"</span> <span style="color: #A6E22E;">:foreground</span> <span style="color: #E6DB74;">"red"</span><span style="color: #6b6b6b;">))</span>
+       <span style="color: #E6DB74;">" "</span><span style="color: #6b6b6b;">)))</span>
+  <span style="color: #6b6b6b;">(</span>setq eshell-prompt-function 'shk-eshell-prompt<span style="color: #6b6b6b;">)</span>
+<span style="color: #6b6b6b;">(</span>setq eshell-highlight-prompt nil<span style="color: #6b6b6b;">)</span>
+<span style="color: #6b6b6b;">(</span>add-hook 'eshell-preoutput-filter-functions
+          'ansi-color-filter-apply<span style="color: #6b6b6b;">)</span>
+
+<span style="color: #6b6b6b;">(</span>add-hook 'eshell-preoutput-filter-functions
+          'ansi-color-apply<span style="color: #6b6b6b;">)</span>
+<span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">defun</span> <span style="color: #F92672; font-style: italic;">curr-dir-git-branch-string</span> <span style="color: #6b6b6b;">(</span>pwd<span style="color: #6b6b6b;">)</span>
+  <span style="color: #E6DB74; font-style: italic;">"Returns current git branch as a string, or the empty string if</span>
+<span style="color: #E6DB74; font-style: italic;">PWD is not in a git repo (or the git command is not found)."</span>
+  <span style="color: #6b6b6b;">(</span>interactive<span style="color: #6b6b6b;">)</span>
+  <span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">when</span> <span style="color: #6b6b6b;">(</span>locate-dominating-file pwd <span style="color: #E6DB74;">".git"</span><span style="color: #6b6b6b;">)</span>
+    <span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">let</span> <span style="color: #6b6b6b;">((</span>git-output <span style="color: #6b6b6b;">(</span>shell-command-to-string <span style="color: #6b6b6b;">(</span>concat <span style="color: #E6DB74;">"cd "</span> pwd <span style="color: #E6DB74;">" &amp;&amp; git branch | grep '\\*' | sed -e 's/^\\* //'"</span><span style="color: #6b6b6b;">))))</span>
+      <span style="color: #6b6b6b;">(</span>concat <span style="color: #E6DB74;">"["</span>
+              <span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">if</span> <span style="color: #6b6b6b;">(</span>&gt; <span style="color: #6b6b6b;">(</span>length git-output<span style="color: #6b6b6b;">)</span> 0<span style="color: #6b6b6b;">)</span>
+                  <span style="color: #6b6b6b;">(</span>substring git-output 0 -1<span style="color: #6b6b6b;">)</span>
+                <span style="color: #E6DB74;">"(no branch)"</span><span style="color: #6b6b6b;">)</span>
+              <span style="color: #E6DB74;">"]"</span><span style="color: #6b6b6b;">)</span>
+      <span style="color: #6b6b6b;">)))</span>
+
+<span style="color: #6b6b6b;">(</span><span style="color: #66D9EF;">provide</span> '<span style="color: #AE81FF;">starter-kit-eshell</span><span style="color: #6b6b6b;">)</span>
+</pre>
 </div>
 
 <p>

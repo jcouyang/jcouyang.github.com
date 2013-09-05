@@ -28,7 +28,7 @@ categories: ["emacs"]
 者都已经在 elpa 里了. 这时候, 你可以...
 自己编译 Aquamacs 3.0 源代码 from [[https://github.com/davidswelt/aquamacs-emacs.git][here]]. 因为3.0 based on emacs 24.3.
 
-下面是我决定有用和可以装x的一些tricks.
+下面是我觉得有用和可以装x的一些tricks.
 下列提及的插件凡是没有提及地址的,都能再 epla 找到.[fn:1]
 
 以下trick或只在 aquamacs3.0 有用, 因为我没有测试其他环境. 大部分来自
@@ -46,11 +46,11 @@ first thing first, 使用 emacs 最常用的按键当然是 =Ctrl=, 但是不幸
 reMove Space 这个将多余的空格去掉,只留一个.
 *** mark
 这就算 vim 的 visual mode 吗?
-- =C-x r m= register 你的位置,给个名字,这叫bookmark, 并给他取一个名字. =C-x r b= + 名字, 回
-  到该bookmark
-- =C-u C-SPC= 可会上个编辑的地方,上上个编辑的地方,上上上个编辑的地方...碉
-  堡了
-- expend-region
+- =C-x r m= :register 你的位置,给个名字,这叫bookmark, 并给他取一个名字. =C-x r b= + 名字, 回
+到该bookmark
+- =C-u C-SPC= :可会上个编辑的地方,上上个编辑的地方,上上上个编辑的地方...碉
+  堡了吧.
+- expend-region:
  Increase selected region, 可以跟 IDEA 里的 =Command w= 一样选中
 
 *** zap-to-char
@@ -59,7 +59,7 @@ zap 是消除的意思. 将光标至第一个出现你输入的字符中间都�
 置上, =M-z d= 会变成 'ef'
 
 *** follow-mode
-如果你的文件过长, 可以split 两个或多个window, 然后 M-x follow-mode
+如果你的文件过长,但你又想要看多几行,可以split 两个或多个window, 然后 M-x follow-mode
 
 *** iy-move-to-char
 跟 vim f 的功能一样...这个比较轻量一些, 当然有了后面说的
@@ -69,16 +69,13 @@ ace-jump-mode 会让你的光标任意跳跃.
 (global-set-key (kbd "C-c F") 'iy-go-to-char-backward)
 #+END_SRC
 
-| =;= | 继续向前 |
-|-----+----------|
-| =,= | 继续向后 |
-
 *** multiple-cursor
-一个比 rectange 更强势的批量编辑. 用了这个其他编辑器神马的都弱爆了
+一个比 rectange 更强势的批量编辑. sublime也有同样的功能,同时产生多个光
+标同时编辑.
 rectangle text =C-x r t= 可以批量编辑规整的, 但是不规整的用
-multiple-cursor就碉堡了.
+multiple-cursor.
 
-/下面/ 绑定快捷键的 lisp 比较直白, 我就不翻译了.
+下面绑定快捷键的 lisp 比较直白, 我就不翻译了.
 #+BEGIN_SRC lisp
   (global-set-key (kbd "C->") 'mc/mark-next-like-this)
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
@@ -153,7 +150,7 @@ monokai theme is the best for any editor
 
 *** power-line
 跟 vim 的 powerline 一样, 让你的 mainline 带颜色[fn:2]
-我喜欢骚青的 mainline
+骚青的 mainline 可以让你一眼就知道目前工作在哪个buffer.
 
 *** Cursor
 我喜欢 _骚青的_ cursor
@@ -164,12 +161,12 @@ monokai theme is the best for any editor
 #+END_SRC
 设置 color 有可能被 color theme 覆盖, 最好直接加在你用的 color theme
 里.
+
 ** mist
 *** org-mode
 **** capture note
 
 *** evernote-mode
-
 see this [[http://127.0.0.1:4000/blog/2013/06/25/evernote-with-orgmode/][take evernote with orgmode]]
 *** markdown-mode
 
@@ -182,7 +179,84 @@ eshell.
 
 下面是我的eshell 配置
 #+BEGIN_SRC lisp
+;;; starter-kit-eshell.el --- Making the defaults a bit saner
+;;
+;; Part of the Emacs Starter Kit
 
+(setq eshell-cmpl-cycle-completions nil
+      eshell-save-history-on-exit t
+      eshell-cmpl-dir-ignore "\\`\\(\\.\\.?\\|CVS\\|\\.svn\\|\\.git\\)/\\'")
+
+(eval-after-load 'esh-opt
+  '(progn
+     (require 'em-prompt)
+     (require 'em-term)
+     (require 'em-cmpl)
+     (setenv "PAGER" "cat")
+     (set-face-attribute 'eshell-prompt nil :foreground "turquoise1")
+     (add-hook 'eshell-mode-hook ;; for some reason this needs to be a hook
+               '(lambda () (eshell/export "TERM" "dumb")))
+     (when (< emacs-major-version 23)
+       (add-hook 'eshell-mode-hook ;; for some reason this needs to be a hook
+                 '(lambda () (define-key eshell-mode-map "\C-a" 'eshell-bol)))
+       (add-to-list 'eshell-output-filter-functions 'eshell-handle-ansi-color))
+
+     ;; TODO: submit these via M-x report-emacs-bug
+     (add-to-list 'eshell-visual-commands "ssh")
+     (add-to-list 'eshell-visual-commands "tail")
+     (add-to-list 'eshell-command-completions-alist
+                  '("gunzip" "gz\\'"))
+     (add-to-list 'eshell-command-completions-alist
+                  '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'"))))
+
+(defun eshell/cds ()
+  "Change directory to the project's root."
+  (eshell/cd (locate-dominating-file default-directory "src")))
+
+(defun eshell/find (dir &rest opts)
+  (find-dired dir (mapconcat 'identity opts " ")))
+
+  (defmacro with-face (str &rest properties)
+    `(propertize ,str 'face (list ,@properties)))
+  
+(defun shk-eshell-prompt ()
+    (let ((header-bg "#7a378b"))
+      (concat
+       (with-face (concat (eshell/pwd) " ") :background header-bg)
+       (with-face (format-time-string "(%Y-%m-%d %H:%M) " (current-time)) :background header-bg :foreground "#fff")
+       (with-face
+        (or (ignore-errors (format "(%s)" (vc-responsible-backend default-directory))) "")
+        :background header-bg)
+       (with-face "\n" :background header-bg)
+       ;; (with-face user-login-name :foreground "blue")
+       ;; "@"
+       ;; (with-face "localhost" :foreground "green")
+       (curr-dir-git-branch-string (eshell/pwd))
+       (if (= eshell-last-command-status 0)
+           (with-face "O(∩_∩)O~ $" :foreground "green")
+         (with-face "╮o(︶︿︶)o #" :foreground "red"))
+       " ")))
+  (setq eshell-prompt-function 'shk-eshell-prompt)
+(setq eshell-highlight-prompt nil)
+(add-hook 'eshell-preoutput-filter-functions
+          'ansi-color-filter-apply)
+
+(add-hook 'eshell-preoutput-filter-functions
+          'ansi-color-apply)
+(defun curr-dir-git-branch-string (pwd)
+  "Returns current git branch as a string, or the empty string if
+PWD is not in a git repo (or the git command is not found)."
+  (interactive)
+  (when (locate-dominating-file pwd ".git")
+    (let ((git-output (shell-command-to-string (concat "cd " pwd " && git branch | grep '\\*' | sed -e 's/^\\* //'"))))
+      (concat "["
+              (if (> (length git-output) 0)
+                  (substring git-output 0 -1)
+                "(no branch)")
+              "]")
+      )))
+
+(provide 'starter-kit-eshell)
 #+END_SRC
 
 另外, eshell 模式下用 git 没有颜色, 或者是我打开的方式不对. 还是用magit好吧.
