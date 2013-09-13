@@ -18,9 +18,18 @@ emacs-starter-kit, 但是那玩意其实对 emacs 24 来说已经很鸡肋了. e
 我也不知道在哪翻出来的这个 repo, 正好同时解决了新手配置以及文档化的问
 题. 所以我决定从 starter-kit 迁过来, 这样以后只用维护
 
-[[http://oyanglul.us/emacs/steckemacs.html][--------------------------> **这个博客** <------------------------]]
+[[https://github.com/geogeo/steckemacs][--------------------------> **这个Org文件** <------------------------]]
 
 即可.\o/
+
+事情是这样子的:
+
+修改这个repo下的 steckems.org 文件会引发
+
+1. .emacs文件 会将其中的 elisp 代码抽到 steckems.el 文件并且load 进来, 这
+   样emacs 在启动是就配置好了.
+2. 修改完后 按 C-c C-e P f 转成 markdown 并发布到 octopress 的 emacs 目录下
+3. 这篇博客会将 markdown 文件 render_partial 过来
 
 这是 [[https://github.com/steckerhalter/steckemacs][*steckemacs*]] 的一个[[http://github.com/geogeo/steckemacs][fork]]. *steckemacs* 是集成了60多个pakage的emacs配置文件.作者是steck.
 

@@ -19,12 +19,30 @@ emacs-starter-kit, 但是那玩意其实对 emacs 24 来说已经很鸡肋了. e
 </p>
 
 <p>
-<a href="http://oyanglul.us/emacs/steckemacs.html">&#x2013;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&gt; <b><b>这个博客</b></b> &lt;------------------------</a>
+<a href="https://github.com/geogeo/steckemacs">&#x2013;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&gt; <b><b>这个Org文件</b></b> &lt;------------------------</a>
 </p>
 
 <p>
 即可.\o/
 </p>
+
+<p>
+事情是这样子的:
+</p>
+
+<p>
+修改这个repo下的 steckems.org 文件会引发
+</p>
+
+<ol class="org-ol">
+<li>.emacs文件 会将其中的 elisp 代码抽到 steckems.el 文件并且load 进来, 这
+样emacs 在启动是就配置好了.
+</li>
+<li>修改完后 按 C-c C-e P f 转成 markdown 并发布到 octopress 的 emacs 目录下
+</li>
+<li>这篇博客会将 markdown 文件 render<sub>partial</sub> 过来
+</li>
+</ol>
 
 <p>
 这是 <a href="https://github.com/steckerhalter/steckemacs"><b>steckemacs</b></a> 的一个<a href="http://github.com/geogeo/steckemacs">fork</a>. <b>steckemacs</b> 是集成了60多个pakage的emacs配置文件.作者是steck.
