@@ -45,3 +45,4 @@ emacs-starter-kit, 但是那玩意其实对 emacs 24 来说已经很鸡肋了. e
 目前 stable 版本是 2.5, 内核是 emacs 23, 我没有测试过, 有可能部分包会
 由问题.
 </p>
+{% render_partial emacs/steckemacs.markdown %}
