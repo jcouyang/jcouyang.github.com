@@ -19,7 +19,7 @@ emacs-starter-kit, 但是那玩意其实对 emacs 24 来说已经很鸡肋了. e
 </p>
 
 <p>
-<a href="file:///emacs/steckemacs.html">&#x2013;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&gt; <b><b>这个博客</b></b> &lt;------------------------</a>
+<a href="http://oyanglul.us/emacs/steckemacs.html">&#x2013;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&gt; <b><b>这个博客</b></b> &lt;------------------------</a>
 </p>
 
 <p>
