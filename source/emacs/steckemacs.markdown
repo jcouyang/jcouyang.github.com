@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "steckemacs - 真正高端!大气!上档次!的emacs 自动配置工具"
+title:  "steckemacs - All in One Emacs 配置文件"
 date: 2013-09-08 09:16
 comments: true
 ---
@@ -13,44 +13,6 @@ comments: true
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1"><span class="section-number-2">1</span> Usage</h2>
 <div class="outline-text-2" id="text-1">
-<p>
-有同学问初学有个什么starter-kit之类的, 虽然我之前也在用
-emacs-starter-kit, 但是那玩意其实对 emacs 24 来说已经很鸡肋了. emacs
-24 对包管理这块做的已经足够好, 因此, 配置 emacs 24 会变得容易的多.
-</p>
-
-<p>
-我也不知道在哪翻出来的这个 repo, 正好同时解决了新手配置以及文档化的问
-题. 所以我决定从 starter-kit 迁过来, 这样以后只用维护这个博客即可.
-</p>
-
-<p>
-这是 <a href="https://github.com/steckerhalter/steckemacs"><b>steckemacs</b></a> 的一个<a href="http://github.com/geogeo/steckemacs">fork</a>. <b>steckemacs</b> 是集成了60多个pakage的emacs配置文件.作者是steck.
-</p>
-
-<p>
-我的 fork 在 这里 
-</p>
-
-<p>
-<a href="https://github.com/geogeo/steckemacs">https://github.com/geogeo/steckemacs</a>
-</p>
-
-<p>
-当然我在这个 fork 里面添加了一些自己偏好的一些package, 也删除了一些鸡肋
-的package.
-</p>
-
-<p>
-另外,这篇文章的特别之处是它本身会被编译成 elisp 配置文件.
-因此,在更新这篇博客的同时,配置文件也随之改变. 这叫 <b>Literate Programming</b>
-</p>
-
-<p>
-另外在使用 aquamacs 的同学也可以使用这个配置, 当然你需要自己下载编译
-Aquamacs 3.0
-</p>
-
 <pre class="example">
 使用这个配置文件需要至少 emacs 24.3.而且要 orgmode 8.0
 </pre>
@@ -896,8 +858,11 @@ These are simple El-Get recipes that will either fetch single Elisp files or clo
         (:name evernote-dev-mode
                :type git
                :url "https://github.com/geogeo/evernote-dev-mode")
+        (:name epresent
+               :type git
+               :url "git@github.com:eschulte/epresent.git")
 
-        ))
+))
 </pre>
 </div>
 
@@ -953,9 +918,7 @@ The best repository by far is <a href="http://melpa.milkbox.net/">MELPA</a>. It 
         ag             ; "the silver searcher" ack replacment
         auto-complete  
         back-button
-        ;clojure-mode
         deft
-        ;color-theme
         color-theme-molokai
         dired+
         erc-hl-nicks  ; nickname highlighter 
