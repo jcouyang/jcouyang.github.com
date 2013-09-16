@@ -1,10 +1,3 @@
-# A Liquid tag for Jekyll sites that allows embedding Gists and showing code for non-JavaScript enabled browsers and readers.
-# by: Brandon Tilly
-# Source URL: https://gist.github.com/1027674
-# Post http://brandontilley.com/2011/01/31/gist-tag-for-jekyll.html
-#
-# Example usage: {% gist 1027674 gist_tag.rb %} //embeds a gist for this plugin
-
 require 'cgi'
 require 'digest/md5'
 require 'net/https'
@@ -17,7 +10,7 @@ module Jekyll
       @text           = text
       @cache_disabled = false
       @cache_folder   = File.expand_path "../.gist-cache", File.dirname(__FILE__)
-      FileUtils.mkdir_p @cache_folder
+      FileUtils.mkdir_p @cache_folder 
     end
 
     def render(context)
@@ -33,20 +26,15 @@ module Jekyll
 
     def html_output_for(script_url, code)
       code = CGI.escapeHTML code
-      <<-HTML
-<div><script src='#{script_url}'></script>
-<noscript><pre><code>#{code}</code></pre></noscript></div>
-      HTML
+      "<script src='#{script_url}'></script><noscript><pre><code>#{code}</code></pre></noscript>"
     end
 
     def script_url_for(gist_id, filename)
-      url = "https://gist.github.com/#{gist_id}.js"
-      url = "#{url}?file=#{filename}" unless filename.nil? or filename.empty?
-      url
+      "https://gist.github.com/#{gist_id}.js?file=#{filename}"
     end
 
     def get_gist_url_for(gist, file)
-      "https://raw.github.com/gist/#{gist}/#{file}"
+      "https://gist.github.com/raw/#{gist}/#{file}"
     end
 
     def cache(gist, file, data)
@@ -73,20 +61,11 @@ module Jekyll
     def get_gist_from_web(gist, file)
       gist_url          = get_gist_url_for gist, file
       raw_uri           = URI.parse gist_url
-      proxy             = ENV['http_proxy']
-      if proxy
-        proxy_uri       = URI.parse(proxy)
-        https           = Net::HTTP::Proxy(proxy_uri.host, proxy_uri.port).new raw_uri.host, raw_uri.port
-      else
-        https           = Net::HTTP.new raw_uri.host, raw_uri.port
-      end
+      https             = Net::HTTP.new raw_uri.host, raw_uri.port
       https.use_ssl     = true
       https.verify_mode = OpenSSL::SSL::VERIFY_NONE
       request           = Net::HTTP::Get.new raw_uri.request_uri
       data              = https.request request
-      if data.code.to_i != 200
-        raise RuntimeError, "Gist replied with #{data.code} for #{gist_url}"
-      end
       data              = data.body
       cache gist, file, data unless @cache_disabled
       data
@@ -103,3 +82,4 @@ end
 
 Liquid::Template.register_tag('gist', Jekyll::GistTag)
 Liquid::Template.register_tag('gistnocache', Jekyll::GistTagNoCache)
+

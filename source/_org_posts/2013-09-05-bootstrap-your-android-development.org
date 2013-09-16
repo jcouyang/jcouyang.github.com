@@ -1,0 +1,33 @@
+#+BEGIN_HTML
+---
+layout: post
+title: "快速开发android应用"
+date: 2013-09-05 22:41
+comments: true
+categories: ["android","dagger","androidbootstrap"]
+---
+#+END_HTML
+#+OPTIONS: toc:nil
+
+最近再一次偶然的机会在github上见到了这样一个repo
+[[http://www.github.com/donnfelker/android-bootstrap]]
+能让你迅速搭建起基本ui和框架.但是基本上没有什么文档,非常可惜.环境搭好
+了,却不知道在哪里加代码. 于是我玩几天准备把我的理解写一下,以供找不到文
+档的同学可以快速上个手.
+
+** 什么是 android bootstrap
+[[http://www.androidbootstrap.com/images/ab-screenshot.png]]
+Android Bootstrap 其实是一堆框架的集合, 让你迅速搭好android 开发的基本
+框架. 里面包括
+- Fragments
+- Account Manager
+- android-maven-plugin
+- Dagger
+- ActionBarSherlock
+- Menu Drawer
+- Robotium
+- Integrattion testing
+- Parse API
+
+** Dagger
+这是一个依赖注入的框架,个人觉得
