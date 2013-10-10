@@ -54,7 +54,7 @@ That's it. Then you can run emacs and it should pick up the config, install all 
 <p>
 所有的快捷键都写在 keys 表格中, 这个表格会被编译成对应的 elisp 配置.使用了 <code>key-chord</code> 模式,很霸气可以同时按下两个按键组合来完成一个命令.
 </p>
-
+<!-- more -->
 <p>
 当然在这个表格里只是我自己的偏好设置,你可以根据自己的偏好更改这个表格.
 </p>
