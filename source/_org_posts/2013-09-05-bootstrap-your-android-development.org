@@ -1,7 +1,7 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: "快速开发android应用"
+title: "快速开发android应用(1) - Dagger"
 date: 2013-09-05 22:41
 comments: true
 categories: ["android","dagger","androidbootstrap"]
@@ -15,7 +15,8 @@ categories: ["android","dagger","androidbootstrap"]
 了,却不知道在哪里加代码. 于是我玩几天准备把我的理解写一下,以供找不到文
 档的同学可以快速上个手.
 
-** 什么是 android bootstrap
+
+** 101 什么是 android bootstrap
 [[http://www.androidbootstrap.com/images/ab-screenshot.png]]
 Android Bootstrap 其实是一堆框架的集合, 让你迅速搭好android 开发的基本
 框架. 里面包括
@@ -26,8 +27,268 @@ Android Bootstrap 其实是一堆框架的集合, 让你迅速搭好android 开�
 - ActionBarSherlock
 - Menu Drawer
 - Robotium
-- Integrattion testing
 - Parse API
 
+很多是UI的框架我就不解释了, 如 Fragments, ActionBarSherlock. 但是我想
+讲的是
+- 依赖注入框架 Dagger
+- UI testing 框架 Robotium
+- backend服务Parse. 
+- android maven
+本章要介绍两个注入框架 Dagger 和 butterknife 
+
+
 ** Dagger
-这是一个依赖注入的框架,个人觉得
+这又是一个依赖注入的框架,个人觉得依赖注入的模式貌似是为java专门准备的.使
+得木纳的 java 代码结构变得灵活清爽, 松耦合, 易测试.
+而
+注入方式个人也比较喜欢 annotation 的方式而不是讨厌的 xml,把所有的依赖
+配置都放到一个文件里并不无不妥, 但是都放到 xml 里, OMG, 放到可读性最屎
+的 xml 里, 找所有依赖配置都要去翻这个难读得 xml...想着就头疼. 当项目变
+大时, 一大波 xml 来袭.........Orz
+
+
+*** 先来解释一下依赖注入
+简单来说就是好莱坞原则
+#+BEGIN_QUOTE
+ 不要call我, 我会call你的.
+#+END_QUOTE
+
+对于好莱坞agent来说,他知道什么时候用什么演员,因
+此,演员只需要留下联系方式, 也就是注入, 等待agent call他.
+
+因此, 也叫控制反转.
+
+其实, 也就是更优雅的实现组合模式, 传统的组合模式会需要 new 这些依赖,
+也就是要各式各样的factory, 而依赖注入也就是说给你传进去.
+
+*** 代码上来说, dagger 的这个例子非常好:
+
+比如我开咖啡店, 我要卖不同的咖啡种类, +雀巢的银桥的丝袜的+ 什么
+espresso,amerino之类的. 我是
+个非常抠塞的奸商, 我不想为每一种咖啡专门买一个昂贵的专用咖啡机. 经过研究发现这些
+咖啡机只存在一些不同, 比如不同的加热方式, 滴漏方式,filter或者
+水泵流量或温度不同.
+
+所以,我决定实现一个 configurable 的 coffeemaker.
+
+#+BEGIN_SRC java
+  package coffee;
+  
+  import dagger.Lazy;
+  import javax.inject.Inject;
+  
+  class CoffeeMaker {
+    @Inject Lazy<Heater> heater; // Don't want to create a possibly costly heater until we need it.
+    @Inject Pump pump;
+  
+    public void brew() {
+      heater.get().on();
+      pump.pump();
+      System.out.println(" [_]P coffee! [_]P ");
+      heater.get().off();
+    }
+  }
+#+END_SRC
+
+这是我的咖啡机.提供一个煮的按钮,可以看到, 组装咖啡机
+的水泵和加热器都是注入进来的. 那他们是在哪构造的呢.
+
+而作为老板的我,要怎样用这个咖啡机呢, 按一下"煮"按钮, 当然. 但是在那之
+前,我们先要决定如何组装一个想要的咖啡机.
+
+#+BEGIN_SRC java -n -r
+class CoffeeApp implements Runnable {
+  @Inject CoffeeMaker coffeeMaker;
+
+  @Override public void run() {
+    coffeeMaker.brew();
+  }
+
+  public static void main(String[] args) {
+    ObjectGraph objectGraph = ObjectGraph.create(new DripCoffeeModule());(ref:graph)
+    CoffeeApp coffeeApp = objectGraph.get(CoffeeApp.class);
+    coffeeApp.run();
+  }
+}
+#+END_SRC
+
+客户说要americano,所以老板我给咖啡机装成滴漏式, 如代码第 [[(graph)]] 行. 
+构造Graph意思相当于要构造滴漏式咖啡机的图, 图会根据Module里provider组
+件以及以及被Inject的地方建立联系. 也就是说, 根据用户的需求用不同的组件
+蓝图来构造咖啡机.
+
+下面来看组件式在哪被初始化的.
+
+#+BEGIN_SRC java
+
+interface Heater {
+  void on();
+  void off();
+  boolean isHot();
+}
+
+class ElectricHeater implements Heater {
+  boolean heating;
+
+  @Override public void on() {
+    System.out.println("~ ~ ~ heating ~ ~ ~");
+    this.heating = true;
+  }
+
+  @Override public void off() {
+    this.heating = false;
+  }
+
+  @Override public boolean isHot() {
+    return heating;
+  }
+}
+#+END_SRC
+
+这是电加热器的接口实现, 他的初始化方法会放到一个module里的 =@provide=
+标记的方法里. 这个被标记的方法会再 Heater 被注入的地方被调用.
+
+#+BEGIN_SRC java
+import dagger.Module;
+import dagger.Provides;
+import javax.inject.Singleton;
+
+@Module(
+    injects = CoffeeApp.class,
+    includes = PumpModule.class
+)
+class DripCoffeeModule {
+  @Provides @Singleton Heater provideHeater() {
+    return new ElectricHeater();
+  }
+}
+#+END_SRC
+
+看到这样的好处了吧, 很清爽的把Module中得Heater和Pump注入到CoffeeApp中,
+不需要setter注入,也不需要构造函数注入, 只需要将组件的构造函数声明为 =@Inject=, 或者放
+到一个Module里的provider中, 就可以在咖啡机中 =@Inject= 该组件.
+
+
+*** 在 androidbootstrap 里的 Dagger 
+说了这些应该大概知道 dagger 要怎么玩乐吧,那么我们
+首先来看一下 androidbootstrap 的 src 目录结构好了.
+#+BEGIN_SRC -n -r
+├── main
+│   └── java
+│       └── com
+│           └── donnfelker
+│               └── android
+│                   └── bootstrap
+│                       ├── AndroidModule.java
+│                       ├── BootstrapApplication.java
+│                       ├── BootstrapModule.java (ref:module)
+│                       ├── BootstrapServiceProvider.java
+│                       ├── RootModule.java
+│                       ├── authenticator
+│                       │   ├── AccountAuthenticatorService.java
+│                       │   ├── ApiKeyProvider.java
+│                       │   ├── BootstrapAccountAuthenticator.java
+│                       │   ├── BootstrapAuthenticatorActivity.java
+│                       │   ├── LogoutService.java
+│                       │   └── SherlockAccountAuthenticatorActivity.java
+│                       ├── core
+│                       │   ├── AvatarLoader.java
+│                       │   ├── BootstrapService.java
+│                       │   ├── CheckIn.java
+│                       │   ├── Constants.java
+│                       │   ├── GravatarUtils.java
+│                       │   ├── ImageUtils.java
+│                       │   ├── Location.java
+│                       │   ├── News.java
+│                       │   ├── PauseTimerEvent.java
+│                       │   ├── ResumeTimerEvent.java
+│                       │   ├── StopTimerEvent.java
+│                       │   ├── TimerPausedEvent.java
+│                       │   ├── TimerService.java
+│                       │   ├── TimerTickEvent.java
+│                       │   ├── UserAgentProvider.java
+│                       │   └── ViewSummary.java
+│                       ├── evernote
+│                       ├── ui
+│                       │   ├── AlternatingColorListAdapter.java
+│                       │   ├── AsyncLoader.java
+│                       │   ├── BarGraphDrawable.java
+│                       │   ├── BootstrapActivity.java
+│                       │   ├── BootstrapFragmentActivity.java
+│                       │   ├── BootstrapPagerAdapter.java
+│                       │   ├── BootstrapTimerActivity.java
+│                       │   ├── CarouselActivity.java
+│                       │   ├── CheckInsListAdapter.java
+│                       │   ├── CheckInsListFragment.java
+│                       │   ├── HeaderFooterListAdapter.java
+│                       │   ├── ItemListFragment.java
+│                       │   ├── NewsActivity.java
+│                       │   ├── NewsListAdapter.java
+│                       │   ├── NewsListFragment.java
+│                       │   ├── TextWatcherAdapter.java
+│                       │   ├── ThrowableLoader.java
+│                       │   ├── UserActivity.java (ref:activity)
+│                       │   ├── UserListAdapter.java (ref:adapter)
+│                       │   ├── UserListFragment.java (ref:fragment)
+│                       │   └── view
+│                       │       └── CapitalizedTextView.java
+│                       └── util
+│                           ├── Ln.java
+│                           ├── SafeAsyncTask.java
+│                           └── Strings.java
+└── test
+    └── java
+        └── com
+            └── donnfelker
+                └── android
+                    └── bootstrap
+                        └── core
+                            └── core
+                                ├── BootstrapApiClientUtilTest.java
+                                └── BootstrapServiceTest.java
+#+END_SRC
+
+好吧, 这样一眼就应该能看到 [[(module)][BootstrapModule]] 肯定是 依赖注入用的组件对不
+对. 
+比如说我现在做的应用是关于 Evernote的, 在 Evernote 提供的 android
+SDK 中有一个最重要的类EvernoteSession, 因为当初始化后并登陆, 你就可以
+用这个 Session 来调用所有 evernote API. 
+
+因此, 我把它看成一个插件, 也就
+是说, 我什么时候要用到 evernote 的时候, 我只需要 @Inject 这个 session
+即可. 那么, 这时候, 我只需要吧 EvernoteSession 的构造方法放到 这个
+Module 里了. 
+#+BEGIN_SRC java
+public class BootstrapModule  {
+...
+    @Singleton @Provides EvernoteSession provideEvernoteSession(final Context context) {
+        return EvernoteSession.getInstance(context, Constants.Evernote.CONSUMER_KEY, Constants.Evernote.CONSUMER_SECRET, Constants.Evernote.EVERNOTE_SERVICE);
+    }
+}
+#+END_SRC
+
+** Butterknife
+再来看 src 目录, 很有意思, 在 =ui= 下有三组 [[(activity)][xxxActivity]] ,[[(adapter)][xxxListAdapter]],
+[[(fragment)][xxxFragment]]. 这三个类是这样的
+- xxxActivity: 负责单个view的显示.
+- xxxListAdapter: 负责List内容的更新.
+- xxxListFragment: 这是继承 actionbarsherlock 的 SherlockFragment.负责
+组装数据以及处理事件.
+
+点开UserActivity, 会看见开头有这么个 annotation =@InjectView=
+#+BEGIN_SRC java
+ @InjectView(R.id.iv_avatar) protected ImageView avatar;
+#+END_SRC
+
+按最老套的获取 view 会这样写:
+#+BEGIN_SRC java
+    ImageView avatar;
+    ...
+    @Override public void onCreate(){
+        avatar = (ImageView)findViewById(R.id.title);
+        ...
+#+END_SRC
+是不是觉得以前的写法弱爆了. 当然这是最基本的 view inject, 还有 Click
+Listener Injection 等更高阶的用法
+可以继续[[http://jakewharton.github.io/butterknife/][参考文档]]

@@ -1,3 +1,4 @@
+
 #+BEGIN_HTML
 ---
 layout: post
@@ -12,7 +13,6 @@ categories: ['emacs','orgmode',evernote']
 [[http://code.google.com/p/emacs-evernote-mode/][evernote]]-mode 使得emacs用户可用直接用 orgmode 记笔记. here is how:
 
 ** Install evernote-mode
-
 
 *** Install libgdbm
 The pre-installed ruby on Mac OS X does not contain GDBM bindings. Re-install ruby and GDBM by
@@ -149,4 +149,3 @@ then paste it to starter-kit-evernote
 #+BEGIN_QUOTE
 take note this way is awesome isn't it
 #+END_QUOTE
-
