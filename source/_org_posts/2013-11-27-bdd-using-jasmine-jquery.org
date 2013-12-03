@@ -1,0 +1,147 @@
+#+BEGIN_HTML
+---
+layout: post
+title: "BDD using jasmine jquery"
+date: 2013-11-27 11:06
+comments: true
+categories: 
+---
+#+END_HTML
+#+OPTIONS: toc:nil
+
+** 用 [[https://github.com/velesin/jasmine-jquery][jasmine-jquery]] 来BDD 就是一个bug, 一个大bug
+
+
+参加 TWU 时写 jasmine 测试的时候花了大量时间研究为什么不能绑定事件到
+fixture. 这导致 teamate 和我自己都会认为我这个带头引入这么难用的
+jasmine 的人简直是要杀千刀. 但是其实问题不是 jasmine +当然也不是我+,
+都是 jasmine-jquery. 
+
+不管是 loadfixtures 还是 preload(fixtureUrl[, fixtureUrl, ...]) 都无法
+绑定事件到 fixtures
+
+BDD 不就是想要点哪然后看哪得反应...结果不知道为什么傻傻的就没有反应.
+
+傻兮兮的官方文档是这样的
+#+BEGIN_SRC javascript
+var spyEvent = spyOnEvent('#some_element', 'click')
+$('#some_element').click()
+expect('click').toHaveBeenTriggeredOn('#some_element')
+#+END_SRC
+这...不是废话么....这是在测试"测试代码"么?
+
+真正关心测试的应该是绑定在click事件上的function, 谁管你被tri没
+trigger. 比如我在元素 =#anchor_01= 上绑定了添加 =css class= 的事件.那么我
+应该这样测试我的 javascript 代码.
+
+#+BEGIN_SRC javascript
+  describe("when fixture contains an <script src='to/your/source'> tag", function () {
+    var fixtureUrl = "fixture_with_javascript.html"
+
+    it("should load content of fixture file and javascripts and bind events", function () {
+      jasmine.getFixtures().load(fixtureUrl)
+      $('#anchor_01').click()
+      expect($("#anchor_01")).toHaveClass('foo')
+    })
+  })
+#+END_SRC
+
+但是这样的 test 是会 fail 掉...
+
+...
+
+...
+
+...
+
+原因在于包含绑定事件的 script 在 specRunner.html 加载时就已经被load了.即
+时你用的时 =$()= wrapper, 因为 specRunner.html 的 document 在运行你的
+=**spec.js= 时已经是ready的了
+
+也就是说这时候并没有loadFixtures, script 中的事件不会绑定到元素上, 除
+非你用的时live...
+
+** what do we do
+之前一个项目也碰到过类似的情况, 当时的 OO 得比较好, 可以在loadFixtures
+之后再 init 一下需要测试的类. 但是那些不OO的代码肿么办
+
+事实上我认为 fixture 应该是业务逻辑的一个片段, 那么将需要绑定事件到
+fixture 的 script 扔到 fixture 比较 make sense 因为他们本来就是紧耦合.
+
+因此我的 hot fix 是将需要测试的 js 放到它所依赖的 fixtrue 里面, 之后在
+loadFixtures 时将 script inline 到 fixture 中然后加载到 specRunner 页
+面上.
+#+BEGIN_SRC diff
+diff --git a/lib/jasmine-jquery.js b/lib/jasmine-jquery.js
+index 87d7ef8..30d12db 100644
+--- a/lib/jasmine-jquery.js
++++ b/lib/jasmine-jquery.js
+@@ -119,17 +119,33 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFT
+WARE.
+   jasmine.Fixtures.prototype.loadFixtureIntoCache_ = function (relativeUrl) {
+     var self = this
+       , url = this.makeFixtureUrl_(relativeUrl)
++      , htmlText = ''
+       , request = $.ajax({
+         async: false, // must be synchronous to guarantee that no tests are run
+ before fixture is loaded
+         cache: false,
+         url: url,
+         success: function (data, status, $xhr) {
+-          self.fixturesCache_[relativeUrl] = $xhr.responseText
++          htmlText = $xhr.responseText
+         },
+         error: function (jqXHR, status, errorThrown) {
+           throw new Error('Fixture could not be loaded: ' + url + ' (status: '
++ status + ', message: ' + errorThrown.message + ')')
+         }
+       })
++      var scripts = $($.parseHTML(htmlText, true)).find('script') || [];
++      scripts.each(function(){
++        $.ajax({
++            async: false, // must be synchronous to guarantee that no tests are
+ run before fixture is loaded
++            cache: false,
++            url: $(this).attr('src'),
++            success: function (data, status, $xhr) {
++                htmlText += '<script>' + $xhr.responseText + '</script>'
++            },
++            error: function (jqXHR, status, errorThrown) {
++                throw new Error('Script could not be loaded: ' + scriptSrc + '
+(status: ' + status + ', message: ' + errorThrown.message + ')')
++            }
++        });
++      })
++      self.fixturesCache_[relativeUrl] = htmlText;
+   }
+
+   jasmine.Fixtures.prototype.makeFixtureUrl_ = function (relativeUrl){
+#+END_SRC
+
+这样用起来会比较简单, 只需要在fixture里面加入 script 即可
+
+#+BEGIN_SRC html
+<div id="anchor_01"></div>
+<script src="spec/fixtures/javascripts/jasmine_javascript_c
+lick.js"></script>
+<script src="spec/fixtures/javascripts/jasmine_javascript_hove
+r.js"></script>
+#+END_SRC
+
+不需要修改任何 jasmine 测试代码, 依然是这段代码, 这是它应该就会 *绿* 了
+#+BEGIN_SRC javascript
+  describe("when fixture contains an <script src='to/your/source'> tag", function () {
+    var fixtureUrl = "fixture_with_javascript.html"
+
+    it("should load content of fixture file and javascripts and bind events", function () {
+      jasmine.getFixtures().load(fixtureUrl)
+      $('#anchor_01').click()
+      expect($("#anchor_01")).toHaveClass('foo')
+    })
+  })
+#+END_SRC
+
+fin
+我已经 [[https://github.com/velesin/jasmine-jquery/pulls][pull request 到这里]] 但是人家木有一点要 merge 的意思...好吧,反正我是不会用了,
+要是谁被无法绑定事件困扰就不要再浪费时间困扰了, 可以 clone 我的 [[https://github.com/jcouyang/jasmine-jquery][fork]]
+吧 亲.
