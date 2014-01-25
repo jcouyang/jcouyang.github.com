@@ -1,0 +1,197 @@
+#+BEGIN_HTML
+---
+layout: post
+title: "Pure and Secure Client-side Javascript OAuth 2 with YQL"
+date: 2014-01-24 19:15
+comments: true
+categories: ["Howto","YQL","javascript","oauth"]
+---
+#+END_HTML
+#+OPTIONS: toc:nil
+
+It would be *awesome* if we can use OAuth in JavaScript purely in client side.
+before start to do that, please let me explain "OAuth2" +with this picture+ in feeeew word (skip to section 2 [[*YQL][YQL]] if you know OAuth2):
+
+[[http://hueniverse.com/wp-content/uploads/2007/12/My-Endpoints-300x267.png]]
+
+** OAuth 2
+OAuth 2 is widely use as authorize third party application without expose user's password, OAuth2 using 2 steps verification. 
+Take github as example:
+
+There are 2 role in this story: Developer =Oyang= and User =Lulu=
+
+As Developer  Oyang who write an App *GIRA* http://gira,oyanglul.us which can let user login using Github account.
+
+As User, Lulu don't want to login in your site with my Github username and password, since Lulu don't trust Oyang but trust Github.
+
+Solution should be: Oyang redirect Lulu to Github website so Lulu can login there, then github redirect to Oyang's gira.com and with a signal: "hey, lulu's password is correct, log she in dude!".
+
+
+So that is *OAuth 2* actually.
+*** Redirect users to request GitHub access
+
+=GET https://github.com/login/oauth/authorize=
+
+with parameter
+- =cliend_id=: id of your application
+- =scope=: permissions your application should have 
+
+this will redirect Lulu to github oauth page. Lulu can now login in github then check the permission Oyang's app request, and decide to accept or not.
+
+*** GitHub redirects back to your site
+
+if Lulu say "yes", github will redirect back to Oyang's app with parameter of a "valided code". which means apps's permited and now app can get the Lulu's =access_token= now.
+
+=POST https://github.com/login/oauth/access_token= 
+
+with parameter
+- =cliend_id=: id of your application
+- =client_secret=: password of your application
+- =code=: the thing you just got from github.
+
+#+BEGIN_QUOTE
+  =access_token= *is just as important as User's PASSWORD* so keep that saft place and never expose to anyone.
+
+=client_secret= *is your app's password* so never expose to anyone either
+#+END_QUOTE
+
+*** Done
+now Oyang's App Gira just got the =access_token= of Lulu, so Gira can make requests to the API on a behalf of a Lulu.
+
+  
+** Pure Client Side Implement 
+Now here comes the problems of Javascript OAuth 2 implementation pure client side.
+1. capture =code= in [[*GitHub%20redirects%20back%20to%20your%20site][step 2]]
+2. secure =client_secret= when try request =access_token=
+when github redirect back with =code=
+
+the first one is easy to solve by check window.location
+#+BEGIN_SRC js
+$(window).on('eshashchange', function() {
+  if(location.hash='#authdone'){
+		$.get("https://github.com/login/oauth/access_token",{
+			client_id:'666dc0b3b994cc362ca2',
+			client_secret:'your secret',
+			code:location.search.split('=').pop();
+		});
+	}
+});
+#+END_SRC
+
+as you can see the =client_secret= has been expose to anyone who check you javascript code.
+
+This is really serious problem since evil hacker can just use your =client_id= and =client_secret= to make an fake app of gira to steal your user's information, horrible isn't it.
+
+now what, anyone can easily see your javascript from browser, where to hide your secret. no option but a server.
+
+*** YQL
+
+**** What is YQL
+[[http://developer.yahoo.com/yql/][YQL]] is Yahoo Query Language. You can simpily use =SELECT * FROM web= to get you data from any website. for example you can try put the follow query in [[http://developer.yahoo.com/yql/console/][YQL Console]]:
+
+=select * from html where url="http://www.weibo.com/milhouse"=
+
+amazing isn't it, YQL will return the whole content of the website in XML or JSON.
+
+check the bottom of YQL Console, simpily use request to *THE REST  QUERY* will return the same thing. You don't have to include any other third party annoying library to get your data. This is why I choose YQL other then [[http://parse.com/][Parse]] or [[http://firebase.com/][Firebase]] as server side script.
+
+**** Use YQL storage to keep secret safe
+
+YQL provide online storage y.storage which allow you to store your YQL table, javascript and enviorment there. Since every thing is on sever, nobody but you can see them now.
+
+When open [[http://developer.yahoo.com/yql/editor/][YQL editor]], you may curious about the 3 Key on the right side:
+
+[[https://www.evernote.com/shard/s23/sh/9428c885-f033-46c9-882d-3527ee12711f/30139b47807b08c5a6133bf3769c29d6/deep/0/YQL-Editor--asdf.png]]
+
+for each table/javascript/enviorment file you've create, there are 3 line for you.
+1. *EXECUTE*: use this link when you want to execute the content.this is really *important* for secure your secret, I'll explain it latter.
+2. SELECT: when you just want to get the content.
+3. UPDATE: when update the content.
+
+for better understanding, let me continue the Github OAuth example.
+
+Here's the plan:
+1. put all you secret inside enviorment file.
+2. create a table, data of the table come from javascript file,
+3. when the javascript is execute, request for the =access_token=
+4. on the clientside, just request the YQL table for =access_token=. bang!
+
+**** Create YQL Table
+
+OK.lets do IT. First of all, we need create a table who can execute Javascript inside.
+#+BEGIN_SRC xml -n -r
+<?xml version="1.0" encoding="UTF-8"?>
+	<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">	  
+      <meta>  
+        <sampleQuery>select * from {table} where code='meow';</sampleQuery>  
+      </meta>  
+      <bindings>  
+        <select itemPath="" produces="XML">  
+          <urls>  
+            <url>http://oyanglul.us/gira</url>  
+          </urls>  
+          <inputs>  
+            <key id='CODE' type='xs:string' paramType='variable' required="true" />(ref:code)  
+          <key id="CID" type="xs:string" paramType="variable"  required="true" />(ref:client-id)
+              <key id="CSC" type="xs:string" paramType="variable"  required="true" />(ref:client-secret)
+            </inputs>
+            <execute><![CDATA[
+         y.include('store://KqAGbe0nt2yi3bAnQQXxOx'); (ref:js-select)
+      ]]></execute>         
+        </select>    
+      </bindings>  
+    </table>
+#+END_SRC
+ 
+FYI, the [[(js-select)][line (js-select)]] reference to the =SELECT KEY= of the javascript file as follow, why =SELECT=, you know when you use =EXECUTE KEY= to referent an file, Yahoo will try to run it for you, but I don't want the result of javascript but the code itself to define my table.
+
+[[(code)][line (code)]] define the table should receive a key named "CODE", and [[(client-id)][line (client-id)]] and [[(client-secret)][line (client-secret)]] as well.
+
+
+**** Create Javascript file
+#+BEGIN_SRC javascript -r -n
+tokenRequest = y.rest('https://github.com').path('login').path('oauth').path('access_token');(ref:y-rest)
+var resp = tokenRequest.header('Accept','application/xml').query(
+{
+	client_id:CID,
+	client_secret:CSC,
+	code:CODE
+}).post().response;
+response.object = {resp}
+#+END_SRC
+
+I know [[(y-rest)][line (y-rest)]] is weird if you never use YQL before, so do I. This looks so lame to append path to address rather then jQuery way just =$.get("https://github.com/login/oauth/access_token")=.
+
+ok the =CID= is parameter from YQL Table defined [[(client-id)][here]], so does =CSC= and =CODE=.
+
+finally, the Table and Javascript is done, how to use them, and where the hell should I put my *secret* to.
+
+**** Create Enviroment File
+Here comes the mighty enviorment file:
+#+BEGIN_SRC sql -n -r
+USE "store://jqozna9Rv9K0gS77jz8RI1" AS github;(ref:github-table)
+SET CID="666dc0b3b994cc362ca2" ON github; (ref:set-cid)
+SET CSC="your client secret goes here" ON github;(ref:set-csc)
+#+END_SRC
+
+the [[(github-table)][store://jqozna9Rv9K0gS77jz8RI1]] is the SELECT KEY of your table just created. [[(set-cid)][line (set-cid)]] and [[set-csc][line set-csc]] pass the =client_id= and =client_secret= to =github= table where the javascript can actually use.
+
+
+**** Why My Secret is secure
+if you use the SELECT KEY of the enviorment file like
+#+BEGIN_SRC sql
+select * from yql.storage where name="your enviorment file SELECT KEY"
+#+END_SRC
+the secret defined in your enviorment file will still expose.
+
+but not one know your SELECT KEY except yourself. so you never use the SELECT KEY everything will be safe.
+
+Thus, use the EXECUTE KEY!!!! no one can know what happen inside your enviorment file.
+#+BEGIN_SRC yql
+env "store://0zaLUaPXLo4GWBb1koVqO6";
+select * from github where CODE="code from oauth first step"
+#+END_SRC
+
+
+**** Fin
+copy the [[https://www.evernote.com/shard/s23/sh/4a383e94-4288-4ad1-a686-f8d63b5fa4cc/20d4672a6cc52e0c1e99c6250ea583dd/deep/0/YQL-Console--env-"store---0zaLUaPXLo4GWBb1koVqO6"-select-*-from-github-where-CODE-"669b538b32862a44b116".png]] at the bottom, request this url from you client side javascript code. That's is, without expose =client_secret= safely get =access_token= from pure client side javascript.

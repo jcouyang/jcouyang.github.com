@@ -1,7 +1,7 @@
 {% if site.github_user %}
 <section>
   <h1>GitHub Repos</h1>
-  <ul id="gh_events">
+  <ul id="gh_repos">
     <li class="loading">Status updating...</li>
   </ul>
   {% if site.github_show_profile_link %}
@@ -17,11 +17,11 @@
             s.parentNode.insertBefore(jxhr, s);
         }
 
-        github.showEvents({
+        github.showRepos({
             user: '{{site.github_user}}',
             count: {{site.github_repo_count}},
             skip_forks: {{site.github_skip_forks}},
-            target: '#gh_events'
+            target: '#gh_repos'
         });
     });
   </script>
