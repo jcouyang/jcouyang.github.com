@@ -84,9 +84,9 @@ This is really serious problem since evil hacker can just use your =client_id= a
 
 now what, anyone can easily see your javascript from browser, where to hide your secret. no option but a server.
 
-*** YQL
+** YQL
 
-**** What is YQL
+*** What is YQL
 [[http://developer.yahoo.com/yql/][YQL]] is Yahoo Query Language. You can simpily use =SELECT * FROM web= to get you data from any website. for example you can try put the follow query in [[http://developer.yahoo.com/yql/console/][YQL Console]]:
 
 =select * from html where url="http://www.weibo.com/milhouse"=
@@ -95,7 +95,7 @@ amazing isn't it, YQL will return the whole content of the website in XML or JSO
 
 check the bottom of YQL Console, simpily use request to *THE REST  QUERY* will return the same thing. You don't have to include any other third party annoying library to get your data. This is why I choose YQL other then [[http://parse.com/][Parse]] or [[http://firebase.com/][Firebase]] as server side script.
 
-**** Use YQL storage to keep secret safe
+*** Use YQL storage to keep secret safe
 
 YQL provide online storage y.storage which allow you to store your YQL table, javascript and enviorment there. Since every thing is on sever, nobody but you can see them now.
 
@@ -116,7 +116,7 @@ Here's the plan:
 3. when the javascript is execute, request for the =access_token=
 4. on the clientside, just request the YQL table for =access_token=. bang!
 
-**** Create YQL Table
+*** Create YQL Table
 
 OK.lets do IT. First of all, we need create a table who can execute Javascript inside.
 #+BEGIN_SRC xml -n -r
@@ -148,7 +148,7 @@ FYI, the [[(js-select)][line (js-select)]] reference to the =SELECT KEY= of the 
 [[(code)][line (code)]] define the table should receive a key named "CODE", and [[(client-id)][line (client-id)]] and [[(client-secret)][line (client-secret)]] as well.
 
 
-**** Create Javascript file
+*** Create Javascript file
 #+BEGIN_SRC javascript -r -n
 tokenRequest = y.rest('https://github.com').path('login').path('oauth').path('access_token');(ref:y-rest)
 var resp = tokenRequest.header('Accept','application/xml').query(
@@ -166,7 +166,7 @@ ok the =CID= is parameter from YQL Table defined [[(client-id)][here]], so does 
 
 finally, the Table and Javascript is done, how to use them, and where the hell should I put my *secret* to.
 
-**** Create Enviroment File
+*** Create Enviroment File
 Here comes the mighty enviorment file:
 #+BEGIN_SRC sql -n -r
 USE "store://jqozna9Rv9K0gS77jz8RI1" AS github;(ref:github-table)
@@ -177,7 +177,7 @@ SET CSC="your client secret goes here" ON github;(ref:set-csc)
 the [[(github-table)][store://jqozna9Rv9K0gS77jz8RI1]] is the SELECT KEY of your table just created. [[(set-cid)][line (set-cid)]] and [[set-csc][line set-csc]] pass the =client_id= and =client_secret= to =github= table where the javascript can actually use.
 
 
-**** Why My Secret is secure
+*** Why My Secret is secure
 if you use the SELECT KEY of the enviorment file like
 #+BEGIN_SRC sql
 select * from yql.storage where name="your enviorment file SELECT KEY"
@@ -193,5 +193,5 @@ select * from github where CODE="code from oauth first step"
 #+END_SRC
 
 
-**** Fin
+*** Fin
 copy the [[https://www.evernote.com/shard/s23/sh/4a383e94-4288-4ad1-a686-f8d63b5fa4cc/20d4672a6cc52e0c1e99c6250ea583dd/deep/0/YQL-Console--env-"store---0zaLUaPXLo4GWBb1koVqO6"-select-*-from-github-where-CODE-"669b538b32862a44b116".png]] at the bottom, request this url from you client side javascript code. That's is, without expose =client_secret= safely get =access_token= from pure client side javascript.

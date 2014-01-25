@@ -5,7 +5,7 @@
 url: http://oyanglul.us
 
 title: Jichao Ouyang's Journal
-subtitle: <img src="https://travis-ci.org/jcouyang/jcouyang.github.com.png"/> or Else...
+subtitle: <img src="https://api.travis-ci.org/jcouyang/jcouyang.github.com.png?branch=source"/> or Else...
 author: Jichao Ouyang
 simple_search: http://google.com/search
 description: Jichao Ouyang's Journal/Blog/Whatever

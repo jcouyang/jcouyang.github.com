@@ -7,7 +7,7 @@ categories: ["Howto","YQL","javascript","oauth"]
 ---
 <p>
 It would be <b>awesome</b> if we can use OAuth in JavaScript purely in client side.
-before start to do that, please let me explain "OAuth2" <del>with this picture</del> in feeeew word (skip to section 2 <a href="#sec-2-1">YQL</a> if you know OAuth2):
+before start to do that, please let me explain "OAuth2" <del>with this picture</del> in feeeew word (skip to section 2 <a href="#sec-3">YQL</a> if you know OAuth2):
 </p>
 
 
@@ -155,13 +155,13 @@ This is really serious problem since evil hacker can just use your <code>client_
 now what, anyone can easily see your javascript from browser, where to hide your secret. no option but a server.
 </p>
 </div>
-
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> YQL</h3>
-<div class="outline-text-3" id="text-2-1">
-</div><div id="outline-container-sec-2-1-1" class="outline-4">
-<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> What is YQL</h4>
-<div class="outline-text-4" id="text-2-1-1">
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> YQL</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> What is YQL</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 <a href="http://developer.yahoo.com/yql/">YQL</a> is Yahoo Query Language. You can simpily use <code>SELECT * FROM web</code> to get you data from any website. for example you can try put the follow query in <a href="http://developer.yahoo.com/yql/console/">YQL Console</a>:
 </p>
@@ -179,9 +179,9 @@ check the bottom of YQL Console, simpily use request to <b>THE REST  QUERY</b> w
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2-1-2" class="outline-4">
-<h4 id="sec-2-1-2"><span class="section-number-4">2.1.2</span> Use YQL storage to keep secret safe</h4>
-<div class="outline-text-4" id="text-2-1-2">
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Use YQL storage to keep secret safe</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 YQL provide online storage y.storage which allow you to store your YQL table, javascript and enviorment there. Since every thing is on sever, nobody but you can see them now.
 </p>
@@ -226,9 +226,9 @@ Here's the plan:
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-2-1-3" class="outline-4">
-<h4 id="sec-2-1-3"><span class="section-number-4">2.1.3</span> Create YQL Table</h4>
-<div class="outline-text-4" id="text-2-1-3">
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Create YQL Table</h3>
+<div class="outline-text-3" id="text-3-3">
 <p>
 OK.lets do IT. First of all, we need create a table who can execute Javascript inside.
 </p>
@@ -268,9 +268,9 @@ FYI, the <a href="#coderef-js-select"class="coderef" onmouseover="CodeHighlightO
 </div>
 </div>
 
-<div id="outline-container-sec-2-1-4" class="outline-4">
-<h4 id="sec-2-1-4"><span class="section-number-4">2.1.4</span> Create Javascript file</h4>
-<div class="outline-text-4" id="text-2-1-4">
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Create Javascript file</h3>
+<div class="outline-text-3" id="text-3-4">
 <div class="org-src-container">
 
 <pre class="src src-javascript"><span id="coderef-y-rest" class="coderef-off"><span class="linenr">1: </span>tokenRequest = y.rest(<span style="color: #259185;">'https://github.com'</span>).path(<span style="color: #259185;">'login'</span>).path(<span style="color: #259185;">'oauth'</span>).path(<span style="color: #259185;">'access_token'</span>);</span>
@@ -297,9 +297,9 @@ finally, the Table and Javascript is done, how to use them, and where the hell s
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2-1-5" class="outline-4">
-<h4 id="sec-2-1-5"><span class="section-number-4">2.1.5</span> Create Enviroment File</h4>
-<div class="outline-text-4" id="text-2-1-5">
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Create Enviroment File</h3>
+<div class="outline-text-3" id="text-3-5">
 <p>
 Here comes the mighty enviorment file:
 </p>
@@ -317,9 +317,9 @@ the <a href="#coderef-github-table"class="coderef" onmouseover="CodeHighlightOn(
 </div>
 </div>
 
-<div id="outline-container-sec-2-1-6" class="outline-4">
-<h4 id="sec-2-1-6"><span class="section-number-4">2.1.6</span> Why My Secret is secure</h4>
-<div class="outline-text-4" id="text-2-1-6">
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> Why My Secret is secure</h3>
+<div class="outline-text-3" id="text-3-6">
 <p>
 if you use the SELECT KEY of the enviorment file like
 </p>
@@ -348,13 +348,12 @@ select * from github where CODE="code from oauth first step"
 </div>
 </div>
 
-<div id="outline-container-sec-2-1-7" class="outline-4">
-<h4 id="sec-2-1-7"><span class="section-number-4">2.1.7</span> Fin</h4>
-<div class="outline-text-4" id="text-2-1-7">
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7"><span class="section-number-3">3.7</span> Fin</h3>
+<div class="outline-text-3" id="text-3-7">
 <p>
 copy the <img src="https://www.evernote.com/shard/s23/sh/4a383e94-4288-4ad1-a686-f8d63b5fa4cc/20d4672a6cc52e0c1e99c6250ea583dd/deep/0/YQL-Console--env-"store---0zaLUaPXLo4GWBb1koVqO6"-select-*-from-github-where-CODE-"669b538b32862a44b116".png"  alt="YQL-Console--env-"store---0zaLUaPXLo4GWBb1koVqO6"-select-*-from-github-where-CODE-"669b538b32862a44b116".png"/> at the bottom, request this url from you client side javascript code. That's is, without expose <code>client_secret</code> safely get <code>access_token</code> from pure client side javascript.
 </p>
-</div>
 </div>
 </div>
 </div>
