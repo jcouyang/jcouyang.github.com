@@ -4,6 +4,8 @@ title: "Pure and Secure Client-side Javascript OAuth 2 with YQL"
 date: 2014-01-24 19:15
 comments: true
 categories: ["Howto","YQL","javascript","oauth"]
+keywords: "yql, javascript, oauth, client side"
+description: "use yql to oauth you pure javascript client-side apps."
 ---
 <p>
 It would be <b>awesome</b> if we can use OAuth in JavaScript purely in client side.

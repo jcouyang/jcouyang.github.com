@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "How to Write Post Using Octopress and Org Mode"
+title: "How to Write Post Using Octopress, Travis CI and Org Mode"
 date: 2013-06-07 20:06
 comments: true
 categories: ["org-mode","emacs"]
+keywords: "octopress, travis, ci, orgmode, org, emacs"
+description: "write blog using octopress travis ci and orgmode"
 ---
 
 <div id="outline-container-sec-1" class="outline-2">
@@ -56,14 +58,14 @@ just do the following in your shell.
 
 <div class="org-src-container">
 
-<pre class="src src-sh">$ \curl -L https://get.rvm.io | bash <span style="color: #52676f; font-style: italic;"># </span><span style="color: #52676f; font-style: italic;">install ruby version manager</span>
-rvm install 1.9.3 <span style="color: #52676f; font-style: italic;"># </span><span style="color: #52676f; font-style: italic;">octopress need 1.9.3</span>
-rvm user 1.9.3 --default <span style="color: #52676f; font-style: italic;"># </span><span style="color: #52676f; font-style: italic;">use it as default</span>
+<pre class="src src-sh">$ \curl -L https://get.rvm.io | bash <span style="color: #465a61; font-style: italic;"># </span><span style="color: #465a61; font-style: italic;">install ruby version manager</span>
+rvm install 1.9.3 <span style="color: #465a61; font-style: italic;"># </span><span style="color: #465a61; font-style: italic;">octopress need 1.9.3</span>
+rvm user 1.9.3 --default <span style="color: #465a61; font-style: italic;"># </span><span style="color: #465a61; font-style: italic;">use it as default</span>
 
 git clone git://github.com/imathis/octopress.git octopress
-<span style="color: #728a05;">cd</span> octopress    <span style="color: #52676f; font-style: italic;"># </span><span style="color: #52676f; font-style: italic;">If you use RVM, You'll be asked if you trust the .rvmrc file (say yes).</span>
-ruby --version <span style="color: #52676f; font-style: italic;">#</span><span style="color: #52676f; font-style: italic;">should be 1.9.3</span>
-rake install <span style="color: #52676f; font-style: italic;"># </span><span style="color: #52676f; font-style: italic;">install default Octopress theme</span>
+<span style="color: #728a05;">cd</span> octopress    <span style="color: #465a61; font-style: italic;"># </span><span style="color: #465a61; font-style: italic;">If you use RVM, You'll be asked if you trust the .rvmrc file (say yes).</span>
+ruby --version <span style="color: #465a61; font-style: italic;">#</span><span style="color: #465a61; font-style: italic;">should be 1.9.3</span>
+rake install <span style="color: #465a61; font-style: italic;"># </span><span style="color: #465a61; font-style: italic;">install default Octopress theme</span>
 </pre>
 </div>
 </div>
@@ -90,8 +92,8 @@ rake install <span style="color: #52676f; font-style: italic;"># </span><span st
 <div class="org-src-container">
 
 <pre class="src src-sh">rake setup_github_pages
-rake generate <span style="color: #52676f; font-style: italic;"># </span><span style="color: #52676f; font-style: italic;">This will generate your blog, copy the generated files into _deploy</span>
-rake deploy <span style="color: #52676f; font-style: italic;"># </span><span style="color: #52676f; font-style: italic;">push to your github pages</span>
+rake generate <span style="color: #465a61; font-style: italic;"># </span><span style="color: #465a61; font-style: italic;">This will generate your blog, copy the generated files into _deploy</span>
+rake deploy <span style="color: #465a61; font-style: italic;"># </span><span style="color: #465a61; font-style: italic;">push to your github pages</span>
 <span style="color: #728a05;">echo</span> <span style="color: #259185;">'your-domain.com'</span> &gt;&gt; source/CNAME
 </pre>
 </div>
@@ -131,7 +133,7 @@ will render as
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ruby"><span style="color: #a57705;">Discover</span> <span style="color: #728a05;">if</span> a number is prime <span style="color: #259185;">http:/</span>/www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-<span style="color: #728a05;">for</span>-prime-numbers/ <span style="color: #a57705;">Source</span> <span style="color: #a57705;">Article</span>
+<pre class="src src-ruby"><span style="color: #a57705;">Discover</span> <span style="color: #728a05;">if</span> a number is prime <span style="color: #259185;">http</span>:<span style="color: #259185;">//</span>www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-<span style="color: #728a05;">for</span>-prime-numbers/ <span style="color: #a57705;">Source</span> <span style="color: #a57705;">Article</span>
 <span style="color: #728a05;">class</span> <span style="color: #a57705;">Fixnum</span>
   <span style="color: #728a05;">def</span> <span style="color: #2075c7;">prime?</span>
     (<span style="color: #259185;">'1'</span> * <span style="color: #2075c7;">self</span>) !~ <span style="color: #259185;">/^1?$|^(11+?)\1+$/</span>
@@ -219,7 +221,7 @@ prose.io 上编辑完成后点下 publish 即可. travis会自动给你发布hoh
 <div class="org-src-container">
 
 <pre class="src src-sh">gem install travis
-travis encrypt <span style="color: #2075c7;">GH_TOKEN</span>=your_token --add <span style="color: #52676f; font-style: italic;"># </span><span style="color: #52676f; font-style: italic;">do this in your octopress dir</span>
+travis encrypt <span style="color: #2075c7;">GH_TOKEN</span>=your_token --add <span style="color: #465a61; font-style: italic;"># </span><span style="color: #465a61; font-style: italic;">do this in your octopress dir</span>
 </pre>
 </div>
 
@@ -229,7 +231,7 @@ travis encrypt <span style="color: #2075c7;">GH_TOKEN</span>=your_token --add <s
 </ul>
 <div class="org-src-container">
 
-<pre class="src src-yaml"><span style="color: #52676f; font-style: italic;">---</span>
+<pre class="src src-yaml"><span style="color: #465a61; font-style: italic;">---</span>
 <span style="color: #2075c7;">language</span>: ruby
 <span style="color: #2075c7;">branches</span>:
   <span style="color: #2075c7;">only</span>:
@@ -260,70 +262,70 @@ rakefile中需要做如下更改
 </p>
 <div class="org-src-container">
 
-<pre class="src src-diff"><span style="color: #52676f;">diff --git a/Rakefile b/Rakefile</span>
-<span style="color: #52676f;">index a57a56f..59b758a 100755</span>
-<span style="color: #e9e2cb; background-color: #042028;">--- </span><span style="color: #e9e2cb; background-color: #042028; font-weight: bold;">a/Rakefile</span>
-<span style="color: #e9e2cb; background-color: #042028;">+++ </span><span style="color: #e9e2cb; background-color: #042028; font-weight: bold;">b/Rakefile</span>
-<span style="color: #e9e2cb; background-color: #042028;">@@ -9,10 +9,10 @@</span><span style="color: #e9e2cb; background-color: #042028;"> ssh_port       = "22"</span>
-<span style="color: #52676f;"> document_root  = "~/website.com/"</span>
-<span style="color: #52676f;"> rsync_delete   = false</span>
-<span style="color: #52676f;"> rsync_args     = ""  # Any extra arguments to pass to rsync</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">deploy_default = "rsync"</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">deploy_default = "push"</span>
+<pre class="src src-diff"><span style="color: #465a61;">diff --git a/Rakefile b/Rakefile</span>
+<span style="color: #465a61;">index a57a56f..59b758a 100755</span>
+<span style="color: #81908f; background-color: #042028;">--- </span><span style="color: #81908f; background-color: #042028;">a/Rakefile</span>
+<span style="color: #81908f; background-color: #042028;">+++ </span><span style="color: #81908f; background-color: #042028;">b/Rakefile</span>
+<span style="color: #81908f; background-color: #042028;">@@ -9,10 +9,10 @@</span><span style="color: #81908f; background-color: #042028;"> ssh_port       = "22"</span>
+<span style="color: #465a61;"> document_root  = "~/website.com/"</span>
+<span style="color: #465a61;"> rsync_delete   = false</span>
+<span style="color: #465a61;"> rsync_args     = ""  # Any extra arguments to pass to rsync</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">deploy_default = "rsync"</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">deploy_default = "push"</span>
 
-<span style="color: #52676f;"> # This will be configured for you when you run config_deploy</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">deploy_branch  = "gh-pages"</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">deploy_branch  = "master"</span>
+<span style="color: #465a61;"> # This will be configured for you when you run config_deploy</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">deploy_branch  = "gh-pages"</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">deploy_branch  = "master"</span>
 
-<span style="color: #52676f;"> ## -- Misc Configs -- ##</span>
+<span style="color: #465a61;"> ## -- Misc Configs -- ##</span>
 
-<span style="color: #e9e2cb; background-color: #042028;">@@ -255,10 +255,10 @@</span><span style="color: #e9e2cb; background-color: #042028;"> multitask :push do</span>
-<span style="color: #52676f;">     system "git add ."</span>
-<span style="color: #52676f;">     system "git add -u"</span>
-<span style="color: #52676f;">     puts "\n## Commiting: Site updated at #{Time.now.utc}"</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">    message = "Site updated at #{Time.now.utc}"</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">    message = "Site updated at #{Time.now.utc} [ci skip]"</span>
-<span style="color: #52676f;">     system "git commit -m \"#{message}\""</span>
-<span style="color: #52676f;">     puts "\n## Pushing generated #{deploy_dir} website"</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">    system "git push origin #{deploy_branch} --force"</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">    system "git push origin #{deploy_branch} --force --quiet"</span>
-<span style="color: #52676f;">     puts "\n## Github Pages deploy complete"</span>
-<span style="color: #52676f;">   end</span>
-<span style="color: #52676f;"> end</span>
-<span style="color: #e9e2cb; background-color: #042028;">@@ -307,7 +307,7 @@</span><span style="color: #e9e2cb; background-color: #042028;"> task :setup_github_pages, :repo do |t, args|</span>
-<span style="color: #52676f;">     puts "(For example, 'git@github.com:your_username/your_username.github.io)"</span>
-<span style="color: #52676f;">     repo_url = get_stdin("Repository url: ")</span>
-<span style="color: #52676f;">   end</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">  user = repo_url.match(/:([^\/]+)/)[1]</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">  user = repo_url.match(/[\/:]([^\/]+)\/[^\/]+$/)[1]</span>
-<span style="color: #52676f;">   branch = (repo_url.match(/\/[\w-]+\.github\.(?:io|com)/).nil?) ? 'gh-pages' : 'master'</span>
-<span style="color: #52676f;">   project = (branch == 'gh-pages') ? repo_url.match(/\/([^\.]+)/)[1] : ''</span>
-<span style="color: #52676f;">   unless (`git remote -v` =~ /origin.+?octopress(?:\.git)?/).nil?</span>
-<span style="color: #e9e2cb; background-color: #042028;">@@ -317,7 +317,7 @@</span><span style="color: #e9e2cb; background-color: #042028;"> task :setup_github_pages, :repo do |t, args|</span>
-<span style="color: #52676f;">       # If this is a user/organization pages repository, add the correct origin remote</span>
-<span style="color: #52676f;">       # and checkout the source branch for committing changes to the blog source.</span>
-<span style="color: #52676f;">       system "git remote add origin #{repo_url}"</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">      puts "Added remote #{repo_url} as origin"</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">      puts "Added remote origin"</span>
-<span style="color: #52676f;">       system "git config branch.master.remote origin"</span>
-<span style="color: #52676f;">       puts "Set origin as default remote"</span>
-<span style="color: #52676f;">       system "git branch -m master source"</span>
-<span style="color: #e9e2cb; background-color: #042028;">@@ -341,7 +341,7 @@</span><span style="color: #e9e2cb; background-color: #042028;"> task :setup_github_pages, :repo do |t, args|</span>
-<span style="color: #52676f;">     system "git init"</span>
-<span style="color: #52676f;">     system "echo 'My Octopress Page is coming soon &amp;hellip;' &gt; index.html"</span>
-<span style="color: #52676f;">     system "git add ."</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">    system "git commit -m \"Octopress init\""</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">    system "git commit -m \"Octopress init[ci skip]\""</span>
-<span style="color: #52676f;">     system "git branch -m gh-pages" unless branch == 'master'</span>
-<span style="color: #52676f;">     system "git remote add origin #{repo_url}"</span>
-<span style="color: #52676f;">     rakefile = IO.read(__FILE__)</span>
-<span style="color: #e9e2cb; background-color: #042028;">@@ -351,7 +351,7 @@</span><span style="color: #e9e2cb; background-color: #042028;"> task :setup_github_pages, :repo do |t, args|</span>
-<span style="color: #52676f;">       f.write rakefile</span>
-<span style="color: #52676f;">     end</span>
-<span style="color: #52676f;">   end</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">  puts "\n---\n## Now you can deploy to #{url} with `rake deploy` ##"</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">  puts "\n---\n## Now you can deploy to `rake deploy` ##"</span>
-<span style="color: #52676f;"> end</span>
+<span style="color: #81908f; background-color: #042028;">@@ -255,10 +255,10 @@</span><span style="color: #81908f; background-color: #042028;"> multitask :push do</span>
+<span style="color: #465a61;">     system "git add ."</span>
+<span style="color: #465a61;">     system "git add -u"</span>
+<span style="color: #465a61;">     puts "\n## Commiting: Site updated at #{Time.now.utc}"</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">    message = "Site updated at #{Time.now.utc}"</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">    message = "Site updated at #{Time.now.utc} [ci skip]"</span>
+<span style="color: #465a61;">     system "git commit -m \"#{message}\""</span>
+<span style="color: #465a61;">     puts "\n## Pushing generated #{deploy_dir} website"</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">    system "git push origin #{deploy_branch} --force"</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">    system "git push origin #{deploy_branch} --force --quiet"</span>
+<span style="color: #465a61;">     puts "\n## Github Pages deploy complete"</span>
+<span style="color: #465a61;">   end</span>
+<span style="color: #465a61;"> end</span>
+<span style="color: #81908f; background-color: #042028;">@@ -307,7 +307,7 @@</span><span style="color: #81908f; background-color: #042028;"> task :setup_github_pages, :repo do |t, args|</span>
+<span style="color: #465a61;">     puts "(For example, 'git@github.com:your_username/your_username.github.io)"</span>
+<span style="color: #465a61;">     repo_url = get_stdin("Repository url: ")</span>
+<span style="color: #465a61;">   end</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">  user = repo_url.match(/:([^\/]+)/)[1]</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">  user = repo_url.match(/[\/:]([^\/]+)\/[^\/]+$/)[1]</span>
+<span style="color: #465a61;">   branch = (repo_url.match(/\/[\w-]+\.github\.(?:io|com)/).nil?) ? 'gh-pages' : 'master'</span>
+<span style="color: #465a61;">   project = (branch == 'gh-pages') ? repo_url.match(/\/([^\.]+)/)[1] : ''</span>
+<span style="color: #465a61;">   unless (`git remote -v` =~ /origin.+?octopress(?:\.git)?/).nil?</span>
+<span style="color: #81908f; background-color: #042028;">@@ -317,7 +317,7 @@</span><span style="color: #81908f; background-color: #042028;"> task :setup_github_pages, :repo do |t, args|</span>
+<span style="color: #465a61;">       # If this is a user/organization pages repository, add the correct origin remote</span>
+<span style="color: #465a61;">       # and checkout the source branch for committing changes to the blog source.</span>
+<span style="color: #465a61;">       system "git remote add origin #{repo_url}"</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">      puts "Added remote #{repo_url} as origin"</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">      puts "Added remote origin"</span>
+<span style="color: #465a61;">       system "git config branch.master.remote origin"</span>
+<span style="color: #465a61;">       puts "Set origin as default remote"</span>
+<span style="color: #465a61;">       system "git branch -m master source"</span>
+<span style="color: #81908f; background-color: #042028;">@@ -341,7 +341,7 @@</span><span style="color: #81908f; background-color: #042028;"> task :setup_github_pages, :repo do |t, args|</span>
+<span style="color: #465a61;">     system "git init"</span>
+<span style="color: #465a61;">     system "echo 'My Octopress Page is coming soon &amp;hellip;' &gt; index.html"</span>
+<span style="color: #465a61;">     system "git add ."</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">    system "git commit -m \"Octopress init\""</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">    system "git commit -m \"Octopress init[ci skip]\""</span>
+<span style="color: #465a61;">     system "git branch -m gh-pages" unless branch == 'master'</span>
+<span style="color: #465a61;">     system "git remote add origin #{repo_url}"</span>
+<span style="color: #465a61;">     rakefile = IO.read(__FILE__)</span>
+<span style="color: #81908f; background-color: #042028;">@@ -351,7 +351,7 @@</span><span style="color: #81908f; background-color: #042028;"> task :setup_github_pages, :repo do |t, args|</span>
+<span style="color: #465a61;">       f.write rakefile</span>
+<span style="color: #465a61;">     end</span>
+<span style="color: #465a61;">   end</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">  puts "\n---\n## Now you can deploy to #{url} with `rake deploy` ##"</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">  puts "\n---\n## Now you can deploy to `rake deploy` ##"</span>
+<span style="color: #465a61;"> end</span>
 </pre>
 </div>
 
@@ -332,48 +334,48 @@ config文件中如下更改, 最后一行
 </p>
 <div class="org-src-container">
 
-<pre class="src src-diff"><span style="color: #52676f;">diff --git a/_config.yml b/_config.yml</span>
-<span style="color: #52676f;">old mode 100755</span>
-<span style="color: #52676f;">new mode 100644</span>
-<span style="color: #52676f;">index 1397f8d..91db12e</span>
-<span style="color: #e9e2cb; background-color: #042028;">--- </span><span style="color: #e9e2cb; background-color: #042028; font-weight: bold;">a/_config.yml</span>
-<span style="color: #e9e2cb; background-color: #042028;">+++ </span><span style="color: #e9e2cb; background-color: #042028; font-weight: bold;">b/_config.yml</span>
-<span style="color: #e9e2cb; background-color: #042028;">@@ -2,12 +2,12 @@</span>
-<span style="color: #52676f;"> #      Main Configs       #</span>
-<span style="color: #52676f;"> # ----------------------- #</span>
+<pre class="src src-diff"><span style="color: #465a61;">diff --git a/_config.yml b/_config.yml</span>
+<span style="color: #465a61;">old mode 100755</span>
+<span style="color: #465a61;">new mode 100644</span>
+<span style="color: #465a61;">index 1397f8d..91db12e</span>
+<span style="color: #81908f; background-color: #042028;">--- </span><span style="color: #81908f; background-color: #042028;">a/_config.yml</span>
+<span style="color: #81908f; background-color: #042028;">+++ </span><span style="color: #81908f; background-color: #042028;">b/_config.yml</span>
+<span style="color: #81908f; background-color: #042028;">@@ -2,12 +2,12 @@</span>
+<span style="color: #465a61;"> #      Main Configs       #</span>
+<span style="color: #465a61;"> # ----------------------- #</span>
 
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">url: http://yoursite.com</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">title: My Octopress Blog</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">subtitle: A blogging framework for hackers.</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">author: Your Name</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">url: http://oyanglul.us</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">title: Jichao Ouyang's Journal</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">subtitle: Code or Else.</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">author: Jichao Ouyang</span>
-<span style="color: #52676f;"> simple_search: http://google.com/search</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">description:</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">description: Jichao Ouyang's Journal/Blog/Whatever</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">url: http://yoursite.com</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">title: My Octopress Blog</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">subtitle: A blogging framework for hackers.</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">author: Your Name</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">url: http://oyanglul.us</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">title: Jichao Ouyang's Journal</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">subtitle: Code or Else.</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">author: Jichao Ouyang</span>
+<span style="color: #465a61;"> simple_search: http://google.com/search</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">description:</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">description: Jichao Ouyang's Journal/Blog/Whatever</span>
 
-<span style="color: #52676f;"> # Default date format is "ordinal" (resulting in "July 22nd 2007")</span>
-<span style="color: #52676f;"> # You can customize the format as defined in</span>
-<span style="color: #e9e2cb; background-color: #042028;">@@ -36,7 +36,7 @@</span><span style="color: #e9e2cb; background-color: #042028;"> category_dir: blog/categories</span>
-<span style="color: #52676f;"> markdown: rdiscount</span>
-<span style="color: #52676f;"> pygments: false # default python pygments have been replaced by pygments.rb</span>
+<span style="color: #465a61;"> # Default date format is "ordinal" (resulting in "July 22nd 2007")</span>
+<span style="color: #465a61;"> # You can customize the format as defined in</span>
+<span style="color: #81908f; background-color: #042028;">@@ -36,7 +36,7 @@</span><span style="color: #81908f; background-color: #042028;"> category_dir: blog/categories</span>
+<span style="color: #465a61;"> markdown: rdiscount</span>
+<span style="color: #465a61;"> pygments: false # default python pygments have been replaced by pygments.rb</span>
 
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">paginate: 10          # Posts per page on the blog index</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">paginate: 12          # Posts per page on the blog index</span>
-<span style="color: #52676f;"> pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/</span>
-<span style="color: #52676f;"> recent_posts: 5       # Posts in the sidebar Recent Posts section</span>
-<span style="color: #52676f;"> excerpt_link: "Read on &amp;rarr;"  # "Continue reading" link text at the bottom of excerpted</span>
-<span style="color: #52676f;"> @@ -45,7 +45,7 @@ titlecase: true       # Converts page and post titles to titlecase</span>
-<span style="color: #52676f;">  # To add custom asides, create files in /source/_includes/custom/asides/ and add them to t</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asid</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">default_asides: [asides/recent_posts.html, asides/github.html, asides/twitter.html, asides</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">paginate: 10          # Posts per page on the blog index</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">paginate: 12          # Posts per page on the blog index</span>
+<span style="color: #465a61;"> pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/</span>
+<span style="color: #465a61;"> recent_posts: 5       # Posts in the sidebar Recent Posts section</span>
+<span style="color: #465a61;"> excerpt_link: "Read on &amp;rarr;"  # "Continue reading" link text at the bottom of excerpted</span>
+<span style="color: #465a61;"> @@ -45,7 +45,7 @@ titlecase: true       # Converts page and post titles to titlecase</span>
+<span style="color: #465a61;">  # To add custom asides, create files in /source/_includes/custom/asides/ and add them to t</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asid</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">default_asides: [asides/recent_posts.html, asides/github.html, asides/twitter.html, asides</span>
 
-<span style="color: #52676f;"> # Each layout uses the default asides, but they can have their own asides instead. Simply</span>
-<span style="color: #52676f;"> # and add an array with the asides you want to use.</span>
-<span style="color: #e9e2cb; background-color: #042028;">@@ -58,26 +58,38 @@</span><span style="color: #e9e2cb; background-color: #042028;"> default_asides: [asides/recent_posts.html, asides/github.html, asides/d</span>
-<span style="color: #52676f;"> # ----------------------- #</span>
+<span style="color: #465a61;"> # Each layout uses the default asides, but they can have their own asides instead. Simply</span>
+<span style="color: #465a61;"> # and add an array with the asides you want to use.</span>
+<span style="color: #81908f; background-color: #042028;">@@ -58,26 +58,38 @@</span><span style="color: #81908f; background-color: #042028;"> default_asides: [asides/recent_posts.html, asides/github.html, asides/d</span>
+<span style="color: #465a61;"> # ----------------------- #</span>
 </pre>
 </div>
 </div>
@@ -405,34 +407,34 @@ new_page_ext    = "org"  # default new page file extension when using the new_pa
 </pre>
 <div class="org-src-container">
 
-<pre class="src src-diff"><span style="color: #e9e2cb; background-color: #042028;">@@ -21,10 +21,11 @@</span><span style="color: #e9e2cb; background-color: #042028;"> source_dir      = "source"    # source file directory</span>
-<span style="color: #52676f;"> blog_index_dir  = 'source'    # directory for your blog's index page (if you put your index in source/blog/</span>
-<span style="color: #52676f;"> deploy_dir      = "_deploy"   # deploy directory (for Github pages deployment)</span>
-<span style="color: #52676f;"> stash_dir       = "_stash"    # directory to stash posts for</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">posts_dir   = "_org_posts"</span>
-<span style="color: #52676f;"> themes_dir      = ".themes"   # directory for blog files</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">new_post_ext    = "markdown"  # default new post file extension when using the new_post task</span>
-<span style="color: #c60007; background-color: #553333; font-weight: bold;">-</span><span style="color: #c60007; background-color: #553333; font-weight: bold;">new_page_ext    = "markdown"  # default new page file extension when using the new_page task</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">new_post_ext    = "org"  # default new post file extension when using the new_post task</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">new_page_ext    = "org"  # default new page file extension when using the new_page task</span>
-<span style="color: #52676f;"> server_port     = "4000"      # port for preview server eg. localhost:4000</span>
+<pre class="src src-diff"><span style="color: #81908f; background-color: #042028;">@@ -21,10 +21,11 @@</span><span style="color: #81908f; background-color: #042028;"> source_dir      = "source"    # source file directory</span>
+<span style="color: #465a61;"> blog_index_dir  = 'source'    # directory for your blog's index page (if you put your index in source/blog/</span>
+<span style="color: #465a61;"> deploy_dir      = "_deploy"   # deploy directory (for Github pages deployment)</span>
+<span style="color: #465a61;"> stash_dir       = "_stash"    # directory to stash posts for</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">posts_dir   = "_org_posts"</span>
+<span style="color: #465a61;"> themes_dir      = ".themes"   # directory for blog files</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">new_post_ext    = "markdown"  # default new post file extension when using the new_post task</span>
+<span style="color: #c60007; font-weight: bold;">-</span><span style="color: #c60007; font-weight: bold;">new_page_ext    = "markdown"  # default new page file extension when using the new_page task</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">new_post_ext    = "org"  # default new post file extension when using the new_post task</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">new_page_ext    = "org"  # default new page file extension when using the new_page task</span>
+<span style="color: #465a61;"> server_port     = "4000"      # port for preview server eg. localhost:4000</span>
 
-<span style="color: #e9e2cb; background-color: #042028;">@@ -105,6 +106,7 @@</span><span style="color: #e9e2cb; background-color: #042028;"> task :new_post, :title do |t, args|</span>
-<span style="color: #52676f;">   end</span>
-<span style="color: #52676f;">   puts "Creating new post: #{filename}"</span>
-<span style="color: #52676f;">   open(filename, 'w') do |post|</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">    post.puts "#+BEGIN_HTML"</span>
-<span style="color: #52676f;">     post.puts "---"</span>
-<span style="color: #52676f;">     post.puts "layout: post"</span>
-<span style="color: #52676f;">     post.puts "title: \"#{title.gsub(/&amp;/,'&amp;amp;')}\""</span>
-<span style="color: #e9e2cb; background-color: #042028;">@@ -112,6 +114,8 @@</span><span style="color: #e9e2cb; background-color: #042028;"> task :new_post, :title do |t, args|</span>
-<span style="color: #52676f;">     post.puts "comments: true"</span>
-<span style="color: #52676f;">     post.puts "categories: "</span>
-<span style="color: #52676f;">     post.puts "---"</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">    post.puts "#+END_HTML"</span>
-<span style="color: #728a05; background-color: #335533; font-weight: bold;">+</span><span style="color: #728a05; background-color: #335533; font-weight: bold;">    post.puts "#+OPTIONS: toc:nil"</span>
-<span style="color: #52676f;">   end</span>
-<span style="color: #52676f;"> end</span>
+<span style="color: #81908f; background-color: #042028;">@@ -105,6 +106,7 @@</span><span style="color: #81908f; background-color: #042028;"> task :new_post, :title do |t, args|</span>
+<span style="color: #465a61;">   end</span>
+<span style="color: #465a61;">   puts "Creating new post: #{filename}"</span>
+<span style="color: #465a61;">   open(filename, 'w') do |post|</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">    post.puts "#+BEGIN_HTML"</span>
+<span style="color: #465a61;">     post.puts "---"</span>
+<span style="color: #465a61;">     post.puts "layout: post"</span>
+<span style="color: #465a61;">     post.puts "title: \"#{title.gsub(/&amp;/,'&amp;amp;')}\""</span>
+<span style="color: #81908f; background-color: #042028;">@@ -112,6 +114,8 @@</span><span style="color: #81908f; background-color: #042028;"> task :new_post, :title do |t, args|</span>
+<span style="color: #465a61;">     post.puts "comments: true"</span>
+<span style="color: #465a61;">     post.puts "categories: "</span>
+<span style="color: #465a61;">     post.puts "---"</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">    post.puts "#+END_HTML"</span>
+<span style="color: #728a05; font-weight: bold;">+</span><span style="color: #728a05; font-weight: bold;">    post.puts "#+OPTIONS: toc:nil"</span>
+<span style="color: #465a61;">   end</span>
+<span style="color: #465a61;"> end</span>
 </pre>
 </div>
 <ul class="org-ul">

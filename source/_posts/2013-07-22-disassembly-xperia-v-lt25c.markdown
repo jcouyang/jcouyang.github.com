@@ -4,6 +4,8 @@ title: "拆解 Sony Xperia V lt25c 并更换屏幕"
 date: 2013-07-22 20:27
 comments: true
 categories: ["hardware","别买索尼"]
+keywords: "xperia, lt25c, xperia v, sony, 拆解"
+description: "Sony Xperia V lt25c 更换屏幕"
 ---
 <p>
 sony肿么了, 曾经制造从上铺掉下来也木有事的cd机和psp的sony肿

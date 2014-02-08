@@ -1,10 +1,12 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: "How to Write Post Using Octopress and Org Mode"
+title: "How to Write Post Using Octopress, Travis CI and Org Mode"
 date: 2013-06-07 20:06
 comments: true
 categories: ["org-mode","emacs"]
+keywords: "octopress, travis, ci, orgmode, org, emacs"
+description: "write blog using octopress travis ci and orgmode"
 ---
 #+END_HTML
 #+OPTIONS: toc:nil

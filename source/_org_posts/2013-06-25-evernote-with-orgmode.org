@@ -6,6 +6,7 @@ title: "evernote with orgmode"
 date: 2013-06-25 09:16
 comments: true
 categories: ['emacs','orgmode',evernote']
+keywords: "emacs, orgmode, evernote"
 ---
 #+END_HTML
 #+OPTIONS: toc:nil

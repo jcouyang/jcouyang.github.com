@@ -4,7 +4,9 @@ layout: post
 title: "this blog can configure emacs"
 date: 2013-09-13 23:16
 comments: true
-categories: 
+categories: ["emacs","org mode"]
+keywords: "emacs, configure, orgmode, emacs config, .emacs"
+description: "use only one org file to config emacs"
 ---
 #+END_HTML
 #+OPTIONS: toc:nil
