@@ -1,7 +1,7 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: "this blog can configure emacs"
+title: "use only one org file to configure emacs"
 date: 2013-09-13 23:16
 comments: true
 categories: ["emacs","org mode"]

@@ -3,7 +3,9 @@ layout: post
 title: "flash dd-wrt and install transmission in WNR2200 router"
 date: 2013-05-25 21:54
 comments: true
-categories: ["hack"]
+categories: ["hack","dd-wrt","router"]
+keywords: "hack, dd-wrt, router, open wrt,wrt, 迅雷, xunlei, transmission, 智能路由"
+description: "install xunlei or transmission in your router by dd-wrt"
 ---
 
 # Prepaire #

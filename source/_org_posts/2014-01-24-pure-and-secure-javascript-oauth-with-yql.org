@@ -1,11 +1,11 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: "Pure and Secure Client-side Javascript OAuth 2 with YQL"
+title: "GIRA tech stack 1: Pure and Secure Client-side Javascript OAuth 2 with YQL"
 date: 2014-01-24 19:15
 comments: true
-categories: ["Howto","YQL","javascript","oauth"]
-keywords: "yql, javascript, oauth, client side"
+categories: ["Howto","YQL","javascript","oauth", "gira"]
+keywords: "yql, javascript, oauth, client, side"
 description: "use yql to oauth you pure javascript client-side apps."
 ---
 #+END_HTML

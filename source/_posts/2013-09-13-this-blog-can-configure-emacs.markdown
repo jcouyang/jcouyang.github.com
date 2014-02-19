@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "this blog can configure emacs"
+title: "use only one org file to configure emacs"
 date: 2013-09-13 23:16
 comments: true
-categories: 
+categories: ["emacs","org mode"]
+keywords: "emacs, configure, orgmode, emacs config, .emacs"
+description: "use only one org file to config emacs"
 ---
 <p>
 有同学问初学该有个什么starter-kit之类的, 虽然我之前也在用

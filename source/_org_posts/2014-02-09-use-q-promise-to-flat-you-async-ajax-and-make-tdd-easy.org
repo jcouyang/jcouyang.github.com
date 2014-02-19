@@ -1,0 +1,143 @@
+#+BEGIN_HTML
+---
+layout: post
+title: "The source code behinde GIRA 2: Why Promises will make async easy"
+date: 2014-02-09 18:14
+comments: true
+categories: ["gira", "promises", "q", "javascript"]
+keywords: "gira, promises, q, javascript, ajax, async"
+description: "The source code behinde GIRA 2: Why Promises will make ajax easy"
+---
+#+END_HTML
+#+OPTIONS: toc:nil
+
+** What is Promises
+[[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise][Promise]] is a proxy for a value not knowing when its creation time. It provide 2 Methods =then= and =catch=, which return promise so they can be chained.
+
+*** Promise.prototype.then(onFulfilled, onRejected)
+Appends fullfillment and rejection handlers to the promise, and returns a new promise resolving to the return value of the called handler.
+
+*** Promise.prototype.catch(onRejected)
+Appends a rejection handler callback to the promise, and returns a new promise resolving to the return value of the callback if it is called, or to its original fulfillment value if the promise is instead fulfilled.
+
+** Why Promises
+有许多理由你将会需要用到 Promises. 好吧先来解释一下什么是 =Promises= 。 这类似于我们经常使用的 jQuery.ajax() 返回的那个玩意 -- =Deferreds=.
+
+比如想要在对 ajax 请求来的数据做加工
+#+BEGIN_SRC javascript
+  $.ajax("yourdata.url").then(function(data){
+      // do something with your data
+  })
+#+END_SRC
+
+对等待多个请求返回的数据做加工
+#+BEGIN_SRC javascript
+  $.when($.ajax("yourdata1.url"),$.ajax("yourdata2.url")).then(function(data){
+    // do something with these data                                                           
+  })
+#+END_SRC
+
+好吧如果这么说 Promises 不是什么新玩意， jQurey 早都有了, 为什么还要用什么 =q.js=.
+
+** Diference between Deferreds and Promises
+常用的 Promises 库为:
+- [[https://github.com/kriskowal/q][Q]]
+- [[https://github.com/cujojs/when][when]]
+- [[https://github.com/tildeio/rsvp.js][rsvp.js]]
+
+他们都执行同一个标准 [[https://github.com/promises-aplus/promises-spec][Promises/A+]], 而 jQuery 的 Deferreds 虽然也做类似的事情，但是并不兼容 Promises/A+. 而 Chrome 32 已经原生支持了这一标准，Firefox 还在 Beta 阶段。
+** How to use
+I've chose  [[https://github.com/kriskowal/q][Q]] as my Promises implement library. Take GIRA as example, GIRA will request data from Github API and *then* manipulate them into the page I want. So basiclly two step but actually if you want have more complex data to combind, Promise will make your life easier.
+*** What is the old way looks like
+#+BEGIN_SRC javascript
+  $.getJSON(this.REPO_BASE, function(issues){
+      $.getJSON(this.REPO_BASE + 'user/repos', function(labels){
+        // do something with issues and labels
+          renderIssueAndLabel();
+      })
+  })   
+       
+#+END_SRC
+
+seems like dump code isn't it. now see what eligent will be
+
+*** Promisify Ajax Request
+I just promisify all Github API function return Promises.
+
+Say I want all the label of my project from Github API.
+#+BEGIN_SRC javascript
+Github.prototype ={
+...
+	getLabels: function(){
+		return Q($.ajax({
+			url: 'github.issues.labels.url'
+		}));
+	}
+...
+}
+#+END_SRC
+
+*** Thenable
+#+BEGIN_SRC javascript
+          Gira.prototype.groupIssuesByLabels = function() {
+            return Q.all([this.github.getIssues(this.owner,this.repo,this.milestone),this.github.getLabels(this.owner,this.repo)])
+                  .then(function(data){
+          //combind these Issues and Labels
+                  },function(error){
+                      // promise not fullfill
+                  })
+          }
+#+END_SRC
+since =then()= in =groupIssuesByLabels=  will also return a thenable object. So you can do this then:
+
+#+BEGIN_SRC javascript
+  gira.groupIssuesByLabes().then(renderIssues,errorHandler);
+#+END_SRC
+
+*** Error Handling
+I think this is the best and my favor part of Promise
+
+#+BEGIN_SRC javascript
+      Q('some data').then(function(data){
+          return something1(data);
+      }).then(function(data){
+          return something2(data);
+      }).catch(function(error){
+          // if any of Q(), something1() or something2() goes wrong.
+      }).then(function(){
+          // do this any way
+          doanyway();
+    })
+#+END_SRC
+
+this is the same as:
+#+BEGIN_SRC javascript
+  function doanyway(){
+      
+  }
+  function something1(data, callback){
+      try{
+          //do something
+      }catch(function(error){
+          doanyway();
+      })
+  
+      callback(data);
+  }
+  function something2(data){
+    try{
+          //do something
+      }catch(function(error){
+          doanyway();
+      })
+  
+  }
+  try{
+      $.getJSON('some data', function(data){
+          something1(data, something2)
+      }) 
+  }catch(function(error){
+      // 
+  })
+#+END_SRC
+
