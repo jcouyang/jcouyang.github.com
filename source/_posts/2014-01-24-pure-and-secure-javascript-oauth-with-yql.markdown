@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GIRA tech stack 1: Pure and Secure Client-side Javascript OAuth 2 with YQL"
+title: "The source code behinde GIRA 1: Pure and Secure Client-side Javascript OAuth 2 with YQL"
 date: 2014-01-24 19:15
 comments: true
 categories: ["Howto","YQL","javascript","oauth", "gira"]

@@ -21,20 +21,22 @@ Appends fullfillment and rejection handlers to the promise, and returns a new pr
 Appends a rejection handler callback to the promise, and returns a new promise resolving to the return value of the callback if it is called, or to its original fulfillment value if the promise is instead fulfilled.
 
 ** Why Promises
+there are so many reasons you should use promise in you client rich project if you are not using any MV* frameworks.
+
 有许多理由你将会需要用到 Promises. 好吧先来解释一下什么是 =Promises= 。 这类似于我们经常使用的 jQuery.ajax() 返回的那个玩意 -- =Deferreds=.
 
 比如想要在对 ajax 请求来的数据做加工
 #+BEGIN_SRC javascript
-  $.ajax("yourdata.url").then(function(data){
-      // do something with your data
-  })
+  $.ajax("yourdata.url").then(function(data){
+      // do something with your data
+  })
 #+END_SRC
 
 对等待多个请求返回的数据做加工
 #+BEGIN_SRC javascript
-  $.when($.ajax("yourdata1.url"),$.ajax("yourdata2.url")).then(function(data){
-    // do something with these data                                                           
-  })
+  $.when($.ajax("yourdata1.url"),$.ajax("yourdata2.url")).then(function(data){
+    // do something with these data                                                           
+  })
 #+END_SRC
 
 好吧如果这么说 Promises 不是什么新玩意， jQurey 早都有了, 为什么还要用什么 =q.js=.
@@ -47,24 +49,24 @@ Appends a rejection handler callback to the promise, and returns a new promise r
 
 他们都执行同一个标准 [[https://github.com/promises-aplus/promises-spec][Promises/A+]], 而 jQuery 的 Deferreds 虽然也做类似的事情，但是并不兼容 Promises/A+. 而 Chrome 32 已经原生支持了这一标准，Firefox 还在 Beta 阶段。
 ** How to use
-I've chose  [[https://github.com/kriskowal/q][Q]] as my Promises implement library. Take GIRA as example, GIRA will request data from Github API and *then* manipulate them into the page I want. So basiclly two step but actually if you want have more complex data to combind, Promise will make your life easier.
+I've chose  [[https://github.com/kriskowal/q][Q]] as my Promises implement library. Take GIRA as example, GIRA will request data from Github API and *then* manipulate them into the page I want. So basiclly two step but actually if you want have more complex data to combind, Promise will make your life easier.
 *** What is the old way looks like
 #+BEGIN_SRC javascript
-  $.getJSON(this.REPO_BASE, function(issues){
-      $.getJSON(this.REPO_BASE + 'user/repos', function(labels){
-        // do something with issues and labels
-          renderIssueAndLabel();
-      })
-  })   
-       
+  $.getJSON(this.REPO_BASE, function(issues){
+      $.getJSON(this.REPO_BASE + 'user/repos', function(labels){
+        // do something with issues and labels
+          renderIssueAndLabel();
+      })
+  })   
+       
 #+END_SRC
 
 seems like dump code isn't it. now see what eligent will be
 
 *** Promisify Ajax Request
-I just promisify all Github API function return Promises.
+I just promisify all Github API function to make them return Promises.
 
-Say I want all the label of my project from Github API.
+Say I want all the label of my project from Github API. simply parse jquery deferred in to Promise.
 #+BEGIN_SRC javascript
 Github.prototype ={
 ...
@@ -79,65 +81,65 @@ Github.prototype ={
 
 *** Thenable
 #+BEGIN_SRC javascript
-          Gira.prototype.groupIssuesByLabels = function() {
-            return Q.all([this.github.getIssues(this.owner,this.repo,this.milestone),this.github.getLabels(this.owner,this.repo)])
-                  .then(function(data){
-          //combind these Issues and Labels
-                  },function(error){
-                      // promise not fullfill
-                  })
-          }
+          Gira.prototype.groupIssuesByLabels = function() {
+            return Q.all([this.github.getIssues(this.owner,this.repo,this.milestone),this.github.getLabels(this.owner,this.repo)])
+                  .then(function(data){
+          //combind these Issues and Labels
+                  },function(error){
+                      // promise not fullfill
+                  })
+          }
 #+END_SRC
-since =then()= in =groupIssuesByLabels=  will also return a thenable object. So you can do this then:
+since =then()= in =groupIssuesByLabels=  will also return a thenable object. So you can do this then:
 
 #+BEGIN_SRC javascript
-  gira.groupIssuesByLabes().then(renderIssues,errorHandler);
+  gira.groupIssuesByLabes().then(renderIssues,errorHandler);
 #+END_SRC
 
 *** Error Handling
 I think this is the best and my favor part of Promise
 
 #+BEGIN_SRC javascript
-      Q('some data').then(function(data){
-          return something1(data);
-      }).then(function(data){
-          return something2(data);
-      }).catch(function(error){
-          // if any of Q(), something1() or something2() goes wrong.
-      }).then(function(){
-          // do this any way
-          doanyway();
-    })
+      Q('some data').then(function(data){
+          return something1(data);
+      }).then(function(data){
+          return something2(data);
+      }).catch(function(error){
+          // if any of Q(), something1() or something2() goes wrong.
+      }).then(function(){
+          // do this any way
+          doanyway();
+    })
 #+END_SRC
 
 this is the same as:
 #+BEGIN_SRC javascript
-  function doanyway(){
-      
-  }
-  function something1(data, callback){
-      try{
-          //do something
-      }catch(function(error){
-          doanyway();
-      })
-  
-      callback(data);
-  }
-  function something2(data){
-    try{
-          //do something
-      }catch(function(error){
-          doanyway();
-      })
-  
-  }
-  try{
-      $.getJSON('some data', function(data){
-          something1(data, something2)
-      }) 
-  }catch(function(error){
-      // 
-  })
+  function doanyway(){
+      
+  }
+  function something1(data, callback){
+      try{
+          //do something
+      }catch(function(error){
+          doanyway();
+      })
+  
+      callback(data);
+  }
+  function something2(data){
+    try{
+          //do something
+      }catch(function(error){
+          doanyway();
+      })
+  
+  }
+  try{
+      $.getJSON('some data', function(data){
+          something1(data, something2)
+      }) 
+  }catch(function(error){
+      // 
+  })
 #+END_SRC
 
