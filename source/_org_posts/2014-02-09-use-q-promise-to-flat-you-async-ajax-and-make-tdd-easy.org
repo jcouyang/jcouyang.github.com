@@ -1,7 +1,7 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: "The source code behinde GIRA 2: Why Promises will make async easy"
+title: "The source code behind GIRA 2: Why Promises will make async easy"
 date: 2014-02-09 18:14
 comments: true
 categories: ["gira", "promises", "q", "javascript"]
