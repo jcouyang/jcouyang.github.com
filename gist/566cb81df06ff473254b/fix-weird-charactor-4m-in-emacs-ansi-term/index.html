@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist14795999" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-ansi-term-ti-L1" rel="file-ansi-term-ti-L1">1</span>
+            <span class="line-number" id="file-ansi-term-ti-L2" rel="file-ansi-term-ti-L2">2</span>
+            <span class="line-number" id="file-ansi-term-ti-L3" rel="file-ansi-term-ti-L3">3</span>
+            <span class="line-number" id="file-ansi-term-ti-L4" rel="file-ansi-term-ti-L4">4</span>
+            <span class="line-number" id="file-ansi-term-ti-L5" rel="file-ansi-term-ti-L5">5</span>
+            <span class="line-number" id="file-ansi-term-ti-L6" rel="file-ansi-term-ti-L6">6</span>
+            <span class="line-number" id="file-ansi-term-ti-L7" rel="file-ansi-term-ti-L7">7</span>
+            <span class="line-number" id="file-ansi-term-ti-L8" rel="file-ansi-term-ti-L8">8</span>
+            <span class="line-number" id="file-ansi-term-ti-L9" rel="file-ansi-term-ti-L9">9</span>
+            <span class="line-number" id="file-ansi-term-ti-L10" rel="file-ansi-term-ti-L10">10</span>
+            <span class="line-number" id="file-ansi-term-ti-L11" rel="file-ansi-term-ti-L11">11</span>
+            <span class="line-number" id="file-ansi-term-ti-L12" rel="file-ansi-term-ti-L12">12</span>
+            <span class="line-number" id="file-ansi-term-ti-L13" rel="file-ansi-term-ti-L13">13</span>
+            <span class="line-number" id="file-ansi-term-ti-L14" rel="file-ansi-term-ti-L14">14</span>
+            <span class="line-number" id="file-ansi-term-ti-L15" rel="file-ansi-term-ti-L15">15</span>
+            <span class="line-number" id="file-ansi-term-ti-L16" rel="file-ansi-term-ti-L16">16</span>
+            <span class="line-number" id="file-ansi-term-ti-L17" rel="file-ansi-term-ti-L17">17</span>
+            <span class="line-number" id="file-ansi-term-ti-L18" rel="file-ansi-term-ti-L18">18</span>
+            <span class="line-number" id="file-ansi-term-ti-L19" rel="file-ansi-term-ti-L19">19</span>
+            <span class="line-number" id="file-ansi-term-ti-L20" rel="file-ansi-term-ti-L20">20</span>
+            <span class="line-number" id="file-ansi-term-ti-L21" rel="file-ansi-term-ti-L21">21</span>
+            <span class="line-number" id="file-ansi-term-ti-L22" rel="file-ansi-term-ti-L22">22</span>
+            <span class="line-number" id="file-ansi-term-ti-L23" rel="file-ansi-term-ti-L23">23</span>
+            <span class="line-number" id="file-ansi-term-ti-L24" rel="file-ansi-term-ti-L24">24</span>
+            <span class="line-number" id="file-ansi-term-ti-L25" rel="file-ansi-term-ti-L25">25</span>
+            <span class="line-number" id="file-ansi-term-ti-L26" rel="file-ansi-term-ti-L26">26</span>
+            <span class="line-number" id="file-ansi-term-ti-L27" rel="file-ansi-term-ti-L27">27</span>
+            <span class="line-number" id="file-ansi-term-ti-L28" rel="file-ansi-term-ti-L28">28</span>
+            <span class="line-number" id="file-ansi-term-ti-L29" rel="file-ansi-term-ti-L29">29</span>
+            <span class="line-number" id="file-ansi-term-ti-L30" rel="file-ansi-term-ti-L30">30</span>
+            <span class="line-number" id="file-ansi-term-ti-L31" rel="file-ansi-term-ti-L31">31</span>
+            <span class="line-number" id="file-ansi-term-ti-L32" rel="file-ansi-term-ti-L32">32</span>
+            <span class="line-number" id="file-ansi-term-ti-L33" rel="file-ansi-term-ti-L33">33</span>
+            <span class="line-number" id="file-ansi-term-ti-L34" rel="file-ansi-term-ti-L34">34</span>
+            <span class="line-number" id="file-ansi-term-ti-L35" rel="file-ansi-term-ti-L35">35</span>
+            <span class="line-number" id="file-ansi-term-ti-L36" rel="file-ansi-term-ti-L36">36</span>
+            <span class="line-number" id="file-ansi-term-ti-L37" rel="file-ansi-term-ti-L37">37</span>
+            <span class="line-number" id="file-ansi-term-ti-L38" rel="file-ansi-term-ti-L38">38</span>
+            <span class="line-number" id="file-ansi-term-ti-L39" rel="file-ansi-term-ti-L39">39</span>
+            <span class="line-number" id="file-ansi-term-ti-L40" rel="file-ansi-term-ti-L40">40</span>
+            <span class="line-number" id="file-ansi-term-ti-L41" rel="file-ansi-term-ti-L41">41</span>
+            <span class="line-number" id="file-ansi-term-ti-L42" rel="file-ansi-term-ti-L42">42</span>
+            <span class="line-number" id="file-ansi-term-ti-L43" rel="file-ansi-term-ti-L43">43</span>
+            <span class="line-number" id="file-ansi-term-ti-L44" rel="file-ansi-term-ti-L44">44</span>
+            <span class="line-number" id="file-ansi-term-ti-L45" rel="file-ansi-term-ti-L45">45</span>
+            <span class="line-number" id="file-ansi-term-ti-L46" rel="file-ansi-term-ti-L46">46</span>
+            <span class="line-number" id="file-ansi-term-ti-L47" rel="file-ansi-term-ti-L47">47</span>
+            <span class="line-number" id="file-ansi-term-ti-L48" rel="file-ansi-term-ti-L48">48</span>
+            <span class="line-number" id="file-ansi-term-ti-L49" rel="file-ansi-term-ti-L49">49</span>
+            <span class="line-number" id="file-ansi-term-ti-L50" rel="file-ansi-term-ti-L50">50</span>
+            <span class="line-number" id="file-ansi-term-ti-L51" rel="file-ansi-term-ti-L51">51</span>
+            <span class="line-number" id="file-ansi-term-ti-L52" rel="file-ansi-term-ti-L52">52</span>
+            <span class="line-number" id="file-ansi-term-ti-L53" rel="file-ansi-term-ti-L53">53</span>
+            <span class="line-number" id="file-ansi-term-ti-L54" rel="file-ansi-term-ti-L54">54</span>
+            <span class="line-number" id="file-ansi-term-ti-L55" rel="file-ansi-term-ti-L55">55</span>
+            <span class="line-number" id="file-ansi-term-ti-L56" rel="file-ansi-term-ti-L56">56</span>
+            <span class="line-number" id="file-ansi-term-ti-L57" rel="file-ansi-term-ti-L57">57</span>
+            <span class="line-number" id="file-ansi-term-ti-L58" rel="file-ansi-term-ti-L58">58</span>
+            <span class="line-number" id="file-ansi-term-ti-L59" rel="file-ansi-term-ti-L59">59</span>
+            <span class="line-number" id="file-ansi-term-ti-L60" rel="file-ansi-term-ti-L60">60</span>
+            <span class="line-number" id="file-ansi-term-ti-L61" rel="file-ansi-term-ti-L61">61</span>
+            <span class="line-number" id="file-ansi-term-ti-L62" rel="file-ansi-term-ti-L62">62</span>
+            <span class="line-number" id="file-ansi-term-ti-L63" rel="file-ansi-term-ti-L63">63</span>
+            <span class="line-number" id="file-ansi-term-ti-L64" rel="file-ansi-term-ti-L64">64</span>
+            <span class="line-number" id="file-ansi-term-ti-L65" rel="file-ansi-term-ti-L65">65</span>
+            <span class="line-number" id="file-ansi-term-ti-L66" rel="file-ansi-term-ti-L66">66</span>
+            <span class="line-number" id="file-ansi-term-ti-L67" rel="file-ansi-term-ti-L67">67</span>
+            <span class="line-number" id="file-ansi-term-ti-L68" rel="file-ansi-term-ti-L68">68</span>
+            <span class="line-number" id="file-ansi-term-ti-L69" rel="file-ansi-term-ti-L69">69</span>
+            <span class="line-number" id="file-ansi-term-ti-L70" rel="file-ansi-term-ti-L70">70</span>
+            <span class="line-number" id="file-ansi-term-ti-L71" rel="file-ansi-term-ti-L71">71</span>
+            <span class="line-number" id="file-ansi-term-ti-L72" rel="file-ansi-term-ti-L72">72</span>
+            <span class="line-number" id="file-ansi-term-ti-L73" rel="file-ansi-term-ti-L73">73</span>
+            <span class="line-number" id="file-ansi-term-ti-L74" rel="file-ansi-term-ti-L74">74</span>
+            <span class="line-number" id="file-ansi-term-ti-L75" rel="file-ansi-term-ti-L75">75</span>
+            <span class="line-number" id="file-ansi-term-ti-L76" rel="file-ansi-term-ti-L76">76</span>
+            <span class="line-number" id="file-ansi-term-ti-L77" rel="file-ansi-term-ti-L77">77</span>
+            <span class="line-number" id="file-ansi-term-ti-L78" rel="file-ansi-term-ti-L78">78</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-ansi-term-ti-LC1">eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
+</div><div class="line" id="file-ansi-term-ti-LC2">#
+</div><div class="line" id="file-ansi-term-ti-LC3"># The code here is forced by the interface, and is not subject to
+</div><div class="line" id="file-ansi-term-ti-LC4"># copyright, constituting the only possible expression of the algorithm
+</div><div class="line" id="file-ansi-term-ti-LC5"># in this format.
+</div><div class="line" id="file-ansi-term-ti-LC6">#
+</div><div class="line" id="file-ansi-term-ti-LC7"># When updating this file, etc/e/eterm-color should be regenerated by 
+</div><div class="line" id="file-ansi-term-ti-LC8"># running &quot;make e/eterm-color&quot; in the etc directory.
+</div><div class="line" id="file-ansi-term-ti-LC9"># Any change to this file should be done at the same time with a
+</div><div class="line" id="file-ansi-term-ti-LC10"># corresponding change to the TERMCAP environment variable in term.el.
+</div><div class="line" id="file-ansi-term-ti-LC11"># Comments in term.el specify where each of these capabilities is implemented.
+</div><div class="line" id="file-ansi-term-ti-LC12">	colors#8,
+</div><div class="line" id="file-ansi-term-ti-LC13">	cols#80,
+</div><div class="line" id="file-ansi-term-ti-LC14">	lines#24,
+</div><div class="line" id="file-ansi-term-ti-LC15">	pairs#64,
+</div><div class="line" id="file-ansi-term-ti-LC16">	am,
+</div><div class="line" id="file-ansi-term-ti-LC17">	mir,
+</div><div class="line" id="file-ansi-term-ti-LC18">	msgr,
+</div><div class="line" id="file-ansi-term-ti-LC19">	xenl,
+</div><div class="line" id="file-ansi-term-ti-LC20">	bel=^G,
+</div><div class="line" id="file-ansi-term-ti-LC21">	bold=\E[1m,
+</div><div class="line" id="file-ansi-term-ti-LC22">	clear=\E[H\E[J,
+</div><div class="line" id="file-ansi-term-ti-LC23">	cr=\r,
+</div><div class="line" id="file-ansi-term-ti-LC24">	csr=\E[%i%p1%d;%p2%dr,
+</div><div class="line" id="file-ansi-term-ti-LC25">	cub1=\b,
+</div><div class="line" id="file-ansi-term-ti-LC26">	cub=\E[%p1%dD,
+</div><div class="line" id="file-ansi-term-ti-LC27">	cud1=\n,
+</div><div class="line" id="file-ansi-term-ti-LC28">	cud=\E[%p1%dB,
+</div><div class="line" id="file-ansi-term-ti-LC29">	cuf1=\E[C,
+</div><div class="line" id="file-ansi-term-ti-LC30">	cuf=\E[%p1%dC,
+</div><div class="line" id="file-ansi-term-ti-LC31">	cup=\E[%i%p1%d;%p2%dH,
+</div><div class="line" id="file-ansi-term-ti-LC32">	cuu1=\E[A,
+</div><div class="line" id="file-ansi-term-ti-LC33">	cuu=\E[%p1%dA,
+</div><div class="line" id="file-ansi-term-ti-LC34">	dch1=\E[P,
+</div><div class="line" id="file-ansi-term-ti-LC35">	dch=\E[%p1%dP,
+</div><div class="line" id="file-ansi-term-ti-LC36">	dl1=\E[M,
+</div><div class="line" id="file-ansi-term-ti-LC37">	dl=\E[%p1%dM,
+</div><div class="line" id="file-ansi-term-ti-LC38">	ed=\E[J,
+</div><div class="line" id="file-ansi-term-ti-LC39">	el1=\E[1K,
+</div><div class="line" id="file-ansi-term-ti-LC40">	el=\E[K,
+</div><div class="line" id="file-ansi-term-ti-LC41">	home=\E[H,
+</div><div class="line" id="file-ansi-term-ti-LC42">	ht=\t,
+</div><div class="line" id="file-ansi-term-ti-LC43">	ich=\E[%p1%d@,
+</div><div class="line" id="file-ansi-term-ti-LC44">	il1=\E[L,
+</div><div class="line" id="file-ansi-term-ti-LC45">	il=\E[%p1%dL,
+</div><div class="line" id="file-ansi-term-ti-LC46">	ind=\n,
+</div><div class="line" id="file-ansi-term-ti-LC47">	invis=\E[8m,
+</div><div class="line" id="file-ansi-term-ti-LC48">	kbs=^?,
+</div><div class="line" id="file-ansi-term-ti-LC49">	kcub1=\EOD,
+</div><div class="line" id="file-ansi-term-ti-LC50">	kcud1=\EOB,
+</div><div class="line" id="file-ansi-term-ti-LC51">	kcuf1=\EOC,
+</div><div class="line" id="file-ansi-term-ti-LC52">	kcuu1=\EOA,
+</div><div class="line" id="file-ansi-term-ti-LC53">	kdch1=\E[3~,
+</div><div class="line" id="file-ansi-term-ti-LC54">	kend=\E[4~,
+</div><div class="line" id="file-ansi-term-ti-LC55">	khome=\E[1~,
+</div><div class="line" id="file-ansi-term-ti-LC56">	kich1=\E[2~,
+</div><div class="line" id="file-ansi-term-ti-LC57">	knp=\E[6~,
+</div><div class="line" id="file-ansi-term-ti-LC58">	kpp=\E[5~,
+</div><div class="line" id="file-ansi-term-ti-LC59">	op=\E[39;49m,
+</div><div class="line" id="file-ansi-term-ti-LC60">	rc=\E8,
+</div><div class="line" id="file-ansi-term-ti-LC61">	rev=\E[7m,
+</div><div class="line" id="file-ansi-term-ti-LC62">	ri=\EM,
+</div><div class="line" id="file-ansi-term-ti-LC63">	rmir=\E[4l,
+</div><div class="line" id="file-ansi-term-ti-LC64">	rmso=\E[27m,
+</div><div class="line" id="file-ansi-term-ti-LC65">	rmul=\E[24m,
+</div><div class="line" id="file-ansi-term-ti-LC66">	rs1=\Ec,
+</div><div class="line" id="file-ansi-term-ti-LC67">	sc=\E7,
+</div><div class="line" id="file-ansi-term-ti-LC68">	setab=\E[%p1%{40}%+%dm,
+</div><div class="line" id="file-ansi-term-ti-LC69">	setaf=\E[%p1%{30}%+%dm,
+</div><div class="line" id="file-ansi-term-ti-LC70">	sgr0=\E[m,
+</div><div class="line" id="file-ansi-term-ti-LC71">	smir=\E[4h,
+</div><div class="line" id="file-ansi-term-ti-LC72">	smul=\E[4m,
+</div><div class="line" id="file-ansi-term-ti-LC73"> 	smso=\E[7m,
+</div><div class="line" id="file-ansi-term-ti-LC74"> 	u6=\E[%i%d;%dR,
+</div><div class="line" id="file-ansi-term-ti-LC75"> 	u7=\E[6n,
+</div><div class="line" id="file-ansi-term-ti-LC76">#	smcup=\E[?47h,
+</div><div class="line" id="file-ansi-term-ti-LC77">#	rmcup=\E[?47l,
+</div><div class="line" id="file-ansi-term-ti-LC78">#       rs2 may need to be added
+</div></pre>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/566cb81df06ff473254b/raw/ansi-term.ti" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/566cb81df06ff473254b#file-ansi-term-ti">ansi-term.ti</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/566cb81df06ff473254b/file/fix-weird-4m-in-emacs-ansi-term.md">
+        <p>download the ansi-term.ti file.</p>
+
+<p><code>tic -o ~/.terminfo ansi-term.ti</code></p>
+
+<p><a href="https://camo.githubusercontent.com/c997dc323df8121fe036b8ce86573a2157b3986b/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f616e73692d7465726d2d346d" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/c997dc323df8121fe036b8ce86573a2157b3986b/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f616e73692d7465726d2d346d" alt="Analytics" data-canonical-src="https://ga-beacon.appspot.com/UA-32314154-5/blogist/ansi-term-4m" style="max-width:100%;"></a></p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/566cb81df06ff473254b/raw/fix-weird-4m-in-emacs-ansi-term.md" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/566cb81df06ff473254b#file-fix-weird-4m-in-emacs-ansi-term-md">fix-weird-4m-in-emacs-ansi-term.md</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

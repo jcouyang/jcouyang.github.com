@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist9913972" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/9913972/file/2014-02-09-use-q-promise-to-flat-you-async-ajax-and-make-tdd-easy.org">
+        <h2>
+<a name="user-content-what-is-promises" class="anchor" href="#what-is-promises" rel="noreferrer"><span class="octicon octicon-link"></span></a>What is Promises</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" rel="noreferrer">Promise</a> is a proxy for a value not knowing when its creation time. It provide 2 Methods <code>then</code> and <code>catch</code>, which return promise so they can be chained.</p>
+<h3>
+<a name="user-content-promiseprototypethenonfulfilled-onrejected" class="anchor" href="#promiseprototypethenonfulfilled-onrejected" rel="noreferrer"><span class="octicon octicon-link"></span></a>Promise.prototype.then(onFulfilled, onRejected)</h3>
+<p>Appends fullfillment and rejection handlers to the promise, and returns a new promise resolving to the return value of the called handler.</p>
+<h3>
+<a name="user-content-promiseprototypecatchonrejected" class="anchor" href="#promiseprototypecatchonrejected" rel="noreferrer"><span class="octicon octicon-link"></span></a>Promise.prototype.catch(onRejected)</h3>
+<p>Appends a rejection handler callback to the promise, and returns a new promise resolving to the return value of the callback if it is called, or to its original fulfillment value if the promise is instead fulfilled.</p>
+<h2>
+<a name="user-content-why-promises" class="anchor" href="#why-promises" rel="noreferrer"><span class="octicon octicon-link"></span></a>Why Promises</h2>
+<p>there are so many reasons you should use promise in you client rich project if you are not using any MV* frameworks.</p>
+<p>有许多理由你将会需要用到 Promises. 好吧先来解释一下什么是 <code>Promises</code> 。 这类似于我们经常使用的 jQuery.ajax() 返回的那个玩意 – <code>Deferreds</code>.</p>
+<p>比如想要在对 ajax 请求来的数据做加工</p>
+<div class="highlight highlight-javascript"><pre>
+  $.ajax(<span class="pl-s1"><span class="pl-pds">"</span>yourdata.url<span class="pl-pds">"</span></span>).then(<span class="pl-st">function</span>(<span class="pl-vpf">data</span>){
+      <span class="pl-c">// do something with your data</span>
+  })</pre></div>
+<p>对等待多个请求返回的数据做加工</p>
+<div class="highlight highlight-javascript"><pre>
+  $.when($.ajax(<span class="pl-s1"><span class="pl-pds">"</span>yourdata1.url<span class="pl-pds">"</span></span>),$.ajax(<span class="pl-s1"><span class="pl-pds">"</span>yourdata2.url<span class="pl-pds">"</span></span>)).then(<span class="pl-st">function</span>(<span class="pl-vpf">data</span>){
+    <span class="pl-c">// do something with these data                                                           </span>
+  })</pre></div>
+<p>好吧如果这么说 Promises 不是什么新玩意， jQurey 早都有了, 为什么还要用什么 <code>q.js</code>.</p>
+<h2>
+<a name="user-content-diference-between-deferreds-and-promises" class="anchor" href="#diference-between-deferreds-and-promises" rel="noreferrer"><span class="octicon octicon-link"></span></a>Diference between Deferreds and Promises</h2>
+<p>常用的 Promises 库为:</p>
+<ul class="task-list">
+  <li><a href="https://github.com/kriskowal/q" rel="noreferrer">Q</a></li>
+  <li><a href="https://github.com/cujojs/when" rel="noreferrer">when</a></li>
+  <li><a href="https://github.com/tildeio/rsvp.js" rel="noreferrer">rsvp.js</a></li>
+</ul>
+<p>他们都执行同一个标准 <a href="https://github.com/promises-aplus/promises-spec" rel="noreferrer">Promises/A+</a>, 而 jQuery 的 Deferreds 虽然也做类似的事情，但是并不兼容 Promises/A+. 而 Chrome 32 已经原生支持了这一标准，Firefox 还在 Beta 阶段。</p>
+<h2>
+<a name="user-content-how-to-use" class="anchor" href="#how-to-use" rel="noreferrer"><span class="octicon octicon-link"></span></a>How to use</h2>
+<p>I’ve chose  <a href="https://github.com/kriskowal/q" rel="noreferrer">Q</a> as my Promises implement library. Take GIRA as example, GIRA will request data from Github API and <b>then</b> manipulate them into the page I want. So basiclly two step but actually if you want have more complex data to combind, Promise will make your life easier.</p>
+<h3>
+<a name="user-content-what-is-the-old-way-looks-like" class="anchor" href="#what-is-the-old-way-looks-like" rel="noreferrer"><span class="octicon octicon-link"></span></a>What is the old way looks like</h3>
+<div class="highlight highlight-javascript"><pre>
+  $.getJSON(<span class="pl-v">this</span>.REPO_BASE, <span class="pl-st">function</span>(<span class="pl-vpf">issues</span>){
+      $.getJSON(<span class="pl-v">this</span>.REPO_BASE <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">'</span>user/repos<span class="pl-pds">'</span></span>, <span class="pl-st">function</span>(<span class="pl-vpf">labels</span>){
+        <span class="pl-c">// do something with issues and labels</span>
+          renderIssueAndLabel();
+      })
+  })   
+       </pre></div>
+<p>seems like dump code isn’t it. now see what eligent will be</p>
+<h3>
+<a name="user-content-promisify-ajax-request" class="anchor" href="#promisify-ajax-request" rel="noreferrer"><span class="octicon octicon-link"></span></a>Promisify Ajax Request</h3>
+<p>I just promisify all Github API function to make them return Promises.</p>
+<p>Say I want all the label of my project from Github API. simply parse jquery deferred in to Promise.</p>
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-s3">Github</span>.<span class="pl-sc">prototype</span> <span class="pl-k">=</span>{
+...
+        <span class="pl-en">getLabels</span>: <span class="pl-st">function</span>(){
+                <span class="pl-k">return</span> Q($.ajax({
+                        url<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>github.issues.labels.url<span class="pl-pds">'</span></span>
+                }));
+        }
+...
+}</pre></div>
+<h3>
+<a name="user-content-thenable" class="anchor" href="#thenable" rel="noreferrer"><span class="octicon octicon-link"></span></a>Thenable</h3>
+<div class="highlight highlight-javascript"><pre>
+          <span class="pl-s3">Gira</span>.<span class="pl-sc">prototype</span>.<span class="pl-en">groupIssuesByLabels</span> <span class="pl-k">=</span> <span class="pl-st">function</span>() {
+            <span class="pl-k">return</span> Q.<span class="pl-sc">all</span>([<span class="pl-v">this</span>.github.getIssues(<span class="pl-v">this</span>.owner,<span class="pl-v">this</span>.repo,<span class="pl-v">this</span>.milestone),<span class="pl-v">this</span>.github.getLabels(<span class="pl-v">this</span>.owner,<span class="pl-v">this</span>.repo)])
+                  .then(<span class="pl-st">function</span>(<span class="pl-vpf">data</span>){
+          <span class="pl-c">//combind these Issues and Labels</span>
+                  },<span class="pl-st">function</span>(<span class="pl-vpf">error</span>){
+                      <span class="pl-c">// promise not fullfill</span>
+                  })
+          }</pre></div>
+<p>since <code>then()</code> in =groupIssuesByLabels=  will also return a thenable object. So you can do this then:</p>
+<div class="highlight highlight-javascript"><pre>
+  gira.groupIssuesByLabes().then(renderIssues,errorHandler);</pre></div>
+<h3>
+<a name="user-content-error-handling" class="anchor" href="#error-handling" rel="noreferrer"><span class="octicon octicon-link"></span></a>Error Handling</h3>
+<p>I think this is the best and my favor part of Promise</p>
+<div class="highlight highlight-javascript"><pre>
+      Q(<span class="pl-s1"><span class="pl-pds">'</span>some data<span class="pl-pds">'</span></span>).then(<span class="pl-st">function</span>(<span class="pl-vpf">data</span>){
+          <span class="pl-k">return</span> something1(data);
+      }).then(<span class="pl-st">function</span>(<span class="pl-vpf">data</span>){
+          <span class="pl-k">return</span> something2(data);
+      }).catch(<span class="pl-st">function</span>(<span class="pl-vpf">error</span>){
+          <span class="pl-c">// if any of Q(), something1() or something2() goes wrong.</span>
+      }).then(<span class="pl-st">function</span>(){
+          <span class="pl-c">// do this any way</span>
+          doanyway();
+    })</pre></div>
+<p>this is the same as:</p>
+<div class="highlight highlight-javascript"><pre>
+  <span class="pl-st">function</span> <span class="pl-en">doanyway</span>(){
+      
+  }
+  <span class="pl-st">function</span> <span class="pl-en">something1</span>(<span class="pl-vpf">data</span>, <span class="pl-vpf">callback</span>){
+      <span class="pl-k">try</span>{
+          <span class="pl-c">//do something</span>
+      }<span class="pl-k">catch</span>(<span class="pl-st">function</span>(<span class="pl-vpf">error</span>){
+          doanyway();
+      })
+  
+      callback(data);
+  }
+  <span class="pl-st">function</span> <span class="pl-en">something2</span>(<span class="pl-vpf">data</span>){
+    <span class="pl-k">try</span>{
+          <span class="pl-c">//do something</span>
+      }<span class="pl-k">catch</span>(<span class="pl-st">function</span>(<span class="pl-vpf">error</span>){
+          doanyway();
+      })
+  
+  }
+  <span class="pl-k">try</span>{
+      $.getJSON(<span class="pl-s1"><span class="pl-pds">'</span>some data<span class="pl-pds">'</span></span>, <span class="pl-st">function</span>(<span class="pl-vpf">data</span>){
+          something1(data, something2)
+      }) 
+  }<span class="pl-k">catch</span>(<span class="pl-st">function</span>(<span class="pl-vpf">error</span>){
+      <span class="pl-c">// </span>
+  })</pre></div>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/9913972/raw/2014-02-09-use-q-promise-to-flat-you-async-ajax-and-make-tdd-easy.org" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/9913972#file-2014-02-09-use-q-promise-to-flat-you-async-ajax-and-make-tdd-easy-org">2014-02-09-use-q-promise-to-flat-you-async-ajax-and-make-tdd-easy.org</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

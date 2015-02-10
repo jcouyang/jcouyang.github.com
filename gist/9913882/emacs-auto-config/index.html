@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist9913882" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/9913882/file/2013-09-13-this-blog-can-configure-emacs.org">
+        <p>有同学问初学该有个什么starter-kit之类的, 虽然我之前也在用
+  emacs-starter-kit, 但是那玩意其实对 emacs 24 来说已经很鸡肋了. emacs
+  24 对包管理这块做的已经足够好,而且源也足够多, 因此, 配置 emacs 24 会变
+  得容易的多.</p>
+<p>我也不知道在哪翻出来的这个 repo, 正好同时解决了新手配置以及文档化的问
+  题. 所以我决定从 starter-kit 迁过来, 这样以后只用维护</p>
+<p><a href="https://github.com/geogeo/steckemacs" rel="noreferrer">————————–&gt; **这个Org文件** &lt;————————</a></p>
+<p>即可.\o/</p>
+<p>事情是这样子的:</p>
+<p>修改这个repo下的 steckems.org 文件会引发</p>
+<ol class="task-list">
+  <li>.emacs文件 会将其中的 elisp 代码抽到 steckems.el 文件并且load 进来, 这
+    样emacs 在启动是就配置好了.</li>
+  <li>修改完后 按 C-c C-e P f 转成 markdown 并发布到 octopress 的 emacs 目录下</li>
+  <li>这篇博客会将 markdown 文件 render_partial 过来</li>
+</ol>
+<p>这是 <a href="https://github.com/steckerhalter/steckemacs" rel="noreferrer">*steckemacs*</a> 的一个<a href="https://github.com/geogeo/steckemacs" rel="noreferrer">fork</a>. <b>steckemacs</b> 是集成了60多个pakage的emacs配置文件.作者是steck.</p>
+<p>当然我在这个 fork 里面添加了一些自己偏好的一些package, 也删除了一些鸡肋
+  的package. 并且做了一些解释,便于新手上手.</p>
+<p>另外,这篇文章的特别之处是它本身会被编译成 elisp 配置文件.
+  因此,在更新这篇博客的同时,配置文件也随之改变.</p>
+<p>我的 emacs 版本是 aquamacs 3.0, 自己从 repo 上下来编译的.
+  目前 stable 版本是 2.5, 内核是 emacs 23, 我没有测试过, 有可能部分包会
+  由问题.</p>
+{% render_partial emacs/steckemacs.markdown %}
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/9913882/raw/2013-09-13-this-blog-can-configure-emacs.org" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/9913882#file-2013-09-13-this-blog-can-configure-emacs-org">2013-09-13-this-blog-can-configure-emacs.org</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

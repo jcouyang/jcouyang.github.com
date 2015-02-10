@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist9913388" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/9913388/file/2013-06-03-how-to-use-octopress-and-write-post-using-org-mode.org">
+        <h2>
+<a name="user-content-getting-started" class="anchor" href="#getting-started" rel="noreferrer"><span class="octicon octicon-link"></span></a>getting started</h2>
+<p>Github page 上建博客本来就是很geek的事情, 用octopress来建博客可用说是
+  for ruby geeks, 因为可以用欢乐的rake &lt;task&gt; 来完成建立文章和发布等一系
+  列task. 当然他依赖于 <a href="https://github.com/mojombo/jekyll" rel="noreferrer">Jekyll</a></p>
+<p>如果wordpress的发布过程是这样的:</p>
+<ul class="task-list">
+  <li>打开wordpress</li>
+  <li>点下new post</li>
+  <li>在textarea中输入内容</li>
+</ul>
+<p>这样好像非常简单, 这种wysiwyg的编辑器完全不需要学习曲线, 当然效率也不
+  会有神马曲线. 比如一个简单的 <b>加粗</b> 操
+  作, 需要选中需要加粗的字, 点一下=B=. 这对一个程序员来说是有多么痛苦啊.</p>
+<p>好吧,如果你说 wordpress 也有快捷键, 那么bia代码和插入图片肿么办.
+  各种插件随之而来, 但是个人并没有发现更wsgiwyg编辑器任何高效的地方.
+  一个高效的码农不希望任何一只手离开键盘. 好吧, 这时候 <a href="http://github.github.com/github-flavored-markdown/" rel="noreferrer">GitHub Flavored
+  Markdown</a> 和 <a href="http://pages.github.com/" rel="noreferrer">GitHub Pages</a> 冲出来解放码农的鼠标手. 当然, Github Pages
+  的原意是让程序员为自己的repository建立一个静态网页.</p>
+<p>于是乎, 有了octopress, 简而言之,就是用 git 和你最喜欢的编辑器写博客.
+  当然,就算你喜欢用wordpress, 同样可以用 prose.io + travis ci 实现<a rel="noreferrer">auto deploy octopress with travis ci {fn:1} {fn:2}</a>.</p>
+<h3>
+<a name="user-content-%E5%AE%89%E8%A3%85-octopress" class="anchor" href="#%E5%AE%89%E8%A3%85-octopress" rel="noreferrer"><span class="octicon octicon-link"></span></a>安装 octopress</h3>
+<p>just do the following in your shell.</p>
+<div class="highlight highlight-sh"><pre>
+$ <span class="pl-cce">\c</span>url -L https://get.rvm.io <span class="pl-k">|</span> bash <span class="pl-c"># install ruby version manager</span>
+rvm install 1.9.3 <span class="pl-c"># octopress need 1.9.3</span>
+rvm user 1.9.3 --default <span class="pl-c"># use it as default</span>
+
+git clone git://github.com/imathis/octopress.git octopress
+<span class="pl-s3">cd</span> octopress    <span class="pl-c"># If you use RVM, You'll be asked if you trust the .rvmrc file (say yes).</span>
+ruby --version <span class="pl-c">#should be 1.9.3</span>
+rake install <span class="pl-c"># install default Octopress theme  </span></pre></div>
+<h3>
+<a name="user-content-setup-github-pages" class="anchor" href="#setup-github-pages" rel="noreferrer"><span class="octicon octicon-link"></span></a>Setup Github Pages</h3>
+<ul class="task-list">
+  <li>new 一个名叫 <code>username.github.io</code> 的 repository, 所有push 到 master</li>
+</ul>
+<p>的代码即是静态网页. // 这是user page, 如果是项目page, 需要push到 gh-pages branch.</p>
+<ul class="task-list">
+  <li>Done // yeah~ that’s it</li>
+</ul>
+<h3>
+<a name="user-content-setup-octopress" class="anchor" href="#setup-octopress" rel="noreferrer"><span class="octicon octicon-link"></span></a>Setup Octopress</h3>
+<div class="highlight highlight-sh"><pre>
+rake setup_github_pages
+rake generate <span class="pl-c"># This will generate your blog, copy the generated files into _deploy</span>
+rake deploy <span class="pl-c"># push to your github pages</span>
+<span class="pl-s3">echo</span> <span class="pl-s1"><span class="pl-pds">'</span>your-domain.com<span class="pl-pds">'</span></span> <span class="pl-k">&gt;&gt;</span> <span class="pl-s3">source</span>/CNAME  </pre></div>
+<h2>
+<a name="user-content-use-octopress" class="anchor" href="#use-octopress" rel="noreferrer"><span class="octicon octicon-link"></span></a>Use Octopress</h2>
+<h3>
+<a name="user-content-inline-code" class="anchor" href="#inline-code" rel="noreferrer"><span class="octicon octicon-link"></span></a>Inline code</h3>
+<p><code>this is inline code</code></p>
+<h3>
+<a name="user-content-the-greatest-code-blocks" class="anchor" href="#the-greatest-code-blocks" rel="noreferrer"><span class="octicon octicon-link"></span></a>The Greatest Code Blocks</h3>
+<p>[language] [title] [url] [link text] code snippet</p>
+<pre>
+ruby Discover if a number is prime http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ Source Article
+class Fixnum
+  def prime?
+    ('1' * self) !~ /^1?$|^(11+?)\1+$/
+  end
+end
+</pre>
+<p>will render as</p>
+<div class="highlight highlight-ruby"><pre>
+<span class="pl-vo">Discover</span> <span class="pl-k">if</span> a number is prime <span class="pl-c1">http:</span><span class="pl-sr"><span class="pl-pds">//</span></span>www.noulakaz.net<span class="pl-k">/</span>weblog<span class="pl-k">/</span><span class="pl-c1">2007</span><span class="pl-k">/</span><span class="pl-c1">03</span><span class="pl-k">/</span><span class="pl-c1">18</span><span class="pl-k">/</span>a<span class="pl-k">-</span>regular<span class="pl-k">-</span>expression<span class="pl-k">-</span>to<span class="pl-k">-</span>check<span class="pl-k">-</span><span class="pl-k">for</span><span class="pl-k">-</span>prime<span class="pl-k">-</span>numbers<span class="pl-k">/</span> <span class="pl-vo">Source</span> <span class="pl-vo">Article</span>
+<span class="pl-k">class</span> <span class="pl-en">Fixnum</span>
+  <span class="pl-k">def</span> <span class="pl-en">prime?</span>
+    (<span class="pl-s1"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span> <span class="pl-k">*</span> <span class="pl-v">self</span>) <span class="pl-k">!~</span> <span class="pl-sr"><span class="pl-pds">/</span>^1?$|^<span class="pl-sr">(11+?)</span><span class="pl-cce">\1</span>+$<span class="pl-pds">/</span></span>
+  <span class="pl-k">end</span>
+<span class="pl-k">end</span></pre></div>
+<h3>
+<a name="user-content-gist" class="anchor" href="#gist" rel="noreferrer"><span class="octicon octicon-link"></span></a><a href="Http://gist.github.com" rel="noreferrer">Gist</a>
+</h3>
+<p>gist gist_id filename</p>
+<p>like</p>
+<p>gist 996818</p>
+<p>will be rander as</p>
+<p>{% gist 996818 %}</p>
+<h3>
+<a name="user-content-3rd-party-plugin" class="anchor" href="#3rd-party-plugin" rel="noreferrer"><span class="octicon octicon-link"></span></a>3rd party plugin</h3>
+<div class="highlight highlight-yml"><pre>
+<span class="pl-s1"><span class="pl-ent">default_asides:</span> <span class="pl-s1">[asides/recent_posts.html, asides/github.html,</span></span>
+asides/twitter.html, asides/delicious.html, asides/pinboard.html,
+asides/googleplus.html, asides/weibo.html]</pre></div>
+<h2>
+<a name="user-content-put-octopress-folder-into-dropbox" class="anchor" href="#put-octopress-folder-into-dropbox" rel="noreferrer"><span class="octicon octicon-link"></span></a>Put Octopress Folder into Dropbox</h2>
+<p>当然要扔到dropbox上, 喂小米, 因为这样我们可以用手机写博客. 好吧, 前提
+  是你的手机要有个好用的markdown编辑器.</p>
+<h2>
+<a name="user-content-auto-deploy-octopress-with-travis-ci-fn1-fn2" class="anchor" href="#auto-deploy-octopress-with-travis-ci-fn1-fn2" rel="noreferrer"><span class="octicon octicon-link"></span></a>auto deploy octopress with travis ci [fn:1] [fn:2]</h2>
+<p>用dropbox绝对不是让你 blog on the go 的最好方式, 因为你还需要打开电脑
+  deploy 一下. 那么最给力的做法是使用 travis ci 自动的 rake deploy 你的
+  文章. 再加上 prose.io, 简直就是wordpress, 你不需要任何push, 只要在
+  prose.io 上编辑完成后点下 publish 即可. travis会自动给你发布hoho. 这样
+  就可以随时随地发了hoho.</p>
+<ul class="task-list">
+  <li>get github OAtuh token</li>
+</ul>
+<div class="highlight highlight-sh"><pre>
+curl -u <span class="pl-s1"><span class="pl-pds">'</span>your_github_name<span class="pl-pds">'</span></span> -d <span class="pl-s1"><span class="pl-pds">'</span>{"scopes":["public_repo"], "note":"Travis access"}<span class="pl-pds">'</span></span> https://api.github.com/authorizations</pre></div>
+
+<ul class="task-list">
+  <li>encypte your token</li>
+</ul>
+<div class="highlight highlight-sh"><pre>
+gem install travis
+travis encrypt GH_TOKEN=your_token --add <span class="pl-c"># do this in your octopress dir</span></pre></div>
+<ul class="task-list">
+  <li>setup in <code>.travis.yml</code>
+</li>
+</ul>
+<div class="highlight highlight-yaml"><pre>
+<span class="pl-s1">-<span class="pl-s1">--</span></span>
+<span class="pl-s1"><span class="pl-ent">language:</span> <span class="pl-s1">ruby</span></span>
+<span class="pl-s1"><span class="pl-ent">branches:</span></span>
+  <span class="pl-s1"><span class="pl-ent">only:</span></span>
+  <span class="pl-s1">- <span class="pl-s1">source</span></span>
+<span class="pl-s1"><span class="pl-ent">rvm:</span></span>
+<span class="pl-s1">- <span class="pl-s1">1.9.3</span></span>
+<span class="pl-s1"><span class="pl-ent">before_script:</span></span>
+<span class="pl-s1">- <span class="pl-s1">git config --global user.name "Jichao Ouyang"</span></span>
+<span class="pl-s1">- <span class="pl-s1">git config --global user.email "oyanglulu@gmail.com"</span></span>
+<span class="pl-s1">- <span class="pl-s1">export REPO_URL="https://$GH_TOKEN@github.com/$GH_REPO.git"</span></span>
+<span class="pl-s1">- <span class="pl-s1">rake setup_github_pages[$REPO_URL]</span></span>
+<span class="pl-s1"><span class="pl-ent">script:</span></span>
+<span class="pl-s1">- <span class="pl-s1">rake generate</span></span>
+<span class="pl-s1"><span class="pl-ent">after_script:</span></span>
+<span class="pl-s1">- <span class="pl-s1">rake deploy</span></span>
+<span class="pl-s1"><span class="pl-ent">env:</span></span>
+  <span class="pl-s1"><span class="pl-ent">global:</span></span>
+  <span class="pl-s1">- <span class="pl-s1">GH_REPO="geogeo.github.com"</span></span>
+  <span class="pl-s1">- <span class="pl-ent">secure:</span> <span class="pl-s1">! </span><span class="pl-s1"><span class="pl-pds">'</span>UcwYke5vbuDVxFf8smJ2h8UkaVAdutc4hJ7WD06KKJlxQdGuF3rrG5rActpx</span></span>
+<span class="pl-s1"><span class="pl-s1"></span></span>
+<span class="pl-s1"><span class="pl-s1">    5Np/gu1Nui3jnZv6jBnd9vJjKvwhPbpXBymlpoxo0tswhiAFAg5Tu8Zo50dF</span></span>
+<span class="pl-s1"><span class="pl-s1"></span></span>
+<span class="pl-s1"><span class="pl-s1">    nB//OpMAD8Yp30cUwZ7V7x46tikWAweZYpPGTRgfS5lU3ebA1js=<span class="pl-pds">'</span></span></span></pre></div>
+<p>rakefile中需要做如下更改</p>
+<div class="highlight highlight-diff"><pre>
+<span class="pl-mdh">diff --git a/Rakefile b/Rakefile</span>
+index a57a56f..59b758a 100755
+<span class="pl-mdhf">--- a/Rakefile</span>
+<span class="pl-mdht">+++ b/Rakefile</span>
+<span class="pl-mdr">@@ -9,10 +9,10 @@</span> ssh_port       = "22"
+ document_root  = "~/website.com/"
+ rsync_delete   = false
+ rsync_args     = ""  # Any extra arguments to pass to rsync
+<span class="pl-md">-deploy_default = "rsync"</span>
+<span class="pl-mi1">+deploy_default = "push"</span>
+
+ # This will be configured for you when you run config_deploy
+<span class="pl-md">-deploy_branch  = "gh-pages"</span>
+<span class="pl-mi1">+deploy_branch  = "master"</span>
+
+ ## -- Misc Configs -- ##
+
+<span class="pl-mdr">@@ -255,10 +255,10 @@</span> multitask :push do
+     system "git add ."
+     system "git add -u"
+     puts "\n## Commiting: Site updated at #{Time.now.utc}"
+<span class="pl-md">-    message = "Site updated at #{Time.now.utc}"</span>
+<span class="pl-mi1">+    message = "Site updated at #{Time.now.utc} [ci skip]"</span>
+     system "git commit -m \"#{message}\""
+     puts "\n## Pushing generated #{deploy_dir} website"
+<span class="pl-md">-    system "git push origin #{deploy_branch} --force"</span>
+<span class="pl-mi1">+    system "git push origin #{deploy_branch} --force --quiet"</span>
+     puts "\n## Github Pages deploy complete"
+   end
+ end
+<span class="pl-mdr">@@ -307,7 +307,7 @@</span> task :setup_github_pages, :repo do |t, args|
+     puts "(For example, 'git@github.com:your_username/your_username.github.io)"
+     repo_url = get_stdin("Repository url: ")
+   end
+<span class="pl-md">-  user = repo_url.match(/:([^\/]+)/)[1]</span>
+<span class="pl-mi1">+  user = repo_url.match(/[\/:]([^\/]+)\/[^\/]+$/)[1]</span>
+   branch = (repo_url.match(/\/[\w-]+\.github\.(?:io|com)/).nil?) ? 'gh-pages' : 'master'
+   project = (branch == 'gh-pages') ? repo_url.match(/\/([^\.]+)/)[1] : ''
+   unless (`git remote -v` =~ /origin.+?octopress(?:\.git)?/).nil?
+<span class="pl-mdr">@@ -317,7 +317,7 @@</span> task :setup_github_pages, :repo do |t, args|
+       # If this is a user/organization pages repository, add the correct origin remote
+       # and checkout the source branch for committing changes to the blog source.
+       system "git remote add origin #{repo_url}"
+<span class="pl-md">-      puts "Added remote #{repo_url} as origin"</span>
+<span class="pl-mi1">+      puts "Added remote origin"</span>
+       system "git config branch.master.remote origin"
+       puts "Set origin as default remote"
+       system "git branch -m master source"
+<span class="pl-mdr">@@ -341,7 +341,7 @@</span> task :setup_github_pages, :repo do |t, args|
+     system "git init"
+     system "echo 'My Octopress Page is coming soon &amp;hellip;' &gt; index.html"
+     system "git add ."
+<span class="pl-md">-    system "git commit -m \"Octopress init\""</span>
+<span class="pl-mi1">+    system "git commit -m \"Octopress init[ci skip]\""</span>
+     system "git branch -m gh-pages" unless branch == 'master'
+     system "git remote add origin #{repo_url}"
+     rakefile = IO.read(__FILE__)
+<span class="pl-mdr">@@ -351,7 +351,7 @@</span> task :setup_github_pages, :repo do |t, args|
+       f.write rakefile
+     end
+   end
+<span class="pl-md">-  puts "\n---\n## Now you can deploy to #{url} with `rake deploy` ##"</span>
+<span class="pl-mi1">+  puts "\n---\n## Now you can deploy to `rake deploy` ##"</span>
+ end</pre></div>
+<p>config文件中如下更改, 最后一行</p>
+<div class="highlight highlight-diff"><pre>
+<span class="pl-mdh">diff --git a/_config.yml b/_config.yml</span>
+old mode 100755
+new mode 100644
+index 1397f8d..91db12e
+<span class="pl-mdhf">--- a/_config.yml</span>
+<span class="pl-mdht">+++ b/_config.yml</span>
+<span class="pl-mdr">@@ -2,12 +2,12 @@</span>
+ #      Main Configs       #
+ # ----------------------- #
+
+<span class="pl-md">-url: http://yoursite.com</span>
+<span class="pl-md">-title: My Octopress Blog</span>
+<span class="pl-md">-subtitle: A blogging framework for hackers.</span>
+<span class="pl-md">-author: Your Name</span>
+<span class="pl-mi1">+url: http://oyanglul.us</span>
+<span class="pl-mi1">+title: Jichao Ouyang's Journal</span>
+<span class="pl-mi1">+subtitle: Code or Else.</span>
+<span class="pl-mi1">+author: Jichao Ouyang</span>
+ simple_search: http://google.com/search
+<span class="pl-md">-description:</span>
+<span class="pl-mi1">+description: Jichao Ouyang's Journal/Blog/Whatever</span>
+
+ # Default date format is "ordinal" (resulting in "July 22nd 2007")
+ # You can customize the format as defined in
+<span class="pl-mdr">@@ -36,7 +36,7 @@</span> category_dir: blog/categories
+ markdown: rdiscount
+ pygments: false # default python pygments have been replaced by pygments.rb
+
+<span class="pl-md">-paginate: 10          # Posts per page on the blog index</span>
+<span class="pl-mi1">+paginate: 12          # Posts per page on the blog index</span>
+ pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
+ recent_posts: 5       # Posts in the sidebar Recent Posts section
+ excerpt_link: "Read on &amp;rarr;"  # "Continue reading" link text at the bottom of excerpted
+ @@ -45,7 +45,7 @@ titlecase: true       # Converts page and post titles to titlecase
+  # To add custom asides, create files in /source/_includes/custom/asides/ and add them to t
+<span class="pl-md">-default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asid</span>
+<span class="pl-mi1">+default_asides: [asides/recent_posts.html, asides/github.html, asides/twitter.html, asides</span>
+
+ # Each layout uses the default asides, but they can have their own asides instead. Simply
+ # and add an array with the asides you want to use.
+<span class="pl-mdr">@@ -58,26 +58,38 @@</span> default_asides: [asides/recent_posts.html, asides/github.html, asides/d
+ # ----------------------- #</pre></div>
+<h2>
+<a name="user-content-use-org-mode-instead-of-markdown" class="anchor" href="#use-org-mode-instead-of-markdown" rel="noreferrer"><span class="octicon octicon-link"></span></a>Use Org-mode instead of Markdown</h2>
+<p>当然我并不是说markdown有什么不好的, 完全可以搞定博客的各种格式. 但是作
+  为emacs用户, 没有神马是org不能搞定的文档工作. 好吧, 不是emacs重度用户
+  请跳过该节.</p>
+<p>其实思路非常简单</p>
+<ul class="task-list">
+  <li>更改 <code>rake new_post</code> 使其建立一个org后缀的文件,而不是markdown后缀</li>
+  <li>更改 rake file 和文章的header</li>
+</ul>
+<pre>
+posts_dir   = "_org_posts"
+new_post_ext    = "org"  # default new post file extension when using the new_post task
+new_page_ext    = "org"  # default new page file extension when using the new_page task
+</pre>
+<div class="highlight highlight-diff"><pre>
+<span class="pl-mdr">@@ -21,10 +21,11 @@</span> source_dir      = "source"    # source file directory
+ blog_index_dir  = 'source'    # directory for your blog's index page (if you put your index in source/blog/
+ deploy_dir      = "_deploy"   # deploy directory (for Github pages deployment)
+ stash_dir       = "_stash"    # directory to stash posts for
+<span class="pl-mi1">+posts_dir   = "_org_posts"</span>
+ themes_dir      = ".themes"   # directory for blog files
+<span class="pl-md">-new_post_ext    = "markdown"  # default new post file extension when using the new_post task</span>
+<span class="pl-md">-new_page_ext    = "markdown"  # default new page file extension when using the new_page task</span>
+<span class="pl-mi1">+new_post_ext    = "org"  # default new post file extension when using the new_post task</span>
+<span class="pl-mi1">+new_page_ext    = "org"  # default new page file extension when using the new_page task</span>
+ server_port     = "4000"      # port for preview server eg. localhost:4000
+
+<span class="pl-mdr">@@ -105,6 +106,7 @@</span> task :new_post, :title do |t, args|
+   end
+   puts "Creating new post: #{filename}"
+   open(filename, 'w') do |post|
+<span class="pl-mi1">+    post.puts "#+BEGIN_HTML"</span>
+     post.puts "---"
+     post.puts "layout: post"
+     post.puts "title: \"#{title.gsub(/&amp;/,'&amp;amp;')}\""
+<span class="pl-mdr">@@ -112,6 +114,8 @@</span> task :new_post, :title do |t, args|
+     post.puts "comments: true"
+     post.puts "categories: "
+     post.puts "---"
+<span class="pl-mi1">+    post.puts "#+END_HTML"</span>
+<span class="pl-mi1">+    post.puts "#+OPTIONS: toc:nil"</span>
+   end
+ end</pre></div>
+<ul class="task-list">
+  <li>hook publish html to octopress folder</li>
+</ul>
+<div class="highlight highlight-lisp"><pre>
+(<span class="pl-s3">setq</span> org-publish-project-alist
+   '((<span class="pl-s1"><span class="pl-pds">"</span>blog<span class="pl-pds">"</span></span> .  (:base-directory <span class="pl-s1"><span class="pl-pds">"</span>~/Dropbox/octopress/source/_org_posts/<span class="pl-pds">"</span></span>
+                 :base-extension <span class="pl-s1"><span class="pl-pds">"</span>org<span class="pl-pds">"</span></span>
+                 :publishing-directory <span class="pl-s1"><span class="pl-pds">"</span>~/Dropbox/octopress/source/_posts/<span class="pl-pds">"</span></span>
+                 :sub-superscript <span class="pl-s1"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>
+                 :recursive <span class="pl-s3">t</span>
+                 :publishing-function org-html-publish-to-html
+                 :headline-levels <span class="pl-c1">4</span>
+                 :html-extension <span class="pl-s1"><span class="pl-pds">"</span>markdown<span class="pl-pds">"</span></span>
+                 :body-only <span class="pl-s3">t</span>))))</pre></div>
+<p>为什么要导出 html 到 markdown 的目录呢, 这样有毛好处呢, 为毛不直接转成
+  markdown. 因为转成markdown后jykll再转成html就会成屎了. 好吧, 直接转成
+  html格式不会乱.</p>
+<p>因此, 前面所说的有些标签就得变成org-mode格式的. 例如 code block
+  就需要用 <code>#+BEGIN_SRC</code> 来包住而不是 <code>```</code>, 快捷键 <code>&lt;s TAB</code></p>
+<h2>
+<a name="user-content-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8org-mode" class="anchor" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8org-mode" rel="noreferrer"><span class="octicon octicon-link"></span></a>为什么要用org-mode</h2>
+<ul class="task-list">
+  <li>org-babel mode 可以让你在 org 中嵌入各种语言的代码</li>
+  <li>更多快捷键</li>
+  <li>比markdown更丰富</li>
+  <li>for emacser</li>
+</ul>
+<h1>
+<a name="user-content-footnotes" class="anchor" href="#footnotes" rel="noreferrer"><span class="octicon octicon-link"></span></a>Footnotes</h1>
+<p>[fn:1] <a href="http://www.harimenon.com/blog/2013/01/27/auto-deploying-to-my-octopress-blog/" rel="noreferrer">http://www.harimenon.com/blog/2013/01/27/auto-deploying-to-my-octopress-blog/</a></p>
+<p>[fn:2] <a href="http://rogerz.github.io/" rel="noreferrer">http://rogerz.github.io/</a></p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/9913388/raw/2013-06-03-how-to-use-octopress-and-write-post-using-org-mode.org" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/9913388#file-2013-06-03-how-to-use-octopress-and-write-post-using-org-mode-org">2013-06-03-how-to-use-octopress-and-write-post-using-org-mode.org</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

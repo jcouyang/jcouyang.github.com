@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist15408852" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/2208bd0aa2748c2998a5/file/emacs-24-4.md">
+        <h3>
+<a name="user-content-%E5%AE%89%E8%A3%85" class="anchor" href="#%E5%AE%89%E8%A3%85" rel="noreferrer"><span class="octicon octicon-link"></span></a>安装</h3>
+
+<p><code>brew install emacs --cocoa --with-glib</code></p>
+
+<h3>
+<a name="user-content-%E6%96%B0%E7%89%B9%E6%80%A7" class="anchor" href="#%E6%96%B0%E7%89%B9%E6%80%A7" rel="noreferrer"><span class="octicon octicon-link"></span></a>新特性</h3>
+
+<h4>
+<a name="user-content-superword-mode" class="anchor" href="#superword-mode" rel="noreferrer"><span class="octicon octicon-link"></span></a>superword-mode</h4>
+
+<p>这个对于编程非常的有用, 比如以前的 subword-mode,  可以把 CamelCase 当成一个词. 但是下划线的单词还是会当成几个单词.</p>
+
+<p>那么superword-mode 就解决了这一问题.
+只需要设置成<code>1</code>就开启了.</p>
+
+<div class="highlight highlight-lisp"><pre>(subword-mode <span class="pl-c1">1</span>)</pre></div>
+
+<table>
+<tbody>
+<tr>
+<th>normal</th>
+<th>subword</th>
+<th>superword</th>
+</tr>
+<tr>
+<td><pre>someThing▮
+some▮-thing
+some▮_thing</pre></td>
+<td><pre>some▮Thing
+some▮-thing
+some▮_thing</pre></td>
+<td><pre>someThing▮
+some-thing▮
+some_thing▮</pre></td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a name="user-content-rectangle-mark" class="anchor" href="#rectangle-mark" rel="noreferrer"><span class="octicon octicon-link"></span></a>rectangle mark</h4>
+
+<p>终于可以这样 mark 了
+<a href="https://camo.githubusercontent.com/6f7ee38c44eebe326ee68ded54804777789b69dd/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f33396463663236632d623339382d346533652d383864322d3162313231653037633364642f37653135333432626330633063663630623134363831626231303337623232382f646565702f302f456d6163732d2d2d2e61746f6d2d7061636b616765732d676c6973742d676973742d32323038626430616132373438633239393861352d656d6163732d32342d342e6d642e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/6f7ee38c44eebe326ee68ded54804777789b69dd/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f33396463663236632d623339382d346533652d383864322d3162313231653037633364642f37653135333432626330633063663630623134363831626231303337623232382f646565702f302f456d6163732d2d2d2e61746f6d2d7061636b616765732d676c6973742d676973742d32323038626430616132373438633239393861352d656d6163732d32342d342e6d642e706e67" alt="" data-canonical-src="https://www.evernote.com/shard/s23/sh/39dcf26c-b398-4e3e-88d2-1b121e07c3dd/7e15342bc0c0cf60b14681bb1037b228/deep/0/Emacs---.atom-packages-glist-gist-2208bd0aa2748c2998a5-emacs-24-4.md.png" style="max-width:100%;"></a></p>
+
+<h4>
+<a name="user-content-prettyfy-symbol-mode" class="anchor" href="#prettyfy-symbol-mode" rel="noreferrer"><span class="octicon octicon-link"></span></a>prettyfy symbol mode</h4>
+
+<p>缩略编程时啰嗦的字符, 比如 lisp 中的 "lambda", javasscript 中的 "function"</p>
+
+<p>只需要把想要转换的字符加到<code>prettify-symbols-alist</code></p>
+
+<div class="highlight highlight-lisp"><pre>  (add-hook 'js2-mode-hook
+            (<span class="pl-s3">lambda</span> ()
+              (push '(<span class="pl-s1"><span class="pl-pds">"</span>function<span class="pl-pds">"</span></span> . ?ƒ) prettify-symbols-alist)))</pre></div>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> APIWidget <span class="pl-k">=</span> React.createClass({
+  <span class="pl-en">getInitialState</span>: <span class="pl-st">function</span>(){
+    <span class="pl-k">return</span> {
+      loading<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+      error<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+      ...</pre></div>
+
+<p>会变成</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> APIWidget <span class="pl-k">=</span> React.createClass({
+  getInitialState<span class="pl-k">:</span>ƒ(){
+    <span class="pl-k">return</span> {
+      loading<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+      error<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+      ...</pre></div>
+
+<h4>
+<a name="user-content-buildin-browser-eww" class="anchor" href="#buildin-browser-eww" rel="noreferrer"><span class="octicon octicon-link"></span></a>buildin browser <code>eww</code>
+</h4>
+
+<p>变身成为浏览器
+<a href="https://camo.githubusercontent.com/03088e7ed700fe9f64bd37cbc93ba1588e171bf3/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f35343036343166622d383363642d343634652d386238382d6536303962363734623065382f66393832363834353230306230643639646565633637613066323834646366612f646565702f302f53637265656e2d53686f742d323031342d31302d32352d61742d392e33362e34382d504d2e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/03088e7ed700fe9f64bd37cbc93ba1588e171bf3/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f35343036343166622d383363642d343634652d386238382d6536303962363734623065382f66393832363834353230306230643639646565633637613066323834646366612f646565702f302f53637265656e2d53686f742d323031342d31302d32352d61742d392e33362e34382d504d2e706e67" alt="" data-canonical-src="https://www.evernote.com/shard/s23/sh/540641fb-83cd-464e-8b88-e609b674b0e8/f9826845200b0d69deec67a0f284dcfa/deep/0/Screen-Shot-2014-10-25-at-9.36.48-PM.png" style="max-width:100%;"></a></p>
+
+<p><a href="https://camo.githubusercontent.com/c8f74a9df03a60cc22ebcb71d8f3c4381b9eb7a6/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f656d6163732d32342d34" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/c8f74a9df03a60cc22ebcb71d8f3c4381b9eb7a6/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f656d6163732d32342d34" alt="Analytics" data-canonical-src="https://ga-beacon.appspot.com/UA-32314154-5/blogist/emacs-24-4" style="max-width:100%;"></a></p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/2208bd0aa2748c2998a5/raw/emacs-24-4.md" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/2208bd0aa2748c2998a5#file-emacs-24-4-md">emacs-24-4.md</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

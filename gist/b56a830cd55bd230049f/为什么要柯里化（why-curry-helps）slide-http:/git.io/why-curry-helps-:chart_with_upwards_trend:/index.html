@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist12889658" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/b56a830cd55bd230049f/file/why-curry-helps.md">
+        <p>还记得 Haskell Curry吗，<a href="https://camo.githubusercontent.com/b51957f9615c4df77574d0bb393ac6fbce50acd7/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6c7961682f63757272792e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/b51957f9615c4df77574d0bb393ac6fbce50acd7/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6c7961682f63757272792e706e67" alt="" data-canonical-src="http://s3.amazonaws.com/lyah/curry.png" style="max-width:100%;"></a></p>
+
+<p>多巧啊, 人家姓 Curry 名 Haskell, 难怪 Haskell 语言会自动柯里化, 呵呵. 但是不奇怪吗, 为什么要柯里化呢. 为什么如此重要导致 Haskell 会默认自动柯里化所有函数, 不就是返回一个部分配置好的函数吗.</p>
+
+<p>我们来看一个 Haskell 的代码.</p>
+
+<div class="highlight highlight-haskell"><pre><span class="pl-s3">max</span> <span class="pl-c1">3</span> <span class="pl-c1">4</span>
+(<span class="pl-s3">max</span> <span class="pl-c1">3</span>) <span class="pl-c1">4</span></pre></div>
+
+<p>结果都是4, 这有设么用呢.</p>
+
+<p>这里看不出来, 放到<code>高阶函数</code>试试. 什么? 看不懂天书 Haskell, 来看看 JavaScript 吧.</p>
+
+<h3>
+<a name="user-content-%E6%88%91%E4%BB%AC%E6%9D%A5%E8%A7%A3%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98" class="anchor" href="#%E6%88%91%E4%BB%AC%E6%9D%A5%E8%A7%A3%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98" rel="noreferrer"><span class="octicon octicon-link"></span></a>我们来解一个问题</h3>
+
+<h4>
+<a name="user-content-1-%E5%86%99%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0-%E5%8F%AF%E4%BB%A5%E8%BF%9E%E6%8E%A5%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84-%E5%A6%82-f12--12" class="anchor" href="#1-%E5%86%99%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0-%E5%8F%AF%E4%BB%A5%E8%BF%9E%E6%8E%A5%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84-%E5%A6%82-f12--12" rel="noreferrer"><span class="octicon octicon-link"></span></a>1. 写一个函数, 可以连接字符数组, 如 <code>f(['1','2']) =&gt; '12'</code>
+</h4>
+
+<p>好吧,如果不用柯里化, 怎么写? 啊哈 <code>reduce</code></p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> <span class="pl-en">concatArray</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">chars</span>){
+  <span class="pl-k">return</span> chars.reduce(<span class="pl-st">function</span>(<span class="pl-vpf">a</span>, <span class="pl-vpf">b</span>){
+    <span class="pl-k">return</span> a.<span class="pl-s3">concat</span>(b);
+  });
+}
+<span class="pl-s3">concat</span>([<span class="pl-s1"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>2<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>3<span class="pl-pds">'</span></span>]) <span class="pl-c">// =&gt; '123'</span></pre></div>
+
+<p>很简单,对吧.</p>
+
+<h4>
+<a name="user-content-2-%E7%8E%B0%E5%9C%A8%E6%88%91%E8%A6%81%E5%85%B6%E4%B8%AD%E6%89%80%E6%9C%89%E6%95%B0%E5%AD%97%E5%8A%A01-%E7%84%B6%E5%90%8E%E5%9C%A8%E8%BF%9E%E6%8E%A5" class="anchor" href="#2-%E7%8E%B0%E5%9C%A8%E6%88%91%E8%A6%81%E5%85%B6%E4%B8%AD%E6%89%80%E6%9C%89%E6%95%B0%E5%AD%97%E5%8A%A01-%E7%84%B6%E5%90%8E%E5%9C%A8%E8%BF%9E%E6%8E%A5" rel="noreferrer"><span class="octicon octicon-link"></span></a>2. 现在我要其中所有数字加1, 然后在连接</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> <span class="pl-en">concatArray</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">chars</span>, <span class="pl-vpf">inc</span>){
+  <span class="pl-k">return</span> chars.map(<span class="pl-st">function</span>(<span class="pl-vpf">char</span>){
+    <span class="pl-k">return</span> (<span class="pl-k">+</span>char)<span class="pl-k">+</span>inc <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;
+  }).reduce(<span class="pl-st">function</span>(<span class="pl-vpf">a</span>,<span class="pl-vpf">b</span>){
+      <span class="pl-k">return</span> a.<span class="pl-s3">concat</span>(b)
+  });
+}
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(concatArray([<span class="pl-s1"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>2<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>3<span class="pl-pds">'</span></span>], <span class="pl-c1">1</span>))<span class="pl-c">// =&gt; '234'</span></pre></div>
+
+<h4>
+<a name="user-content-3-%E6%89%80%E6%9C%89%E6%95%B0%E5%AD%97%E4%B9%98%E4%BB%A52-%E5%86%8D%E9%87%8D%E6%9E%84%E8%AF%95%E8%AF%95%E7%9C%8B" class="anchor" href="#3-%E6%89%80%E6%9C%89%E6%95%B0%E5%AD%97%E4%B9%98%E4%BB%A52-%E5%86%8D%E9%87%8D%E6%9E%84%E8%AF%95%E8%AF%95%E7%9C%8B" rel="noreferrer"><span class="octicon octicon-link"></span></a>3. 所有数字乘以2, 再重构试试看</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> <span class="pl-en">multiple</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">a</span>, <span class="pl-vpf">b</span>){
+  <span class="pl-k">return</span> <span class="pl-k">+</span>a<span class="pl-k">*</span>b <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+}
+<span class="pl-s">var</span> <span class="pl-en">concatArray</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">chars</span>, <span class="pl-vpf">inc</span>){
+  <span class="pl-k">return</span> chars.map(<span class="pl-st">function</span>(<span class="pl-vpf">char</span>){
+    <span class="pl-k">return</span> multiple(char, inc);
+  }).reduce(<span class="pl-st">function</span>(<span class="pl-vpf">a</span>,<span class="pl-vpf">b</span>){
+      <span class="pl-k">return</span> a.<span class="pl-s3">concat</span>(b)
+  });
+}
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(concatArray([<span class="pl-s1"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>2<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>3<span class="pl-pds">'</span></span>], <span class="pl-c1">2</span>)) <span class="pl-c">// =&gt; '246'</span></pre></div>
+
+<p>是不是已经看出问题了呢? 如果我在需要每个数字都减2,是不是很麻烦呢.需要将<code>map</code> 参数匿名函数中的 multiple 函数换掉. 这样一来<code>concatArray</code>就不能同时处理加, 乘和减? 那么怎么能把他提取出来呢? 来对比下柯里化的解法.</p>
+
+<h3>
+<a name="user-content-%E6%9F%AF%E9%87%8C%E5%8C%96%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3" class="anchor" href="#%E6%9F%AF%E9%87%8C%E5%8C%96%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3" rel="noreferrer"><span class="octicon octicon-link"></span></a>柯里化函数接口</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> <span class="pl-en">multiple</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">a</span>){
+  <span class="pl-k">return</span> <span class="pl-st">function</span>(<span class="pl-vpf">b</span>){
+    <span class="pl-k">return</span> <span class="pl-k">+</span>b<span class="pl-k">*</span>a <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+  }
+}
+
+<span class="pl-s">var</span> <span class="pl-en">plus</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">a</span>){
+  <span class="pl-k">return</span> <span class="pl-st">function</span>(<span class="pl-vpf">b</span>){
+    <span class="pl-k">return</span> (<span class="pl-k">+</span>b)<span class="pl-k">+</span>a <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+  }
+}
+<span class="pl-s">var</span> <span class="pl-en">concatArray</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">chars</span>, <span class="pl-vpf">stylishChar</span>){
+  <span class="pl-k">return</span> chars.map(stylishChar)
+    .reduce(<span class="pl-st">function</span>(<span class="pl-vpf">a</span>,<span class="pl-vpf">b</span>){
+      <span class="pl-k">return</span> a.<span class="pl-s3">concat</span>(b)
+  });
+}
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(concatArray([<span class="pl-s1"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>2<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>3<span class="pl-pds">'</span></span>], multiple(<span class="pl-c1">2</span>)))
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(concatArray([<span class="pl-s1"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>2<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>3<span class="pl-pds">'</span></span>], plus(<span class="pl-c1">2</span>)))</pre></div>
+
+<p>有什么不一样呢
+1. 处理数组中字符的函数被提取出来, 作为参数传入
+2. 提取成柯里化的函数, 部分配置好后传入, 好处显而易见, 这下接口非常通畅
+无论是外层调用</p>
+
+<pre><code>concatArray(['1','2','3'], multiple(2))
+</code></pre>
+
+<p>还是内部的 map 函数</p>
+
+<pre><code>chars.map(stylishChar)
+</code></pre>
+
+<p>这些接口都清晰了很多, 不是吗</p>
+
+<p>这就是函数式的思想, 用已有的函数组合出新的函数, 而柯里化每消费一个参数, 都会返回一个新的部分配置的函数, 这为函数组合提供了更灵活的手段, 并且使得接口更为流畅.</p>
+
+<p>再加上自动柯里化的库 <a href="https://github.com/CrossEye/ramda" rel="noreferrer">ramda</a>, 简直就完美了</p>
+
+<pre><code>var multiple = ramda.curry(function(a, b){
+  return +b*a + ''
+})
+var plus = ramda.curry(function(a, b){
+  return (+b)+a + ''
+})
+</code></pre>
+
+<p><a href="http://jsbin.com/hamoq/3/embed" rel="noreferrer">JS Bin</a></p>
+
+<p><a href="https://camo.githubusercontent.com/d2bba166a88ec5267f4c1e7bd11a19cdc9caa87a/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f7768792d6375727279" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/d2bba166a88ec5267f4c1e7bd11a19cdc9caa87a/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f7768792d6375727279" alt="Analytics" data-canonical-src="https://ga-beacon.appspot.com/UA-32314154-5/blogist/why-curry" style="max-width:100%;"></a></p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/b56a830cd55bd230049f/raw/why-curry-helps.md" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/b56a830cd55bd230049f#file-why-curry-helps-md">why-curry-helps.md</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

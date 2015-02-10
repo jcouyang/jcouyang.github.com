@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist9913920" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/9913920/file/2013-11-27-bdd-using-jasmine-jquery.org">
+        <h2>
+<a name="user-content-%E7%94%A8-jasmine-jquery-%E6%9D%A5bdd-%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AAbug-%E4%B8%80%E4%B8%AA%E5%A4%A7bug" class="anchor" href="#%E7%94%A8-jasmine-jquery-%E6%9D%A5bdd-%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AAbug-%E4%B8%80%E4%B8%AA%E5%A4%A7bug" rel="noreferrer"><span class="octicon octicon-link"></span></a>用 <a href="https://github.com/velesin/jasmine-jquery" rel="noreferrer">jasmine-jquery</a> 来BDD 就是一个bug, 一个大bug</h2>
+<p>参加 TWU 时写 jasmine 测试的时候花了大量时间研究为什么不能绑定事件到
+  fixture. 这导致 teamate 和我自己都会认为我这个带头引入这么难用的
+  jasmine 的人简直是要杀千刀. 但是其实问题不是 jasmine <del>当然也不是我</del>,
+  都是 jasmine-jquery</p>
+<p>不管是 loadfixtures 还是 preload(fixtureUrl[, fixtureUrl, …]) 都无法
+  绑定事件到 fixtures</p>
+<p>BDD 不就是想要点哪然后看哪得反应…结果不知道为什么傻傻的就没有反应.</p>
+<p>傻兮兮的官方文档是这样的</p>
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-s">var</span> spyEvent <span class="pl-k">=</span> spyOnEvent(<span class="pl-s1"><span class="pl-pds">'</span>#some_element<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>click<span class="pl-pds">'</span></span>)
+$(<span class="pl-s1"><span class="pl-pds">'</span>#some_element<span class="pl-pds">'</span></span>).<span class="pl-s3">click</span>()
+expect(<span class="pl-s1"><span class="pl-pds">'</span>click<span class="pl-pds">'</span></span>).toHaveBeenTriggeredOn(<span class="pl-s1"><span class="pl-pds">'</span>#some_element<span class="pl-pds">'</span></span>)</pre></div>
+<p>这…不是废话么….这是在测试”测试代码”么?</p>
+<p>真正关心测试的应该是绑定在click事件上的function, 谁管你被tri没
+  trigger. 比如我在元素 <code>#anchor_01</code> 上绑定了添加 <code>css class</code> 的事件.那么我
+  应该这样测试我的 javascript 代码.</p>
+<div class="highlight highlight-javascript"><pre>
+describe(<span class="pl-s1"><span class="pl-pds">"</span>when fixture contains an &lt;script src='to/your/source'&gt; tag<span class="pl-pds">"</span></span>, <span class="pl-st">function</span> () {
+  <span class="pl-s">var</span> fixtureUrl <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">"</span>fixture_with_javascript.html<span class="pl-pds">"</span></span>
+
+  it(<span class="pl-s1"><span class="pl-pds">"</span>should load content of fixture file and javascripts and bind events<span class="pl-pds">"</span></span>, <span class="pl-st">function</span> () {
+    jasmine.getFixtures().<span class="pl-s3">load</span>(fixtureUrl)
+    $(<span class="pl-s1"><span class="pl-pds">'</span>#anchor_01<span class="pl-pds">'</span></span>).<span class="pl-s3">click</span>()
+    expect($(<span class="pl-s1"><span class="pl-pds">"</span>#anchor_01<span class="pl-pds">"</span></span>)).toHaveClass(<span class="pl-s1"><span class="pl-pds">'</span>foo<span class="pl-pds">'</span></span>)
+  })
+})</pre></div>
+<p>但是这样的 test 是会 fail 掉…</p>
+<p>…</p>
+<p>…</p>
+<p>…</p>
+<p>原因在于包含绑定事件的 script 在 specRunner.html 加载时就已经被load了.即
+  时你用的时 <code>$()</code> wrapper, 因为 specRunner.html 的 document 在运行你的
+  <code>**spec.js</code> 时已经是ready的了</p>
+<p>也就是说这时候并没有loadFixtures, script 中的事件不会绑定到元素上, 除
+  非你用的时live…</p>
+<h2>
+<a name="user-content-what-do-we-do" class="anchor" href="#what-do-we-do" rel="noreferrer"><span class="octicon octicon-link"></span></a>what do we do</h2>
+<p>之前一个项目也碰到过类似的情况, 当时的 OO 得比较好, 可以在loadFixtures
+  之后再 init 一下需要测试的类. 但是那些不OO的代码肿么办</p>
+<p>事实上我认为 fixture 应该是业务逻辑的一个片段, 那么将需要绑定事件到
+  fixture 的 script 扔到 fixture 比较 make sense 因为他们本来就是紧耦合.</p>
+<p>因此我的 hot fix 是将需要测试的 js 放到它所依赖的 fixtrue 里面, 之后在
+  loadFixtures 时将 script inline 到 fixture 中然后加载到 specRunner 页
+  面上.</p>
+<div class="highlight highlight-diff"><pre>
+<span class="pl-mdh">diff --git a/lib/jasmine-jquery.js b/lib/jasmine-jquery.js</span>
+index 87d7ef8..30d12db 100644
+<span class="pl-mdhf">--- a/lib/jasmine-jquery.js</span>
+<span class="pl-mdht">+++ b/lib/jasmine-jquery.js</span>
+<span class="pl-mdr">@@ -119,17 +119,33 @@</span> WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFT
+WARE.
+   jasmine.Fixtures.prototype.loadFixtureIntoCache_ = function (relativeUrl) {
+     var self = this
+       , url = this.makeFixtureUrl_(relativeUrl)
+<span class="pl-mi1">+      , htmlText = ''</span>
+       , request = $.ajax({
+         async: false, // must be synchronous to guarantee that no tests are run
+ before fixture is loaded
+         cache: false,
+         url: url,
+         success: function (data, status, $xhr) {
+<span class="pl-md">-          self.fixturesCache_[relativeUrl] = $xhr.responseText</span>
+<span class="pl-mi1">+          htmlText = $xhr.responseText</span>
+         },
+         error: function (jqXHR, status, errorThrown) {
+           throw new Error('Fixture could not be loaded: ' + url + ' (status: '
+<span class="pl-mi1">+ status + ', message: ' + errorThrown.message + ')')</span>
+         }
+       })
+<span class="pl-mi1">+      var scripts = $($.parseHTML(htmlText, true)).find('script') || [];</span>
+<span class="pl-mi1">+      scripts.each(function(){</span>
+<span class="pl-mi1">+        $.ajax({</span>
+<span class="pl-mi1">+            async: false, // must be synchronous to guarantee that no tests are</span>
+ run before fixture is loaded
+<span class="pl-mi1">+            cache: false,</span>
+<span class="pl-mi1">+            url: $(this).attr('src'),</span>
+<span class="pl-mi1">+            success: function (data, status, $xhr) {</span>
+<span class="pl-mi1">+                htmlText += '&lt;script&gt;' + $xhr.responseText + '&lt;/script&gt;'</span>
+<span class="pl-mi1">+            },</span>
+<span class="pl-mi1">+            error: function (jqXHR, status, errorThrown) {</span>
+<span class="pl-mi1">+                throw new Error('Script could not be loaded: ' + scriptSrc + '</span>
+(status: ' + status + ', message: ' + errorThrown.message + ')')
+<span class="pl-mi1">+            }</span>
+<span class="pl-mi1">+        });</span>
+<span class="pl-mi1">+      })</span>
+<span class="pl-mi1">+      self.fixturesCache_[relativeUrl] = htmlText;</span>
+   }
+
+   jasmine.Fixtures.prototype.makeFixtureUrl_ = function (relativeUrl){</pre></div>
+<p>这样用起来会比较简单, 只需要在fixture里面加入 script 即可</p>
+<div class="highlight highlight-html"><pre>
+&lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>anchor_01<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+<span class="pl-s2">&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s1"><span class="pl-pds">"</span>spec/fixtures/javascripts/jasmine_javascript_c</span></span>
+<span class="pl-s2"><span class="pl-s1">lick.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s2">&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s1"><span class="pl-pds">"</span>spec/fixtures/javascripts/jasmine_javascript_hove</span></span>
+<span class="pl-s2"><span class="pl-s1">r.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+<p>不需要修改任何 jasmine 测试代码, 依然是这段代码, 这是它应该就会 <b>绿</b> 了</p>
+<div class="highlight highlight-javascript"><pre>
+describe(<span class="pl-s1"><span class="pl-pds">"</span>when fixture contains an &lt;script src='to/your/source'&gt; tag<span class="pl-pds">"</span></span>, <span class="pl-st">function</span> () {
+  <span class="pl-s">var</span> fixtureUrl <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">"</span>fixture_with_javascript.html<span class="pl-pds">"</span></span>
+
+  it(<span class="pl-s1"><span class="pl-pds">"</span>should load content of fixture file and javascripts and bind events<span class="pl-pds">"</span></span>, <span class="pl-st">function</span> () {
+    jasmine.getFixtures().<span class="pl-s3">load</span>(fixtureUrl)
+    $(<span class="pl-s1"><span class="pl-pds">'</span>#anchor_01<span class="pl-pds">'</span></span>).<span class="pl-s3">click</span>()
+    expect($(<span class="pl-s1"><span class="pl-pds">"</span>#anchor_01<span class="pl-pds">"</span></span>)).toHaveClass(<span class="pl-s1"><span class="pl-pds">'</span>foo<span class="pl-pds">'</span></span>)
+  })
+})</pre></div>
+<p>fin
+  我已经 <a href="https://github.com/velesin/jasmine-jquery/pulls" rel="noreferrer">pull request 到这里</a> 但是人家木有一点要 merge 的意思…好吧,反正我是不会用了,
+  要是谁被无法绑定事件困扰就不要再浪费时间困扰了, 可以 clone 我的 <a href="https://github.com/jcouyang/jasmine-jquery" rel="noreferrer">fork</a>
+  吧 亲.</p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/9913920/raw/2013-11-27-bdd-using-jasmine-jquery.org" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/9913920#file-2013-11-27-bdd-using-jasmine-jquery-org">2013-11-27-bdd-using-jasmine-jquery.org</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

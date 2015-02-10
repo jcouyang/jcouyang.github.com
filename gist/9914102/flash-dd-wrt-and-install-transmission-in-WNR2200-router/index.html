@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist9914102" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/9914102/file/2013-05-25-flash-dd-wrt-and-install-transmission.md">
+        <h1>
+<a name="user-content-prepaire" class="anchor" href="#prepaire" rel="noreferrer"><span class="octicon octicon-link"></span></a>Prepaire</h1>
+
+<ul class="task-list">
+<li>USB disk
+格式化成ext2/3格式, with gparted in linux. 根据官方wiki, 最新的v24已经
+不用jffs了, 目前的dd-wrt目录结构是这样的:</li>
+</ul>
+
+<pre><code>/tmp ## mounted on the RAM drive of dd-wrt
+/jffs  ## builti-in flash, 已经disable
+/mnt ## used for rw drive
+</code></pre>
+
+<p>因此根据需要格式化, 如果你的硬盘一直要与路由连, 或者需要在硬盘上装软件
+, 就格成ext3,如果只是存储数据, whatever, fat也可用</p>
+
+<blockquote>
+<p>Use ONLY ext2/3 for partition/drives that you plan for permanent connection to your DD-WRT box, or for drives where you plan to install additional software packages onto (like optware, Samba, Torrent etc.). You can use any of the three mount points: /opt, /mnt, /jffs</p>
+
+<p>Use FAT32 on data partitions if you intend to connect this drive to other systems (MAC, Windows) to copy files from/to directly. You should use the mount point: /mnt </p>
+</blockquote>
+
+<p>wiki建议连路由专用的硬盘可用格式成这样</p>
+
+<pre><code>    one: for optware packages - make it 32MB - 2GB - use ext2/3 as the format
+    two: for swap file - make it 16-256 MB - format it as linux swap file
+    three: for data space - make it fit the rest of the disk - use ext2/3 or FAT32 as the format
+    four: for jffs space - make it 32MB - 2GB - use ext2/3 as the format 
+</code></pre>
+
+<ul class="task-list">
+<li>Connection
+你需要用ssh或者telnet连接router来安装软件
+&lt;!-- more --&gt;
+# Installation #</li>
+<li><p>mount your usb
+Under Services-&gt;USB:
+     * Enable Core USB Support
+     *  Disable USB Printer Support (enable it if you need printing support)
+     * Enable USB Storage Support
+     * Enable Automatic Drive Mount
+     * Set Disk Mount Point to /mnt
+     * Click Apply Settings </p></li>
+<li><p>make sure mount it to <code>/mnt</code>
+我的usb读卡器mount到了<code>/mnt/sda_part1</code>上, 需要再手动mount到mnt目录下</p></li>
+<li><p>mount some directions </p></li>
+</ul>
+
+<div class="highlight highlight-sh"><pre><span class="pl-s3">cd</span> /mnt
+mkdir etc opt root
+touch optware.<span class="pl-s3">enable</span>
+chmod 755 etc opt root
+mkdir opt/lib
+chmod 755 opt/lib
+cp -a /etc/<span class="pl-k">*</span> /mnt/etc/
+mount -o <span class="pl-s3">bind</span> /mnt/etc /etc
+mount -o <span class="pl-s3">bind</span> /mnt/opt /jffs </pre></div>
+
+<ul class="task-list">
+<li>install opkg and libc</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>wget http://downloads.openwrt.org/backfire/10.03.1/ar71xx/packages/opkg_576-2_ar71xx.ipk
+ipkg install libc_0.9.30.1-43.32_ar71xx.ipk 
+wget http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/libc_0.9.33.2-1_ar71xx.ipk
+opkg install libc_0.9.33.2-1_ar71xx.ipk</pre></div>
+
+<ul class="task-list">
+<li>Type the following lines to create the configuration file for opkg:</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>cat <span class="pl-k">&gt;</span> /etc/opkg.conf <span class="pl-k">&lt;&lt;</span> EOF
+src/gz snapshots http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages
+dest root /opt
+dest ram /opt/tmp
+lists_dir ext /opt/tmp/var/opkg-lists
+EOF </pre></div>
+
+<ul class="task-list">
+<li>Make sure opkg is ok</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>umount /jffs
+mount -o <span class="pl-s3">bind</span> /mnt/root /tmp/root
+mount -o <span class="pl-s3">bind</span> /mnt/opt /opt
+<span class="pl-s">export</span> LD_LIBRARY_PATH=<span class="pl-s1"><span class="pl-pds">'</span>/opt/lib:/opt/usr/lib:/lib:/usr/lib<span class="pl-pds">'</span></span>
+opkg update </pre></div>
+
+<ul class="task-list">
+<li>now you can install transmission</li>
+</ul>
+
+<p><code>opkg install transmission-daemon transmission-web</code></p>
+
+<ul class="task-list">
+<li>Finally change the transmission-web PATH
+transmission-web 的index.html文件都在
+<code>/opt/usr/share/transmission/web/</code>下, 而默认transmission会到<code>/tmp/</code>下
+找,  因此需要link下
+  ln -s /opt/usr/share/transmission/web/ /tmp/root/.local/share/transmission/web</li>
+</ul>
+
+<h1>
+<a name="user-content-configure" class="anchor" href="#configure" rel="noreferrer"><span class="octicon octicon-link"></span></a>Configure</h1>
+
+<ul class="task-list">
+<li><p>start daemon first
+<code>transmission-daemon -g /mnt/data/torrents/.config/transmission-daemon
+killall transmission-daemon</code></p></li>
+<li><p>edit <code>setting.json</code>
+<code>vi /mnt/data/torrents/.config/transmission-daemon/settings.js</code>
+编辑确保跟如下几行一样</p></li>
+</ul>
+
+<div class="highlight highlight-json"><pre>  {
+     <span class="pl-s1"><span class="pl-pds">"</span>blocklist-enabled<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>download-dir<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span><span class="pl-cce">\/</span>mnt<span class="pl-cce">\/</span>data<span class="pl-cce">\/</span>torrents<span class="pl-pds">"</span></span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>download-limit<span class="pl-pds">"</span></span>: <span class="pl-c1">100</span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>download-limit-enabled<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>encryption<span class="pl-pds">"</span></span>: <span class="pl-c1">2</span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>max-peers-global<span class="pl-pds">"</span></span>: <span class="pl-c1">35</span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>peer-port<span class="pl-pds">"</span></span>: <span class="pl-c1">25000</span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>pex-enabled<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>port-forwarding-enabled<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>rpc-authentication-required<span class="pl-pds">"</span></span>: <span class="pl-c1">0</span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>rpc-password<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>rpc-port<span class="pl-pds">"</span></span>: <span class="pl-c1">9091</span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>rpc-username<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>rpc-whitelist<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>192.168.1.*<span class="pl-pds">"</span></span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>upload-limit<span class="pl-pds">"</span></span>: <span class="pl-c1">200</span>,
+     <span class="pl-s1"><span class="pl-pds">"</span>upload-limit-enabled<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>
+     }</pre></div>
+
+<ul class="task-list">
+<li>Restart and rock</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>killall transmission-daemon
+transmission-daemon -g /mnt/data/torrents/.config/transmission-daemon</pre></div>
+
+<p>and also, you can enable WAN
+access</p>
+
+<p><code>iptables -I INPUT 1 -p tcp --dport 25000 -j logaccept</code></p>
+
+<p>这样就可以远程访问transmission了</p>
+
+<hr>
+
+<p><a href="https://camo.githubusercontent.com/7008e5eff95d5f714c682e12c59b9fe1e114fd57/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f64642d7772742d7472616e736d697373696f6e" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/7008e5eff95d5f714c682e12c59b9fe1e114fd57/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f64642d7772742d7472616e736d697373696f6e" alt="Analytics" data-canonical-src="https://ga-beacon.appspot.com/UA-32314154-5/blogist/dd-wrt-transmission" style="max-width:100%;"></a></p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/9914102/raw/2013-05-25-flash-dd-wrt-and-install-transmission.md" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/9914102#file-2013-05-25-flash-dd-wrt-and-install-transmission-md">2013-05-25-flash-dd-wrt-and-install-transmission.md</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

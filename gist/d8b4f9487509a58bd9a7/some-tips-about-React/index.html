@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist19197624" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/d8b4f9487509a58bd9a7/file/react-tips.md">
+        <h2>
+<a name="user-content-react-tips" class="anchor" href="#react-tips" rel="noreferrer"><span class="octicon octicon-link"></span></a>React Tips</h2>
+
+<h3>
+<a name="user-content-prop-validation" class="anchor" href="#prop-validation" rel="noreferrer"><span class="octicon octicon-link"></span></a><a href="http://facebook.github.io/react/docs/reusable-components.html#prop-validation" rel="noreferrer">Prop Validation</a>
+</h3>
+
+<p>如果把每个Component想象成一个函数，那么props就是这个函数的参数。在有类型检查的语言中，很容易在编译期间就可以对参数类型检
+查来避免一些不必要的错误。</p>
+
+<p>javascript没有类型检查，但是我们仍然能筒高React的Prop Validation在运行期间检查props的类型。</p>
+
+<p>只需要在Component声明里加上</p>
+
+<div class="highlight highlight-javascript"><pre>propTypes<span class="pl-k">:</span> {
+  aProperty<span class="pl-k">:</span> React.PropTypes.any.isRequired
+  ...
+}</pre></div>
+
+<h3>
+<a name="user-content-prop-shortcut" class="anchor" href="#prop-shortcut" rel="noreferrer"><span class="octicon octicon-link"></span></a>Prop shortcut</h3>
+
+<p>一个嵌套多层的Component可能会有非常多的参数要通过props往下传，那么我们可以简单的这样</p>
+
+<pre><code>&lt;a {...this.props}&gt;
+</code></pre>
+
+<p>就可以吧所有的props传给子元素</p>
+
+<p>但是如果某个中间Component消费了一些props, 那么我们完全可以只把剩下的props继续传下去。</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> { checked, ...other } <span class="pl-k">=</span> <span class="pl-v">this</span>.props;
+<span class="pl-s">var</span> fancyClass <span class="pl-k">=</span> checked <span class="pl-k">?</span> <span class="pl-s1"><span class="pl-pds">'</span>FancyChecked<span class="pl-pds">'</span></span> <span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>FancyUnchecked<span class="pl-pds">'</span></span>;
+<span class="pl-c">// `other` contains { onClick: console.log } but not the checked property</span>
+<span class="pl-k">return</span> (
+  <span class="pl-k">&lt;</span>div {...other} className<span class="pl-k">=</span>{fancyClass} /<span class="pl-k">&gt;</span>
+);</pre></div>
+
+<h3>
+<a name="user-content-mixin" class="anchor" href="#mixin" rel="noreferrer"><span class="octicon octicon-link"></span></a>mixin</h3>
+
+<p>可以mixin一些功能点</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> SetIntervalMixin <span class="pl-k">=</span> {
+  ...
+};
+
+<span class="pl-s">var</span> TickTock <span class="pl-k">=</span> React.createClass({
+  mixins<span class="pl-k">:</span> [SetIntervalMixin], <span class="pl-c">// Use the mixin</span>
+})</pre></div>
+
+<h3>
+<a name="user-content-classname" class="anchor" href="#classname" rel="noreferrer"><span class="octicon octicon-link"></span></a>className</h3>
+
+<p>样式class在React中叫做className，同样他是一个字符串，但是React
+提供了方便的classset工具，让我们而已这样</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> cx <span class="pl-k">=</span> React.addons.classSet;
+<span class="pl-s">var</span> classes <span class="pl-k">=</span> cx({
+  <span class="pl-s1"><span class="pl-pds">'</span>message<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+  <span class="pl-s1"><span class="pl-pds">'</span>message-important<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-v">this</span>.props.isImportant,
+  <span class="pl-s1"><span class="pl-pds">'</span>message-read<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-v">this</span>.props.isRead
+});</pre></div>
+
+<p>从此就不用麻烦的拼接字符串了。</p>
+
+<h3>
+<a name="user-content-inline-style" class="anchor" href="#inline-style" rel="noreferrer"><span class="octicon octicon-link"></span></a>Inline style</h3>
+
+<p>这么多年来我们一直被教育说不要用 <code>inline style</code>，但是React貌似非常支持这种写法</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> divStyle <span class="pl-k">=</span> {
+  color<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>white<span class="pl-pds">'</span></span>,
+  backgroundImage<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>url(<span class="pl-pds">'</span></span> <span class="pl-k">+</span> imgUrl <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">'</span>)<span class="pl-pds">'</span></span>,
+  WebkitTransition<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>all<span class="pl-pds">'</span></span>, <span class="pl-c">// note the capital 'W' here</span>
+  msTransition<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>all<span class="pl-pds">'</span></span> <span class="pl-c">// 'ms' is the only lowercase vendor prefix</span>
+};
+
+React.render(<span class="pl-k">&lt;</span>div style<span class="pl-k">=</span>{divStyle}<span class="pl-k">&gt;</span>Hello World<span class="pl-k">!&lt;</span>/div<span class="pl-k">&gt;</span>, mountNode);</pre></div>
+
+<p>开始不理解为什么要吧style从字符串改成一个map，但是看到最近React Native的session顿时开朗了。
+React Native把android和ios的Native ui都封装成了Component，但是native的ui并不会使用css来控制样式。
+那么facebook想出来的颠覆性的想法就是把样式写成inline的，然后native component去实现这些inline css样式
+与native ui样式的bridge。</p>
+
+<p>把样式弄成map，这样可以方便重用，我们就可以方便的把这些样式抽成module</p>
+
+<h3>
+<a name="user-content-refs" class="anchor" href="#refs" rel="noreferrer"><span class="octicon octicon-link"></span></a>refs</h3>
+
+<p>我们知道如果想要子component发生某些变化是让父component做一些事情，可以把父componet的函数通过
+props传给子component，然后等着被回调就好了。。</p>
+
+<p>另外一个方向是，如果父component发生某些变化，想让子component做一些事情的话，比如我在父component点了
+个按钮，想让一个子component显示或不显示，有两种方法可以做这件事情：</p>
+
+<ul class="task-list">
+<li>通过props传一个显示不显示的标志进去，然后子component通过不同的标志调整显示的样式。</li>
+<li>子component暴露一个公开方法，父component通过拿到子component的引用<code>ref</code>，调用这个公开方法。</li>
+</ul>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> App <span class="pl-k">=</span> React.createClass({
+  ...
+  <span class="pl-en">clearAndFocusInput</span>: <span class="pl-st">function</span>() {
+    <span class="pl-c">// Clear the input</span>
+    <span class="pl-v">this</span>.setState({userInput<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>}, <span class="pl-st">function</span>() {
+      <span class="pl-c">// This code executes after the component is re-rendered</span>
+      <span class="pl-v">this</span>.refs.theInput.getDOMNode().<span class="pl-s3">focus</span>();   <span class="pl-c">// Boom! Focused!</span>
+    });
+  },
+  <span class="pl-en">render</span>: <span class="pl-st">function</span>() {
+    <span class="pl-k">return</span> (
+      <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>div <span class="pl-s3">onClick</span><span class="pl-k">=</span>{<span class="pl-v">this</span>.clearAndFocusInput}<span class="pl-k">&gt;</span>
+          Click to Focus and <span class="pl-s3">Reset</span>
+        <span class="pl-k">&lt;</span>/div<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>input
+          ref<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>theInput<span class="pl-pds">"</span></span>
+          value<span class="pl-k">=</span>{<span class="pl-v">this</span>.state.userInput}
+          <span class="pl-s3">onChange</span><span class="pl-k">=</span>{<span class="pl-v">this</span>.handleChange}
+        /<span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span>/div<span class="pl-k">&gt;</span>
+    );
+  }
+});</pre></div>
+
+<p>选择后者的好处是可以少传点props</p>
+
+<h3>
+<a name="user-content-purerendermixin" class="anchor" href="#purerendermixin" rel="noreferrer"><span class="octicon octicon-link"></span></a>PureRenderMixin</h3>
+
+<p>想想如果一个纯函数，他每次相同输入都是相同的输出，我们就不需要再检查状态，不需要比较那个地方可能会被
+不知道谁谁谁修改了，那么在shouldComponentUpdate的判断的时候，我们不会担心state里面某个很深的字段被改掉了没，只要做
+一个浅比较就可以了。如果你用了一些Immutable的数据结构，大可以把这个mixin加上。</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> PureRenderMixin <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>react<span class="pl-pds">'</span></span>).addons.PureRenderMixin;
+React.createClass({
+  mixins<span class="pl-k">:</span> [PureRenderMixin],
+  ...</pre></div>
+
+<p>shouldComponentUpdate 而且会跳过其子component的更新，所以最好你的子component也是纯的.</p>
+
+<h3>
+<a name="user-content-immutable-datastructure" class="anchor" href="#immutable-datastructure" rel="noreferrer"><span class="octicon octicon-link"></span></a>Immutable datastructure</h3>
+
+<ul class="task-list">
+<li>
+<a href="http://swannodette.github.io/mori/" rel="noreferrer">mori</a>
+基本上是clojure里面的数据结构，用法也基本一样</li>
+<li>
+<a href="http://facebook.github.io/immutable-js/" rel="noreferrer">Immutable</a>
+facebook的，比较轻量一点</li>
+</ul>
+
+<h3>
+<a name="user-content-flow-static-type" class="anchor" href="#flow-static-type" rel="noreferrer"><span class="octicon octicon-link"></span></a><a href="http://flowtype.org/docs/react-example.html#_" rel="noreferrer">flow static type</a>
+</h3>
+
+<p>flow 可以让对js进行静态类型检查，也就是在编译期让我们可以避免很多类型带来的错误</p>
+
+<div class="highlight highlight-js"><pre>type Message <span class="pl-k">=</span> {
+  id<span class="pl-k">:</span> string;
+  threadID<span class="pl-k">:</span> string;
+  authorName<span class="pl-k">:</span> string;
+  date<span class="pl-k">:</span> <span class="pl-s3">Date</span>;
+  text<span class="pl-k">:</span> string;
+  isRead<span class="pl-k">:</span> boolean;
+};
+<span class="pl-c">// ...</span>
+<span class="pl-en">get</span>: <span class="pl-st">function</span>(<span class="pl-vpf">id</span>: string)<span class="pl-k">:</span> <span class="pl-k">?</span>Message {
+  <span class="pl-k">return</span> _messages[id];
+},</pre></div>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/d8b4f9487509a58bd9a7/raw/react-tips.md" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/d8b4f9487509a58bd9a7#file-react-tips-md">react-tips.md</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

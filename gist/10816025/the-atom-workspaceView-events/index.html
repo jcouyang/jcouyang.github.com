@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist10816025" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-atom-workspaceview-events-L1" rel="file-atom-workspaceview-events-L1">1</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L2" rel="file-atom-workspaceview-events-L2">2</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L3" rel="file-atom-workspaceview-events-L3">3</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L4" rel="file-atom-workspaceview-events-L4">4</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L5" rel="file-atom-workspaceview-events-L5">5</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L6" rel="file-atom-workspaceview-events-L6">6</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L7" rel="file-atom-workspaceview-events-L7">7</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L8" rel="file-atom-workspaceview-events-L8">8</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L9" rel="file-atom-workspaceview-events-L9">9</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L10" rel="file-atom-workspaceview-events-L10">10</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L11" rel="file-atom-workspaceview-events-L11">11</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L12" rel="file-atom-workspaceview-events-L12">12</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L13" rel="file-atom-workspaceview-events-L13">13</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L14" rel="file-atom-workspaceview-events-L14">14</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L15" rel="file-atom-workspaceview-events-L15">15</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L16" rel="file-atom-workspaceview-events-L16">16</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L17" rel="file-atom-workspaceview-events-L17">17</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L18" rel="file-atom-workspaceview-events-L18">18</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L19" rel="file-atom-workspaceview-events-L19">19</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L20" rel="file-atom-workspaceview-events-L20">20</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L21" rel="file-atom-workspaceview-events-L21">21</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L22" rel="file-atom-workspaceview-events-L22">22</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L23" rel="file-atom-workspaceview-events-L23">23</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L24" rel="file-atom-workspaceview-events-L24">24</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L25" rel="file-atom-workspaceview-events-L25">25</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L26" rel="file-atom-workspaceview-events-L26">26</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L27" rel="file-atom-workspaceview-events-L27">27</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L28" rel="file-atom-workspaceview-events-L28">28</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L29" rel="file-atom-workspaceview-events-L29">29</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L30" rel="file-atom-workspaceview-events-L30">30</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L31" rel="file-atom-workspaceview-events-L31">31</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L32" rel="file-atom-workspaceview-events-L32">32</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L33" rel="file-atom-workspaceview-events-L33">33</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L34" rel="file-atom-workspaceview-events-L34">34</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L35" rel="file-atom-workspaceview-events-L35">35</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L36" rel="file-atom-workspaceview-events-L36">36</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L37" rel="file-atom-workspaceview-events-L37">37</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L38" rel="file-atom-workspaceview-events-L38">38</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L39" rel="file-atom-workspaceview-events-L39">39</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L40" rel="file-atom-workspaceview-events-L40">40</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L41" rel="file-atom-workspaceview-events-L41">41</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L42" rel="file-atom-workspaceview-events-L42">42</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L43" rel="file-atom-workspaceview-events-L43">43</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L44" rel="file-atom-workspaceview-events-L44">44</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L45" rel="file-atom-workspaceview-events-L45">45</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L46" rel="file-atom-workspaceview-events-L46">46</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L47" rel="file-atom-workspaceview-events-L47">47</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L48" rel="file-atom-workspaceview-events-L48">48</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L49" rel="file-atom-workspaceview-events-L49">49</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L50" rel="file-atom-workspaceview-events-L50">50</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L51" rel="file-atom-workspaceview-events-L51">51</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L52" rel="file-atom-workspaceview-events-L52">52</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L53" rel="file-atom-workspaceview-events-L53">53</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L54" rel="file-atom-workspaceview-events-L54">54</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L55" rel="file-atom-workspaceview-events-L55">55</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L56" rel="file-atom-workspaceview-events-L56">56</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L57" rel="file-atom-workspaceview-events-L57">57</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L58" rel="file-atom-workspaceview-events-L58">58</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L59" rel="file-atom-workspaceview-events-L59">59</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L60" rel="file-atom-workspaceview-events-L60">60</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L61" rel="file-atom-workspaceview-events-L61">61</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L62" rel="file-atom-workspaceview-events-L62">62</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L63" rel="file-atom-workspaceview-events-L63">63</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L64" rel="file-atom-workspaceview-events-L64">64</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L65" rel="file-atom-workspaceview-events-L65">65</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L66" rel="file-atom-workspaceview-events-L66">66</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L67" rel="file-atom-workspaceview-events-L67">67</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L68" rel="file-atom-workspaceview-events-L68">68</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L69" rel="file-atom-workspaceview-events-L69">69</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L70" rel="file-atom-workspaceview-events-L70">70</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L71" rel="file-atom-workspaceview-events-L71">71</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L72" rel="file-atom-workspaceview-events-L72">72</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L73" rel="file-atom-workspaceview-events-L73">73</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L74" rel="file-atom-workspaceview-events-L74">74</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L75" rel="file-atom-workspaceview-events-L75">75</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L76" rel="file-atom-workspaceview-events-L76">76</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L77" rel="file-atom-workspaceview-events-L77">77</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L78" rel="file-atom-workspaceview-events-L78">78</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L79" rel="file-atom-workspaceview-events-L79">79</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L80" rel="file-atom-workspaceview-events-L80">80</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L81" rel="file-atom-workspaceview-events-L81">81</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L82" rel="file-atom-workspaceview-events-L82">82</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L83" rel="file-atom-workspaceview-events-L83">83</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L84" rel="file-atom-workspaceview-events-L84">84</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L85" rel="file-atom-workspaceview-events-L85">85</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L86" rel="file-atom-workspaceview-events-L86">86</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L87" rel="file-atom-workspaceview-events-L87">87</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L88" rel="file-atom-workspaceview-events-L88">88</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L89" rel="file-atom-workspaceview-events-L89">89</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L90" rel="file-atom-workspaceview-events-L90">90</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L91" rel="file-atom-workspaceview-events-L91">91</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L92" rel="file-atom-workspaceview-events-L92">92</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L93" rel="file-atom-workspaceview-events-L93">93</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L94" rel="file-atom-workspaceview-events-L94">94</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L95" rel="file-atom-workspaceview-events-L95">95</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L96" rel="file-atom-workspaceview-events-L96">96</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L97" rel="file-atom-workspaceview-events-L97">97</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L98" rel="file-atom-workspaceview-events-L98">98</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L99" rel="file-atom-workspaceview-events-L99">99</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L100" rel="file-atom-workspaceview-events-L100">100</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L101" rel="file-atom-workspaceview-events-L101">101</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L102" rel="file-atom-workspaceview-events-L102">102</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L103" rel="file-atom-workspaceview-events-L103">103</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L104" rel="file-atom-workspaceview-events-L104">104</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L105" rel="file-atom-workspaceview-events-L105">105</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L106" rel="file-atom-workspaceview-events-L106">106</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L107" rel="file-atom-workspaceview-events-L107">107</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L108" rel="file-atom-workspaceview-events-L108">108</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L109" rel="file-atom-workspaceview-events-L109">109</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L110" rel="file-atom-workspaceview-events-L110">110</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L111" rel="file-atom-workspaceview-events-L111">111</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L112" rel="file-atom-workspaceview-events-L112">112</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L113" rel="file-atom-workspaceview-events-L113">113</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L114" rel="file-atom-workspaceview-events-L114">114</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L115" rel="file-atom-workspaceview-events-L115">115</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L116" rel="file-atom-workspaceview-events-L116">116</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L117" rel="file-atom-workspaceview-events-L117">117</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L118" rel="file-atom-workspaceview-events-L118">118</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L119" rel="file-atom-workspaceview-events-L119">119</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L120" rel="file-atom-workspaceview-events-L120">120</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L121" rel="file-atom-workspaceview-events-L121">121</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L122" rel="file-atom-workspaceview-events-L122">122</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L123" rel="file-atom-workspaceview-events-L123">123</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L124" rel="file-atom-workspaceview-events-L124">124</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L125" rel="file-atom-workspaceview-events-L125">125</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L126" rel="file-atom-workspaceview-events-L126">126</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L127" rel="file-atom-workspaceview-events-L127">127</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L128" rel="file-atom-workspaceview-events-L128">128</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L129" rel="file-atom-workspaceview-events-L129">129</span>
+            <span class="line-number" id="file-atom-workspaceview-events-L130" rel="file-atom-workspaceview-events-L130">130</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-atom-workspaceview-events-LC1">```
+</div><div class="line" id="file-atom-workspaceview-events-LC2">application:about: &quot;Application: About&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC3">application:bring-all-windows-to-front: &quot;Application: Bring All Windows To Front&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC4">application:hide: &quot;Application: Hide&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC5">application:hide-other-applications: &quot;Application: Hide Other Applications&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC6">application:minimize: &quot;Application: Minimize&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC7">application:new-file: &quot;Application: New File&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC8">application:new-window: &quot;Application: New Window&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC9">application:open: &quot;Application: Open&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC10">application:open-dev: &quot;Application: Open Dev&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC11">application:open-license: &quot;Application: Open License&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC12">application:open-your-config: &quot;Application: Open Your Config&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC13">application:open-your-init-script: &quot;Application: Open Your Init Script&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC14">application:open-your-keymap: &quot;Application: Open Your Keymap&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC15">application:open-your-snippets: &quot;Application: Open Your Snippets&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC16">application:open-your-stylesheet: &quot;Application: Open Your Stylesheet&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC17">application:quit: &quot;Application: Quit&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC18">application:run-all-specs: &quot;Application: Run All Specs&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC19">application:run-benchmarks: &quot;Application: Run Benchmarks&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC20">application:show-settings: &quot;Application: Show Settings&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC21">application:unhide-all-applications: &quot;Application: Unhide All Applications&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC22">application:zoom: &quot;Application: Zoom&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC23">atom-memolist:toggle: &quot;Atom Memolist: Toggle&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC24">autocomplete:toggle: &quot;Autocomplete: Toggle&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC25">autoflow:reflow-paragraph: &quot;Autoflow: Reflow Paragraph&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC26">bookmarks:view-all: &quot;Bookmarks: View All&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC27">click: null
+</div><div class="line" id="file-atom-workspaceview-events-LC28">command-palette:toggle: &quot;Command Palette: Toggle&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC29">contextmenu: null
+</div><div class="line" id="file-atom-workspaceview-events-LC30">core:cancel: null
+</div><div class="line" id="file-atom-workspaceview-events-LC31">core:close: &quot;Core: Close&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC32">core:copy: null
+</div><div class="line" id="file-atom-workspaceview-events-LC33">core:focus-next: &quot;Core: Focus Next&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC34">core:focus-previous: &quot;Core: Focus Previous&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC35">core:paste: null
+</div><div class="line" id="file-atom-workspaceview-events-LC36">core:redo: null
+</div><div class="line" id="file-atom-workspaceview-events-LC37">core:save: &quot;Core: Save&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC38">core:save-as: &quot;Core: Save As&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC39">core:select-all: null
+</div><div class="line" id="file-atom-workspaceview-events-LC40">core:undo: null
+</div><div class="line" id="file-atom-workspaceview-events-LC41">cursor:moved: null
+</div><div class="line" id="file-atom-workspaceview-events-LC42">dev-live-reload:reload-all: &quot;Dev Live Reload: Reload All&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC43">dragover: null
+</div><div class="line" id="file-atom-workspaceview-events-LC44">drop: null
+</div><div class="line" id="file-atom-workspaceview-events-LC45">editor:attached: null
+</div><div class="line" id="file-atom-workspaceview-events-LC46">editor:grammar-changed: null
+</div><div class="line" id="file-atom-workspaceview-events-LC47">feedback:report: &quot;Feedback: Report&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC48">find-and-replace:find-next: &quot;Find And Replace: Find Next&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC49">find-and-replace:find-previous: &quot;Find And Replace: Find Previous&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC50">find-and-replace:replace-all: &quot;Find And Replace: Replace All&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC51">find-and-replace:replace-next: &quot;Find And Replace: Replace Next&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC52">find-and-replace:select-all: &quot;Find And Replace: Select All&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC53">find-and-replace:select-next: &quot;Find And Replace: Select Next&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC54">find-and-replace:show: &quot;Find And Replace: Show&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC55">find-and-replace:show-replace: &quot;Find And Replace: Show Replace&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC56">find-and-replace:use-selection-as-find-pattern: &quot;Find And Replace: Use Selection As Find Pattern&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC57">focus: null
+</div><div class="line" id="file-atom-workspaceview-events-LC58">focusout: null
+</div><div class="line" id="file-atom-workspaceview-events-LC59">fuzzy-finder:toggle-buffer-finder: &quot;Fuzzy Finder: Toggle Buffer Finder&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC60">fuzzy-finder:toggle-file-finder: &quot;Fuzzy Finder: Toggle File Finder&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC61">fuzzy-finder:toggle-git-status-finder: &quot;Fuzzy Finder: Toggle Git Status Finder&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC62">gist-it:gist-current-file: &quot;Gist It: Gist Current File&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC63">gist-it:gist-open-buffers: &quot;Gist It: Gist Open Buffers&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC64">gist-it:gist-selection: &quot;Gist It: Gist Selection&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC65">glist:delete: &quot;Glist: Delete&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC66">glist:saveGist: &quot;Glist: SaveGist&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC67">glist:toggle: &quot;Glist: Toggle&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC68">glist:update: &quot;Glist: Update&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC69">go-to-line:toggle: &quot;Go To Line: Toggle&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC70">grammar-selector:show: &quot;Grammar Selector: Show&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC71">key-binding-resolver:toggle: &quot;Key Binding Resolver: Toggle&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC72">keydown: null
+</div><div class="line" id="file-atom-workspaceview-events-LC73">link:open: &quot;Link: Open&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC74">markdown-preview:toggle: &quot;Markdown Preview: Toggle&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC75">markdown-preview:toggle-break-on-single-newline: &quot;Markdown Preview: Toggle Break On Single Newline&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC76">open-on-github:blame: &quot;Open On GitHub: Blame&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC77">open-on-github:branch-compare: &quot;Open On GitHub: Branch Compare&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC78">open-on-github:copy-url: &quot;Open On GitHub: Copy Url&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC79">open-on-github:file: &quot;Open On GitHub: File&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC80">open-on-github:history: &quot;Open On GitHub: History&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC81">package-generator:generate-package: &quot;Package Generator: Generate Package&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC82">package-generator:generate-syntax-theme: &quot;Package Generator: Generate Syntax Theme&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC83">pane-container:active-pane-item-changed: null
+</div><div class="line" id="file-atom-workspaceview-events-LC84">pane:active-item-title-changed: null
+</div><div class="line" id="file-atom-workspaceview-events-LC85">pane:attached: null
+</div><div class="line" id="file-atom-workspaceview-events-LC86">pane:before-item-destroyed: null
+</div><div class="line" id="file-atom-workspaceview-events-LC87">pane:item-added: null
+</div><div class="line" id="file-atom-workspaceview-events-LC88">pane:removed: null
+</div><div class="line" id="file-atom-workspaceview-events-LC89">pane:reopen-closed-item: &quot;Pane: Reopen Closed Item&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC90">project-find:show: &quot;Project Find: Show&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC91">project-find:show-in-current-directory: &quot;Project Find: Show In Current Directory&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC92">release-notes:show: &quot;Release Notes: Show&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC93">settings-view:change-themes: &quot;Settings View: Change Themes&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC94">settings-view:install-packages: &quot;Settings View: Install Packages&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC95">settings-view:install-themes: &quot;Settings View: Install Themes&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC96">settings-view:open: &quot;Settings View: Open&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC97">settings-view:show-keybindings: &quot;Settings View: Show Keybindings&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC98">show: null
+</div><div class="line" id="file-atom-workspaceview-events-LC99">styleguide:show: &quot;Styleguide: Show&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC100">symbols-view:go-to-declaration: &quot;Symbols View: Go To Declaration&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC101">symbols-view:toggle-file-symbols: &quot;Symbols View: Toggle File Symbols&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC102">symbols-view:toggle-project-symbols: &quot;Symbols View: Toggle Project Symbols&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC103">terminal:open: &quot;Terminal: Open&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC104">tern:completion: &quot;Tern: Completion&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC105">tern:start-server: &quot;Tern: Start Server&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC106">timecop:view: &quot;Timecop: View&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC107">tree-view:reveal-active-file: &quot;Tree View: Reveal Active File&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC108">tree-view:show: &quot;Tree View: Show&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC109">tree-view:toggle: &quot;Tree View: Toggle&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC110">tree-view:toggle-focus: &quot;Tree View: Toggle Focus&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC111">tree-view:toggle-side: &quot;Tree View: Toggle Side&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC112">update-package-dependencies:update: &quot;Update Package Dependencies: Update&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC113">welcome:show-welcome-buffer: &quot;Welcome: Show Welcome Buffer&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC114">whitespace:remove-trailing-whitespace: &quot;Whitespace: Remove Trailing Whitespace&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC115">window:decrease-font-size: &quot;Window: Decrease Font Size&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC116">window:focus-next-pane: &quot;Window: Focus Next Pane&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC117">window:focus-pane-above: &quot;Window: Focus Pane Above&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC118">window:focus-pane-below: &quot;Window: Focus Pane Below&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC119">window:focus-pane-on-left: &quot;Window: Focus Pane On Left&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC120">window:focus-pane-on-right: &quot;Window: Focus Pane On Right&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC121">window:focus-previous-pane: &quot;Window: Focus Previous Pane&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC122">window:increase-font-size: &quot;Window: Increase Font Size&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC123">window:install-shell-commands: &quot;Window: Install Shell Commands&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC124">window:reset-font-size: &quot;Window: Reset Font Size&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC125">window:run-package-specs: &quot;Window: Run Package Specs&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC126">window:save-all: &quot;Window: Save All&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC127">window:toggle-auto-indent: &quot;Window: Toggle Auto Indent&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC128">window:toggle-invisibles: &quot;Window: Toggle Invisibles&quot;
+</div><div class="line" id="file-atom-workspaceview-events-LC129">window:update-available: null
+</div><div class="line" id="file-atom-workspaceview-events-LC130">```
+</div></pre>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/10816025/raw/atom%20workspaceView%20events" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/10816025#file-atom-workspaceview-events">atom workspaceView events</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist9913872" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/9913872/file/2013-09-05-bootstrap-your-android-development.org">
+        <p>最近再一次偶然的机会在github上见到了这样一个repo
+  <a href="http://www.github.com/donnfelker/android-bootstrap" rel="noreferrer">http://www.github.com/donnfelker/android-bootstrap</a>
+  能让你迅速搭建起基本ui和框架.但是基本上没有什么文档,非常可惜.环境搭好
+  了,却不知道在哪里加代码. 于是我玩几天准备把我的理解写一下,以供找不到文
+  档的同学可以快速上个手.</p>
+<h2>
+<a name="user-content-101-%E4%BB%80%E4%B9%88%E6%98%AF-android-bootstrap" class="anchor" href="#101-%E4%BB%80%E4%B9%88%E6%98%AF-android-bootstrap" rel="noreferrer"><span class="octicon octicon-link"></span></a>101 什么是 android bootstrap</h2>
+<p><a href="https://camo.githubusercontent.com/76c27eb78cb5e624213511693523d64f6007f54c/687474703a2f2f7777772e616e64726f6964626f6f7473747261702e636f6d2f696d616765732f61622d73637265656e73686f742e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/76c27eb78cb5e624213511693523d64f6007f54c/687474703a2f2f7777772e616e64726f6964626f6f7473747261702e636f6d2f696d616765732f61622d73637265656e73686f742e706e67" alt="http://www.androidbootstrap.com/images/ab-screenshot.png" data-canonical-src="http://www.androidbootstrap.com/images/ab-screenshot.png" style="max-width:100%;"></a>
+  Android Bootstrap 其实是一堆框架的集合, 让你迅速搭好android 开发的基本
+  框架. 里面包括</p>
+<ul class="task-list">
+  <li>Fragments</li>
+  <li>Account Manager</li>
+  <li>android-maven-plugin</li>
+  <li>Dagger</li>
+  <li>ActionBarSherlock</li>
+  <li>Menu Drawer</li>
+  <li>Robotium</li>
+  <li>Parse API</li>
+</ul>
+<p>很多是UI的框架我就不解释了, 如 Fragments, ActionBarSherlock. 但是我想
+  讲的是</p>
+<ul class="task-list">
+  <li>依赖注入框架 Dagger</li>
+  <li>UI testing 框架 Robotium</li>
+  <li>backend服务Parse.</li>
+  <li>android maven</li>
+</ul>
+<p>本章要介绍两个注入框架 Dagger 和 butterknife</p>
+<h2>
+<a name="user-content-dagger" class="anchor" href="#dagger" rel="noreferrer"><span class="octicon octicon-link"></span></a>Dagger</h2>
+<p>这又是一个依赖注入的框架,个人觉得依赖注入的模式貌似是为java专门准备的.使
+  得木纳的 java 代码结构变得灵活清爽, 松耦合, 易测试.
+  而
+  注入方式个人也比较喜欢 annotation 的方式而不是讨厌的 xml,把所有的依赖
+  配置都放到一个文件里并不无不妥, 但是都放到 xml 里, OMG, 放到可读性最屎
+  的 xml 里, 找所有依赖配置都要去翻这个难读得 xml…想着就头疼. 当项目变
+  大时, 一大波 xml 来袭………Orz</p>
+<h3>
+<a name="user-content-%E5%85%88%E6%9D%A5%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5" class="anchor" href="#%E5%85%88%E6%9D%A5%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5" rel="noreferrer"><span class="octicon octicon-link"></span></a>先来解释一下依赖注入</h3>
+<p>简单来说就是好莱坞原则</p>
+<blockquote>
+  <p>不要call我, 我会call你的.</p>
+</blockquote>
+<p>对于好莱坞agent来说,他知道什么时候用什么演员,因
+  此,演员只需要留下联系方式, 也就是注入, 等待agent call他.</p>
+<p>因此, 也叫控制反转.</p>
+<p>其实, 也就是更优雅的实现组合模式, 传统的组合模式会需要 new 这些依赖,
+  也就是要各式各样的factory, 而依赖注入也就是说给你传进去.</p>
+<h3>
+<a name="user-content-%E4%BB%A3%E7%A0%81%E4%B8%8A%E6%9D%A5%E8%AF%B4-dagger-%E7%9A%84%E8%BF%99%E4%B8%AA%E4%BE%8B%E5%AD%90%E9%9D%9E%E5%B8%B8%E5%A5%BD" class="anchor" href="#%E4%BB%A3%E7%A0%81%E4%B8%8A%E6%9D%A5%E8%AF%B4-dagger-%E7%9A%84%E8%BF%99%E4%B8%AA%E4%BE%8B%E5%AD%90%E9%9D%9E%E5%B8%B8%E5%A5%BD" rel="noreferrer"><span class="octicon octicon-link"></span></a>代码上来说, dagger 的这个例子非常好:</h3>
+<p>比如我开咖啡店, 我要卖不同的咖啡种类, <del>雀巢的银桥的丝袜的</del> 什么
+  espresso,amerino之类的. 我是
+  个非常抠塞的奸商, 我不想为每一种咖啡专门买一个昂贵的专用咖啡机. 经过研究发现这些
+  咖啡机只存在一些不同, 比如不同的加热方式, 滴漏方式,filter或者
+  水泵流量或温度不同.</p>
+<p>所以,我决定实现一个 configurable 的 coffeemaker.</p>
+<div class="highlight highlight-java"><pre>
+<span class="pl-k">package</span> <span class="pl-smp">coffee</span>;
+
+<span class="pl-k">import</span> <span class="pl-smi">dagger.Lazy</span>;
+<span class="pl-k">import</span> <span class="pl-smi">javax.inject.Inject</span>;
+
+<span class="pl-s">class</span> <span class="pl-en">CoffeeMaker</span> {
+  <span class="pl-st">@Inject</span> <span class="pl-st">Lazy&lt;<span class="pl-stj">Heater</span>&gt;</span> heater; <span class="pl-c">// Don't want to create a possibly costly heater until we need it.</span>
+  <span class="pl-st">@Inject</span> <span class="pl-stj">Pump</span> pump;
+
+  <span class="pl-s">public</span> <span class="pl-st">void</span> <span class="pl-en">brew</span>() {
+    heater<span class="pl-k">.</span>get()<span class="pl-k">.</span>on();
+    pump<span class="pl-k">.</span>pump();
+    <span class="pl-stj">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s1"><span class="pl-pds">"</span> [_]P coffee! [_]P <span class="pl-pds">"</span></span>);
+    heater<span class="pl-k">.</span>get()<span class="pl-k">.</span>off();
+  }
+}</pre></div>
+<p>这是我的咖啡机.提供一个煮的按钮,可以看到, 组装咖啡机
+  的水泵和加热器都是注入进来的. 那他们是在哪构造的呢.</p>
+
+<p>而作为老板的我,要怎样用这个咖啡机呢, 按一下”煮”按钮, 当然. 但是在那之
+  前,我们先要决定如何组装一个想要的咖啡机.</p>
+<div class="highlight highlight-java"><pre>
+<span class="pl-s">class</span> <span class="pl-en">CoffeeApp</span> <span class="pl-s">implements</span> <span class="pl-e">Runnable</span> {
+  <span class="pl-st">@Inject</span> <span class="pl-stj">CoffeeMaker</span> coffeeMaker;
+
+  <span class="pl-st">@Override</span> <span class="pl-s">public</span> <span class="pl-st">void</span> <span class="pl-en">run</span>() {
+    coffeeMaker<span class="pl-k">.</span>brew();
+  }
+
+  <span class="pl-s">public</span> <span class="pl-s">static</span> <span class="pl-st">void</span> <span class="pl-en">main</span>(<span class="pl-st">String</span>[] <span class="pl-v">args</span>) {
+    <span class="pl-stj">ObjectGraph</span> objectGraph <span class="pl-k">=</span> <span class="pl-stj">ObjectGraph</span><span class="pl-k">.</span>create(<span class="pl-k">new</span> <span class="pl-stj">DripCoffeeModule</span>());(ref<span class="pl-k">:</span>graph)
+    <span class="pl-stj">CoffeeApp</span> coffeeApp <span class="pl-k">=</span> objectGraph<span class="pl-k">.</span>get(<span class="pl-stj">CoffeeApp</span><span class="pl-k">.</span>class);
+    coffeeApp<span class="pl-k">.</span>run();
+  }
+}</pre></div>
+<p>客户说要americano,所以老板我给咖啡机装成滴漏式, 如代码第 <a href="(graph)" rel="noreferrer">(graph)</a> 行.
+  构造Graph意思相当于要构造滴漏式咖啡机的图, 图会根据Module里provider组
+  件以及以及被Inject的地方建立联系. 也就是说, 根据用户的需求用不同的组件
+  蓝图来构造咖啡机.</p>
+<p>下面来看组件式在哪被初始化的.</p>
+<div class="highlight highlight-java"><pre>
+
+<span class="pl-s">interface</span> <span class="pl-en">Heater</span> {
+  <span class="pl-st">void</span> <span class="pl-en">on</span>();
+  <span class="pl-st">void</span> <span class="pl-en">off</span>();
+  <span class="pl-st">boolean</span> <span class="pl-en">isHot</span>();
+}
+
+<span class="pl-s">class</span> <span class="pl-en">ElectricHeater</span> <span class="pl-s">implements</span> <span class="pl-e">Heater</span> {
+  <span class="pl-st">boolean</span> heating;
+
+  <span class="pl-st">@Override</span> <span class="pl-s">public</span> <span class="pl-st">void</span> <span class="pl-en">on</span>() {
+    <span class="pl-stj">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s1"><span class="pl-pds">"</span>~ ~ ~ heating ~ ~ ~<span class="pl-pds">"</span></span>);
+    <span class="pl-v">this</span><span class="pl-k">.</span>heating <span class="pl-k">=</span> <span class="pl-c1">true</span>;
+  }
+
+  <span class="pl-st">@Override</span> <span class="pl-s">public</span> <span class="pl-st">void</span> <span class="pl-en">off</span>() {
+    <span class="pl-v">this</span><span class="pl-k">.</span>heating <span class="pl-k">=</span> <span class="pl-c1">false</span>;
+  }
+
+  <span class="pl-st">@Override</span> <span class="pl-s">public</span> <span class="pl-st">boolean</span> <span class="pl-en">isHot</span>() {
+    <span class="pl-k">return</span> heating;
+  }
+}</pre></div>
+<p>这是电加热器的接口实现, 他的初始化方法会放到一个module里的 <code>@provide</code>
+  标记的方法里. 这个被标记的方法会再 Heater 被注入的地方被调用.</p>
+<div class="highlight highlight-java"><pre>
+<span class="pl-k">import</span> <span class="pl-smi">dagger.Module</span>;
+<span class="pl-k">import</span> <span class="pl-smi">dagger.Provides</span>;
+<span class="pl-k">import</span> <span class="pl-smi">javax.inject.Singleton</span>;
+
+@Module(
+    injects <span class="pl-k">=</span> <span class="pl-stj">CoffeeApp</span><span class="pl-k">.</span>class,
+    includes <span class="pl-k">=</span> <span class="pl-stj">PumpModule</span><span class="pl-k">.</span>class
+)
+<span class="pl-s">class</span> <span class="pl-en">DripCoffeeModule</span> {
+  <span class="pl-st">@Provides</span> <span class="pl-st">@Singleton</span> <span class="pl-stj">Heater</span> <span class="pl-en">provideHeater</span>() {
+    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-stj">ElectricHeater</span>();
+  }
+}</pre></div>
+<p>看到这样的好处了吧, 很清爽的把Module中得Heater和Pump注入到CoffeeApp中,
+  不需要setter注入,也不需要构造函数注入, 只需要将组件的构造函数声明为 <code>@Inject</code>, 或者放
+  到一个Module里的provider中, 就可以在咖啡机中 <code>@Inject</code> 该组件.</p>
+<h3>
+<a name="user-content-%E5%9C%A8-androidbootstrap-%E9%87%8C%E7%9A%84-dagger" class="anchor" href="#%E5%9C%A8-androidbootstrap-%E9%87%8C%E7%9A%84-dagger" rel="noreferrer"><span class="octicon octicon-link"></span></a>在 androidbootstrap 里的 Dagger</h3>
+<p>说了这些应该大概知道 dagger 要怎么玩乐吧,那么我们
+  首先来看一下 androidbootstrap 的 src 目录结构好了.</p>
+<pre lang="-n">
+├── main
+│   └── java
+│       └── com
+│           └── donnfelker
+│               └── android
+│                   └── bootstrap
+│                       ├── AndroidModule.java
+│                       ├── BootstrapApplication.java
+│                       ├── BootstrapModule.java (ref:module)
+│                       ├── BootstrapServiceProvider.java
+│                       ├── RootModule.java
+│                       ├── authenticator
+│                       │   ├── AccountAuthenticatorService.java
+│                       │   ├── ApiKeyProvider.java
+│                       │   ├── BootstrapAccountAuthenticator.java
+│                       │   ├── BootstrapAuthenticatorActivity.java
+│                       │   ├── LogoutService.java
+│                       │   └── SherlockAccountAuthenticatorActivity.java
+│                       ├── core
+│                       │   ├── AvatarLoader.java
+│                       │   ├── BootstrapService.java
+│                       │   ├── CheckIn.java
+│                       │   ├── Constants.java
+│                       │   ├── GravatarUtils.java
+│                       │   ├── ImageUtils.java
+│                       │   ├── Location.java
+│                       │   ├── News.java
+│                       │   ├── PauseTimerEvent.java
+│                       │   ├── ResumeTimerEvent.java
+│                       │   ├── StopTimerEvent.java
+│                       │   ├── TimerPausedEvent.java
+│                       │   ├── TimerService.java
+│                       │   ├── TimerTickEvent.java
+│                       │   ├── UserAgentProvider.java
+│                       │   └── ViewSummary.java
+│                       ├── evernote
+│                       ├── ui
+│                       │   ├── AlternatingColorListAdapter.java
+│                       │   ├── AsyncLoader.java
+│                       │   ├── BarGraphDrawable.java
+│                       │   ├── BootstrapActivity.java
+│                       │   ├── BootstrapFragmentActivity.java
+│                       │   ├── BootstrapPagerAdapter.java
+│                       │   ├── BootstrapTimerActivity.java
+│                       │   ├── CarouselActivity.java
+│                       │   ├── CheckInsListAdapter.java
+│                       │   ├── CheckInsListFragment.java
+│                       │   ├── HeaderFooterListAdapter.java
+│                       │   ├── ItemListFragment.java
+│                       │   ├── NewsActivity.java
+│                       │   ├── NewsListAdapter.java
+│                       │   ├── NewsListFragment.java
+│                       │   ├── TextWatcherAdapter.java
+│                       │   ├── ThrowableLoader.java
+│                       │   ├── UserActivity.java (ref:activity)
+│                       │   ├── UserListAdapter.java (ref:adapter)
+│                       │   ├── UserListFragment.java (ref:fragment)
+│                       │   └── view
+│                       │       └── CapitalizedTextView.java
+│                       └── util
+│                           ├── Ln.java
+│                           ├── SafeAsyncTask.java
+│                           └── Strings.java
+└── test
+    └── java
+        └── com
+            └── donnfelker
+                └── android
+                    └── bootstrap
+                        └── core
+                            └── core
+                                ├── BootstrapApiClientUtilTest.java
+                                └── BootstrapServiceTest.java
+</pre>
+<p>好吧, 这样一眼就应该能看到 <a href="(module)" rel="noreferrer">BootstrapModule</a> 肯定是 依赖注入用的组件对不
+  对.
+  比如说我现在做的应用是关于 Evernote的, 在 Evernote 提供的 android
+  SDK 中有一个最重要的类EvernoteSession, 因为当初始化后并登陆, 你就可以
+  用这个 Session 来调用所有 evernote API.</p>
+<p>因此, 我把它看成一个插件, 也就
+  是说, 我什么时候要用到 evernote 的时候, 我只需要 @Inject 这个 session
+  即可. 那么, 这时候, 我只需要吧 EvernoteSession 的构造方法放到 这个
+  Module 里了.</p>
+<div class="highlight highlight-java"><pre>
+<span class="pl-s">public</span> <span class="pl-s">class</span> <span class="pl-en">BootstrapModule</span>  {
+<span class="pl-c1">...</span>
+    <span class="pl-st">@Singleton</span> <span class="pl-st">@Provides</span> <span class="pl-stj">EvernoteSession</span> <span class="pl-en">provideEvernoteSession</span>(<span class="pl-s">final</span> <span class="pl-stj">Context</span> <span class="pl-v">context</span>) {
+        <span class="pl-k">return</span> <span class="pl-stj">EvernoteSession</span><span class="pl-k">.</span>getInstance(context, <span class="pl-stj">Constants</span><span class="pl-k">.</span><span class="pl-stj">Evernote</span><span class="pl-c1"><span class="pl-k">.</span>CONSUMER_KEY</span>, <span class="pl-stj">Constants</span><span class="pl-k">.</span><span class="pl-stj">Evernote</span><span class="pl-c1"><span class="pl-k">.</span>CONSUMER_SECRET</span>, <span class="pl-stj">Constants</span><span class="pl-k">.</span><span class="pl-stj">Evernote</span><span class="pl-c1"><span class="pl-k">.</span>EVERNOTE_SERVICE</span>);
+    }
+}</pre></div>
+<h2>
+<a name="user-content-butterknife" class="anchor" href="#butterknife" rel="noreferrer"><span class="octicon octicon-link"></span></a>Butterknife</h2>
+<p>再来看 src 目录, 很有意思, 在 <code>ui</code> 下有三组 <a href="(activity)" rel="noreferrer">xxxActivity</a> ,<a href="(adapter)" rel="noreferrer">xxxListAdapter</a>,
+  <a href="(fragment)" rel="noreferrer">xxxFragment</a>. 这三个类是这样的</p>
+<ul class="task-list">
+  <li>xxxActivity: 负责单个view的显示.</li>
+  <li>xxxListAdapter: 负责List内容的更新.</li>
+  <li>xxxListFragment: 这是继承 actionbarsherlock 的 SherlockFragment.负责</li>
+</ul>
+<p>组装数据以及处理事件.</p>
+<p>点开UserActivity, 会看见开头有这么个 annotation <code>@InjectView</code></p>
+<div class="highlight highlight-java"><pre>
+@InjectView(<span class="pl-stj">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>iv_avatar) <span class="pl-s">protected</span> <span class="pl-stj">ImageView</span> avatar;</pre></div>
+<p>按最老套的获取 view 会这样写:</p>
+<div class="highlight highlight-java"><pre>
+<span class="pl-stj">ImageView</span> avatar;
+<span class="pl-c1">...</span>
+@<span class="pl-stj">Override</span> <span class="pl-s">public</span> <span class="pl-st">void</span> onCreate(){
+    avatar <span class="pl-k">=</span> (<span class="pl-stj">ImageView</span>)findViewById(<span class="pl-stj">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>title);
+    <span class="pl-c1">...</span></pre></div>
+<p>是不是觉得以前的写法弱爆了. 当然这是最基本的 view inject, 还有 Click
+  Listener Injection 等更高阶的用法
+  可以继续<a href="http://jakewharton.github.io/butterknife/" rel="noreferrer">参考文档</a></p>
+<p><a href="https://camo.githubusercontent.com/a41e2f2cf755d33bbf0efc63024bbcc08357b0b5/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f626f6f7473747261702d616e64726f69642d646576656c6f706d656e742e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/a41e2f2cf755d33bbf0efc63024bbcc08357b0b5/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f626f6f7473747261702d616e64726f69642d646576656c6f706d656e742e706e67" alt="https://ga-beacon.appspot.com/UA-32314154-5/blogist/bootstrap-android-development.png" data-canonical-src="https://ga-beacon.appspot.com/UA-32314154-5/blogist/bootstrap-android-development.png" style="max-width:100%;"></a></p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/9913872/raw/2013-09-05-bootstrap-your-android-development.org" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/9913872#file-2013-09-05-bootstrap-your-android-development-org">2013-09-05-bootstrap-your-android-development.org</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

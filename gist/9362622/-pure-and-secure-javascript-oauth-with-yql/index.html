@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist9362622" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/9362622/file/2014-01-24-pure-and-secure-javascript-oauth-with-yql.org">
+        <p>It would be <b>awesome</b> if we can use OAuth in JavaScript purely in client side.
+  before start to do that, please let me explain “OAuth2” <del>with this picture</del> in feeeew word (skip to section 2 <a href="*YQL" rel="noreferrer">YQL</a> if you know OAuth2):</p>
+<p><a href="https://camo.githubusercontent.com/7a8f742a5fbb5f048796e58b2fb4cd4241557ab2/687474703a2f2f6875656e6976657273652e636f6d2f77702d636f6e74656e742f75706c6f6164732f323030372f31322f4d792d456e64706f696e74732d333030783236372e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/7a8f742a5fbb5f048796e58b2fb4cd4241557ab2/687474703a2f2f6875656e6976657273652e636f6d2f77702d636f6e74656e742f75706c6f6164732f323030372f31322f4d792d456e64706f696e74732d333030783236372e706e67" alt="http://hueniverse.com/wp-content/uploads/2007/12/My-Endpoints-300x267.png" data-canonical-src="http://hueniverse.com/wp-content/uploads/2007/12/My-Endpoints-300x267.png" style="max-width:100%;"></a></p>
+<h2>
+<a name="user-content-oauth-2" class="anchor" href="#oauth-2" rel="noreferrer"><span class="octicon octicon-link"></span></a>OAuth 2</h2>
+<p>OAuth 2 is widely use as authorize third party application without expose user’s password, OAuth2 using 2 steps verification.
+  Take github as example:</p>
+<p>There are 2 role in this story: Developer <code>Oyang</code> and User <code>Lulu</code></p>
+<p>As Developer  Oyang who write an App <b>GIRA</b> http://gira,oyanglul.us which can let user login using Github account.</p>
+<p>As User, Lulu don’t want to login in your site with my Github username and password, since Lulu don’t trust Oyang but trust Github.</p>
+<p>Solution should be: Oyang redirect Lulu to Github website so Lulu can login there, then github redirect to Oyang’s gira.com and with a signal: “hey, lulu’s password is correct, log she in dude!”.</p>
+<p>So that is <b>OAuth 2</b> actually.</p>
+<h3>
+<a name="user-content-redirect-users-to-request-github-access" class="anchor" href="#redirect-users-to-request-github-access" rel="noreferrer"><span class="octicon octicon-link"></span></a>Redirect users to request GitHub access</h3>
+<p><code>GET https://github.com/login/oauth/authorize</code></p>
+<p>with parameter</p>
+<ul class="task-list">
+  <li>
+<code>cliend_id</code>: id of your application</li>
+  <li>
+<code>scope</code>: permissions your application should have</li>
+</ul>
+<p>this will redirect Lulu to github oauth page. Lulu can now login in github then check the permission Oyang’s app request, and decide to accept or not.</p>
+<h3>
+<a name="user-content-github-redirects-back-to-your-site" class="anchor" href="#github-redirects-back-to-your-site" rel="noreferrer"><span class="octicon octicon-link"></span></a>GitHub redirects back to your site</h3>
+<p>if Lulu say “yes”, github will redirect back to Oyang’s app with parameter of a “valided code”. which means apps’s permited and now app can get the Lulu’s <code>access_token</code> now.</p>
+<p><code>POST https://github.com/login/oauth/access_token</code></p>
+<p>with parameter</p>
+<ul class="task-list">
+  <li>
+<code>cliend_id</code>: id of your application</li>
+  <li>
+<code>client_secret</code>: password of your application</li>
+  <li>
+<code>code</code>: the thing you just got from github.</li>
+</ul>
+<blockquote>
+  <p><code>access_token</code> <b>is just as important as User’s PASSWORD</b> so keep that saft place and never expose to anyone.</p>
+  <p><code>client_secret</code> <b>is your app’s password</b> so never expose to anyone either</p>
+</blockquote>
+<h3>
+<a name="user-content-done" class="anchor" href="#done" rel="noreferrer"><span class="octicon octicon-link"></span></a>Done</h3>
+<p>now Oyang’s App Gira just got the <code>access_token</code> of Lulu, so Gira can make requests to the API on a behalf of a Lulu.</p>
+<h2>
+<a name="user-content-pure-client-side-implement" class="anchor" href="#pure-client-side-implement" rel="noreferrer"><span class="octicon octicon-link"></span></a>Pure Client Side Implement</h2>
+<p>Now here comes the problems of Javascript OAuth 2 implementation pure client side.</p>
+<ol class="task-list">
+  <li>capture <code>code</code> in <a href="*GitHub%20redirects%20back%20to%20your%20site" rel="noreferrer">step 2</a>
+</li>
+  <li>secure <code>client_secret</code> when try request <code>access_token</code>
+</li>
+</ol>
+<p>when github redirect back with <code>code</code></p>
+<p>the first one is easy to solve by check window.location</p>
+<div class="highlight highlight-js"><pre>
+$(<span class="pl-s3">window</span>).on(<span class="pl-s1"><span class="pl-pds">'</span>eshashchange<span class="pl-pds">'</span></span>, <span class="pl-st">function</span>() {
+  <span class="pl-k">if</span>(location.<span class="pl-sc">hash</span><span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">'</span>#authdone<span class="pl-pds">'</span></span>){
+                $.get(<span class="pl-s1"><span class="pl-pds">"</span>https://github.com/login/oauth/access_token<span class="pl-pds">"</span></span>,{
+                        client_id<span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">'</span>666dc0b3b994cc362ca2<span class="pl-pds">'</span></span>,
+                        client_secret<span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">'</span>your secret<span class="pl-pds">'</span></span>,
+                        code<span class="pl-k">:</span>location.search.<span class="pl-s3">split</span>(<span class="pl-s1"><span class="pl-pds">'</span>=<span class="pl-pds">'</span></span>).<span class="pl-s3">pop</span>();
+                });
+        }
+});</pre></div>
+<p>as you can see the <code>client_secret</code> has been expose to anyone who check you javascript code.</p>
+<p>This is really serious problem since evil hacker can just use your <code>client_id</code> and <code>client_secret</code> to make an fake app of gira to steal your user’s information, horrible isn’t it.</p>
+<p>now what, anyone can easily see your javascript from browser, where to hide your secret. no option but a server.</p>
+<h2>
+<a name="user-content-yql" class="anchor" href="#yql" rel="noreferrer"><span class="octicon octicon-link"></span></a>YQL</h2>
+<h3>
+<a name="user-content-what-is-yql" class="anchor" href="#what-is-yql" rel="noreferrer"><span class="octicon octicon-link"></span></a>What is YQL</h3>
+<p><a href="http://developer.yahoo.com/yql/" rel="noreferrer">YQL</a> is Yahoo Query Language. You can simpily use <code>SELECT * FROM web</code> to get you data from any website. for example you can try put the follow query in <a href="http://developer.yahoo.com/yql/console/" rel="noreferrer">YQL Console</a>:</p>
+<p><code>select * from html where url</code>“<a href="http://www.weibo.com/milhouse%E2%80%9D=" rel="noreferrer">http://www.weibo.com/milhouse”=</a></p>
+<p>amazing isn’t it, YQL will return the whole content of the website in XML or JSON.</p>
+<p>check the bottom of YQL Console, simpily use request to <b>THE REST  QUERY</b> will return the same thing. You don’t have to include any other third party annoying library to get your data. This is why I choose YQL other then <a href="http://parse.com/" rel="noreferrer">Parse</a> or <a href="http://firebase.com/" rel="noreferrer">Firebase</a> as server side script.</p>
+<h3>
+<a name="user-content-use-yql-storage-to-keep-secret-safe" class="anchor" href="#use-yql-storage-to-keep-secret-safe" rel="noreferrer"><span class="octicon octicon-link"></span></a>Use YQL storage to keep secret safe</h3>
+<p>YQL provide online storage y.storage which allow you to store your YQL table, javascript and enviorment there. Since every thing is on sever, nobody but you can see them now.</p>
+<p>When open <a href="http://developer.yahoo.com/yql/editor/" rel="noreferrer">YQL editor</a>, you may curious about the 3 Key on the right side:</p>
+<p><a href="https://camo.githubusercontent.com/466da62166c0074824140f026b448a60d661bf84/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f39343238633838352d663033332d343663392d383832642d3335323765653132373131662f33303133396234373830376230386335613631333362663337363963323964362f646565702f302f59514c2d456469746f722d2d617364662e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/466da62166c0074824140f026b448a60d661bf84/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f39343238633838352d663033332d343663392d383832642d3335323765653132373131662f33303133396234373830376230386335613631333362663337363963323964362f646565702f302f59514c2d456469746f722d2d617364662e706e67" alt="https://www.evernote.com/shard/s23/sh/9428c885-f033-46c9-882d-3527ee12711f/30139b47807b08c5a6133bf3769c29d6/deep/0/YQL-Editor--asdf.png" data-canonical-src="https://www.evernote.com/shard/s23/sh/9428c885-f033-46c9-882d-3527ee12711f/30139b47807b08c5a6133bf3769c29d6/deep/0/YQL-Editor--asdf.png" style="max-width:100%;"></a></p>
+<p>for each table/javascript/enviorment file you’ve create, there are 3 line for you.</p>
+<ol class="task-list">
+  <li>
+<b>EXECUTE</b>: use this link when you want to execute the content.this is really <b>important</b> for secure your secret, I’ll explain it latter.</li>
+  <li>SELECT: when you just want to get the content.</li>
+  <li>UPDATE: when update the content.</li>
+</ol>
+<p>for better understanding, let me continue the Github OAuth example.</p>
+<p>Here’s the plan:</p>
+<ol class="task-list">
+  <li>put all you secret inside enviorment file.</li>
+  <li>create a table, data of the table come from javascript file,</li>
+  <li>when the javascript is execute, request for the <code>access_token</code>
+</li>
+  <li>on the clientside, just request the YQL table for <code>access_token</code>. bang!</li>
+</ol>
+<h3>
+<a name="user-content-create-yql-table" class="anchor" href="#create-yql-table" rel="noreferrer"><span class="octicon octicon-link"></span></a>Create YQL Table</h3>
+<p>OK.lets do IT. First of all, we need create a table who can execute Javascript inside.</p>
+<div class="highlight highlight-xml"><pre>
+&lt;?<span class="pl-ent">xml</span><span class="pl-e"> version</span>=<span class="pl-s1"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span><span class="pl-e"> encoding</span>=<span class="pl-s1"><span class="pl-pds">"</span>UTF-8<span class="pl-pds">"</span></span>?&gt;
+        &lt;<span class="pl-ent">table</span> <span class="pl-e">xmlns</span>=<span class="pl-s1"><span class="pl-pds">"</span>http://query.yahooapis.com/v1/schema/table.xsd<span class="pl-pds">"</span></span>&gt;          
+      &lt;<span class="pl-ent">meta</span>&gt;  
+        &lt;<span class="pl-ent">sampleQuery</span>&gt;select * from {table} where code='meow';&lt;/<span class="pl-ent">sampleQuery</span>&gt;  
+      &lt;/<span class="pl-ent">meta</span>&gt;  
+      &lt;<span class="pl-ent">bindings</span>&gt;  
+        &lt;<span class="pl-ent">select</span> <span class="pl-e">itemPath</span>=<span class="pl-s1"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> <span class="pl-e">produces</span>=<span class="pl-s1"><span class="pl-pds">"</span>XML<span class="pl-pds">"</span></span>&gt;  
+          &lt;<span class="pl-ent">urls</span>&gt;  
+            &lt;<span class="pl-ent">url</span>&gt;http://oyanglul.us/gira&lt;/<span class="pl-ent">url</span>&gt;  
+          &lt;/<span class="pl-ent">urls</span>&gt;  
+          &lt;<span class="pl-ent">inputs</span>&gt;  
+            &lt;<span class="pl-ent">key</span> <span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">'</span>CODE<span class="pl-pds">'</span></span> <span class="pl-e">type</span>=<span class="pl-s1"><span class="pl-pds">'</span>xs:string<span class="pl-pds">'</span></span> <span class="pl-e">paramType</span>=<span class="pl-s1"><span class="pl-pds">'</span>variable<span class="pl-pds">'</span></span> <span class="pl-e">required</span>=<span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> /&gt;(ref:code)  
+          &lt;<span class="pl-ent">key</span> <span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>CID<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s1"><span class="pl-pds">"</span>xs:string<span class="pl-pds">"</span></span> <span class="pl-e">paramType</span>=<span class="pl-s1"><span class="pl-pds">"</span>variable<span class="pl-pds">"</span></span>  <span class="pl-e">required</span>=<span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> /&gt;(ref:client-id)
+              &lt;<span class="pl-ent">key</span> <span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>CSC<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s1"><span class="pl-pds">"</span>xs:string<span class="pl-pds">"</span></span> <span class="pl-e">paramType</span>=<span class="pl-s1"><span class="pl-pds">"</span>variable<span class="pl-pds">"</span></span>  <span class="pl-e">required</span>=<span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> /&gt;(ref:client-secret)
+            &lt;/<span class="pl-ent">inputs</span>&gt;
+            &lt;<span class="pl-ent">execute</span>&gt;<span class="pl-s1"><span class="pl-pds">&lt;![CDATA[</span></span>
+<span class="pl-s1">         y.include('store://KqAGbe0nt2yi3bAnQQXxOx'); (ref:js-select)</span>
+<span class="pl-s1">      <span class="pl-pds">]]&gt;</span></span>&lt;/<span class="pl-ent">execute</span>&gt;         
+        &lt;/<span class="pl-ent">select</span>&gt;    
+      &lt;/<span class="pl-ent">bindings</span>&gt;  
+    &lt;/<span class="pl-ent">table</span>&gt;</pre></div>
+<p>FYI, the <a href="(js-select)" rel="noreferrer">line (js-select)</a> reference to the <code>SELECT KEY</code> of the javascript file as follow, why <code>SELECT</code>, you know when you use <code>EXECUTE KEY</code> to referent an file, Yahoo will try to run it for you, but I don’t want the result of javascript but the code itself to define my table.</p>
+<p><a href="(code)" rel="noreferrer">line (code)</a> define the table should receive a key named “CODE”, and <a href="(client-id)" rel="noreferrer">line (client-id)</a> and <a href="(client-secret)" rel="noreferrer">line (client-secret)</a> as well.</p>
+<h3>
+<a name="user-content-create-javascript-file" class="anchor" href="#create-javascript-file" rel="noreferrer"><span class="octicon octicon-link"></span></a>Create Javascript file</h3>
+<div class="highlight highlight-javascript"><pre>
+tokenRequest <span class="pl-k">=</span> y.rest(<span class="pl-s1"><span class="pl-pds">'</span>https://github.com<span class="pl-pds">'</span></span>).path(<span class="pl-s1"><span class="pl-pds">'</span>login<span class="pl-pds">'</span></span>).path(<span class="pl-s1"><span class="pl-pds">'</span>oauth<span class="pl-pds">'</span></span>).path(<span class="pl-s1"><span class="pl-pds">'</span>access_token<span class="pl-pds">'</span></span>);(ref<span class="pl-k">:</span>y<span class="pl-k">-</span>rest)
+<span class="pl-s">var</span> resp <span class="pl-k">=</span> tokenRequest.header(<span class="pl-s1"><span class="pl-pds">'</span>Accept<span class="pl-pds">'</span></span>,<span class="pl-s1"><span class="pl-pds">'</span>application/xml<span class="pl-pds">'</span></span>).query(
+{
+        client_id<span class="pl-k">:</span>CID,
+        client_secret<span class="pl-k">:</span>CSC,
+        code<span class="pl-k">:</span>CODE
+}).post().response;
+response.<span class="pl-sc">object</span> <span class="pl-k">=</span> {resp}</pre></div>
+<p>I know <a href="(y-rest)" rel="noreferrer">line (y-rest)</a> is weird if you never use YQL before, so do I. This looks so lame to append path to address rather then jQuery way just <code>$.get("https://github.com/login/oauth/access_token")</code>.</p>
+<p>ok the <code>CID</code> is parameter from YQL Table defined <a href="(client-id)" rel="noreferrer">here</a>, so does <code>CSC</code> and <code>CODE</code>.</p>
+<p>finally, the Table and Javascript is done, how to use them, and where the hell should I put my <b>secret</b> to.</p>
+<h3>
+<a name="user-content-create-enviroment-file" class="anchor" href="#create-enviroment-file" rel="noreferrer"><span class="octicon octicon-link"></span></a>Create Enviroment File</h3>
+<p>Here comes the mighty enviorment file:</p>
+<div class="highlight highlight-sql"><pre>
+USE <span class="pl-s1"><span class="pl-pds">"</span>store://jqozna9Rv9K0gS77jz8RI1<span class="pl-pds">"</span></span> <span class="pl-k">AS</span> github;(ref:github<span class="pl-k">-</span>table)
+<span class="pl-k">SET</span> CID<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>666dc0b3b994cc362ca2<span class="pl-pds">"</span></span> <span class="pl-k">ON</span> github; (ref:<span class="pl-k">set</span><span class="pl-k">-</span>cid)
+<span class="pl-k">SET</span> CSC<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>your client secret goes here<span class="pl-pds">"</span></span> <span class="pl-k">ON</span> github;(ref:<span class="pl-k">set</span><span class="pl-k">-</span>csc)</pre></div>
+<p>the <a href="(github-table)" rel="noreferrer">store://jqozna9Rv9K0gS77jz8RI1</a> is the SELECT KEY of your table just created. <a href="(set-cid)" rel="noreferrer">line (set-cid)</a> and <a href="set-csc" rel="noreferrer">line set-csc</a> pass the <code>client_id</code> and <code>client_secret</code> to <code>github</code> table where the javascript can actually use.</p>
+<h3>
+<a name="user-content-why-my-secret-is-secure" class="anchor" href="#why-my-secret-is-secure" rel="noreferrer"><span class="octicon octicon-link"></span></a>Why My Secret is secure</h3>
+<p>if you use the SELECT KEY of the enviorment file like</p>
+<div class="highlight highlight-sql"><pre>
+<span class="pl-k">select</span> <span class="pl-k">*</span> <span class="pl-k">from</span> <span class="pl-c1">yql</span>.<span class="pl-c1">storage</span> <span class="pl-k">where</span> name<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>your enviorment file SELECT KEY<span class="pl-pds">"</span></span></pre></div>
+<p>the secret defined in your enviorment file will still expose.</p>
+<p>but not one know your SELECT KEY except yourself. so you never use the SELECT KEY everything will be safe.</p>
+<p>Thus, use the EXECUTE KEY!!!! no one can know what happen inside your enviorment file.</p>
+<pre lang="yql">
+env "store://0zaLUaPXLo4GWBb1koVqO6";
+select * from github where CODE="code from oauth first step"
+</pre>
+<h3>
+<a name="user-content-fin" class="anchor" href="#fin" rel="noreferrer"><span class="octicon octicon-link"></span></a>Fin</h3>
+<p>copy the <a href="https://camo.githubusercontent.com/691d424672d7470a106a08bba0aed930db6b49ff/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f34613338336539342d343238382d346164312d613638362d6638643633623566613463632f32306434363732613663633532653063316539396336323530656135383364642f646565702f302f59514c2d436f6e736f6c652d2d656e762d" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/691d424672d7470a106a08bba0aed930db6b49ff/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f34613338336539342d343238382d346164312d613638362d6638643633623566613463632f32306434363732613663633532653063316539396336323530656135383364642f646565702f302f59514c2d436f6e736f6c652d2d656e762d" alt="https://www.evernote.com/shard/s23/sh/4a383e94-4288-4ad1-a686-f8d63b5fa4cc/20d4672a6cc52e0c1e99c6250ea583dd/deep/0/YQL-Console--env-" data-canonical-src="https://www.evernote.com/shard/s23/sh/4a383e94-4288-4ad1-a686-f8d63b5fa4cc/20d4672a6cc52e0c1e99c6250ea583dd/deep/0/YQL-Console--env-" style="max-width:100%;"></a> at the bottom, request this url from you client side javascript code. That’s is, without expose <code>client_secret</code> safely get <code>access_token</code> from pure client side javascript.</p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/9362622/raw/2014-01-24-pure-and-secure-javascript-oauth-with-yql.org" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/9362622#file-2014-01-24-pure-and-secure-javascript-oauth-with-yql-org">2014-01-24-pure-and-secure-javascript-oauth-with-yql.org</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

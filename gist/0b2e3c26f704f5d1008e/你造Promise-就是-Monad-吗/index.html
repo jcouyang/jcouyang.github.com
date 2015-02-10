@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist13392803" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/0b2e3c26f704f5d1008e/file/monad.md">
+        <p>Monad 这个概念好难解释, 你可以理解为一个 Lazy 或者是状态未知的盒子. 听起来像是<a href="http://zh.wikipedia.org/wiki/%E8%96%9B%E5%AE%9A%E8%B0%94%E7%8C%AB" rel="noreferrer">薛定谔猫</a>(估计点进去你会更晕了). 其实就是的, 在你打开这个盒子之前, 你是不知道里面的猫处在那种状态.</p>
+
+<p>Monad 这个黑盒子, 里面到底卖的神马药,我们要打开喝了才知道.</p>
+
+<p>等等, 不是说好要解释 Either 的吗, 嗯嗯, 这里就是在解释 Either. 上节说 Either 是一个 Functor, 可以被 fmap over. 怎么这里又说道黑盒子了? 好吧, Monad 其实也是 Functor. 还记得我说的 Functor 其实是一个带 context 的盒子吗. 而 fmap 使得往盒子里应用函数变换成为了可能.</p>
+
+<h3>
+<a name="user-content-either" class="anchor" href="#either" rel="noreferrer"><span class="octicon octicon-link"></span></a>Either</h3>
+
+<p>先来看看 Either 这种类型会干什么事情. <a href="http://hackage.haskell.org/package/base-4.7.0.0/docs/Data-Either.html#t:Either" rel="noreferrer">Either </a>表示要不是左边就是右边的值, 因此我们可以用它来表示薛定谔猫, 要不是活着, 要不死了. Either 还有个方法:
+either</p>
+
+<pre><code>(a -&gt; c) -&gt; (b -&gt; c) -&gt; Either a b -&gt; c
+</code></pre>
+
+<p>想必你已经对箭头<code>-&gt;</code>非常熟了吧.如果前面几章你都跳过了,我再翻译下好了. 这里表示接收函数<code>a-&gt;c</code>和函数<code>b-&gt;c</code>, 再接收一个 Either, 如果 Either 的值在左边,则使用函数映射<code>a-&gt;c</code>, 若值在右边,则应用第二个函数映射<code>b-&gt;c</code>.</p>
+
+<p>作为 Monad, 它还必须具备一个方法 '&gt;&gt;='(这个符号好眼熟的说, 看看 haskell 的 logo, 你就知道 Monad 是有多重要), 也就是 bind 方法.</p>
+
+<p><a href="https://camo.githubusercontent.com/a84a02c81ce6f0614fad6c19d489427cb8f391d5/687474703a2f2f7777772e6861736b656c6c2e6f72672f77696b697374617469632f6861736b656c6c77696b695f6c6f676f2e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/a84a02c81ce6f0614fad6c19d489427cb8f391d5/687474703a2f2f7777772e6861736b656c6c2e6f72672f77696b697374617469632f6861736b656c6c77696b695f6c6f676f2e706e67" alt="" data-canonical-src="http://www.haskell.org/wikistatic/haskellwiki_logo.png" style="max-width:100%;"></a></p>
+
+<p>bind 方法的意思很简单, 就是给这个盒子加一个操作, 比如往盒子在加放射性原子,如果猫活着,就是绿巨猫, 如果猫是死的,那就是绿巨死猫.</p>
+
+<div class="highlight highlight-js"><pre>Left(<span class="pl-s1"><span class="pl-pds">"</span>cat<span class="pl-pds">"</span></span>).bind(cat <span class="pl-k">=&gt;</span> <span class="pl-s1"><span class="pl-pds">'</span>hulk<span class="pl-pds">'</span></span><span class="pl-k">+</span>cat)
+<span class="pl-c">// =&gt; Left "hulkcat"</span>
+Right(<span class="pl-s1"><span class="pl-pds">"</span>deadcat<span class="pl-pds">"</span></span>).bind(cat <span class="pl-k">=&gt;</span> <span class="pl-s1"><span class="pl-pds">'</span>hulk<span class="pl-pds">'</span></span> <span class="pl-k">+</span> cat)
+<span class="pl-c">// =&gt; Right "hulkdeadcat"</span></pre></div>
+
+<p>这有个毛用啊. 表急... 来看个经典例子</p>
+
+<h3>
+<a name="user-content-%E8%B5%B0%E9%92%A2%E7%B4%A2" class="anchor" href="#%E8%B5%B0%E9%92%A2%E7%B4%A2" rel="noreferrer"><span class="octicon octicon-link"></span></a>走钢索</h3>
+
+<p>皮尔斯决定要辞掉他的工作改行试着走钢索。他对走钢索蛮在行的，不过仍有个小问题。就是鸟会停在他拿的平衡竿上。他们会飞过来停一小会儿，然后再飞走。这样的情况在两边的鸟的数量一样时并不是个太大的问题。但有时候，所有的鸟都会想要停在同一边，皮尔斯就失去了平衡，就会让他从钢索上掉下去。</p>
+
+<p><a href="https://camo.githubusercontent.com/bf3142509223bf8ce490c7f11511b9394e31b63b/687474703a2f2f6c6561726e796f75616861736b656c6c2d7a682d74772e637369652e6f72672f696d672f7069657272652e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/bf3142509223bf8ce490c7f11511b9394e31b63b/687474703a2f2f6c6561726e796f75616861736b656c6c2d7a682d74772e637369652e6f72672f696d672f7069657272652e706e67" alt="" data-canonical-src="http://learnyouahaskell-zh-tw.csie.org/img/pierre.png" style="max-width:100%;"></a></p>
+
+<p>我们这边假设两边的鸟差异在三个之内的时候，皮尔斯仍能保持平衡。</p>
+
+<h4>
+<a name="user-content-%E4%B8%80%E8%88%AC%E8%A7%A3%E6%B3%95" class="anchor" href="#%E4%B8%80%E8%88%AC%E8%A7%A3%E6%B3%95" rel="noreferrer"><span class="octicon octicon-link"></span></a>一般解法</h4>
+
+<p>首先看看不用 Monad 怎么解</p>
+
+<div class="highlight highlight-js"><pre>eweda.installTo(<span class="pl-v">this</span>);
+<span class="pl-s">var</span> landLeft <span class="pl-k">=</span> eweda.curry(<span class="pl-st">function</span>(<span class="pl-vpf">n</span>, <span class="pl-vpf">pole</span>){
+    <span class="pl-k">return</span> [pole[<span class="pl-c1">0</span>]<span class="pl-k">+</span>n, pole[<span class="pl-c1">1</span>]];
+});
+<span class="pl-s">var</span> landRight <span class="pl-k">=</span> eweda.curry(<span class="pl-st">function</span>(<span class="pl-vpf">n</span>, <span class="pl-vpf">pole</span>){
+    <span class="pl-k">return</span> landLeft(n, eweda.<span class="pl-s3">reverse</span>(pole));
+});
+<span class="pl-s">var</span> result <span class="pl-k">=</span> eweda.pipe(landLeft(<span class="pl-c1">1</span>), landRight(<span class="pl-c1">1</span>), landLeft(<span class="pl-c1">2</span>))([<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]);
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(result);
+<span class="pl-c">// =&gt; [3, 1]</span></pre></div>
+
+<p>还差一个判断皮尔斯是否掉下来的操作.</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> landLeft <span class="pl-k">=</span> eweda.curry(<span class="pl-st">function</span>(<span class="pl-vpf">n</span>, <span class="pl-vpf">pole</span>){
+    <span class="pl-k">if</span>(pole<span class="pl-k">===</span><span class="pl-s1"><span class="pl-pds">'</span>dead<span class="pl-pds">'</span></span>) <span class="pl-k">return</span> pole;
+    <span class="pl-k">if</span>(<span class="pl-s3">Math</span>.<span class="pl-s3">abs</span>(pole[<span class="pl-c1">0</span>]<span class="pl-k">-</span>pole[<span class="pl-c1">1</span>]) <span class="pl-k">&gt;</span> <span class="pl-c1">3</span>)
+      <span class="pl-k">return</span> <span class="pl-s1"><span class="pl-pds">'</span>dead<span class="pl-pds">'</span></span>;
+    <span class="pl-k">return</span> [pole[<span class="pl-c1">0</span>]<span class="pl-k">+</span>n, pole[<span class="pl-c1">1</span>]];
+});
+<span class="pl-s">var</span> landRight <span class="pl-k">=</span> eweda.curry(<span class="pl-st">function</span>(<span class="pl-vpf">n</span>, <span class="pl-vpf">pole</span>){
+    <span class="pl-k">if</span>(pole<span class="pl-k">===</span><span class="pl-s1"><span class="pl-pds">'</span>dead<span class="pl-pds">'</span></span>) <span class="pl-k">return</span> pole;
+    <span class="pl-k">return</span> landLeft(n, eweda.<span class="pl-s3">reverse</span>(pole));
+});
+<span class="pl-s">var</span> result <span class="pl-k">=</span> eweda.pipe(landLeft(<span class="pl-c1">10</span>), landRight(<span class="pl-c1">1</span>), landRight(<span class="pl-c1">8</span>))([<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]);
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(result);
+<span class="pl-c">// =&gt; dead</span></pre></div>
+
+<p><a href="http://jsbin.com/pozim/8/watch?js,console,output" rel="noreferrer">完整代码</a></p>
+
+<hr>
+
+<h4>
+<a name="user-content-%E7%8E%B0%E5%9C%A8%E6%9D%A5%E8%AF%95%E8%AF%95%E7%94%A8-either" class="anchor" href="#%E7%8E%B0%E5%9C%A8%E6%9D%A5%E8%AF%95%E8%AF%95%E7%94%A8-either" rel="noreferrer"><span class="octicon octicon-link"></span></a>现在来试试用 Either</h4>
+
+<p>我们先把皮尔斯放进 Either 盒子里, 这样皮尔斯的状态只有打开 Either 才能看见. 假设 Either Right 是活着, Left 的话皮尔斯挂了.</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> land <span class="pl-k">=</span> eweda.curry(<span class="pl-st">function</span>(<span class="pl-vpf">lr</span>, <span class="pl-vpf">n</span>, <span class="pl-vpf">pole</span>){
+    pole[lr] <span class="pl-k">=</span> pole[lr] <span class="pl-k">+</span> n;
+    <span class="pl-k">if</span>(<span class="pl-s3">Math</span>.<span class="pl-s3">abs</span>(pole[<span class="pl-c1">0</span>]<span class="pl-k">-</span>pole[<span class="pl-c1">1</span>]) <span class="pl-k">&gt;</span> <span class="pl-c1">3</span>) {
+      <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-en">Left</span>(<span class="pl-s1"><span class="pl-pds">"</span>dead when land <span class="pl-pds">"</span></span> <span class="pl-k">+</span> n <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">"</span> became <span class="pl-pds">"</span></span> <span class="pl-k">+</span> pole);
+    }
+    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-en">Right</span>(pole);
+});
+
+<span class="pl-s">var</span> landLeft <span class="pl-k">=</span> land(<span class="pl-c1">0</span>)
+<span class="pl-s">var</span> landRight <span class="pl-k">=</span> land(<span class="pl-c1">1</span>);</pre></div>
+
+<p>现在落鸟后会返回一个 Either, 要不活着, 要不挂了. 打开盒子的函数可以是这样的</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> <span class="pl-en">stillAlive</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">x</span>){
+    <span class="pl-en">console</span><span class="pl-s3">.log</span>(x)
+}
+<span class="pl-s">var</span> <span class="pl-en">dead</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">x</span>){
+    <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>皮尔斯<span class="pl-pds">'</span></span> <span class="pl-k">+</span> x);
+}
+either(dead, stillAlive, landLeft(<span class="pl-c1">2</span>, [<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]))</pre></div>
+
+<p>好吧, 好像有一点点像了, 但是这只落了一次鸟, 如果我要落好几次呢. 这就需要实现 Either 的 &gt;&gt;= bind 方法了, 如果你还记得前面实现的 Functor, 这里非常像 :</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> <span class="pl-en">Monad</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">type</span>, <span class="pl-vpf">defs</span>) {
+  <span class="pl-k">for</span> (name <span class="pl-k">in</span> defs){
+    type.<span class="pl-sc">prototype</span>[name] <span class="pl-k">=</span> defs[name];
+  }
+  <span class="pl-k">return</span> type;
+};
+<span class="pl-st">function</span> <span class="pl-en">Left</span>(<span class="pl-vpf">value</span>){
+  <span class="pl-v">this</span>.<span class="pl-sc">value</span> <span class="pl-k">=</span> value
+}
+<span class="pl-st">function</span> <span class="pl-en">Right</span>(<span class="pl-vpf">value</span>){
+  <span class="pl-v">this</span>.<span class="pl-sc">value</span><span class="pl-k">=</span>value;
+}
+
+Monad(Right, {
+  <span class="pl-en">bind</span>:<span class="pl-st">function</span>(<span class="pl-vpf">fn</span>){
+    <span class="pl-k">return</span> fn(<span class="pl-v">this</span>.<span class="pl-sc">value</span>)
+  }
+})
+
+Monad(Left, {
+  <span class="pl-en">bind</span>: <span class="pl-st">function</span>(<span class="pl-vpf">fn</span>){
+    <span class="pl-k">return</span> <span class="pl-v">this</span>;
+  }
+})
+</pre></div>
+
+<p>哦, 对了, either:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-en">either</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">left</span>, <span class="pl-vpf">right</span>, <span class="pl-vpf">either</span>){
+    <span class="pl-k">if</span>(either.<span class="pl-sc">constructor</span>.<span class="pl-sc">name</span> <span class="pl-k">===</span> <span class="pl-s1"><span class="pl-pds">'</span>Right<span class="pl-pds">'</span></span>)
+        <span class="pl-k">return</span> right(either.<span class="pl-sc">value</span>)
+    <span class="pl-k">else</span>
+        <span class="pl-k">return</span> left(either.<span class="pl-sc">value</span>)
+}</pre></div>
+
+<p>我们来试试工作不工作.</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> walkInLine <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Right</span>([<span class="pl-c1">0</span>,<span class="pl-c1">0</span>]);
+eitherDeadOrNot <span class="pl-k">=</span> walkInLine.bind(landLeft(<span class="pl-c1">2</span>))
+    .bind(landRight(<span class="pl-c1">5</span>))
+either(dead, stillAlive, eitherDeadOrNot)
+<span class="pl-c">// =&gt; [2,5]</span>
+eitherDeadOrNot <span class="pl-k">=</span> walkInLine.bind(landLeft(<span class="pl-c1">2</span>))
+  .bind(landRight(<span class="pl-c1">5</span>))
+  .bind(landLeft(<span class="pl-c1">3</span>))
+  .bind(landLeft(<span class="pl-c1">10</span>)
+  .bind(landRight(<span class="pl-c1">10</span>)))
+
+either(dead, stillAlive, eitherDeadOrNot)
+<span class="pl-c">// =&gt; "皮尔斯dead when land 10 became 15,5"</span></pre></div>
+
+<p><a href="http://jsbin.com/giyig/3/watch" rel="noreferrer">完整代码</a></p>
+
+<h3>
+<a name="user-content-%E5%88%B0%E5%BA%95%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%E5%91%A2-monad" class="anchor" href="#%E5%88%B0%E5%BA%95%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%E5%91%A2-monad" rel="noreferrer"><span class="octicon octicon-link"></span></a>到底有什么用呢, Monad</h3>
+
+<p>我们来总结下两种做法有什么区别:
+1. 一般做法每次都会检查查尔斯挂了没挂, 也就是重复获得之前操作的 context
+2. Monad 不对异常做处理, 只是不停地往盒子里加操作. 你可以看到对错误的处理推到了最后取值的 either.
+2. Monad 互相传递的只是盒子,  而一般写法会把异常往下传如<code>"dead"</code>, 这样导致后面的操作都得先判断这个异常.</p>
+
+<blockquote>
+<p><strong>comment</strong> 由于是用 JavaScript, pole 不限定类型, 所以这里单纯的用字符串代表 pole 的异常状态. 但</p>
+</blockquote>
+
+<p><a href="https://camo.githubusercontent.com/36faeacbe03ce242371b8ed5969c25150a0fa778/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f70726f6d6973652d69732d6d6f6e6164" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/36faeacbe03ce242371b8ed5969c25150a0fa778/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f70726f6d6973652d69732d6d6f6e6164" alt="Analytics" data-canonical-src="https://ga-beacon.appspot.com/UA-32314154-5/blogist/promise-is-monad" style="max-width:100%;"></a></p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/0b2e3c26f704f5d1008e/raw/monad.md" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/0b2e3c26f704f5d1008e#file-monad-md">monad.md</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

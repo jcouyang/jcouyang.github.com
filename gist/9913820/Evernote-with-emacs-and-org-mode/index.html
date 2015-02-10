@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist9913820" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/9913820/file/2013-06-11-use-mock-in-python.markdown">
+        <p>
+最近在用 <a href="https://nose.readthedocs.org/en/latest/" rel="noreferrer">nosetests</a> 和 <a href="https://pypi.python.org/pypi/mock" rel="noreferrer">mock</a><sup><a name="user-content-fnr.1" href="#fn.1" rel="noreferrer">1</a></sup> 为 bottle 应用测试, 发现几个使用nosetests 要注意的
+地方:
+</p>
+
+<div>
+<h2>
+<a name="user-content-1-patch-method-of-module" class="anchor" href="#1-patch-method-of-module" rel="noreferrer"><span class="octicon octicon-link"></span></a>1 patch method of module</h2>
+<div>
+<p>
+patch 一个导入 module 的 method, 因为 method 已经被导入到目标文件, 因此必须
+要 patch 目标文件的 该方法, 而不是原 module.
+</p>
+<div>
+
+<pre># wsgi.py
+from db import get_db
+
+def insert_something():
+    get_db().insert(something)
+
+# test.py
+import wsgi
+
+# @patch('db.get_db') # this won't work
+@patch('wsgi.get_db') # should patch wsgi
+def test_insert(mock_get_db):
+    mock_get_db.return_value = Database()
+    ...
+</pre>
+</div>
+
+<p></p>
+</div>
+</div>
+
+<div>
+<h2>
+<a name="user-content-2-patch-decorator" class="anchor" href="#2-patch-decorator" rel="noreferrer"><span class="octicon octicon-link"></span></a>2 patch decorator</h2>
+<div>
+<p>
+<b>Scenario</b> : bottle 的 views 是用 decorator 来定义的, 也就是说当我们测试 bottle 中
+得 action 时其实这个 action 是被 views 包住的. return 的 dict 会被
+bottle 的 views 函数 render 成 html 并返回. 而我们并不需要测试 views
+返回的 html, 而只需要测试 return 的 dict 是否正确.
+</p>
+
+<p>
+这种情况太适合 mock 的 patch 来干了.
+</p>
+<ol class="task-list">
+<li>patch bottle.view
+</li>
+<li>让其返回一个神马都没干的函数
+</li>
+<li>启动这个patch
+</li>
+<li>导入需要测试的应用代码
+</li>
+</ol>
+<p>
+<b>注意</b> 这里的patch必须在 import 你的 application 之前, 比如我的应用是
+<code>wsgi.py</code>
+</p>
+
+<p>
+完整过程是这样的
+</p>
+<div>
+
+<pre>from mock import patch, Mock
+import bottle
+v = patch("bottle.view",return_value = lambda x : x)
+v.start() ** 使用 local config 来存放你的密匙
+import wsgi
+</pre>
+</div>
+
+<p></p>
+</div>
+</div>
+
+<div>
+<h2>
+<a name="user-content-3-mock-module-that-may-not-exist" class="anchor" href="#3-mock-module-that-may-not-exist" rel="noreferrer"><span class="octicon octicon-link"></span></a>3 mock module that may not exist</h2>
+<div>
+<p>
+<b>Scenario</b>: 一些带有密匙的配置文件(比如 google api key 之类的)并不希望被上传到 github public 上,
+但是测试又需要引入这些文件.(后来我发现了更 elegant 的解决方式 <i>使用
+local config 来存放你的密匙</i>).
+假设现在含密匙的配置文件叫 config.py, 目标文件是 wsgi.py
+</p>
+
+<p>
+这样的话用 patch 不会起任何作用, 因为在你 patch 的时候, 必须要首先引
+入目标文件, 因此目标文件中的import config 会先抛异常.
+</p>
+
+<p>
+好吧, 现在我们必须在引入 wsgi 之前就 patch config. 我们将直接让系统的
+config 模块等于 mock 的 config. 这样再引入 wsgi 就没有任何问题了.
+</p>
+
+<div>
+
+<pre>import sys
+config_mock = Mock(spec=['config'])
+config_mock.__name__ = 'config'
+sys.modules['config'] = config_mock
+</pre>
+</div>
+
+<p></p>
+</div>
+</div>
+
+<div>
+<h2>
+<a name="user-content-4-%E4%BD%BF%E7%94%A8-travis-ci-%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90" class="anchor" href="#4-%E4%BD%BF%E7%94%A8-travis-ci-%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90" rel="noreferrer"><span class="octicon octicon-link"></span></a>4 使用 travis ci 持续集成</h2>
+<div>
+<p>
+持续集成最简单的配置当然是 <a href="http://travis-ci.org/" rel="noreferrer">Travis CI</a>. 只需要 增加配置文件
+<code>.travis.yml</code>, 只需要定义4个东西.
+下面是我的 <code>.travis.yml</code>
+</p>
+<div>
+
+<pre>language: python
+python:
+  - "2.7" # version
+
+install: "pip install -r requirements.txt --use-mirrors"  # requirements
+
+script: nosetests  # test or build command
+</pre>
+</div>
+
+<p></p>
+</div>
+</div>
+
+<div>
+<h2>
+<a name="user-content-5-%E4%BD%BF%E7%94%A8-local-config-%E6%9D%A5%E5%AD%98%E6%94%BE%E4%BD%A0%E7%9A%84%E5%AF%86%E5%8C%99" class="anchor" href="#5-%E4%BD%BF%E7%94%A8-local-config-%E6%9D%A5%E5%AD%98%E6%94%BE%E4%BD%A0%E7%9A%84%E5%AF%86%E5%8C%99" rel="noreferrer"><span class="octicon octicon-link"></span></a>5 使用 local config 来存放你的密匙</h2>
+<div>
+<p>
+这种方式源于 django. 突然想到 django 的 settings.py 最后几行
+</p>
+
+<div>
+
+<pre>try:
+    from local_settings import *
+except:
+    pass
+</pre>
+</div>
+
+<p>
+意思是从 <code>local_settings</code> 里的所有设置导入, 因此可以把真的带密匙的真是配置
+写到 <code>local_settings</code> 中.
+</p>
+
+<p></p>
+</div>
+</div>
+
+<div>
+<h2>
+<a name="user-content-footnotes-" class="anchor" href="#footnotes-" rel="noreferrer"><span class="octicon octicon-link"></span></a>Footnotes: </h2>
+<div>
+
+<div>
+<sup><a name="user-content-fn.1" href="#fnr.1" rel="noreferrer">1</a></sup> <p>
+: mock is now part of the python 3 now. Whee…..
+</p>
+</div>
+
+
+</div>
+
+<p></p>
+</div>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/9913820/raw/2013-06-11-use-mock-in-python.markdown" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/9913820#file-2013-06-11-use-mock-in-python-markdown">2013-06-11-use-mock-in-python.markdown</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

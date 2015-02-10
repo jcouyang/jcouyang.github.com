@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist12394779" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2/file/00%20Setup%20Env.md">
+        <h3>
+<a name="user-content-install-node" class="anchor" href="#install-node" rel="noreferrer"><span class="octicon octicon-link"></span></a>Install Node</h3>
+
+<p><code>brew install node</code></p>
+
+<p>node here is use for setup tools like grunt and mocha</p>
+
+<p><code>npm install -g grunt</code></p>
+
+<p><a href="http://gruntjs.com" rel="noreferrer">grunt</a> is js build tool.</p>
+
+<p><code>npm install -g bower</code></p>
+
+<p><a href="http://bower.io" rel="noreferrer">bower</a> is package management for frontend js.</p>
+
+<h3>
+<a name="user-content-install-dependencies" class="anchor" href="#install-dependencies" rel="noreferrer"><span class="octicon octicon-link"></span></a>Install Dependencies</h3>
+
+<p><code>npm install</code></p>
+
+<p>this will install all dependecies under <code>package.json</code></p>
+
+<div class="highlight highlight-json"><pre>  <span class="pl-s1"><span class="pl-pds">"</span>devDependencies<span class="pl-pds">"</span></span>: {
+    <span class="pl-s1"><span class="pl-pds">"</span>grunt<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~0.4.2<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>nunjucks<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~1.0.1<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>grunt-nunjucks<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~0.1.0<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>grunt-contrib-copy<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~0.5.0<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>grunt-contrib-concat<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~0.3.0<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>mocha<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~1.17.1<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>grunt-contrib-uglify<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~0.3.2<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>grunt-contrib-watch<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~0.5.3<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>requirejs<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~2.1.11<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>grunt-mocha<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~0.4.10<span class="pl-pds">"</span></span>
+}</pre></div>
+
+<h3>
+<a name="user-content-install-frontend-dependencies" class="anchor" href="#install-frontend-dependencies" rel="noreferrer"><span class="octicon octicon-link"></span></a>Install Frontend Dependencies</h3>
+
+<p><code>bower install</code></p>
+
+<p>same thing, <code>bower install</code> will install all dependencies of <code>bower.json</code></p>
+
+<div class="highlight highlight-json"><pre> <span class="pl-s1"><span class="pl-pds">"</span>devDependencies<span class="pl-pds">"</span></span>: {
+ <span class="pl-s1"><span class="pl-pds">"</span>bootswatch<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~3.1.1<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>nunjucks<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~1.0.1<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>chai<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~1.9.0<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>sinon<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>~1.8.2<span class="pl-pds">"</span></span>
+}</pre></div>
+
+<h3>
+<a name="user-content-run-the-mocha-test" class="anchor" href="#run-the-mocha-test" rel="noreferrer"><span class="octicon octicon-link"></span></a>Run the mocha test</h3>
+
+<p><code>grunt mocha</code> to run test with phantomjs</p>
+
+<p>or just open <code>tests/index.html</code> with your browser.</p>
+
+<p><a href="http://chaijs.com/" rel="noreferrer">chai</a> is for assertion</p>
+
+<div class="highlight highlight-javascript"><pre>nunjucks.render.calledOnce.should.be.true;</pre></div>
+
+<p><a href="http://sinonjs.org/" rel="noreferrer">sinon</a> for mock</p>
+
+<div class="highlight highlight-javascript"><pre>sinon.stub(nunjucks,<span class="pl-s1"><span class="pl-pds">"</span>render<span class="pl-pds">"</span></span>)</pre></div>
+
+<h3>
+<a name="user-content-precompile-template" class="anchor" href="#precompile-template" rel="noreferrer"><span class="octicon octicon-link"></span></a>Precompile Template</h3>
+
+<p>we use <a href="http://jlongster.github.io/nunjucks/" rel="noreferrer">nunjucks</a> for template engine</p>
+
+<p>nunjucks is very effective and powerful since it support precompile of templates, and python-like syntax.</p>
+
+<p><code>grunt-nunjucks</code> will compile the templates for us through grunt task</p>
+
+<div class="highlight highlight-json"><pre>   nunjucks: {
+      <span class="pl-ii">precompile</span>: {
+        <span class="pl-ii">src</span>: <span class="pl-ii">'src/templates/*'</span>,
+        <span class="pl-ii">dest</span>: <span class="pl-ii">'javascripts/templates.js'</span>
+      }
+    }</pre></div>
+
+<p>run <code>grunt nunjucks</code> will precompile all templates under <code>src/templates/</code> into <code>javascripts/tempalates.js</code></p>
+
+<h3>
+<a name="user-content-generate-github-api-token" class="anchor" href="#generate-github-api-token" rel="noreferrer"><span class="octicon octicon-link"></span></a>Generate Github API Token</h3>
+
+<p>open <a href="https://github.com/settings/applications" rel="noreferrer">https://github.com/settings/applications</a> and click <code>generate token</code></p>
+
+<p><a href="https://camo.githubusercontent.com/14ab41bef8c188cff62dc3917fc3e4092df40989/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f33363466333461662d643831392d346234662d626264612d3762633137366239303531392f61653762383737336161393038396637613166636564623363343164663062642f646565702f302f417574686f72697a65642d6170706c69636174696f6e732e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/14ab41bef8c188cff62dc3917fc3e4092df40989/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f33363466333461662d643831392d346234662d626264612d3762633137366239303531392f61653762383737336161393038396637613166636564623363343164663062642f646565702f302f417574686f72697a65642d6170706c69636174696f6e732e706e67" alt="" data-canonical-src="https://www.evernote.com/shard/s23/sh/364f34af-d819-4b4f-bbda-7bc176b90519/ae7b8773aa9089f7a1fcedb3c41df0bd/deep/0/Authorized-applications.png" style="max-width:100%;"></a></p>
+
+<p>copy the token. <em>KEEP IT AS SAFE AS YOUR GITHUB PASSWORD</em></p>
+
+<h3>
+<a name="user-content-run-the-app" class="anchor" href="#run-the-app" rel="noreferrer"><span class="octicon octicon-link"></span></a>Run the app</h3>
+
+<p>simply run <code>grunt</code> will precomile nunjucks and copy javascripts from <code>src</code> into <code>javascripts</code> folder.</p>
+
+<p>then <code>python -m SimpleHTTPServer</code> to start a server.</p>
+
+<p>open <code>localhost:8000</code></p>
+
+<p>open <code>console</code> and put it</p>
+
+<pre><code>localStorage.setItem("access_token",&lt;PASTE&gt;); &lt;RETURN&gt;
+</code></pre>
+
+<p>refresh and you will see...
+<a href="https://camo.githubusercontent.com/c8cf12581fed04116f1379bfddece4279a5ce1fa/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f61373366613730632d336565662d343665612d613030652d6266323065333764363763332f39343637626630613861313761643836666165663933346264653133633336332f646565702f302f426c6f676973742e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/c8cf12581fed04116f1379bfddece4279a5ce1fa/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f61373366613730632d336565662d343665612d613030652d6266323065333764363763332f39343637626630613861313761643836666165663933346264653133633336332f646565702f302f426c6f676973742e706e67" alt="" data-canonical-src="https://www.evernote.com/shard/s23/sh/a73fa70c-3eef-46ea-a00e-bf20e37d67c3/9467bf0a8a17ad86faef934bde13c363/deep/0/Blogist.png" style="max-width:100%;"></a></p>
+
+<h2>
+<a name="user-content-done" class="anchor" href="#done" rel="noreferrer"><span class="octicon octicon-link"></span></a>DONE</h2>
+
+<p><a href="https://camo.githubusercontent.com/b3b53a7f117fa563a1115d37000e3c4a41d8647f/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f6275696c642d796f75722d73656c662d612d6261636b626f6e65" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/b3b53a7f117fa563a1115d37000e3c4a41d8647f/68747470733a2f2f67612d626561636f6e2e61707073706f742e636f6d2f55412d33323331343135342d352f626c6f676973742f6275696c642d796f75722d73656c662d612d6261636b626f6e65" alt="Analytics" data-canonical-src="https://ga-beacon.appspot.com/UA-32314154-5/blogist/build-your-self-a-backbone" style="max-width:100%;"></a></p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2/raw/00%20Setup%20Env.md" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2#file-00-setup-env-md">00 Setup Env.md</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2/file/01%20Get%20Familia%20with%20Template%20and%20Promise.md">
+        <h2>
+<a name="user-content-task-1" class="anchor" href="#task-1" rel="noreferrer"><span class="octicon octicon-link"></span></a>TASK 1</h2>
+
+<p>get all gist list and render them into home page.</p>
+
+<h3>
+<a name="user-content-check-points" class="anchor" href="#check-points" rel="noreferrer"><span class="octicon octicon-link"></span></a>Check Points</h3>
+
+<ol class="task-list">
+<li>ajax get data.</li>
+<li>use nunjucks to render your data.</li>
+<li>mocha test your async code.</li>
+</ol>
+
+<h2>
+<a name="user-content-task-1-walkthrough" class="anchor" href="#task-1-walkthrough" rel="noreferrer"><span class="octicon octicon-link"></span></a>TASK 1 Walkthrough</h2>
+
+<h3>
+<a name="user-content-get-gist-data-via-api" class="anchor" href="#get-gist-data-via-api" rel="noreferrer"><span class="octicon octicon-link"></span></a>Get Gist Data via API</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-st">function</span> <span class="pl-en">getGists</span>(){
+  <span class="pl-k">return</span> Q($.ajax({
+    url<span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">"</span>https://api.github.com/users/<span class="pl-pds">"</span></span><span class="pl-k">+</span>login_user<span class="pl-k">+</span><span class="pl-s1"><span class="pl-pds">"</span>/gists?access_token=<span class="pl-pds">"</span></span> <span class="pl-k">+</span> localStorage.getItem(<span class="pl-s1"><span class="pl-pds">"</span>access_token<span class="pl-pds">"</span></span>),
+    method<span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">'</span>get<span class="pl-pds">'</span></span>
+  }));
+};</pre></div>
+
+<p>now we have the data, what we need to do is render the data into template, then put it on the page.</p>
+
+<p>the data is wrapped with Q which will return a Promise object. with Promise, you can do</p>
+
+<div class="highlight highlight-javascript"><pre>Q(<span class="pl-k">do</span> something aync).then(<span class="pl-en">console</span><span class="pl-s3">.log</span>)</pre></div>
+
+<h3>
+<a name="user-content-template" class="anchor" href="#template" rel="noreferrer"><span class="octicon octicon-link"></span></a>Template</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-st">function</span> <span class="pl-en">renderGist</span>(){
+    getGists().then(<span class="pl-st">function</span>(<span class="pl-vpf">body</span>){
+        $(<span class="pl-s1"><span class="pl-pds">'</span>.container .article<span class="pl-pds">'</span></span>).html(nunjucks.render(<span class="pl-s1"><span class="pl-pds">"</span>src/templates/gistlist.html<span class="pl-pds">"</span></span>,{gists<span class="pl-k">:</span>body}));
+    }).then(bindEvent);
+}</pre></div>
+
+<p>see, then <code>nunjuncks.render</code> will take 2 arguments, first the template address, then the data.</p>
+
+<p>lets see what is in the template</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">ul</span> <span class="pl-e">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>list-group<span class="pl-pds">"</span></span>&gt;
+    {% for gist in gists %}
+    {% for name,file in gist.files%}
+    &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>list-group-item<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s1"><span class="pl-pds">"</span>#<span class="pl-pds">"</span></span> <span class="pl-e">data-id</span>=<span class="pl-s1"><span class="pl-pds">"</span>{{gist.id}}<span class="pl-pds">"</span></span> <span class="pl-e">data-url</span>=<span class="pl-s1"><span class="pl-pds">"</span>{{gist.html_url}}<span class="pl-pds">"</span></span>&gt;
+            {{name}}
+        &lt;/<span class="pl-ent">a</span>&gt;
+  &lt;/<span class="pl-ent">li</span>&gt;
+    {% endfor%}
+    {% endfor%}
+&lt;/<span class="pl-ent">ul</span>&gt;</pre></div>
+
+<p>simple ehh, print the data value with <code>{{}}</code></p>
+
+<p>but how nunjucks find the template html.</p>
+
+<p>a grunt task will precompile all html template file into <code>javascript/templates.js</code></p>
+
+<div class="highlight highlight-javascript"><pre>    nunjucks<span class="pl-k">:</span> {
+      precompile<span class="pl-k">:</span> {
+        src<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>src/templates/*<span class="pl-pds">'</span></span>,
+        dest<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>javascripts/templates.js<span class="pl-pds">'</span></span>
+      }
+    },</pre></div>
+
+<h3>
+<a name="user-content-test" class="anchor" href="#test" rel="noreferrer"><span class="octicon octicon-link"></span></a>Test</h3>
+
+<p>how to test function with promise</p>
+
+<div class="highlight highlight-javascript"><pre>    describe(<span class="pl-s1"><span class="pl-pds">'</span>article<span class="pl-pds">'</span></span>,<span class="pl-st">function</span>(){
+        it(<span class="pl-s1"><span class="pl-pds">'</span>show all gist<span class="pl-pds">'</span></span>, <span class="pl-st">function</span>(<span class="pl-vpf">done</span>){
+            <span class="pl-s">var</span> gists <span class="pl-k">=</span> [{
+                html_url<span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">"</span>https://gist.github.com/2171fd506edc072ca80e<span class="pl-pds">"</span></span>
+            }];
+            <span class="pl-s">var</span> gistsData <span class="pl-k">=</span> Q(gists);
+            getGists <span class="pl-k">=</span> stub().returns(gistsData);
+            renderGist();
+            gistsData.should.be.fulfilled.then(<span class="pl-st">function</span>(){
+                nunjucks.render.calledOnce.should.be.true;
+                nunjucks.render.getCall(<span class="pl-c1">0</span>).args[<span class="pl-c1">0</span>].should.be.equal(<span class="pl-s1"><span class="pl-pds">"</span>src/templates/gistlist.html<span class="pl-pds">"</span></span>);
+                nunjucks.render.getCall(<span class="pl-c1">0</span>).args[<span class="pl-c1">1</span>].should.be.deep.equal({gists<span class="pl-k">:</span>gists});
+            }).should.notify(done);
+        });
+    });</pre></div>
+
+<p>the <code>.should.be.fulfilled.then</code> and <code>notify</code> is provide by <a href="http://chaijs.com/plugins/chai-as-promised" rel="noreferrer">chai promise</a> plugin.</p>
+
+<p>this test will check</p>
+
+<ol class="task-list">
+<li>if the <code>getGists</code> is been called</li>
+<li>the Promise it returned should be fulfilled.</li>
+<li>nunjucks.render has been called</li>
+<li>nunjucks.render has been called with the right data.</li>
+<li>finally notify the <code>done</code> callback provide by mocha, which tell moche the test has been done.</li>
+</ol>
+
+<p>BTW change the <code>before</code> and <code>after</code> to <code>beforeEach</code>, why</p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2/raw/01%20Get%20Familia%20with%20Template%20and%20Promise.md" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2#file-01-get-familia-with-template-and-promise-md">01 Get Familia with Template and Promise.md</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2/file/02%20Play-with-Event.markdown">
+        <h2>
+<a name="user-content-task-2-play-with-event" class="anchor" href="#task-2-play-with-event" rel="noreferrer"><span class="octicon octicon-link"></span></a>TASK 2: Play with Event</h2>
+
+<p><strong>Bind event to items in the gists list, when I click, the content of the gist will be rendered.</strong></p>
+
+<p>Gists List
+<a href="https://camo.githubusercontent.com/d45a59e4538bbff0acea8da47025bae596f6f06b/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f65353065623661392d316338322d343234662d613863642d3734383732323765613338362f30646637333137356339396661646437373831313837636534343261366432352f646565702f302f426c6f676973742e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/d45a59e4538bbff0acea8da47025bae596f6f06b/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f65353065623661392d316338322d343234662d613863642d3734383732323765613338362f30646637333137356339396661646437373831313837636534343261366432352f646565702f302f426c6f676973742e706e67" alt="" data-canonical-src="https://www.evernote.com/shard/s23/sh/e50eb6a9-1c82-424f-a8cd-7487227ea386/0df73175c99fadd7781187ce442a6d25/deep/0/Blogist.png" style="max-width:100%;"></a></p>
+
+<p>then detail page:
+<a href="https://camo.githubusercontent.com/896111840ae7bf856f1e61daaab5003091b2c229/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f36613863643731652d623539312d343364302d623136662d6231396561306234653339382f62353136323162646163626138616635386230383938393436663565366532652f646565702f302f426c6f676973742e706e67" target="_blank" rel="noreferrer"><img src="https://camo.githubusercontent.com/896111840ae7bf856f1e61daaab5003091b2c229/68747470733a2f2f7777772e657665726e6f74652e636f6d2f73686172642f7332332f73682f36613863643731652d623539312d343364302d623136662d6231396561306234653339382f62353136323162646163626138616635386230383938393436663565366532652f646565702f302f426c6f676973742e706e67" alt="" data-canonical-src="https://www.evernote.com/shard/s23/sh/6a8cd71e-b591-43d0-b16f-b19ea0b4e398/b51621bdacba8af58b0898946f5e6e2e/deep/0/Blogist.png" style="max-width:100%;"></a></p>
+
+<blockquote>
+<p>tip: use this api to get gist content <code>https://gist.github.com/&lt;YOURNAME&gt;/&lt;GIST ID&gt;.json</code></p>
+</blockquote>
+
+<p>example: <a href="https://gist.github.com/jcouyang/9362622.json" rel="noreferrer">https://gist.github.com/jcouyang/9362622.json</a></p>
+
+<h3>
+<a name="user-content-check-points" class="anchor" href="#check-points" rel="noreferrer"><span class="octicon octicon-link"></span></a>Check points</h3>
+
+<ol class="task-list">
+<li>use JSONP to cross origin ajax</li>
+<li>get data and render is async, make sure bind event after render.</li>
+</ol>
+
+<h2>
+<a name="user-content-task-2-walkthrough" class="anchor" href="#task-2-walkthrough" rel="noreferrer"><span class="octicon octicon-link"></span></a>TASK 2 Walkthrough</h2>
+
+<h3>
+<a name="user-content-cross-domain-ajax" class="anchor" href="#cross-domain-ajax" rel="noreferrer"><span class="octicon octicon-link"></span></a>Cross Domain Ajax</h3>
+
+<p><code>$.getJSON($(this).data("url")+".json?callback=?"</code></p>
+
+<p>use getJSON and add <code>callback=?</code> to get JSONP across origin</p>
+
+<h3>
+<a name="user-content-bind-event" class="anchor" href="#bind-event" rel="noreferrer"><span class="octicon octicon-link"></span></a>bind event</h3>
+
+<p>your code will may like this:</p>
+
+<div class="highlight highlight-javascript"><pre>getGists().then(<span class="pl-st">function</span>(<span class="pl-vpf">body</span>){
+        $(<span class="pl-s1"><span class="pl-pds">'</span>.container .article<span class="pl-pds">'</span></span>).html(nunjucks.render(<span class="pl-s1"><span class="pl-pds">"</span>src/templates/gistlist.html<span class="pl-pds">"</span></span>,{gists<span class="pl-k">:</span>body}));
+}).then(bindEvent);
+
+<span class="pl-st">function</span> <span class="pl-en">bindEvent</span>(){
+    $(<span class="pl-s1"><span class="pl-pds">"</span>.article li a<span class="pl-pds">"</span></span>).<span class="pl-s3">click</span>(<span class="pl-st">function</span>(){
+        $.getJSON($(<span class="pl-v">this</span>).<span class="pl-sc">data</span>(<span class="pl-s1"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>)<span class="pl-k">+</span><span class="pl-s1"><span class="pl-pds">"</span>.json?callback=?<span class="pl-pds">"</span></span>,<span class="pl-st">function</span>(<span class="pl-vpf">data</span>){
+            $(<span class="pl-s1"><span class="pl-pds">"</span>.article<span class="pl-pds">"</span></span>).html(data.div);
+        });
+    });
+}
+
+renderHeader().then(renderGist);</pre></div>
+
+<p>bind event after render</p>
+
+<p>now you'll find 2 problems here</p>
+
+<ol class="task-list">
+<li>repeat code.</li>
+<li>how to go back from the gist detail page.</li>
+</ol>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2/raw/02%20Play-with-Event.markdown" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2#file-02-play-with-event-markdown">02 Play-with-Event.markdown</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2/file/03%20Prettify-Your-Code.md">
+        <h2>
+<a name="user-content-task-3" class="anchor" href="#task-3" rel="noreferrer"><span class="octicon octicon-link"></span></a>TASK 3</h2>
+
+<p>now your code should have repeat code</p>
+
+<p>each time you want to add something new to the page, you'll probalily copy this code and make some minor change:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-st">function</span> <span class="pl-en">renderGist</span>(){
+    getGists().then(<span class="pl-st">function</span>(<span class="pl-vpf">body</span>){
+        $(<span class="pl-s1"><span class="pl-pds">'</span>.container .article<span class="pl-pds">'</span></span>).html(nunjucks.render(<span class="pl-s1"><span class="pl-pds">"</span>src/templates/gistlist.html<span class="pl-pds">"</span></span>,{gists<span class="pl-k">:</span>body}));
+    }).then(bindEvent);
+}</pre></div>
+
+<p>Once you have to copy and paste your code, that means you need refactory</p>
+
+<p>look at the code and you'll see the common things:
+1. get Data from backend
+2. use the data to render template
+3. bind event to the element after the template rendered.</p>
+
+<p>So, TASK 3 would be:</p>
+
+<p><strong>extract the View out of the common code</strong></p>
+
+<h3>
+<a name="user-content-check-points" class="anchor" href="#check-points" rel="noreferrer"><span class="octicon octicon-link"></span></a>Check Points</h3>
+
+<ol class="task-list">
+<li>remove repeat code and replace them with View</li>
+<li>View can be extend -- inheritance</li>
+<li>View should be easy to use like <a href="http://backbonejs.org/docs/todos.html#section-18" rel="noreferrer">backbone</a>
+</li>
+</ol>
+
+<h3>
+<a name="user-content-hint" class="anchor" href="#hint" rel="noreferrer"><span class="octicon octicon-link"></span></a>Hint:</h3>
+
+<p>this will explain how to implement simple javascript inheritance using underscore</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-st">function</span> <span class="pl-en">Mammal</span>(<span class="pl-vpf">name</span>){ 
+    <span class="pl-v">this</span>.<span class="pl-sc">name</span><span class="pl-k">=</span>name;
+    <span class="pl-v">this</span>.offspring<span class="pl-k">=</span>[];
+} 
+<span class="pl-s3">Mammal</span>.<span class="pl-sc">prototype</span>.<span class="pl-en">toString</span><span class="pl-k">=</span><span class="pl-st">function</span>(){ 
+    <span class="pl-k">return</span> <span class="pl-s1"><span class="pl-pds">'</span>[Mammal "<span class="pl-pds">'</span></span><span class="pl-k">+</span><span class="pl-v">this</span>.<span class="pl-sc">name</span><span class="pl-k">+</span><span class="pl-s1"><span class="pl-pds">'</span>"]<span class="pl-pds">'</span></span>;
+}
+
+<span class="pl-s3">Mammal</span>.<span class="pl-en">extend</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">props</span>){
+    <span class="pl-s">var</span> parent <span class="pl-k">=</span> <span class="pl-v">this</span>,child;
+    <span class="pl-en">child</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(){
+        parent.<span class="pl-s3">apply</span>(<span class="pl-v">this</span>, arguments)
+    }
+    <span class="pl-s">var</span> <span class="pl-en">FixConstructor</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(){
+        <span class="pl-v">this</span>.<span class="pl-sc">constructor</span> <span class="pl-k">=</span> child;
+    };
+    <span class="pl-s3">FixConstructor</span>.<span class="pl-sc">prototype</span> <span class="pl-k">=</span> parent.<span class="pl-sc">prototype</span>
+    <span class="pl-s3">child</span>.<span class="pl-sc">prototype</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">FixConstructor</span>();
+    _.extend(child, parent);
+    _.extend(child.<span class="pl-sc">prototype</span>,props);
+    <span class="pl-k">return</span> child;
+}
+
+<span class="pl-s">var</span> Cat <span class="pl-k">=</span> Mammal.extend({type<span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">"</span>Cat<span class="pl-pds">"</span></span>})
+<span class="pl-s">var</span> cat <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Cat</span>(<span class="pl-s1"><span class="pl-pds">"</span>meow<span class="pl-pds">"</span></span>)</pre></div>
+
+<h3>
+<a name="user-content-walkthrough" class="anchor" href="#walkthrough" rel="noreferrer"><span class="octicon octicon-link"></span></a>Walkthrough</h3>
+
+<h4>
+<a name="user-content-prototype" class="anchor" href="#prototype" rel="noreferrer"><span class="octicon octicon-link"></span></a>prototype</h4>
+
+<pre><code> +----------------+ prototype+-----------------+
+ |   Function     +----------+  function       |     
+ +-------+--------+          +-----------------+     
+           |                                               
+           |Mammal instanceof Function === true            
+           |.constructor                                           
+   +-------+--------+ prototype+----------------+              
+   | Mammal         +----------+  empty Object {}              
+   +----------------+          +----------------+              
+</code></pre>
+
+<p>..  .. .   .   .   .   .Mammal.prototype.toString=function() .............</p>
+
+<pre><code> +------------------+            +----------------------+
+ |     Mammal       |.prototype  | {}.toString          |
+ +------------------+            +-----------+----------+
+ |      .extend     |                        ^ 
+ +------------------+                        | 
+</code></pre>
+
+<p>.......^.......var mammal= new Mammal("dog")  .|...................
+         |                                       |toString
+         |    Object.getPrototypeOf  +-----------+-----------+
+         +---------------------------+  mammal               |
+             .constructor            +-----------------------+</p>
+
+<h4>
+<a name="user-content-constructor" class="anchor" href="#constructor" rel="noreferrer"><span class="octicon octicon-link"></span></a>constructor</h4>
+
+<p>as you can see here, Mammal.constructor == Function</p>
+
+<p>mammal.constructor == Mammal</p>
+
+<p>so <code>function Mammal()</code> just like create new instance of Function</p>
+
+<h4>
+<a name="user-content-function" class="anchor" href="#function" rel="noreferrer"><span class="octicon octicon-link"></span></a>Function</h4>
+
+<ol class="task-list">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" rel="noreferrer">Function</a></li>
+</ol>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">new</span> <span class="pl-en">Function</span> (arg1, arg2, ... argN, functionBody)</pre></div>
+
+<ol class="task-list">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function" rel="noreferrer">function statment</a></li>
+</ol>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-st">function</span> <span class="pl-en">name</span>([<span class="pl-vpf">param</span>[, <span class="pl-vpf">param</span>[, ... <span class="pl-vpf">param</span>]]]) {
+   statements
+   }</pre></div>
+
+<ol class="task-list">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function" rel="noreferrer">function operater/expression</a></li>
+</ol>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-st">function</span> [name]([param] [, param] [..., param]) {
+   statements
+}</pre></div>
+
+<ol class="task-list">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope" rel="noreferrer">Function constructor vs. function declaration vs. function expression</a></li>
+</ol>
+
+<p>Function constructor</p>
+
+<pre><code>var multiply = new Function("x", "y", "return x * y;");
+</code></pre>
+
+<p>function declaration</p>
+
+<pre><code>function multiply(x, y) {
+   return x * y;
+}
+</code></pre>
+
+<p>function expression</p>
+
+<pre><code>var multiply = function(x, y) {
+   return x * y;
+};
+</code></pre>
+
+<p>named function expression</p>
+
+<pre><code>var multiply = function func_name(x, y) {
+   return x * y;
+};
+</code></pre>
+
+<h4>
+<a name="user-content-implement-the-inheritance-of-viewjust-like-the-mammal" class="anchor" href="#implement-the-inheritance-of-viewjust-like-the-mammal" rel="noreferrer"><span class="octicon octicon-link"></span></a>implement the inheritance of View,just like the mammal:</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s3">View</span>.<span class="pl-en">extend</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">props</span>){
+    <span class="pl-s">var</span> parent <span class="pl-k">=</span> <span class="pl-v">this</span>,child;
+    <span class="pl-en">child</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(){ 
+        parent.<span class="pl-s3">apply</span>(<span class="pl-v">this</span>, arguments);
+    };                  
+    child.<span class="pl-sc">parent</span><span class="pl-k">=</span>parent;  
+    <span class="pl-s">var</span> <span class="pl-en">FixConstructor</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(){
+        <span class="pl-v">this</span>.<span class="pl-sc">constructor</span> <span class="pl-k">=</span> child;
+    };                  
+    <span class="pl-s3">FixConstructor</span>.<span class="pl-sc">prototype</span> <span class="pl-k">=</span> parent.<span class="pl-sc">prototype</span>;
+    <span class="pl-s3">child</span>.<span class="pl-sc">prototype</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">FixConstructor</span>();
+    _.extend(child, parent);
+    _.extend(child.<span class="pl-sc">prototype</span>,props);
+    <span class="pl-k">return</span> child;       
+};                      </pre></div>
+
+<ol class="task-list">
+<li>the mighty basic View</li>
+</ol>
+
+<div class="highlight highlight-javascript"><pre>_.extend(View.<span class="pl-sc">prototype</span>, {
+    el<span class="pl-k">:</span>$(<span class="pl-s1"><span class="pl-pds">"</span>body<span class="pl-pds">"</span></span>),         
+    templateEngine<span class="pl-k">:</span> nunjucks,
+    template<span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>,          
+    data<span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>,              
+    events<span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">"</span>click body:<span class="pl-pds">"</span></span>, 
+    <span class="pl-en">initialize</span>:<span class="pl-st">function</span>(){
+    },                    
+    <span class="pl-en">getData</span>:<span class="pl-st">function</span>(<span class="pl-vpf">options</span>){
+        <span class="pl-k">if</span> (<span class="pl-k">!</span><span class="pl-v">this</span>.<span class="pl-sc">data</span>) <span class="pl-k">return</span> Q();
+        <span class="pl-s">var</span> methodAndUrl <span class="pl-k">=</span> <span class="pl-v">this</span>.<span class="pl-sc">data</span>.<span class="pl-s3">split</span>(<span class="pl-s1"><span class="pl-pds">'</span>@<span class="pl-pds">'</span></span>);
+        <span class="pl-k">return</span> Q($.ajax(_.extend({
+            url<span class="pl-k">:</span>methodAndUrl[<span class="pl-c1">1</span>],
+            method<span class="pl-k">:</span>methodAndUrl[<span class="pl-c1">0</span>]
+        },options)));       
+    },                    
+    <span class="pl-en">render</span>:<span class="pl-st">function</span>(){    
+        <span class="pl-s">var</span> self <span class="pl-k">=</span> <span class="pl-v">this</span>;    
+        <span class="pl-k">return</span> <span class="pl-v">this</span>.getData(<span class="pl-v">this</span>.dataOptions).then(<span class="pl-st">function</span>(<span class="pl-vpf">data</span>){
+            self.el.html(self.templateEngine.render(self.template, {data<span class="pl-k">:</span>data}));
+        }).then(self.bindEvent.bind(self));
+    },                    
+    <span class="pl-en">bindEvent</span>:<span class="pl-st">function</span>(){ 
+        <span class="pl-s">var</span> self <span class="pl-k">=</span> <span class="pl-v">this</span>;    
+        <span class="pl-s">var</span> events <span class="pl-k">=</span> _.result(<span class="pl-v">this</span>, <span class="pl-s1"><span class="pl-pds">'</span>events<span class="pl-pds">'</span></span>);
+        <span class="pl-k">if</span> (<span class="pl-k">!</span>events) <span class="pl-k">return</span> <span class="pl-v">this</span>;
+        _.each(_(events).keys(),<span class="pl-st">function</span>(<span class="pl-vpf">key</span>){
+            <span class="pl-s">var</span> match <span class="pl-k">=</span> key.<span class="pl-s3">match</span>(delegateEventSplitter);
+            <span class="pl-s">var</span> eventName <span class="pl-k">=</span> match[<span class="pl-c1">1</span>], selector <span class="pl-k">=</span> match[<span class="pl-c1">2</span>];
+            <span class="pl-k">if</span> (selector<span class="pl-k">==</span><span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>){
+                self.el.on(eventName, _.bind(self[events[key]],self));
+            } <span class="pl-k">else</span>{           
+                self.el.<span class="pl-s3">find</span>(selector).on(eventName, _.bind(self[events[key]],self));
+            }                 
+
+        });                 
+    }                     
+});                     </pre></div>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2/raw/03%20Prettify-Your-Code.md" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2#file-03-prettify-your-code-md">03 Prettify-Your-Code.md</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2/file/04%20We-Need-Router.md">
+        <h3>
+<a name="user-content-why-router" class="anchor" href="#why-router" rel="noreferrer"><span class="octicon octicon-link"></span></a>Why Router</h3>
+
+<p>as you may notice that when go to the detail page, you can't navigate back to blog list.</p>
+
+<p>so basically, router can let us navigate around in single page app.</p>
+
+<h3>
+<a name="user-content-task-4" class="anchor" href="#task-4" rel="noreferrer"><span class="octicon octicon-link"></span></a>TASK 4</h3>
+
+<p>here is how we gonno use the router.</p>
+
+<p>we should able new a Router, and register location to an action.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> router <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Router</span>();
+
+router.get(<span class="pl-s1"><span class="pl-pds">"</span>/<span class="pl-pds">"</span></span>, <span class="pl-st">function</span>(){
+    header.render().then(bloglist.render.bind(bloglist));
+});
+
+router.get(<span class="pl-s1"><span class="pl-pds">"</span>/:gistid<span class="pl-pds">"</span></span>,<span class="pl-st">function</span>(<span class="pl-vpf">params</span>){
+    <span class="pl-k">new</span> <span class="pl-en">BlogDetailView</span>(<span class="pl-s1"><span class="pl-pds">'</span>https://gitst.github.com/<span class="pl-pds">'</span></span><span class="pl-k">+</span> params.gistid <span class="pl-k">+</span><span class="pl-s1"><span class="pl-pds">"</span>.json<span class="pl-pds">"</span></span>).render();
+});
+</pre></div>
+
+<p>you'll gonna implement this <code>Router</code></p>
+
+<p>once we have <code>Router</code>, we can remove the useless event</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s1"><span class="pl-pds">'</span>click li a<span class="pl-pds">'</span></span><span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">"</span>renderDetail<span class="pl-pds">"</span></span></pre></div>
+
+<h3>
+<a name="user-content-hint" class="anchor" href="#hint" rel="noreferrer"><span class="octicon octicon-link"></span></a>Hint</h3>
+
+<ol class="task-list">
+<li><p>there are a window event listener call <a href="https://developer.mozilla.org/en-US/docs/Web/Reference/Events/hashchange" rel="noreferrer">hashchange</a></p></li>
+<li><p>you'll gonna like get help from <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/RegExp#grouping-back-references" rel="noreferrer">regex</a></p></li>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/Reference/Events/popstate" rel="noreferrer">popstate</a> will help you manage history go back and forward.</p></li>
+</ol>
+
+<h3>
+<a name="user-content-walkthrough" class="anchor" href="#walkthrough" rel="noreferrer"><span class="octicon octicon-link"></span></a>Walkthrough</h3>
+
+<p>git checkout task.4</p>
+
+<ol class="task-list">
+<li>regist what hash goes where</li>
+</ol>
+
+<div class="highlight highlight-javascript"><pre>router.get(<span class="pl-s1"><span class="pl-pds">"</span>/<span class="pl-pds">"</span></span>, <span class="pl-st">function</span>(){
+    <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">"</span>homepage<span class="pl-pds">"</span></span>);
+    header.render();
+    bloglist.render();
+});</pre></div>
+
+<p>this is define of a rout, when receive <code>/</code> call the function which render header and blogist.</p>
+
+<ol class="task-list">
+<li>implement the register</li>
+</ol>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s3">Router</span>.<span class="pl-sc">prototype</span>.<span class="pl-en">get</span> <span class="pl-k">=</span> <span class="pl-st">function</span>(<span class="pl-vpf">url</span>,<span class="pl-vpf">callback</span>){
+    <span class="pl-s">var</span> paramRegx <span class="pl-k">=</span><span class="pl-sr"> <span class="pl-pds">/</span>:(<span class="pl-c1">[<span class="pl-k">^</span>/<span class="pl-c1">.</span><span class="pl-cce">\\\\</span>]</span><span class="pl-k">+</span>)<span class="pl-pds">/</span>g</span>;
+    <span class="pl-s">var</span> param;
+    <span class="pl-s">var</span> route <span class="pl-k">=</span> {
+        paramNames<span class="pl-k">:</span>[],
+        regex<span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">'</span>^<span class="pl-pds">'</span></span><span class="pl-k">+</span> url <span class="pl-k">+</span><span class="pl-s1"><span class="pl-pds">'</span>$<span class="pl-pds">'</span></span>,
+        params<span class="pl-k">:</span>{},
+        callback<span class="pl-k">:</span>callback
+    };
+    <span class="pl-k">while</span>((param <span class="pl-k">=</span> paramRegx.<span class="pl-s3">exec</span>(url))<span class="pl-k">!==</span><span class="pl-c1">null</span>){
+        route.paramNames.<span class="pl-s3">push</span>(param[<span class="pl-c1">1</span>]);
+        route.regex <span class="pl-k">=</span> route.regex.<span class="pl-s3">replace</span>(param[<span class="pl-c1">0</span>],<span class="pl-s1"><span class="pl-pds">"</span>([^/.<span class="pl-cce">\\\\</span>]+)<span class="pl-pds">"</span></span>).<span class="pl-s3">replace</span>(<span class="pl-s1"><span class="pl-pds">"</span>:<span class="pl-pds">"</span></span>,<span class="pl-s1"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>);
+    }
+    <span class="pl-v">this</span>.routes.<span class="pl-s3">push</span>(route);
+};
+</pre></div>
+
+<p>we create a <code>Router</code> object which contain a list of <code>routes</code>, whenever <code>get</code> is called, regist the route as an route hash like</p>
+
+<pre><code>    var route = {
+        paramNames:[],
+        regex:'^'+ url +'$',
+        params:{},
+        callback:callback
+    };
+</code></pre>
+
+<p>which contains a regex to match hash, paramname array, params dict, and a callback.</p>
+
+<ol class="task-list">
+<li>then we need to listen to the hashchange, and find the route according to the hash.</li>
+</ol>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-s3">window</span>).on(<span class="pl-s1"><span class="pl-pds">"</span>hashchange<span class="pl-pds">"</span></span>,<span class="pl-st">function</span>(<span class="pl-vpf">e</span>){
+findRoute(e);
+}</pre></div>
+
+<ol class="task-list">
+<li>what the findRoute actually do</li>
+</ol>
+
+<div class="highlight highlight-javascript"><pre>_.each(self.routes,<span class="pl-st">function</span>(<span class="pl-vpf">route</span>){
+            <span class="pl-s">var</span> regex <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">RegExp</span>(route.regex,<span class="pl-s1"><span class="pl-pds">"</span>g<span class="pl-pds">"</span></span>);
+            <span class="pl-k">if</span>((values <span class="pl-k">=</span> regex.<span class="pl-s3">exec</span>(hash))<span class="pl-k">!==</span><span class="pl-c1">null</span>){
+                <span class="pl-en">console</span><span class="pl-s3">.log</span>(values);
+                values.<span class="pl-s3">shift</span>();
+                route.callback(_.<span class="pl-sc">object</span>(route.paramNames,values));
+                <span class="pl-k">return</span>;
+            }</pre></div>
+
+<p>findRoute need to iterate <code>routes</code> we registed before, find the one who match the hash loaction, then call it's callback.</p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2/raw/04%20We-Need-Router.md" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2#file-04-we-need-router-md">04 We-Need-Router.md</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+    <div class="readme context-loader-container context-loader-overlay">
+      <article class="markdown-body js-file "
+        data-task-list-update-url="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2/file/05%20Model.md">
+        <p>Currently we put all our job into <code>View</code>, like define where to fetch data, fetch and operate on data, which is not good and should be done by <code>Model</code>.</p>
+
+<h3>
+<a name="user-content-task-5" class="anchor" href="#task-5" rel="noreferrer"><span class="octicon octicon-link"></span></a>TASK 5</h3>
+
+<p>extract Model out of View.</p>
+
+<h3>
+<a name="user-content-hint" class="anchor" href="#hint" rel="noreferrer"><span class="octicon octicon-link"></span></a>Hint</h3>
+
+<p>better use <a href="https://github.com/kriskowal/q/wiki/API-Reference#qdefe" rel="noreferrer">Q.defer</a> to define your data which need to wait.</p>
+
+      </article>
+    </div>
+
+
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2/raw/05%20Model.md" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/8e6e91c10ff3d34dc7e2#file-05-model-md">05 Model.md</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>

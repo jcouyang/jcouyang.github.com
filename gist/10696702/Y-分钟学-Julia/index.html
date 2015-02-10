@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist10696702" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-learnjulia-jl-L1" rel="file-learnjulia-jl-L1">1</span>
+            <span class="line-number" id="file-learnjulia-jl-L2" rel="file-learnjulia-jl-L2">2</span>
+            <span class="line-number" id="file-learnjulia-jl-L3" rel="file-learnjulia-jl-L3">3</span>
+            <span class="line-number" id="file-learnjulia-jl-L4" rel="file-learnjulia-jl-L4">4</span>
+            <span class="line-number" id="file-learnjulia-jl-L5" rel="file-learnjulia-jl-L5">5</span>
+            <span class="line-number" id="file-learnjulia-jl-L6" rel="file-learnjulia-jl-L6">6</span>
+            <span class="line-number" id="file-learnjulia-jl-L7" rel="file-learnjulia-jl-L7">7</span>
+            <span class="line-number" id="file-learnjulia-jl-L8" rel="file-learnjulia-jl-L8">8</span>
+            <span class="line-number" id="file-learnjulia-jl-L9" rel="file-learnjulia-jl-L9">9</span>
+            <span class="line-number" id="file-learnjulia-jl-L10" rel="file-learnjulia-jl-L10">10</span>
+            <span class="line-number" id="file-learnjulia-jl-L11" rel="file-learnjulia-jl-L11">11</span>
+            <span class="line-number" id="file-learnjulia-jl-L12" rel="file-learnjulia-jl-L12">12</span>
+            <span class="line-number" id="file-learnjulia-jl-L13" rel="file-learnjulia-jl-L13">13</span>
+            <span class="line-number" id="file-learnjulia-jl-L14" rel="file-learnjulia-jl-L14">14</span>
+            <span class="line-number" id="file-learnjulia-jl-L15" rel="file-learnjulia-jl-L15">15</span>
+            <span class="line-number" id="file-learnjulia-jl-L16" rel="file-learnjulia-jl-L16">16</span>
+            <span class="line-number" id="file-learnjulia-jl-L17" rel="file-learnjulia-jl-L17">17</span>
+            <span class="line-number" id="file-learnjulia-jl-L18" rel="file-learnjulia-jl-L18">18</span>
+            <span class="line-number" id="file-learnjulia-jl-L19" rel="file-learnjulia-jl-L19">19</span>
+            <span class="line-number" id="file-learnjulia-jl-L20" rel="file-learnjulia-jl-L20">20</span>
+            <span class="line-number" id="file-learnjulia-jl-L21" rel="file-learnjulia-jl-L21">21</span>
+            <span class="line-number" id="file-learnjulia-jl-L22" rel="file-learnjulia-jl-L22">22</span>
+            <span class="line-number" id="file-learnjulia-jl-L23" rel="file-learnjulia-jl-L23">23</span>
+            <span class="line-number" id="file-learnjulia-jl-L24" rel="file-learnjulia-jl-L24">24</span>
+            <span class="line-number" id="file-learnjulia-jl-L25" rel="file-learnjulia-jl-L25">25</span>
+            <span class="line-number" id="file-learnjulia-jl-L26" rel="file-learnjulia-jl-L26">26</span>
+            <span class="line-number" id="file-learnjulia-jl-L27" rel="file-learnjulia-jl-L27">27</span>
+            <span class="line-number" id="file-learnjulia-jl-L28" rel="file-learnjulia-jl-L28">28</span>
+            <span class="line-number" id="file-learnjulia-jl-L29" rel="file-learnjulia-jl-L29">29</span>
+            <span class="line-number" id="file-learnjulia-jl-L30" rel="file-learnjulia-jl-L30">30</span>
+            <span class="line-number" id="file-learnjulia-jl-L31" rel="file-learnjulia-jl-L31">31</span>
+            <span class="line-number" id="file-learnjulia-jl-L32" rel="file-learnjulia-jl-L32">32</span>
+            <span class="line-number" id="file-learnjulia-jl-L33" rel="file-learnjulia-jl-L33">33</span>
+            <span class="line-number" id="file-learnjulia-jl-L34" rel="file-learnjulia-jl-L34">34</span>
+            <span class="line-number" id="file-learnjulia-jl-L35" rel="file-learnjulia-jl-L35">35</span>
+            <span class="line-number" id="file-learnjulia-jl-L36" rel="file-learnjulia-jl-L36">36</span>
+            <span class="line-number" id="file-learnjulia-jl-L37" rel="file-learnjulia-jl-L37">37</span>
+            <span class="line-number" id="file-learnjulia-jl-L38" rel="file-learnjulia-jl-L38">38</span>
+            <span class="line-number" id="file-learnjulia-jl-L39" rel="file-learnjulia-jl-L39">39</span>
+            <span class="line-number" id="file-learnjulia-jl-L40" rel="file-learnjulia-jl-L40">40</span>
+            <span class="line-number" id="file-learnjulia-jl-L41" rel="file-learnjulia-jl-L41">41</span>
+            <span class="line-number" id="file-learnjulia-jl-L42" rel="file-learnjulia-jl-L42">42</span>
+            <span class="line-number" id="file-learnjulia-jl-L43" rel="file-learnjulia-jl-L43">43</span>
+            <span class="line-number" id="file-learnjulia-jl-L44" rel="file-learnjulia-jl-L44">44</span>
+            <span class="line-number" id="file-learnjulia-jl-L45" rel="file-learnjulia-jl-L45">45</span>
+            <span class="line-number" id="file-learnjulia-jl-L46" rel="file-learnjulia-jl-L46">46</span>
+            <span class="line-number" id="file-learnjulia-jl-L47" rel="file-learnjulia-jl-L47">47</span>
+            <span class="line-number" id="file-learnjulia-jl-L48" rel="file-learnjulia-jl-L48">48</span>
+            <span class="line-number" id="file-learnjulia-jl-L49" rel="file-learnjulia-jl-L49">49</span>
+            <span class="line-number" id="file-learnjulia-jl-L50" rel="file-learnjulia-jl-L50">50</span>
+            <span class="line-number" id="file-learnjulia-jl-L51" rel="file-learnjulia-jl-L51">51</span>
+            <span class="line-number" id="file-learnjulia-jl-L52" rel="file-learnjulia-jl-L52">52</span>
+            <span class="line-number" id="file-learnjulia-jl-L53" rel="file-learnjulia-jl-L53">53</span>
+            <span class="line-number" id="file-learnjulia-jl-L54" rel="file-learnjulia-jl-L54">54</span>
+            <span class="line-number" id="file-learnjulia-jl-L55" rel="file-learnjulia-jl-L55">55</span>
+            <span class="line-number" id="file-learnjulia-jl-L56" rel="file-learnjulia-jl-L56">56</span>
+            <span class="line-number" id="file-learnjulia-jl-L57" rel="file-learnjulia-jl-L57">57</span>
+            <span class="line-number" id="file-learnjulia-jl-L58" rel="file-learnjulia-jl-L58">58</span>
+            <span class="line-number" id="file-learnjulia-jl-L59" rel="file-learnjulia-jl-L59">59</span>
+            <span class="line-number" id="file-learnjulia-jl-L60" rel="file-learnjulia-jl-L60">60</span>
+            <span class="line-number" id="file-learnjulia-jl-L61" rel="file-learnjulia-jl-L61">61</span>
+            <span class="line-number" id="file-learnjulia-jl-L62" rel="file-learnjulia-jl-L62">62</span>
+            <span class="line-number" id="file-learnjulia-jl-L63" rel="file-learnjulia-jl-L63">63</span>
+            <span class="line-number" id="file-learnjulia-jl-L64" rel="file-learnjulia-jl-L64">64</span>
+            <span class="line-number" id="file-learnjulia-jl-L65" rel="file-learnjulia-jl-L65">65</span>
+            <span class="line-number" id="file-learnjulia-jl-L66" rel="file-learnjulia-jl-L66">66</span>
+            <span class="line-number" id="file-learnjulia-jl-L67" rel="file-learnjulia-jl-L67">67</span>
+            <span class="line-number" id="file-learnjulia-jl-L68" rel="file-learnjulia-jl-L68">68</span>
+            <span class="line-number" id="file-learnjulia-jl-L69" rel="file-learnjulia-jl-L69">69</span>
+            <span class="line-number" id="file-learnjulia-jl-L70" rel="file-learnjulia-jl-L70">70</span>
+            <span class="line-number" id="file-learnjulia-jl-L71" rel="file-learnjulia-jl-L71">71</span>
+            <span class="line-number" id="file-learnjulia-jl-L72" rel="file-learnjulia-jl-L72">72</span>
+            <span class="line-number" id="file-learnjulia-jl-L73" rel="file-learnjulia-jl-L73">73</span>
+            <span class="line-number" id="file-learnjulia-jl-L74" rel="file-learnjulia-jl-L74">74</span>
+            <span class="line-number" id="file-learnjulia-jl-L75" rel="file-learnjulia-jl-L75">75</span>
+            <span class="line-number" id="file-learnjulia-jl-L76" rel="file-learnjulia-jl-L76">76</span>
+            <span class="line-number" id="file-learnjulia-jl-L77" rel="file-learnjulia-jl-L77">77</span>
+            <span class="line-number" id="file-learnjulia-jl-L78" rel="file-learnjulia-jl-L78">78</span>
+            <span class="line-number" id="file-learnjulia-jl-L79" rel="file-learnjulia-jl-L79">79</span>
+            <span class="line-number" id="file-learnjulia-jl-L80" rel="file-learnjulia-jl-L80">80</span>
+            <span class="line-number" id="file-learnjulia-jl-L81" rel="file-learnjulia-jl-L81">81</span>
+            <span class="line-number" id="file-learnjulia-jl-L82" rel="file-learnjulia-jl-L82">82</span>
+            <span class="line-number" id="file-learnjulia-jl-L83" rel="file-learnjulia-jl-L83">83</span>
+            <span class="line-number" id="file-learnjulia-jl-L84" rel="file-learnjulia-jl-L84">84</span>
+            <span class="line-number" id="file-learnjulia-jl-L85" rel="file-learnjulia-jl-L85">85</span>
+            <span class="line-number" id="file-learnjulia-jl-L86" rel="file-learnjulia-jl-L86">86</span>
+            <span class="line-number" id="file-learnjulia-jl-L87" rel="file-learnjulia-jl-L87">87</span>
+            <span class="line-number" id="file-learnjulia-jl-L88" rel="file-learnjulia-jl-L88">88</span>
+            <span class="line-number" id="file-learnjulia-jl-L89" rel="file-learnjulia-jl-L89">89</span>
+            <span class="line-number" id="file-learnjulia-jl-L90" rel="file-learnjulia-jl-L90">90</span>
+            <span class="line-number" id="file-learnjulia-jl-L91" rel="file-learnjulia-jl-L91">91</span>
+            <span class="line-number" id="file-learnjulia-jl-L92" rel="file-learnjulia-jl-L92">92</span>
+            <span class="line-number" id="file-learnjulia-jl-L93" rel="file-learnjulia-jl-L93">93</span>
+            <span class="line-number" id="file-learnjulia-jl-L94" rel="file-learnjulia-jl-L94">94</span>
+            <span class="line-number" id="file-learnjulia-jl-L95" rel="file-learnjulia-jl-L95">95</span>
+            <span class="line-number" id="file-learnjulia-jl-L96" rel="file-learnjulia-jl-L96">96</span>
+            <span class="line-number" id="file-learnjulia-jl-L97" rel="file-learnjulia-jl-L97">97</span>
+            <span class="line-number" id="file-learnjulia-jl-L98" rel="file-learnjulia-jl-L98">98</span>
+            <span class="line-number" id="file-learnjulia-jl-L99" rel="file-learnjulia-jl-L99">99</span>
+            <span class="line-number" id="file-learnjulia-jl-L100" rel="file-learnjulia-jl-L100">100</span>
+            <span class="line-number" id="file-learnjulia-jl-L101" rel="file-learnjulia-jl-L101">101</span>
+            <span class="line-number" id="file-learnjulia-jl-L102" rel="file-learnjulia-jl-L102">102</span>
+            <span class="line-number" id="file-learnjulia-jl-L103" rel="file-learnjulia-jl-L103">103</span>
+            <span class="line-number" id="file-learnjulia-jl-L104" rel="file-learnjulia-jl-L104">104</span>
+            <span class="line-number" id="file-learnjulia-jl-L105" rel="file-learnjulia-jl-L105">105</span>
+            <span class="line-number" id="file-learnjulia-jl-L106" rel="file-learnjulia-jl-L106">106</span>
+            <span class="line-number" id="file-learnjulia-jl-L107" rel="file-learnjulia-jl-L107">107</span>
+            <span class="line-number" id="file-learnjulia-jl-L108" rel="file-learnjulia-jl-L108">108</span>
+            <span class="line-number" id="file-learnjulia-jl-L109" rel="file-learnjulia-jl-L109">109</span>
+            <span class="line-number" id="file-learnjulia-jl-L110" rel="file-learnjulia-jl-L110">110</span>
+            <span class="line-number" id="file-learnjulia-jl-L111" rel="file-learnjulia-jl-L111">111</span>
+            <span class="line-number" id="file-learnjulia-jl-L112" rel="file-learnjulia-jl-L112">112</span>
+            <span class="line-number" id="file-learnjulia-jl-L113" rel="file-learnjulia-jl-L113">113</span>
+            <span class="line-number" id="file-learnjulia-jl-L114" rel="file-learnjulia-jl-L114">114</span>
+            <span class="line-number" id="file-learnjulia-jl-L115" rel="file-learnjulia-jl-L115">115</span>
+            <span class="line-number" id="file-learnjulia-jl-L116" rel="file-learnjulia-jl-L116">116</span>
+            <span class="line-number" id="file-learnjulia-jl-L117" rel="file-learnjulia-jl-L117">117</span>
+            <span class="line-number" id="file-learnjulia-jl-L118" rel="file-learnjulia-jl-L118">118</span>
+            <span class="line-number" id="file-learnjulia-jl-L119" rel="file-learnjulia-jl-L119">119</span>
+            <span class="line-number" id="file-learnjulia-jl-L120" rel="file-learnjulia-jl-L120">120</span>
+            <span class="line-number" id="file-learnjulia-jl-L121" rel="file-learnjulia-jl-L121">121</span>
+            <span class="line-number" id="file-learnjulia-jl-L122" rel="file-learnjulia-jl-L122">122</span>
+            <span class="line-number" id="file-learnjulia-jl-L123" rel="file-learnjulia-jl-L123">123</span>
+            <span class="line-number" id="file-learnjulia-jl-L124" rel="file-learnjulia-jl-L124">124</span>
+            <span class="line-number" id="file-learnjulia-jl-L125" rel="file-learnjulia-jl-L125">125</span>
+            <span class="line-number" id="file-learnjulia-jl-L126" rel="file-learnjulia-jl-L126">126</span>
+            <span class="line-number" id="file-learnjulia-jl-L127" rel="file-learnjulia-jl-L127">127</span>
+            <span class="line-number" id="file-learnjulia-jl-L128" rel="file-learnjulia-jl-L128">128</span>
+            <span class="line-number" id="file-learnjulia-jl-L129" rel="file-learnjulia-jl-L129">129</span>
+            <span class="line-number" id="file-learnjulia-jl-L130" rel="file-learnjulia-jl-L130">130</span>
+            <span class="line-number" id="file-learnjulia-jl-L131" rel="file-learnjulia-jl-L131">131</span>
+            <span class="line-number" id="file-learnjulia-jl-L132" rel="file-learnjulia-jl-L132">132</span>
+            <span class="line-number" id="file-learnjulia-jl-L133" rel="file-learnjulia-jl-L133">133</span>
+            <span class="line-number" id="file-learnjulia-jl-L134" rel="file-learnjulia-jl-L134">134</span>
+            <span class="line-number" id="file-learnjulia-jl-L135" rel="file-learnjulia-jl-L135">135</span>
+            <span class="line-number" id="file-learnjulia-jl-L136" rel="file-learnjulia-jl-L136">136</span>
+            <span class="line-number" id="file-learnjulia-jl-L137" rel="file-learnjulia-jl-L137">137</span>
+            <span class="line-number" id="file-learnjulia-jl-L138" rel="file-learnjulia-jl-L138">138</span>
+            <span class="line-number" id="file-learnjulia-jl-L139" rel="file-learnjulia-jl-L139">139</span>
+            <span class="line-number" id="file-learnjulia-jl-L140" rel="file-learnjulia-jl-L140">140</span>
+            <span class="line-number" id="file-learnjulia-jl-L141" rel="file-learnjulia-jl-L141">141</span>
+            <span class="line-number" id="file-learnjulia-jl-L142" rel="file-learnjulia-jl-L142">142</span>
+            <span class="line-number" id="file-learnjulia-jl-L143" rel="file-learnjulia-jl-L143">143</span>
+            <span class="line-number" id="file-learnjulia-jl-L144" rel="file-learnjulia-jl-L144">144</span>
+            <span class="line-number" id="file-learnjulia-jl-L145" rel="file-learnjulia-jl-L145">145</span>
+            <span class="line-number" id="file-learnjulia-jl-L146" rel="file-learnjulia-jl-L146">146</span>
+            <span class="line-number" id="file-learnjulia-jl-L147" rel="file-learnjulia-jl-L147">147</span>
+            <span class="line-number" id="file-learnjulia-jl-L148" rel="file-learnjulia-jl-L148">148</span>
+            <span class="line-number" id="file-learnjulia-jl-L149" rel="file-learnjulia-jl-L149">149</span>
+            <span class="line-number" id="file-learnjulia-jl-L150" rel="file-learnjulia-jl-L150">150</span>
+            <span class="line-number" id="file-learnjulia-jl-L151" rel="file-learnjulia-jl-L151">151</span>
+            <span class="line-number" id="file-learnjulia-jl-L152" rel="file-learnjulia-jl-L152">152</span>
+            <span class="line-number" id="file-learnjulia-jl-L153" rel="file-learnjulia-jl-L153">153</span>
+            <span class="line-number" id="file-learnjulia-jl-L154" rel="file-learnjulia-jl-L154">154</span>
+            <span class="line-number" id="file-learnjulia-jl-L155" rel="file-learnjulia-jl-L155">155</span>
+            <span class="line-number" id="file-learnjulia-jl-L156" rel="file-learnjulia-jl-L156">156</span>
+            <span class="line-number" id="file-learnjulia-jl-L157" rel="file-learnjulia-jl-L157">157</span>
+            <span class="line-number" id="file-learnjulia-jl-L158" rel="file-learnjulia-jl-L158">158</span>
+            <span class="line-number" id="file-learnjulia-jl-L159" rel="file-learnjulia-jl-L159">159</span>
+            <span class="line-number" id="file-learnjulia-jl-L160" rel="file-learnjulia-jl-L160">160</span>
+            <span class="line-number" id="file-learnjulia-jl-L161" rel="file-learnjulia-jl-L161">161</span>
+            <span class="line-number" id="file-learnjulia-jl-L162" rel="file-learnjulia-jl-L162">162</span>
+            <span class="line-number" id="file-learnjulia-jl-L163" rel="file-learnjulia-jl-L163">163</span>
+            <span class="line-number" id="file-learnjulia-jl-L164" rel="file-learnjulia-jl-L164">164</span>
+            <span class="line-number" id="file-learnjulia-jl-L165" rel="file-learnjulia-jl-L165">165</span>
+            <span class="line-number" id="file-learnjulia-jl-L166" rel="file-learnjulia-jl-L166">166</span>
+            <span class="line-number" id="file-learnjulia-jl-L167" rel="file-learnjulia-jl-L167">167</span>
+            <span class="line-number" id="file-learnjulia-jl-L168" rel="file-learnjulia-jl-L168">168</span>
+            <span class="line-number" id="file-learnjulia-jl-L169" rel="file-learnjulia-jl-L169">169</span>
+            <span class="line-number" id="file-learnjulia-jl-L170" rel="file-learnjulia-jl-L170">170</span>
+            <span class="line-number" id="file-learnjulia-jl-L171" rel="file-learnjulia-jl-L171">171</span>
+            <span class="line-number" id="file-learnjulia-jl-L172" rel="file-learnjulia-jl-L172">172</span>
+            <span class="line-number" id="file-learnjulia-jl-L173" rel="file-learnjulia-jl-L173">173</span>
+            <span class="line-number" id="file-learnjulia-jl-L174" rel="file-learnjulia-jl-L174">174</span>
+            <span class="line-number" id="file-learnjulia-jl-L175" rel="file-learnjulia-jl-L175">175</span>
+            <span class="line-number" id="file-learnjulia-jl-L176" rel="file-learnjulia-jl-L176">176</span>
+            <span class="line-number" id="file-learnjulia-jl-L177" rel="file-learnjulia-jl-L177">177</span>
+            <span class="line-number" id="file-learnjulia-jl-L178" rel="file-learnjulia-jl-L178">178</span>
+            <span class="line-number" id="file-learnjulia-jl-L179" rel="file-learnjulia-jl-L179">179</span>
+            <span class="line-number" id="file-learnjulia-jl-L180" rel="file-learnjulia-jl-L180">180</span>
+            <span class="line-number" id="file-learnjulia-jl-L181" rel="file-learnjulia-jl-L181">181</span>
+            <span class="line-number" id="file-learnjulia-jl-L182" rel="file-learnjulia-jl-L182">182</span>
+            <span class="line-number" id="file-learnjulia-jl-L183" rel="file-learnjulia-jl-L183">183</span>
+            <span class="line-number" id="file-learnjulia-jl-L184" rel="file-learnjulia-jl-L184">184</span>
+            <span class="line-number" id="file-learnjulia-jl-L185" rel="file-learnjulia-jl-L185">185</span>
+            <span class="line-number" id="file-learnjulia-jl-L186" rel="file-learnjulia-jl-L186">186</span>
+            <span class="line-number" id="file-learnjulia-jl-L187" rel="file-learnjulia-jl-L187">187</span>
+            <span class="line-number" id="file-learnjulia-jl-L188" rel="file-learnjulia-jl-L188">188</span>
+            <span class="line-number" id="file-learnjulia-jl-L189" rel="file-learnjulia-jl-L189">189</span>
+            <span class="line-number" id="file-learnjulia-jl-L190" rel="file-learnjulia-jl-L190">190</span>
+            <span class="line-number" id="file-learnjulia-jl-L191" rel="file-learnjulia-jl-L191">191</span>
+            <span class="line-number" id="file-learnjulia-jl-L192" rel="file-learnjulia-jl-L192">192</span>
+            <span class="line-number" id="file-learnjulia-jl-L193" rel="file-learnjulia-jl-L193">193</span>
+            <span class="line-number" id="file-learnjulia-jl-L194" rel="file-learnjulia-jl-L194">194</span>
+            <span class="line-number" id="file-learnjulia-jl-L195" rel="file-learnjulia-jl-L195">195</span>
+            <span class="line-number" id="file-learnjulia-jl-L196" rel="file-learnjulia-jl-L196">196</span>
+            <span class="line-number" id="file-learnjulia-jl-L197" rel="file-learnjulia-jl-L197">197</span>
+            <span class="line-number" id="file-learnjulia-jl-L198" rel="file-learnjulia-jl-L198">198</span>
+            <span class="line-number" id="file-learnjulia-jl-L199" rel="file-learnjulia-jl-L199">199</span>
+            <span class="line-number" id="file-learnjulia-jl-L200" rel="file-learnjulia-jl-L200">200</span>
+            <span class="line-number" id="file-learnjulia-jl-L201" rel="file-learnjulia-jl-L201">201</span>
+            <span class="line-number" id="file-learnjulia-jl-L202" rel="file-learnjulia-jl-L202">202</span>
+            <span class="line-number" id="file-learnjulia-jl-L203" rel="file-learnjulia-jl-L203">203</span>
+            <span class="line-number" id="file-learnjulia-jl-L204" rel="file-learnjulia-jl-L204">204</span>
+            <span class="line-number" id="file-learnjulia-jl-L205" rel="file-learnjulia-jl-L205">205</span>
+            <span class="line-number" id="file-learnjulia-jl-L206" rel="file-learnjulia-jl-L206">206</span>
+            <span class="line-number" id="file-learnjulia-jl-L207" rel="file-learnjulia-jl-L207">207</span>
+            <span class="line-number" id="file-learnjulia-jl-L208" rel="file-learnjulia-jl-L208">208</span>
+            <span class="line-number" id="file-learnjulia-jl-L209" rel="file-learnjulia-jl-L209">209</span>
+            <span class="line-number" id="file-learnjulia-jl-L210" rel="file-learnjulia-jl-L210">210</span>
+            <span class="line-number" id="file-learnjulia-jl-L211" rel="file-learnjulia-jl-L211">211</span>
+            <span class="line-number" id="file-learnjulia-jl-L212" rel="file-learnjulia-jl-L212">212</span>
+            <span class="line-number" id="file-learnjulia-jl-L213" rel="file-learnjulia-jl-L213">213</span>
+            <span class="line-number" id="file-learnjulia-jl-L214" rel="file-learnjulia-jl-L214">214</span>
+            <span class="line-number" id="file-learnjulia-jl-L215" rel="file-learnjulia-jl-L215">215</span>
+            <span class="line-number" id="file-learnjulia-jl-L216" rel="file-learnjulia-jl-L216">216</span>
+            <span class="line-number" id="file-learnjulia-jl-L217" rel="file-learnjulia-jl-L217">217</span>
+            <span class="line-number" id="file-learnjulia-jl-L218" rel="file-learnjulia-jl-L218">218</span>
+            <span class="line-number" id="file-learnjulia-jl-L219" rel="file-learnjulia-jl-L219">219</span>
+            <span class="line-number" id="file-learnjulia-jl-L220" rel="file-learnjulia-jl-L220">220</span>
+            <span class="line-number" id="file-learnjulia-jl-L221" rel="file-learnjulia-jl-L221">221</span>
+            <span class="line-number" id="file-learnjulia-jl-L222" rel="file-learnjulia-jl-L222">222</span>
+            <span class="line-number" id="file-learnjulia-jl-L223" rel="file-learnjulia-jl-L223">223</span>
+            <span class="line-number" id="file-learnjulia-jl-L224" rel="file-learnjulia-jl-L224">224</span>
+            <span class="line-number" id="file-learnjulia-jl-L225" rel="file-learnjulia-jl-L225">225</span>
+            <span class="line-number" id="file-learnjulia-jl-L226" rel="file-learnjulia-jl-L226">226</span>
+            <span class="line-number" id="file-learnjulia-jl-L227" rel="file-learnjulia-jl-L227">227</span>
+            <span class="line-number" id="file-learnjulia-jl-L228" rel="file-learnjulia-jl-L228">228</span>
+            <span class="line-number" id="file-learnjulia-jl-L229" rel="file-learnjulia-jl-L229">229</span>
+            <span class="line-number" id="file-learnjulia-jl-L230" rel="file-learnjulia-jl-L230">230</span>
+            <span class="line-number" id="file-learnjulia-jl-L231" rel="file-learnjulia-jl-L231">231</span>
+            <span class="line-number" id="file-learnjulia-jl-L232" rel="file-learnjulia-jl-L232">232</span>
+            <span class="line-number" id="file-learnjulia-jl-L233" rel="file-learnjulia-jl-L233">233</span>
+            <span class="line-number" id="file-learnjulia-jl-L234" rel="file-learnjulia-jl-L234">234</span>
+            <span class="line-number" id="file-learnjulia-jl-L235" rel="file-learnjulia-jl-L235">235</span>
+            <span class="line-number" id="file-learnjulia-jl-L236" rel="file-learnjulia-jl-L236">236</span>
+            <span class="line-number" id="file-learnjulia-jl-L237" rel="file-learnjulia-jl-L237">237</span>
+            <span class="line-number" id="file-learnjulia-jl-L238" rel="file-learnjulia-jl-L238">238</span>
+            <span class="line-number" id="file-learnjulia-jl-L239" rel="file-learnjulia-jl-L239">239</span>
+            <span class="line-number" id="file-learnjulia-jl-L240" rel="file-learnjulia-jl-L240">240</span>
+            <span class="line-number" id="file-learnjulia-jl-L241" rel="file-learnjulia-jl-L241">241</span>
+            <span class="line-number" id="file-learnjulia-jl-L242" rel="file-learnjulia-jl-L242">242</span>
+            <span class="line-number" id="file-learnjulia-jl-L243" rel="file-learnjulia-jl-L243">243</span>
+            <span class="line-number" id="file-learnjulia-jl-L244" rel="file-learnjulia-jl-L244">244</span>
+            <span class="line-number" id="file-learnjulia-jl-L245" rel="file-learnjulia-jl-L245">245</span>
+            <span class="line-number" id="file-learnjulia-jl-L246" rel="file-learnjulia-jl-L246">246</span>
+            <span class="line-number" id="file-learnjulia-jl-L247" rel="file-learnjulia-jl-L247">247</span>
+            <span class="line-number" id="file-learnjulia-jl-L248" rel="file-learnjulia-jl-L248">248</span>
+            <span class="line-number" id="file-learnjulia-jl-L249" rel="file-learnjulia-jl-L249">249</span>
+            <span class="line-number" id="file-learnjulia-jl-L250" rel="file-learnjulia-jl-L250">250</span>
+            <span class="line-number" id="file-learnjulia-jl-L251" rel="file-learnjulia-jl-L251">251</span>
+            <span class="line-number" id="file-learnjulia-jl-L252" rel="file-learnjulia-jl-L252">252</span>
+            <span class="line-number" id="file-learnjulia-jl-L253" rel="file-learnjulia-jl-L253">253</span>
+            <span class="line-number" id="file-learnjulia-jl-L254" rel="file-learnjulia-jl-L254">254</span>
+            <span class="line-number" id="file-learnjulia-jl-L255" rel="file-learnjulia-jl-L255">255</span>
+            <span class="line-number" id="file-learnjulia-jl-L256" rel="file-learnjulia-jl-L256">256</span>
+            <span class="line-number" id="file-learnjulia-jl-L257" rel="file-learnjulia-jl-L257">257</span>
+            <span class="line-number" id="file-learnjulia-jl-L258" rel="file-learnjulia-jl-L258">258</span>
+            <span class="line-number" id="file-learnjulia-jl-L259" rel="file-learnjulia-jl-L259">259</span>
+            <span class="line-number" id="file-learnjulia-jl-L260" rel="file-learnjulia-jl-L260">260</span>
+            <span class="line-number" id="file-learnjulia-jl-L261" rel="file-learnjulia-jl-L261">261</span>
+            <span class="line-number" id="file-learnjulia-jl-L262" rel="file-learnjulia-jl-L262">262</span>
+            <span class="line-number" id="file-learnjulia-jl-L263" rel="file-learnjulia-jl-L263">263</span>
+            <span class="line-number" id="file-learnjulia-jl-L264" rel="file-learnjulia-jl-L264">264</span>
+            <span class="line-number" id="file-learnjulia-jl-L265" rel="file-learnjulia-jl-L265">265</span>
+            <span class="line-number" id="file-learnjulia-jl-L266" rel="file-learnjulia-jl-L266">266</span>
+            <span class="line-number" id="file-learnjulia-jl-L267" rel="file-learnjulia-jl-L267">267</span>
+            <span class="line-number" id="file-learnjulia-jl-L268" rel="file-learnjulia-jl-L268">268</span>
+            <span class="line-number" id="file-learnjulia-jl-L269" rel="file-learnjulia-jl-L269">269</span>
+            <span class="line-number" id="file-learnjulia-jl-L270" rel="file-learnjulia-jl-L270">270</span>
+            <span class="line-number" id="file-learnjulia-jl-L271" rel="file-learnjulia-jl-L271">271</span>
+            <span class="line-number" id="file-learnjulia-jl-L272" rel="file-learnjulia-jl-L272">272</span>
+            <span class="line-number" id="file-learnjulia-jl-L273" rel="file-learnjulia-jl-L273">273</span>
+            <span class="line-number" id="file-learnjulia-jl-L274" rel="file-learnjulia-jl-L274">274</span>
+            <span class="line-number" id="file-learnjulia-jl-L275" rel="file-learnjulia-jl-L275">275</span>
+            <span class="line-number" id="file-learnjulia-jl-L276" rel="file-learnjulia-jl-L276">276</span>
+            <span class="line-number" id="file-learnjulia-jl-L277" rel="file-learnjulia-jl-L277">277</span>
+            <span class="line-number" id="file-learnjulia-jl-L278" rel="file-learnjulia-jl-L278">278</span>
+            <span class="line-number" id="file-learnjulia-jl-L279" rel="file-learnjulia-jl-L279">279</span>
+            <span class="line-number" id="file-learnjulia-jl-L280" rel="file-learnjulia-jl-L280">280</span>
+            <span class="line-number" id="file-learnjulia-jl-L281" rel="file-learnjulia-jl-L281">281</span>
+            <span class="line-number" id="file-learnjulia-jl-L282" rel="file-learnjulia-jl-L282">282</span>
+            <span class="line-number" id="file-learnjulia-jl-L283" rel="file-learnjulia-jl-L283">283</span>
+            <span class="line-number" id="file-learnjulia-jl-L284" rel="file-learnjulia-jl-L284">284</span>
+            <span class="line-number" id="file-learnjulia-jl-L285" rel="file-learnjulia-jl-L285">285</span>
+            <span class="line-number" id="file-learnjulia-jl-L286" rel="file-learnjulia-jl-L286">286</span>
+            <span class="line-number" id="file-learnjulia-jl-L287" rel="file-learnjulia-jl-L287">287</span>
+            <span class="line-number" id="file-learnjulia-jl-L288" rel="file-learnjulia-jl-L288">288</span>
+            <span class="line-number" id="file-learnjulia-jl-L289" rel="file-learnjulia-jl-L289">289</span>
+            <span class="line-number" id="file-learnjulia-jl-L290" rel="file-learnjulia-jl-L290">290</span>
+            <span class="line-number" id="file-learnjulia-jl-L291" rel="file-learnjulia-jl-L291">291</span>
+            <span class="line-number" id="file-learnjulia-jl-L292" rel="file-learnjulia-jl-L292">292</span>
+            <span class="line-number" id="file-learnjulia-jl-L293" rel="file-learnjulia-jl-L293">293</span>
+            <span class="line-number" id="file-learnjulia-jl-L294" rel="file-learnjulia-jl-L294">294</span>
+            <span class="line-number" id="file-learnjulia-jl-L295" rel="file-learnjulia-jl-L295">295</span>
+            <span class="line-number" id="file-learnjulia-jl-L296" rel="file-learnjulia-jl-L296">296</span>
+            <span class="line-number" id="file-learnjulia-jl-L297" rel="file-learnjulia-jl-L297">297</span>
+            <span class="line-number" id="file-learnjulia-jl-L298" rel="file-learnjulia-jl-L298">298</span>
+            <span class="line-number" id="file-learnjulia-jl-L299" rel="file-learnjulia-jl-L299">299</span>
+            <span class="line-number" id="file-learnjulia-jl-L300" rel="file-learnjulia-jl-L300">300</span>
+            <span class="line-number" id="file-learnjulia-jl-L301" rel="file-learnjulia-jl-L301">301</span>
+            <span class="line-number" id="file-learnjulia-jl-L302" rel="file-learnjulia-jl-L302">302</span>
+            <span class="line-number" id="file-learnjulia-jl-L303" rel="file-learnjulia-jl-L303">303</span>
+            <span class="line-number" id="file-learnjulia-jl-L304" rel="file-learnjulia-jl-L304">304</span>
+            <span class="line-number" id="file-learnjulia-jl-L305" rel="file-learnjulia-jl-L305">305</span>
+            <span class="line-number" id="file-learnjulia-jl-L306" rel="file-learnjulia-jl-L306">306</span>
+            <span class="line-number" id="file-learnjulia-jl-L307" rel="file-learnjulia-jl-L307">307</span>
+            <span class="line-number" id="file-learnjulia-jl-L308" rel="file-learnjulia-jl-L308">308</span>
+            <span class="line-number" id="file-learnjulia-jl-L309" rel="file-learnjulia-jl-L309">309</span>
+            <span class="line-number" id="file-learnjulia-jl-L310" rel="file-learnjulia-jl-L310">310</span>
+            <span class="line-number" id="file-learnjulia-jl-L311" rel="file-learnjulia-jl-L311">311</span>
+            <span class="line-number" id="file-learnjulia-jl-L312" rel="file-learnjulia-jl-L312">312</span>
+            <span class="line-number" id="file-learnjulia-jl-L313" rel="file-learnjulia-jl-L313">313</span>
+            <span class="line-number" id="file-learnjulia-jl-L314" rel="file-learnjulia-jl-L314">314</span>
+            <span class="line-number" id="file-learnjulia-jl-L315" rel="file-learnjulia-jl-L315">315</span>
+            <span class="line-number" id="file-learnjulia-jl-L316" rel="file-learnjulia-jl-L316">316</span>
+            <span class="line-number" id="file-learnjulia-jl-L317" rel="file-learnjulia-jl-L317">317</span>
+            <span class="line-number" id="file-learnjulia-jl-L318" rel="file-learnjulia-jl-L318">318</span>
+            <span class="line-number" id="file-learnjulia-jl-L319" rel="file-learnjulia-jl-L319">319</span>
+            <span class="line-number" id="file-learnjulia-jl-L320" rel="file-learnjulia-jl-L320">320</span>
+            <span class="line-number" id="file-learnjulia-jl-L321" rel="file-learnjulia-jl-L321">321</span>
+            <span class="line-number" id="file-learnjulia-jl-L322" rel="file-learnjulia-jl-L322">322</span>
+            <span class="line-number" id="file-learnjulia-jl-L323" rel="file-learnjulia-jl-L323">323</span>
+            <span class="line-number" id="file-learnjulia-jl-L324" rel="file-learnjulia-jl-L324">324</span>
+            <span class="line-number" id="file-learnjulia-jl-L325" rel="file-learnjulia-jl-L325">325</span>
+            <span class="line-number" id="file-learnjulia-jl-L326" rel="file-learnjulia-jl-L326">326</span>
+            <span class="line-number" id="file-learnjulia-jl-L327" rel="file-learnjulia-jl-L327">327</span>
+            <span class="line-number" id="file-learnjulia-jl-L328" rel="file-learnjulia-jl-L328">328</span>
+            <span class="line-number" id="file-learnjulia-jl-L329" rel="file-learnjulia-jl-L329">329</span>
+            <span class="line-number" id="file-learnjulia-jl-L330" rel="file-learnjulia-jl-L330">330</span>
+            <span class="line-number" id="file-learnjulia-jl-L331" rel="file-learnjulia-jl-L331">331</span>
+            <span class="line-number" id="file-learnjulia-jl-L332" rel="file-learnjulia-jl-L332">332</span>
+            <span class="line-number" id="file-learnjulia-jl-L333" rel="file-learnjulia-jl-L333">333</span>
+            <span class="line-number" id="file-learnjulia-jl-L334" rel="file-learnjulia-jl-L334">334</span>
+            <span class="line-number" id="file-learnjulia-jl-L335" rel="file-learnjulia-jl-L335">335</span>
+            <span class="line-number" id="file-learnjulia-jl-L336" rel="file-learnjulia-jl-L336">336</span>
+            <span class="line-number" id="file-learnjulia-jl-L337" rel="file-learnjulia-jl-L337">337</span>
+            <span class="line-number" id="file-learnjulia-jl-L338" rel="file-learnjulia-jl-L338">338</span>
+            <span class="line-number" id="file-learnjulia-jl-L339" rel="file-learnjulia-jl-L339">339</span>
+            <span class="line-number" id="file-learnjulia-jl-L340" rel="file-learnjulia-jl-L340">340</span>
+            <span class="line-number" id="file-learnjulia-jl-L341" rel="file-learnjulia-jl-L341">341</span>
+            <span class="line-number" id="file-learnjulia-jl-L342" rel="file-learnjulia-jl-L342">342</span>
+            <span class="line-number" id="file-learnjulia-jl-L343" rel="file-learnjulia-jl-L343">343</span>
+            <span class="line-number" id="file-learnjulia-jl-L344" rel="file-learnjulia-jl-L344">344</span>
+            <span class="line-number" id="file-learnjulia-jl-L345" rel="file-learnjulia-jl-L345">345</span>
+            <span class="line-number" id="file-learnjulia-jl-L346" rel="file-learnjulia-jl-L346">346</span>
+            <span class="line-number" id="file-learnjulia-jl-L347" rel="file-learnjulia-jl-L347">347</span>
+            <span class="line-number" id="file-learnjulia-jl-L348" rel="file-learnjulia-jl-L348">348</span>
+            <span class="line-number" id="file-learnjulia-jl-L349" rel="file-learnjulia-jl-L349">349</span>
+            <span class="line-number" id="file-learnjulia-jl-L350" rel="file-learnjulia-jl-L350">350</span>
+            <span class="line-number" id="file-learnjulia-jl-L351" rel="file-learnjulia-jl-L351">351</span>
+            <span class="line-number" id="file-learnjulia-jl-L352" rel="file-learnjulia-jl-L352">352</span>
+            <span class="line-number" id="file-learnjulia-jl-L353" rel="file-learnjulia-jl-L353">353</span>
+            <span class="line-number" id="file-learnjulia-jl-L354" rel="file-learnjulia-jl-L354">354</span>
+            <span class="line-number" id="file-learnjulia-jl-L355" rel="file-learnjulia-jl-L355">355</span>
+            <span class="line-number" id="file-learnjulia-jl-L356" rel="file-learnjulia-jl-L356">356</span>
+            <span class="line-number" id="file-learnjulia-jl-L357" rel="file-learnjulia-jl-L357">357</span>
+            <span class="line-number" id="file-learnjulia-jl-L358" rel="file-learnjulia-jl-L358">358</span>
+            <span class="line-number" id="file-learnjulia-jl-L359" rel="file-learnjulia-jl-L359">359</span>
+            <span class="line-number" id="file-learnjulia-jl-L360" rel="file-learnjulia-jl-L360">360</span>
+            <span class="line-number" id="file-learnjulia-jl-L361" rel="file-learnjulia-jl-L361">361</span>
+            <span class="line-number" id="file-learnjulia-jl-L362" rel="file-learnjulia-jl-L362">362</span>
+            <span class="line-number" id="file-learnjulia-jl-L363" rel="file-learnjulia-jl-L363">363</span>
+            <span class="line-number" id="file-learnjulia-jl-L364" rel="file-learnjulia-jl-L364">364</span>
+            <span class="line-number" id="file-learnjulia-jl-L365" rel="file-learnjulia-jl-L365">365</span>
+            <span class="line-number" id="file-learnjulia-jl-L366" rel="file-learnjulia-jl-L366">366</span>
+            <span class="line-number" id="file-learnjulia-jl-L367" rel="file-learnjulia-jl-L367">367</span>
+            <span class="line-number" id="file-learnjulia-jl-L368" rel="file-learnjulia-jl-L368">368</span>
+            <span class="line-number" id="file-learnjulia-jl-L369" rel="file-learnjulia-jl-L369">369</span>
+            <span class="line-number" id="file-learnjulia-jl-L370" rel="file-learnjulia-jl-L370">370</span>
+            <span class="line-number" id="file-learnjulia-jl-L371" rel="file-learnjulia-jl-L371">371</span>
+            <span class="line-number" id="file-learnjulia-jl-L372" rel="file-learnjulia-jl-L372">372</span>
+            <span class="line-number" id="file-learnjulia-jl-L373" rel="file-learnjulia-jl-L373">373</span>
+            <span class="line-number" id="file-learnjulia-jl-L374" rel="file-learnjulia-jl-L374">374</span>
+            <span class="line-number" id="file-learnjulia-jl-L375" rel="file-learnjulia-jl-L375">375</span>
+            <span class="line-number" id="file-learnjulia-jl-L376" rel="file-learnjulia-jl-L376">376</span>
+            <span class="line-number" id="file-learnjulia-jl-L377" rel="file-learnjulia-jl-L377">377</span>
+            <span class="line-number" id="file-learnjulia-jl-L378" rel="file-learnjulia-jl-L378">378</span>
+            <span class="line-number" id="file-learnjulia-jl-L379" rel="file-learnjulia-jl-L379">379</span>
+            <span class="line-number" id="file-learnjulia-jl-L380" rel="file-learnjulia-jl-L380">380</span>
+            <span class="line-number" id="file-learnjulia-jl-L381" rel="file-learnjulia-jl-L381">381</span>
+            <span class="line-number" id="file-learnjulia-jl-L382" rel="file-learnjulia-jl-L382">382</span>
+            <span class="line-number" id="file-learnjulia-jl-L383" rel="file-learnjulia-jl-L383">383</span>
+            <span class="line-number" id="file-learnjulia-jl-L384" rel="file-learnjulia-jl-L384">384</span>
+            <span class="line-number" id="file-learnjulia-jl-L385" rel="file-learnjulia-jl-L385">385</span>
+            <span class="line-number" id="file-learnjulia-jl-L386" rel="file-learnjulia-jl-L386">386</span>
+            <span class="line-number" id="file-learnjulia-jl-L387" rel="file-learnjulia-jl-L387">387</span>
+            <span class="line-number" id="file-learnjulia-jl-L388" rel="file-learnjulia-jl-L388">388</span>
+            <span class="line-number" id="file-learnjulia-jl-L389" rel="file-learnjulia-jl-L389">389</span>
+            <span class="line-number" id="file-learnjulia-jl-L390" rel="file-learnjulia-jl-L390">390</span>
+            <span class="line-number" id="file-learnjulia-jl-L391" rel="file-learnjulia-jl-L391">391</span>
+            <span class="line-number" id="file-learnjulia-jl-L392" rel="file-learnjulia-jl-L392">392</span>
+            <span class="line-number" id="file-learnjulia-jl-L393" rel="file-learnjulia-jl-L393">393</span>
+            <span class="line-number" id="file-learnjulia-jl-L394" rel="file-learnjulia-jl-L394">394</span>
+            <span class="line-number" id="file-learnjulia-jl-L395" rel="file-learnjulia-jl-L395">395</span>
+            <span class="line-number" id="file-learnjulia-jl-L396" rel="file-learnjulia-jl-L396">396</span>
+            <span class="line-number" id="file-learnjulia-jl-L397" rel="file-learnjulia-jl-L397">397</span>
+            <span class="line-number" id="file-learnjulia-jl-L398" rel="file-learnjulia-jl-L398">398</span>
+            <span class="line-number" id="file-learnjulia-jl-L399" rel="file-learnjulia-jl-L399">399</span>
+            <span class="line-number" id="file-learnjulia-jl-L400" rel="file-learnjulia-jl-L400">400</span>
+            <span class="line-number" id="file-learnjulia-jl-L401" rel="file-learnjulia-jl-L401">401</span>
+            <span class="line-number" id="file-learnjulia-jl-L402" rel="file-learnjulia-jl-L402">402</span>
+            <span class="line-number" id="file-learnjulia-jl-L403" rel="file-learnjulia-jl-L403">403</span>
+            <span class="line-number" id="file-learnjulia-jl-L404" rel="file-learnjulia-jl-L404">404</span>
+            <span class="line-number" id="file-learnjulia-jl-L405" rel="file-learnjulia-jl-L405">405</span>
+            <span class="line-number" id="file-learnjulia-jl-L406" rel="file-learnjulia-jl-L406">406</span>
+            <span class="line-number" id="file-learnjulia-jl-L407" rel="file-learnjulia-jl-L407">407</span>
+            <span class="line-number" id="file-learnjulia-jl-L408" rel="file-learnjulia-jl-L408">408</span>
+            <span class="line-number" id="file-learnjulia-jl-L409" rel="file-learnjulia-jl-L409">409</span>
+            <span class="line-number" id="file-learnjulia-jl-L410" rel="file-learnjulia-jl-L410">410</span>
+            <span class="line-number" id="file-learnjulia-jl-L411" rel="file-learnjulia-jl-L411">411</span>
+            <span class="line-number" id="file-learnjulia-jl-L412" rel="file-learnjulia-jl-L412">412</span>
+            <span class="line-number" id="file-learnjulia-jl-L413" rel="file-learnjulia-jl-L413">413</span>
+            <span class="line-number" id="file-learnjulia-jl-L414" rel="file-learnjulia-jl-L414">414</span>
+            <span class="line-number" id="file-learnjulia-jl-L415" rel="file-learnjulia-jl-L415">415</span>
+            <span class="line-number" id="file-learnjulia-jl-L416" rel="file-learnjulia-jl-L416">416</span>
+            <span class="line-number" id="file-learnjulia-jl-L417" rel="file-learnjulia-jl-L417">417</span>
+            <span class="line-number" id="file-learnjulia-jl-L418" rel="file-learnjulia-jl-L418">418</span>
+            <span class="line-number" id="file-learnjulia-jl-L419" rel="file-learnjulia-jl-L419">419</span>
+            <span class="line-number" id="file-learnjulia-jl-L420" rel="file-learnjulia-jl-L420">420</span>
+            <span class="line-number" id="file-learnjulia-jl-L421" rel="file-learnjulia-jl-L421">421</span>
+            <span class="line-number" id="file-learnjulia-jl-L422" rel="file-learnjulia-jl-L422">422</span>
+            <span class="line-number" id="file-learnjulia-jl-L423" rel="file-learnjulia-jl-L423">423</span>
+            <span class="line-number" id="file-learnjulia-jl-L424" rel="file-learnjulia-jl-L424">424</span>
+            <span class="line-number" id="file-learnjulia-jl-L425" rel="file-learnjulia-jl-L425">425</span>
+            <span class="line-number" id="file-learnjulia-jl-L426" rel="file-learnjulia-jl-L426">426</span>
+            <span class="line-number" id="file-learnjulia-jl-L427" rel="file-learnjulia-jl-L427">427</span>
+            <span class="line-number" id="file-learnjulia-jl-L428" rel="file-learnjulia-jl-L428">428</span>
+            <span class="line-number" id="file-learnjulia-jl-L429" rel="file-learnjulia-jl-L429">429</span>
+            <span class="line-number" id="file-learnjulia-jl-L430" rel="file-learnjulia-jl-L430">430</span>
+            <span class="line-number" id="file-learnjulia-jl-L431" rel="file-learnjulia-jl-L431">431</span>
+            <span class="line-number" id="file-learnjulia-jl-L432" rel="file-learnjulia-jl-L432">432</span>
+            <span class="line-number" id="file-learnjulia-jl-L433" rel="file-learnjulia-jl-L433">433</span>
+            <span class="line-number" id="file-learnjulia-jl-L434" rel="file-learnjulia-jl-L434">434</span>
+            <span class="line-number" id="file-learnjulia-jl-L435" rel="file-learnjulia-jl-L435">435</span>
+            <span class="line-number" id="file-learnjulia-jl-L436" rel="file-learnjulia-jl-L436">436</span>
+            <span class="line-number" id="file-learnjulia-jl-L437" rel="file-learnjulia-jl-L437">437</span>
+            <span class="line-number" id="file-learnjulia-jl-L438" rel="file-learnjulia-jl-L438">438</span>
+            <span class="line-number" id="file-learnjulia-jl-L439" rel="file-learnjulia-jl-L439">439</span>
+            <span class="line-number" id="file-learnjulia-jl-L440" rel="file-learnjulia-jl-L440">440</span>
+            <span class="line-number" id="file-learnjulia-jl-L441" rel="file-learnjulia-jl-L441">441</span>
+            <span class="line-number" id="file-learnjulia-jl-L442" rel="file-learnjulia-jl-L442">442</span>
+            <span class="line-number" id="file-learnjulia-jl-L443" rel="file-learnjulia-jl-L443">443</span>
+            <span class="line-number" id="file-learnjulia-jl-L444" rel="file-learnjulia-jl-L444">444</span>
+            <span class="line-number" id="file-learnjulia-jl-L445" rel="file-learnjulia-jl-L445">445</span>
+            <span class="line-number" id="file-learnjulia-jl-L446" rel="file-learnjulia-jl-L446">446</span>
+            <span class="line-number" id="file-learnjulia-jl-L447" rel="file-learnjulia-jl-L447">447</span>
+            <span class="line-number" id="file-learnjulia-jl-L448" rel="file-learnjulia-jl-L448">448</span>
+            <span class="line-number" id="file-learnjulia-jl-L449" rel="file-learnjulia-jl-L449">449</span>
+            <span class="line-number" id="file-learnjulia-jl-L450" rel="file-learnjulia-jl-L450">450</span>
+            <span class="line-number" id="file-learnjulia-jl-L451" rel="file-learnjulia-jl-L451">451</span>
+            <span class="line-number" id="file-learnjulia-jl-L452" rel="file-learnjulia-jl-L452">452</span>
+            <span class="line-number" id="file-learnjulia-jl-L453" rel="file-learnjulia-jl-L453">453</span>
+            <span class="line-number" id="file-learnjulia-jl-L454" rel="file-learnjulia-jl-L454">454</span>
+            <span class="line-number" id="file-learnjulia-jl-L455" rel="file-learnjulia-jl-L455">455</span>
+            <span class="line-number" id="file-learnjulia-jl-L456" rel="file-learnjulia-jl-L456">456</span>
+            <span class="line-number" id="file-learnjulia-jl-L457" rel="file-learnjulia-jl-L457">457</span>
+            <span class="line-number" id="file-learnjulia-jl-L458" rel="file-learnjulia-jl-L458">458</span>
+            <span class="line-number" id="file-learnjulia-jl-L459" rel="file-learnjulia-jl-L459">459</span>
+            <span class="line-number" id="file-learnjulia-jl-L460" rel="file-learnjulia-jl-L460">460</span>
+            <span class="line-number" id="file-learnjulia-jl-L461" rel="file-learnjulia-jl-L461">461</span>
+            <span class="line-number" id="file-learnjulia-jl-L462" rel="file-learnjulia-jl-L462">462</span>
+            <span class="line-number" id="file-learnjulia-jl-L463" rel="file-learnjulia-jl-L463">463</span>
+            <span class="line-number" id="file-learnjulia-jl-L464" rel="file-learnjulia-jl-L464">464</span>
+            <span class="line-number" id="file-learnjulia-jl-L465" rel="file-learnjulia-jl-L465">465</span>
+            <span class="line-number" id="file-learnjulia-jl-L466" rel="file-learnjulia-jl-L466">466</span>
+            <span class="line-number" id="file-learnjulia-jl-L467" rel="file-learnjulia-jl-L467">467</span>
+            <span class="line-number" id="file-learnjulia-jl-L468" rel="file-learnjulia-jl-L468">468</span>
+            <span class="line-number" id="file-learnjulia-jl-L469" rel="file-learnjulia-jl-L469">469</span>
+            <span class="line-number" id="file-learnjulia-jl-L470" rel="file-learnjulia-jl-L470">470</span>
+            <span class="line-number" id="file-learnjulia-jl-L471" rel="file-learnjulia-jl-L471">471</span>
+            <span class="line-number" id="file-learnjulia-jl-L472" rel="file-learnjulia-jl-L472">472</span>
+            <span class="line-number" id="file-learnjulia-jl-L473" rel="file-learnjulia-jl-L473">473</span>
+            <span class="line-number" id="file-learnjulia-jl-L474" rel="file-learnjulia-jl-L474">474</span>
+            <span class="line-number" id="file-learnjulia-jl-L475" rel="file-learnjulia-jl-L475">475</span>
+            <span class="line-number" id="file-learnjulia-jl-L476" rel="file-learnjulia-jl-L476">476</span>
+            <span class="line-number" id="file-learnjulia-jl-L477" rel="file-learnjulia-jl-L477">477</span>
+            <span class="line-number" id="file-learnjulia-jl-L478" rel="file-learnjulia-jl-L478">478</span>
+            <span class="line-number" id="file-learnjulia-jl-L479" rel="file-learnjulia-jl-L479">479</span>
+            <span class="line-number" id="file-learnjulia-jl-L480" rel="file-learnjulia-jl-L480">480</span>
+            <span class="line-number" id="file-learnjulia-jl-L481" rel="file-learnjulia-jl-L481">481</span>
+            <span class="line-number" id="file-learnjulia-jl-L482" rel="file-learnjulia-jl-L482">482</span>
+            <span class="line-number" id="file-learnjulia-jl-L483" rel="file-learnjulia-jl-L483">483</span>
+            <span class="line-number" id="file-learnjulia-jl-L484" rel="file-learnjulia-jl-L484">484</span>
+            <span class="line-number" id="file-learnjulia-jl-L485" rel="file-learnjulia-jl-L485">485</span>
+            <span class="line-number" id="file-learnjulia-jl-L486" rel="file-learnjulia-jl-L486">486</span>
+            <span class="line-number" id="file-learnjulia-jl-L487" rel="file-learnjulia-jl-L487">487</span>
+            <span class="line-number" id="file-learnjulia-jl-L488" rel="file-learnjulia-jl-L488">488</span>
+            <span class="line-number" id="file-learnjulia-jl-L489" rel="file-learnjulia-jl-L489">489</span>
+            <span class="line-number" id="file-learnjulia-jl-L490" rel="file-learnjulia-jl-L490">490</span>
+            <span class="line-number" id="file-learnjulia-jl-L491" rel="file-learnjulia-jl-L491">491</span>
+            <span class="line-number" id="file-learnjulia-jl-L492" rel="file-learnjulia-jl-L492">492</span>
+            <span class="line-number" id="file-learnjulia-jl-L493" rel="file-learnjulia-jl-L493">493</span>
+            <span class="line-number" id="file-learnjulia-jl-L494" rel="file-learnjulia-jl-L494">494</span>
+            <span class="line-number" id="file-learnjulia-jl-L495" rel="file-learnjulia-jl-L495">495</span>
+            <span class="line-number" id="file-learnjulia-jl-L496" rel="file-learnjulia-jl-L496">496</span>
+            <span class="line-number" id="file-learnjulia-jl-L497" rel="file-learnjulia-jl-L497">497</span>
+            <span class="line-number" id="file-learnjulia-jl-L498" rel="file-learnjulia-jl-L498">498</span>
+            <span class="line-number" id="file-learnjulia-jl-L499" rel="file-learnjulia-jl-L499">499</span>
+            <span class="line-number" id="file-learnjulia-jl-L500" rel="file-learnjulia-jl-L500">500</span>
+            <span class="line-number" id="file-learnjulia-jl-L501" rel="file-learnjulia-jl-L501">501</span>
+            <span class="line-number" id="file-learnjulia-jl-L502" rel="file-learnjulia-jl-L502">502</span>
+            <span class="line-number" id="file-learnjulia-jl-L503" rel="file-learnjulia-jl-L503">503</span>
+            <span class="line-number" id="file-learnjulia-jl-L504" rel="file-learnjulia-jl-L504">504</span>
+            <span class="line-number" id="file-learnjulia-jl-L505" rel="file-learnjulia-jl-L505">505</span>
+            <span class="line-number" id="file-learnjulia-jl-L506" rel="file-learnjulia-jl-L506">506</span>
+            <span class="line-number" id="file-learnjulia-jl-L507" rel="file-learnjulia-jl-L507">507</span>
+            <span class="line-number" id="file-learnjulia-jl-L508" rel="file-learnjulia-jl-L508">508</span>
+            <span class="line-number" id="file-learnjulia-jl-L509" rel="file-learnjulia-jl-L509">509</span>
+            <span class="line-number" id="file-learnjulia-jl-L510" rel="file-learnjulia-jl-L510">510</span>
+            <span class="line-number" id="file-learnjulia-jl-L511" rel="file-learnjulia-jl-L511">511</span>
+            <span class="line-number" id="file-learnjulia-jl-L512" rel="file-learnjulia-jl-L512">512</span>
+            <span class="line-number" id="file-learnjulia-jl-L513" rel="file-learnjulia-jl-L513">513</span>
+            <span class="line-number" id="file-learnjulia-jl-L514" rel="file-learnjulia-jl-L514">514</span>
+            <span class="line-number" id="file-learnjulia-jl-L515" rel="file-learnjulia-jl-L515">515</span>
+            <span class="line-number" id="file-learnjulia-jl-L516" rel="file-learnjulia-jl-L516">516</span>
+            <span class="line-number" id="file-learnjulia-jl-L517" rel="file-learnjulia-jl-L517">517</span>
+            <span class="line-number" id="file-learnjulia-jl-L518" rel="file-learnjulia-jl-L518">518</span>
+            <span class="line-number" id="file-learnjulia-jl-L519" rel="file-learnjulia-jl-L519">519</span>
+            <span class="line-number" id="file-learnjulia-jl-L520" rel="file-learnjulia-jl-L520">520</span>
+            <span class="line-number" id="file-learnjulia-jl-L521" rel="file-learnjulia-jl-L521">521</span>
+            <span class="line-number" id="file-learnjulia-jl-L522" rel="file-learnjulia-jl-L522">522</span>
+            <span class="line-number" id="file-learnjulia-jl-L523" rel="file-learnjulia-jl-L523">523</span>
+            <span class="line-number" id="file-learnjulia-jl-L524" rel="file-learnjulia-jl-L524">524</span>
+            <span class="line-number" id="file-learnjulia-jl-L525" rel="file-learnjulia-jl-L525">525</span>
+            <span class="line-number" id="file-learnjulia-jl-L526" rel="file-learnjulia-jl-L526">526</span>
+            <span class="line-number" id="file-learnjulia-jl-L527" rel="file-learnjulia-jl-L527">527</span>
+            <span class="line-number" id="file-learnjulia-jl-L528" rel="file-learnjulia-jl-L528">528</span>
+            <span class="line-number" id="file-learnjulia-jl-L529" rel="file-learnjulia-jl-L529">529</span>
+            <span class="line-number" id="file-learnjulia-jl-L530" rel="file-learnjulia-jl-L530">530</span>
+            <span class="line-number" id="file-learnjulia-jl-L531" rel="file-learnjulia-jl-L531">531</span>
+            <span class="line-number" id="file-learnjulia-jl-L532" rel="file-learnjulia-jl-L532">532</span>
+            <span class="line-number" id="file-learnjulia-jl-L533" rel="file-learnjulia-jl-L533">533</span>
+            <span class="line-number" id="file-learnjulia-jl-L534" rel="file-learnjulia-jl-L534">534</span>
+            <span class="line-number" id="file-learnjulia-jl-L535" rel="file-learnjulia-jl-L535">535</span>
+            <span class="line-number" id="file-learnjulia-jl-L536" rel="file-learnjulia-jl-L536">536</span>
+            <span class="line-number" id="file-learnjulia-jl-L537" rel="file-learnjulia-jl-L537">537</span>
+            <span class="line-number" id="file-learnjulia-jl-L538" rel="file-learnjulia-jl-L538">538</span>
+            <span class="line-number" id="file-learnjulia-jl-L539" rel="file-learnjulia-jl-L539">539</span>
+            <span class="line-number" id="file-learnjulia-jl-L540" rel="file-learnjulia-jl-L540">540</span>
+            <span class="line-number" id="file-learnjulia-jl-L541" rel="file-learnjulia-jl-L541">541</span>
+            <span class="line-number" id="file-learnjulia-jl-L542" rel="file-learnjulia-jl-L542">542</span>
+            <span class="line-number" id="file-learnjulia-jl-L543" rel="file-learnjulia-jl-L543">543</span>
+            <span class="line-number" id="file-learnjulia-jl-L544" rel="file-learnjulia-jl-L544">544</span>
+            <span class="line-number" id="file-learnjulia-jl-L545" rel="file-learnjulia-jl-L545">545</span>
+            <span class="line-number" id="file-learnjulia-jl-L546" rel="file-learnjulia-jl-L546">546</span>
+            <span class="line-number" id="file-learnjulia-jl-L547" rel="file-learnjulia-jl-L547">547</span>
+            <span class="line-number" id="file-learnjulia-jl-L548" rel="file-learnjulia-jl-L548">548</span>
+            <span class="line-number" id="file-learnjulia-jl-L549" rel="file-learnjulia-jl-L549">549</span>
+            <span class="line-number" id="file-learnjulia-jl-L550" rel="file-learnjulia-jl-L550">550</span>
+            <span class="line-number" id="file-learnjulia-jl-L551" rel="file-learnjulia-jl-L551">551</span>
+            <span class="line-number" id="file-learnjulia-jl-L552" rel="file-learnjulia-jl-L552">552</span>
+            <span class="line-number" id="file-learnjulia-jl-L553" rel="file-learnjulia-jl-L553">553</span>
+            <span class="line-number" id="file-learnjulia-jl-L554" rel="file-learnjulia-jl-L554">554</span>
+            <span class="line-number" id="file-learnjulia-jl-L555" rel="file-learnjulia-jl-L555">555</span>
+            <span class="line-number" id="file-learnjulia-jl-L556" rel="file-learnjulia-jl-L556">556</span>
+            <span class="line-number" id="file-learnjulia-jl-L557" rel="file-learnjulia-jl-L557">557</span>
+            <span class="line-number" id="file-learnjulia-jl-L558" rel="file-learnjulia-jl-L558">558</span>
+            <span class="line-number" id="file-learnjulia-jl-L559" rel="file-learnjulia-jl-L559">559</span>
+            <span class="line-number" id="file-learnjulia-jl-L560" rel="file-learnjulia-jl-L560">560</span>
+            <span class="line-number" id="file-learnjulia-jl-L561" rel="file-learnjulia-jl-L561">561</span>
+            <span class="line-number" id="file-learnjulia-jl-L562" rel="file-learnjulia-jl-L562">562</span>
+            <span class="line-number" id="file-learnjulia-jl-L563" rel="file-learnjulia-jl-L563">563</span>
+            <span class="line-number" id="file-learnjulia-jl-L564" rel="file-learnjulia-jl-L564">564</span>
+            <span class="line-number" id="file-learnjulia-jl-L565" rel="file-learnjulia-jl-L565">565</span>
+            <span class="line-number" id="file-learnjulia-jl-L566" rel="file-learnjulia-jl-L566">566</span>
+            <span class="line-number" id="file-learnjulia-jl-L567" rel="file-learnjulia-jl-L567">567</span>
+            <span class="line-number" id="file-learnjulia-jl-L568" rel="file-learnjulia-jl-L568">568</span>
+            <span class="line-number" id="file-learnjulia-jl-L569" rel="file-learnjulia-jl-L569">569</span>
+            <span class="line-number" id="file-learnjulia-jl-L570" rel="file-learnjulia-jl-L570">570</span>
+            <span class="line-number" id="file-learnjulia-jl-L571" rel="file-learnjulia-jl-L571">571</span>
+            <span class="line-number" id="file-learnjulia-jl-L572" rel="file-learnjulia-jl-L572">572</span>
+            <span class="line-number" id="file-learnjulia-jl-L573" rel="file-learnjulia-jl-L573">573</span>
+            <span class="line-number" id="file-learnjulia-jl-L574" rel="file-learnjulia-jl-L574">574</span>
+            <span class="line-number" id="file-learnjulia-jl-L575" rel="file-learnjulia-jl-L575">575</span>
+            <span class="line-number" id="file-learnjulia-jl-L576" rel="file-learnjulia-jl-L576">576</span>
+            <span class="line-number" id="file-learnjulia-jl-L577" rel="file-learnjulia-jl-L577">577</span>
+            <span class="line-number" id="file-learnjulia-jl-L578" rel="file-learnjulia-jl-L578">578</span>
+            <span class="line-number" id="file-learnjulia-jl-L579" rel="file-learnjulia-jl-L579">579</span>
+            <span class="line-number" id="file-learnjulia-jl-L580" rel="file-learnjulia-jl-L580">580</span>
+            <span class="line-number" id="file-learnjulia-jl-L581" rel="file-learnjulia-jl-L581">581</span>
+            <span class="line-number" id="file-learnjulia-jl-L582" rel="file-learnjulia-jl-L582">582</span>
+            <span class="line-number" id="file-learnjulia-jl-L583" rel="file-learnjulia-jl-L583">583</span>
+            <span class="line-number" id="file-learnjulia-jl-L584" rel="file-learnjulia-jl-L584">584</span>
+            <span class="line-number" id="file-learnjulia-jl-L585" rel="file-learnjulia-jl-L585">585</span>
+            <span class="line-number" id="file-learnjulia-jl-L586" rel="file-learnjulia-jl-L586">586</span>
+            <span class="line-number" id="file-learnjulia-jl-L587" rel="file-learnjulia-jl-L587">587</span>
+            <span class="line-number" id="file-learnjulia-jl-L588" rel="file-learnjulia-jl-L588">588</span>
+            <span class="line-number" id="file-learnjulia-jl-L589" rel="file-learnjulia-jl-L589">589</span>
+            <span class="line-number" id="file-learnjulia-jl-L590" rel="file-learnjulia-jl-L590">590</span>
+            <span class="line-number" id="file-learnjulia-jl-L591" rel="file-learnjulia-jl-L591">591</span>
+            <span class="line-number" id="file-learnjulia-jl-L592" rel="file-learnjulia-jl-L592">592</span>
+            <span class="line-number" id="file-learnjulia-jl-L593" rel="file-learnjulia-jl-L593">593</span>
+            <span class="line-number" id="file-learnjulia-jl-L594" rel="file-learnjulia-jl-L594">594</span>
+            <span class="line-number" id="file-learnjulia-jl-L595" rel="file-learnjulia-jl-L595">595</span>
+            <span class="line-number" id="file-learnjulia-jl-L596" rel="file-learnjulia-jl-L596">596</span>
+            <span class="line-number" id="file-learnjulia-jl-L597" rel="file-learnjulia-jl-L597">597</span>
+            <span class="line-number" id="file-learnjulia-jl-L598" rel="file-learnjulia-jl-L598">598</span>
+            <span class="line-number" id="file-learnjulia-jl-L599" rel="file-learnjulia-jl-L599">599</span>
+            <span class="line-number" id="file-learnjulia-jl-L600" rel="file-learnjulia-jl-L600">600</span>
+            <span class="line-number" id="file-learnjulia-jl-L601" rel="file-learnjulia-jl-L601">601</span>
+            <span class="line-number" id="file-learnjulia-jl-L602" rel="file-learnjulia-jl-L602">602</span>
+            <span class="line-number" id="file-learnjulia-jl-L603" rel="file-learnjulia-jl-L603">603</span>
+            <span class="line-number" id="file-learnjulia-jl-L604" rel="file-learnjulia-jl-L604">604</span>
+            <span class="line-number" id="file-learnjulia-jl-L605" rel="file-learnjulia-jl-L605">605</span>
+            <span class="line-number" id="file-learnjulia-jl-L606" rel="file-learnjulia-jl-L606">606</span>
+            <span class="line-number" id="file-learnjulia-jl-L607" rel="file-learnjulia-jl-L607">607</span>
+            <span class="line-number" id="file-learnjulia-jl-L608" rel="file-learnjulia-jl-L608">608</span>
+            <span class="line-number" id="file-learnjulia-jl-L609" rel="file-learnjulia-jl-L609">609</span>
+            <span class="line-number" id="file-learnjulia-jl-L610" rel="file-learnjulia-jl-L610">610</span>
+            <span class="line-number" id="file-learnjulia-jl-L611" rel="file-learnjulia-jl-L611">611</span>
+            <span class="line-number" id="file-learnjulia-jl-L612" rel="file-learnjulia-jl-L612">612</span>
+            <span class="line-number" id="file-learnjulia-jl-L613" rel="file-learnjulia-jl-L613">613</span>
+            <span class="line-number" id="file-learnjulia-jl-L614" rel="file-learnjulia-jl-L614">614</span>
+            <span class="line-number" id="file-learnjulia-jl-L615" rel="file-learnjulia-jl-L615">615</span>
+            <span class="line-number" id="file-learnjulia-jl-L616" rel="file-learnjulia-jl-L616">616</span>
+            <span class="line-number" id="file-learnjulia-jl-L617" rel="file-learnjulia-jl-L617">617</span>
+            <span class="line-number" id="file-learnjulia-jl-L618" rel="file-learnjulia-jl-L618">618</span>
+            <span class="line-number" id="file-learnjulia-jl-L619" rel="file-learnjulia-jl-L619">619</span>
+            <span class="line-number" id="file-learnjulia-jl-L620" rel="file-learnjulia-jl-L620">620</span>
+            <span class="line-number" id="file-learnjulia-jl-L621" rel="file-learnjulia-jl-L621">621</span>
+            <span class="line-number" id="file-learnjulia-jl-L622" rel="file-learnjulia-jl-L622">622</span>
+            <span class="line-number" id="file-learnjulia-jl-L623" rel="file-learnjulia-jl-L623">623</span>
+            <span class="line-number" id="file-learnjulia-jl-L624" rel="file-learnjulia-jl-L624">624</span>
+            <span class="line-number" id="file-learnjulia-jl-L625" rel="file-learnjulia-jl-L625">625</span>
+            <span class="line-number" id="file-learnjulia-jl-L626" rel="file-learnjulia-jl-L626">626</span>
+            <span class="line-number" id="file-learnjulia-jl-L627" rel="file-learnjulia-jl-L627">627</span>
+            <span class="line-number" id="file-learnjulia-jl-L628" rel="file-learnjulia-jl-L628">628</span>
+            <span class="line-number" id="file-learnjulia-jl-L629" rel="file-learnjulia-jl-L629">629</span>
+            <span class="line-number" id="file-learnjulia-jl-L630" rel="file-learnjulia-jl-L630">630</span>
+            <span class="line-number" id="file-learnjulia-jl-L631" rel="file-learnjulia-jl-L631">631</span>
+            <span class="line-number" id="file-learnjulia-jl-L632" rel="file-learnjulia-jl-L632">632</span>
+            <span class="line-number" id="file-learnjulia-jl-L633" rel="file-learnjulia-jl-L633">633</span>
+            <span class="line-number" id="file-learnjulia-jl-L634" rel="file-learnjulia-jl-L634">634</span>
+            <span class="line-number" id="file-learnjulia-jl-L635" rel="file-learnjulia-jl-L635">635</span>
+            <span class="line-number" id="file-learnjulia-jl-L636" rel="file-learnjulia-jl-L636">636</span>
+            <span class="line-number" id="file-learnjulia-jl-L637" rel="file-learnjulia-jl-L637">637</span>
+            <span class="line-number" id="file-learnjulia-jl-L638" rel="file-learnjulia-jl-L638">638</span>
+            <span class="line-number" id="file-learnjulia-jl-L639" rel="file-learnjulia-jl-L639">639</span>
+            <span class="line-number" id="file-learnjulia-jl-L640" rel="file-learnjulia-jl-L640">640</span>
+            <span class="line-number" id="file-learnjulia-jl-L641" rel="file-learnjulia-jl-L641">641</span>
+            <span class="line-number" id="file-learnjulia-jl-L642" rel="file-learnjulia-jl-L642">642</span>
+            <span class="line-number" id="file-learnjulia-jl-L643" rel="file-learnjulia-jl-L643">643</span>
+            <span class="line-number" id="file-learnjulia-jl-L644" rel="file-learnjulia-jl-L644">644</span>
+            <span class="line-number" id="file-learnjulia-jl-L645" rel="file-learnjulia-jl-L645">645</span>
+            <span class="line-number" id="file-learnjulia-jl-L646" rel="file-learnjulia-jl-L646">646</span>
+            <span class="line-number" id="file-learnjulia-jl-L647" rel="file-learnjulia-jl-L647">647</span>
+            <span class="line-number" id="file-learnjulia-jl-L648" rel="file-learnjulia-jl-L648">648</span>
+            <span class="line-number" id="file-learnjulia-jl-L649" rel="file-learnjulia-jl-L649">649</span>
+            <span class="line-number" id="file-learnjulia-jl-L650" rel="file-learnjulia-jl-L650">650</span>
+            <span class="line-number" id="file-learnjulia-jl-L651" rel="file-learnjulia-jl-L651">651</span>
+            <span class="line-number" id="file-learnjulia-jl-L652" rel="file-learnjulia-jl-L652">652</span>
+            <span class="line-number" id="file-learnjulia-jl-L653" rel="file-learnjulia-jl-L653">653</span>
+            <span class="line-number" id="file-learnjulia-jl-L654" rel="file-learnjulia-jl-L654">654</span>
+            <span class="line-number" id="file-learnjulia-jl-L655" rel="file-learnjulia-jl-L655">655</span>
+            <span class="line-number" id="file-learnjulia-jl-L656" rel="file-learnjulia-jl-L656">656</span>
+            <span class="line-number" id="file-learnjulia-jl-L657" rel="file-learnjulia-jl-L657">657</span>
+            <span class="line-number" id="file-learnjulia-jl-L658" rel="file-learnjulia-jl-L658">658</span>
+            <span class="line-number" id="file-learnjulia-jl-L659" rel="file-learnjulia-jl-L659">659</span>
+            <span class="line-number" id="file-learnjulia-jl-L660" rel="file-learnjulia-jl-L660">660</span>
+            <span class="line-number" id="file-learnjulia-jl-L661" rel="file-learnjulia-jl-L661">661</span>
+            <span class="line-number" id="file-learnjulia-jl-L662" rel="file-learnjulia-jl-L662">662</span>
+            <span class="line-number" id="file-learnjulia-jl-L663" rel="file-learnjulia-jl-L663">663</span>
+            <span class="line-number" id="file-learnjulia-jl-L664" rel="file-learnjulia-jl-L664">664</span>
+            <span class="line-number" id="file-learnjulia-jl-L665" rel="file-learnjulia-jl-L665">665</span>
+            <span class="line-number" id="file-learnjulia-jl-L666" rel="file-learnjulia-jl-L666">666</span>
+            <span class="line-number" id="file-learnjulia-jl-L667" rel="file-learnjulia-jl-L667">667</span>
+            <span class="line-number" id="file-learnjulia-jl-L668" rel="file-learnjulia-jl-L668">668</span>
+            <span class="line-number" id="file-learnjulia-jl-L669" rel="file-learnjulia-jl-L669">669</span>
+            <span class="line-number" id="file-learnjulia-jl-L670" rel="file-learnjulia-jl-L670">670</span>
+            <span class="line-number" id="file-learnjulia-jl-L671" rel="file-learnjulia-jl-L671">671</span>
+            <span class="line-number" id="file-learnjulia-jl-L672" rel="file-learnjulia-jl-L672">672</span>
+            <span class="line-number" id="file-learnjulia-jl-L673" rel="file-learnjulia-jl-L673">673</span>
+            <span class="line-number" id="file-learnjulia-jl-L674" rel="file-learnjulia-jl-L674">674</span>
+            <span class="line-number" id="file-learnjulia-jl-L675" rel="file-learnjulia-jl-L675">675</span>
+            <span class="line-number" id="file-learnjulia-jl-L676" rel="file-learnjulia-jl-L676">676</span>
+            <span class="line-number" id="file-learnjulia-jl-L677" rel="file-learnjulia-jl-L677">677</span>
+            <span class="line-number" id="file-learnjulia-jl-L678" rel="file-learnjulia-jl-L678">678</span>
+            <span class="line-number" id="file-learnjulia-jl-L679" rel="file-learnjulia-jl-L679">679</span>
+            <span class="line-number" id="file-learnjulia-jl-L680" rel="file-learnjulia-jl-L680">680</span>
+            <span class="line-number" id="file-learnjulia-jl-L681" rel="file-learnjulia-jl-L681">681</span>
+            <span class="line-number" id="file-learnjulia-jl-L682" rel="file-learnjulia-jl-L682">682</span>
+            <span class="line-number" id="file-learnjulia-jl-L683" rel="file-learnjulia-jl-L683">683</span>
+            <span class="line-number" id="file-learnjulia-jl-L684" rel="file-learnjulia-jl-L684">684</span>
+            <span class="line-number" id="file-learnjulia-jl-L685" rel="file-learnjulia-jl-L685">685</span>
+            <span class="line-number" id="file-learnjulia-jl-L686" rel="file-learnjulia-jl-L686">686</span>
+            <span class="line-number" id="file-learnjulia-jl-L687" rel="file-learnjulia-jl-L687">687</span>
+            <span class="line-number" id="file-learnjulia-jl-L688" rel="file-learnjulia-jl-L688">688</span>
+            <span class="line-number" id="file-learnjulia-jl-L689" rel="file-learnjulia-jl-L689">689</span>
+            <span class="line-number" id="file-learnjulia-jl-L690" rel="file-learnjulia-jl-L690">690</span>
+            <span class="line-number" id="file-learnjulia-jl-L691" rel="file-learnjulia-jl-L691">691</span>
+            <span class="line-number" id="file-learnjulia-jl-L692" rel="file-learnjulia-jl-L692">692</span>
+            <span class="line-number" id="file-learnjulia-jl-L693" rel="file-learnjulia-jl-L693">693</span>
+            <span class="line-number" id="file-learnjulia-jl-L694" rel="file-learnjulia-jl-L694">694</span>
+            <span class="line-number" id="file-learnjulia-jl-L695" rel="file-learnjulia-jl-L695">695</span>
+            <span class="line-number" id="file-learnjulia-jl-L696" rel="file-learnjulia-jl-L696">696</span>
+            <span class="line-number" id="file-learnjulia-jl-L697" rel="file-learnjulia-jl-L697">697</span>
+            <span class="line-number" id="file-learnjulia-jl-L698" rel="file-learnjulia-jl-L698">698</span>
+            <span class="line-number" id="file-learnjulia-jl-L699" rel="file-learnjulia-jl-L699">699</span>
+            <span class="line-number" id="file-learnjulia-jl-L700" rel="file-learnjulia-jl-L700">700</span>
+            <span class="line-number" id="file-learnjulia-jl-L701" rel="file-learnjulia-jl-L701">701</span>
+            <span class="line-number" id="file-learnjulia-jl-L702" rel="file-learnjulia-jl-L702">702</span>
+            <span class="line-number" id="file-learnjulia-jl-L703" rel="file-learnjulia-jl-L703">703</span>
+            <span class="line-number" id="file-learnjulia-jl-L704" rel="file-learnjulia-jl-L704">704</span>
+            <span class="line-number" id="file-learnjulia-jl-L705" rel="file-learnjulia-jl-L705">705</span>
+            <span class="line-number" id="file-learnjulia-jl-L706" rel="file-learnjulia-jl-L706">706</span>
+            <span class="line-number" id="file-learnjulia-jl-L707" rel="file-learnjulia-jl-L707">707</span>
+            <span class="line-number" id="file-learnjulia-jl-L708" rel="file-learnjulia-jl-L708">708</span>
+            <span class="line-number" id="file-learnjulia-jl-L709" rel="file-learnjulia-jl-L709">709</span>
+            <span class="line-number" id="file-learnjulia-jl-L710" rel="file-learnjulia-jl-L710">710</span>
+            <span class="line-number" id="file-learnjulia-jl-L711" rel="file-learnjulia-jl-L711">711</span>
+            <span class="line-number" id="file-learnjulia-jl-L712" rel="file-learnjulia-jl-L712">712</span>
+            <span class="line-number" id="file-learnjulia-jl-L713" rel="file-learnjulia-jl-L713">713</span>
+            <span class="line-number" id="file-learnjulia-jl-L714" rel="file-learnjulia-jl-L714">714</span>
+            <span class="line-number" id="file-learnjulia-jl-L715" rel="file-learnjulia-jl-L715">715</span>
+            <span class="line-number" id="file-learnjulia-jl-L716" rel="file-learnjulia-jl-L716">716</span>
+            <span class="line-number" id="file-learnjulia-jl-L717" rel="file-learnjulia-jl-L717">717</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-learnjulia-jl-LC1"><span class="pl-c"># 单行注释只需要一个井号</span>
+</div><div class="line" id="file-learnjulia-jl-LC2"><span class="pl-c">#= 多行注释</span>
+</div><div class="line" id="file-learnjulia-jl-LC3"><span class="pl-c">   只需要以 &#39;#=&#39; 开始 &#39;=#</span><span class="pl-s1"><span class="pl-pds">&#39;</span> 结束</span>
+</div><div class="line" id="file-learnjulia-jl-LC4"><span class="pl-s1">   还可以嵌套.</span>
+</div><div class="line" id="file-learnjulia-jl-LC5"><span class="pl-s1">=#</span>
+</div><div class="line" id="file-learnjulia-jl-LC6"><span class="pl-s1"></span>
+</div><div class="line" id="file-learnjulia-jl-LC7"><span class="pl-s1">####################################################</span>
+</div><div class="line" id="file-learnjulia-jl-LC8"><span class="pl-s1">## 1. 原始类型与操作符</span>
+</div><div class="line" id="file-learnjulia-jl-LC9"><span class="pl-s1">####################################################</span>
+</div><div class="line" id="file-learnjulia-jl-LC10"><span class="pl-s1"></span>
+</div><div class="line" id="file-learnjulia-jl-LC11"><span class="pl-s1"># Julia 中一切皆是表达式。</span>
+</div><div class="line" id="file-learnjulia-jl-LC12"><span class="pl-s1"></span>
+</div><div class="line" id="file-learnjulia-jl-LC13"><span class="pl-s1"># 这是一些基本数字类型.</span>
+</div><div class="line" id="file-learnjulia-jl-LC14"><span class="pl-s1">3 # =&gt; 3 (Int64)</span>
+</div><div class="line" id="file-learnjulia-jl-LC15"><span class="pl-s1">3.2 # =&gt; 3.2 (Float64)</span>
+</div><div class="line" id="file-learnjulia-jl-LC16"><span class="pl-s1">2 + 1im # =&gt; 2 + 1im (Complex{Int64})</span>
+</div><div class="line" id="file-learnjulia-jl-LC17"><span class="pl-s1">2//3 # =&gt; 2//3 (Rational{Int64})</span>
+</div><div class="line" id="file-learnjulia-jl-LC18"><span class="pl-s1"></span>
+</div><div class="line" id="file-learnjulia-jl-LC19"><span class="pl-s1"># 支持所有的普通中缀操作符。</span>
+</div><div class="line" id="file-learnjulia-jl-LC20"><span class="pl-s1">1 + 1 # =&gt; 2</span>
+</div><div class="line" id="file-learnjulia-jl-LC21"><span class="pl-s1">8 - 1 # =&gt; 7</span>
+</div><div class="line" id="file-learnjulia-jl-LC22"><span class="pl-s1">10 * 2 # =&gt; 20</span>
+</div><div class="line" id="file-learnjulia-jl-LC23"><span class="pl-s1">35 / 5 # =&gt; 7.0</span>
+</div><div class="line" id="file-learnjulia-jl-LC24"><span class="pl-s1">5 / 2 # =&gt; 2.5 # 用 Int 除 Int 永远返回 Float</span>
+</div><div class="line" id="file-learnjulia-jl-LC25"><span class="pl-s1">div(5, 2) # =&gt; 2 # 使用 div 截断小数点</span>
+</div><div class="line" id="file-learnjulia-jl-LC26"><span class="pl-s1">5 <span class="pl-cce">\ </span>35 # =&gt; 7.0</span>
+</div><div class="line" id="file-learnjulia-jl-LC27"><span class="pl-s1">2 ^ 2 # =&gt; 4 # 次方, 不是二进制 xor</span>
+</div><div class="line" id="file-learnjulia-jl-LC28"><span class="pl-s1">12 % 10 # =&gt; 2</span>
+</div><div class="line" id="file-learnjulia-jl-LC29"><span class="pl-s1"></span>
+</div><div class="line" id="file-learnjulia-jl-LC30"><span class="pl-s1"># 用括号提高优先级</span>
+</div><div class="line" id="file-learnjulia-jl-LC31"><span class="pl-s1">(1 + 3) * 2 # =&gt; 8</span>
+</div><div class="line" id="file-learnjulia-jl-LC32"><span class="pl-s1"></span>
+</div><div class="line" id="file-learnjulia-jl-LC33"><span class="pl-s1"># 二进制操作符</span>
+</div><div class="line" id="file-learnjulia-jl-LC34"><span class="pl-s1">~2 # =&gt; -3   # 非</span>
+</div><div class="line" id="file-learnjulia-jl-LC35"><span class="pl-s1">3 &amp; 5 # =&gt; 1 # 与</span>
+</div><div class="line" id="file-learnjulia-jl-LC36"><span class="pl-s1">2 | 4 # =&gt; 6 # 或</span>
+</div><div class="line" id="file-learnjulia-jl-LC37"><span class="pl-s1">2 $ 4 # =&gt; 6 # 异或</span>
+</div><div class="line" id="file-learnjulia-jl-LC38"><span class="pl-s1">2 &gt;&gt;&gt; 1 # =&gt; 1 # 逻辑右移</span>
+</div><div class="line" id="file-learnjulia-jl-LC39"><span class="pl-s1">2 &gt;&gt; 1  # =&gt; 1 # 算术右移</span>
+</div><div class="line" id="file-learnjulia-jl-LC40"><span class="pl-s1">2 &lt;&lt; 1  # =&gt; 4 # 逻辑/算术 右移</span>
+</div><div class="line" id="file-learnjulia-jl-LC41"><span class="pl-s1"></span>
+</div><div class="line" id="file-learnjulia-jl-LC42"><span class="pl-s1"># 可以用函数 bits 查看二进制数。</span>
+</div><div class="line" id="file-learnjulia-jl-LC43"><span class="pl-s1">bits(12345)</span>
+</div><div class="line" id="file-learnjulia-jl-LC44"><span class="pl-s1"># =&gt; &quot;0000000000000000000000000000000000000000000000000011000000111001&quot;</span>
+</div><div class="line" id="file-learnjulia-jl-LC45"><span class="pl-s1">bits(12345.0)</span>
+</div><div class="line" id="file-learnjulia-jl-LC46"><span class="pl-s1"># =&gt; &quot;0100000011001000000111001000000000000000000000000000000000000000&quot;</span>
+</div><div class="line" id="file-learnjulia-jl-LC47"><span class="pl-s1"></span>
+</div><div class="line" id="file-learnjulia-jl-LC48"><span class="pl-s1"># 布尔值是原始类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC49"><span class="pl-s1">true</span>
+</div><div class="line" id="file-learnjulia-jl-LC50"><span class="pl-s1">false</span>
+</div><div class="line" id="file-learnjulia-jl-LC51"><span class="pl-s1"></span>
+</div><div class="line" id="file-learnjulia-jl-LC52"><span class="pl-s1"># 布尔操作符</span>
+</div><div class="line" id="file-learnjulia-jl-LC53"><span class="pl-s1">!true # =&gt; false</span>
+</div><div class="line" id="file-learnjulia-jl-LC54"><span class="pl-s1">!false # =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC55"><span class="pl-s1">1 == 1 # =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC56"><span class="pl-s1">2 == 1 # =&gt; false</span>
+</div><div class="line" id="file-learnjulia-jl-LC57"><span class="pl-s1">1 != 1 # =&gt; false</span>
+</div><div class="line" id="file-learnjulia-jl-LC58"><span class="pl-s1">2 != 1 # =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC59"><span class="pl-s1">1 &lt; 10 # =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC60"><span class="pl-s1">1 &gt; 10 # =&gt; false</span>
+</div><div class="line" id="file-learnjulia-jl-LC61"><span class="pl-s1">2 &lt;= 2 # =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC62"><span class="pl-s1">2 &gt;= 2 # =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC63"><span class="pl-s1"># 比较可以串联</span>
+</div><div class="line" id="file-learnjulia-jl-LC64"><span class="pl-s1">1 &lt; 2 &lt; 3 # =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC65"><span class="pl-s1">2 &lt; 3 &lt; 2 # =&gt; false</span>
+</div><div class="line" id="file-learnjulia-jl-LC66"><span class="pl-s1"></span>
+</div><div class="line" id="file-learnjulia-jl-LC67"><span class="pl-s1"># 字符串可以由 &quot; 创建</span>
+</div><div class="line" id="file-learnjulia-jl-LC68"><span class="pl-s1">&quot;This is a string.&quot;</span>
+</div><div class="line" id="file-learnjulia-jl-LC69"><span class="pl-s1"></span>
+</div><div class="line" id="file-learnjulia-jl-LC70"><span class="pl-s1"># 字符字面量可用 <span class="pl-pds">&#39;</span></span> 创建
+</div><div class="line" id="file-learnjulia-jl-LC71"><span class="pl-s1"><span class="pl-pds">&#39;</span>a<span class="pl-pds">&#39;</span></span>
+</div><div class="line" id="file-learnjulia-jl-LC72">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC73"><span class="pl-c"># 可以像取数组取值一样用 index 取出对应字符</span>
+</div><div class="line" id="file-learnjulia-jl-LC74"><span class="pl-s1"><span class="pl-pds">&quot;</span>This is a string<span class="pl-pds">&quot;</span></span>[<span class="pl-c1">1</span>] <span class="pl-c"># =&gt; &#39;T&#39; # Julia 的 index 从 1 开始 :(</span>
+</div><div class="line" id="file-learnjulia-jl-LC75"><span class="pl-c"># 但是对 UTF-8 无效,</span>
+</div><div class="line" id="file-learnjulia-jl-LC76"><span class="pl-c"># 因此建议使用遍历器 (map, for loops, 等).</span>
+</div><div class="line" id="file-learnjulia-jl-LC77">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC78"><span class="pl-c"># $ 可用于字符插值:</span>
+</div><div class="line" id="file-learnjulia-jl-LC79"><span class="pl-s1"><span class="pl-pds">&quot;</span>2 + 2 = $(2 + 2)<span class="pl-pds">&quot;</span></span> <span class="pl-c"># =&gt; &quot;2 + 2 = 4&quot;</span>
+</div><div class="line" id="file-learnjulia-jl-LC80"><span class="pl-c"># 可以将任何 Julia 表达式放入括号。</span>
+</div><div class="line" id="file-learnjulia-jl-LC81">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC82"><span class="pl-c"># 另一种格式化字符串的方式是 printf 宏.</span>
+</div><div class="line" id="file-learnjulia-jl-LC83"><span class="pl-s3">@printf</span> <span class="pl-s1"><span class="pl-pds">&quot;</span>%d is less than %f<span class="pl-pds">&quot;</span></span> <span class="pl-c1">4.5</span> <span class="pl-c1">5.3</span> <span class="pl-c"># 5 is less than 5.300000</span>
+</div><div class="line" id="file-learnjulia-jl-LC84">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC85"><span class="pl-c"># 打印字符串很容易</span>
+</div><div class="line" id="file-learnjulia-jl-LC86"><span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>I&#39;m Julia. Nice to meet you!<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC87">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC88"><span class="pl-c">####################################################</span>
+</div><div class="line" id="file-learnjulia-jl-LC89"><span class="pl-c">## 2. 变量与集合</span>
+</div><div class="line" id="file-learnjulia-jl-LC90"><span class="pl-c">####################################################</span>
+</div><div class="line" id="file-learnjulia-jl-LC91">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC92"><span class="pl-c"># 给变量赋值就是声明变量</span>
+</div><div class="line" id="file-learnjulia-jl-LC93">some_var <span class="pl-k">=</span> <span class="pl-c1">5</span> <span class="pl-c"># =&gt; 5</span>
+</div><div class="line" id="file-learnjulia-jl-LC94">some_var <span class="pl-c"># =&gt; 5</span>
+</div><div class="line" id="file-learnjulia-jl-LC95">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC96"><span class="pl-c"># 访问未声明变量会抛出异常</span>
+</div><div class="line" id="file-learnjulia-jl-LC97"><span class="pl-k">try</span>
+</div><div class="line" id="file-learnjulia-jl-LC98">    some_other_var <span class="pl-c"># =&gt; ERROR: some_other_var not defined</span>
+</div><div class="line" id="file-learnjulia-jl-LC99"><span class="pl-k">catch</span> e
+</div><div class="line" id="file-learnjulia-jl-LC100">    <span class="pl-s3">println</span>(e)
+</div><div class="line" id="file-learnjulia-jl-LC101"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC102">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC103"><span class="pl-c"># 变量名需要以字母开头.</span>
+</div><div class="line" id="file-learnjulia-jl-LC104"><span class="pl-c"># 之后任何字母，数字，下划线，叹号都是合法的。</span>
+</div><div class="line" id="file-learnjulia-jl-LC105">SomeOtherVar123<span class="pl-k">!</span> <span class="pl-k">=</span> <span class="pl-c1">6</span> <span class="pl-c"># =&gt; 6</span>
+</div><div class="line" id="file-learnjulia-jl-LC106">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC107"><span class="pl-c"># 甚至可以用 unicode 字符</span>
+</div><div class="line" id="file-learnjulia-jl-LC108">☃ <span class="pl-k">=</span> <span class="pl-c1">8</span> <span class="pl-c"># =&gt; 8</span>
+</div><div class="line" id="file-learnjulia-jl-LC109"><span class="pl-c"># 用数学符号非常方便</span>
+</div><div class="line" id="file-learnjulia-jl-LC110"><span class="pl-c1">2</span> <span class="pl-k">*</span> π <span class="pl-c"># =&gt; 6.283185307179586</span>
+</div><div class="line" id="file-learnjulia-jl-LC111">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC112"><span class="pl-c"># 注意 Julia 的命名规约:</span>
+</div><div class="line" id="file-learnjulia-jl-LC113"><span class="pl-c">#</span>
+</div><div class="line" id="file-learnjulia-jl-LC114"><span class="pl-c"># * 变量名为小写，单词之间以下划线连接(&#39;\_&#39;)。</span>
+</div><div class="line" id="file-learnjulia-jl-LC115"><span class="pl-c">#</span>
+</div><div class="line" id="file-learnjulia-jl-LC116"><span class="pl-c"># * 类型名以大写字母开头，单词以 CamelCase 方式连接。</span>
+</div><div class="line" id="file-learnjulia-jl-LC117"><span class="pl-c">#</span>
+</div><div class="line" id="file-learnjulia-jl-LC118"><span class="pl-c"># * 函数与宏的名字小写，无下划线。</span>
+</div><div class="line" id="file-learnjulia-jl-LC119"><span class="pl-c">#</span>
+</div><div class="line" id="file-learnjulia-jl-LC120"><span class="pl-c"># * 会改变输入的函数名末位为 !。</span>
+</div><div class="line" id="file-learnjulia-jl-LC121"><span class="pl-c">#   这类函数有时被称为 mutating functions 或 in-place functions.</span>
+</div><div class="line" id="file-learnjulia-jl-LC122">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC123"><span class="pl-c"># 数组存储一列值，index 从 1 开始。</span>
+</div><div class="line" id="file-learnjulia-jl-LC124">a <span class="pl-k">=</span> Int64[] <span class="pl-c"># =&gt; 0-element Int64 Array</span>
+</div><div class="line" id="file-learnjulia-jl-LC125">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC126"><span class="pl-c"># 一维数组可以以逗号分隔值的方式声明。</span>
+</div><div class="line" id="file-learnjulia-jl-LC127">b <span class="pl-k">=</span> [<span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>] <span class="pl-c"># =&gt; 包含 3 个 Int64 类型元素的数组: [4, 5, 6]</span>
+</div><div class="line" id="file-learnjulia-jl-LC128">b[<span class="pl-c1">1</span>] <span class="pl-c"># =&gt; 4</span>
+</div><div class="line" id="file-learnjulia-jl-LC129">b[<span class="pl-c1">end</span>] <span class="pl-c"># =&gt; 6</span>
+</div><div class="line" id="file-learnjulia-jl-LC130">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC131"><span class="pl-c"># 二维数组以分号分隔维度。</span>
+</div><div class="line" id="file-learnjulia-jl-LC132">matrix <span class="pl-k">=</span> [<span class="pl-c1">1</span> <span class="pl-c1">2</span>; <span class="pl-c1">3</span> <span class="pl-c1">4</span>] <span class="pl-c"># =&gt; 2x2 Int64 数组: [1 2; 3 4]</span>
+</div><div class="line" id="file-learnjulia-jl-LC133">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC134"><span class="pl-c"># 使用 push! 和 append! 往数组末尾添加元素</span>
+</div><div class="line" id="file-learnjulia-jl-LC135"><span class="pl-s3">push!</span>(a,<span class="pl-c1">1</span>)     <span class="pl-c"># =&gt; [1]</span>
+</div><div class="line" id="file-learnjulia-jl-LC136"><span class="pl-s3">push!</span>(a,<span class="pl-c1">2</span>)     <span class="pl-c"># =&gt; [1,2]</span>
+</div><div class="line" id="file-learnjulia-jl-LC137"><span class="pl-s3">push!</span>(a,<span class="pl-c1">4</span>)     <span class="pl-c"># =&gt; [1,2,4]</span>
+</div><div class="line" id="file-learnjulia-jl-LC138"><span class="pl-s3">push!</span>(a,<span class="pl-c1">3</span>)     <span class="pl-c"># =&gt; [1,2,4,3]</span>
+</div><div class="line" id="file-learnjulia-jl-LC139"><span class="pl-s3">append!</span>(a,b) <span class="pl-c"># =&gt; [1,2,4,3,4,5,6]</span>
+</div><div class="line" id="file-learnjulia-jl-LC140">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC141"><span class="pl-c"># 用 pop 弹出末尾元素</span>
+</div><div class="line" id="file-learnjulia-jl-LC142"><span class="pl-s3">pop!</span>(b)        <span class="pl-c"># =&gt; 6 and b is now [4,5]</span>
+</div><div class="line" id="file-learnjulia-jl-LC143">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC144"><span class="pl-c"># 可以再放回去</span>
+</div><div class="line" id="file-learnjulia-jl-LC145"><span class="pl-s3">push!</span>(b,<span class="pl-c1">6</span>)   <span class="pl-c"># b 又变成了 [4,5,6].</span>
+</div><div class="line" id="file-learnjulia-jl-LC146">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC147">a[<span class="pl-c1">1</span>] <span class="pl-c"># =&gt; 1 #  永远记住 Julia 的 index 从 1 开始!</span>
+</div><div class="line" id="file-learnjulia-jl-LC148">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC149"><span class="pl-c"># 用 end 可以直接取到最后索引. 可用作任何索引表达式</span>
+</div><div class="line" id="file-learnjulia-jl-LC150">a[<span class="pl-c1">end</span>] <span class="pl-c"># =&gt; 6</span>
+</div><div class="line" id="file-learnjulia-jl-LC151">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC152"><span class="pl-c"># 还支持 shift 和 unshift</span>
+</div><div class="line" id="file-learnjulia-jl-LC153"><span class="pl-s3">shift!</span>(a) <span class="pl-c"># =&gt; 返回 1，而 a 现在时 [2,4,3,4,5,6]</span>
+</div><div class="line" id="file-learnjulia-jl-LC154"><span class="pl-s3">unshift!</span>(a,<span class="pl-c1">7</span>) <span class="pl-c"># =&gt; [7,2,4,3,4,5,6]</span>
+</div><div class="line" id="file-learnjulia-jl-LC155">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC156"><span class="pl-c"># 以叹号结尾的函数名表示它会改变参数的值</span>
+</div><div class="line" id="file-learnjulia-jl-LC157">arr <span class="pl-k">=</span> [<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">6</span>] <span class="pl-c"># =&gt; 包含三个 Int64 元素的数组: [5,4,6]</span>
+</div><div class="line" id="file-learnjulia-jl-LC158"><span class="pl-s3">sort</span>(arr) <span class="pl-c"># =&gt; [4,5,6]; arr 还是 [5,4,6]</span>
+</div><div class="line" id="file-learnjulia-jl-LC159"><span class="pl-s3">sort!</span>(arr) <span class="pl-c"># =&gt; [4,5,6]; arr 现在是 [4,5,6]</span>
+</div><div class="line" id="file-learnjulia-jl-LC160">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC161"><span class="pl-c"># 越界会抛出 BoundsError 异常</span>
+</div><div class="line" id="file-learnjulia-jl-LC162"><span class="pl-k">try</span>
+</div><div class="line" id="file-learnjulia-jl-LC163">    a[<span class="pl-c1">0</span>] <span class="pl-c"># =&gt; ERROR: BoundsError() in getindex at array.jl:270</span>
+</div><div class="line" id="file-learnjulia-jl-LC164">    a[<span class="pl-c1">end</span><span class="pl-k">+</span><span class="pl-c1">1</span>] <span class="pl-c"># =&gt; ERROR: BoundsError() in getindex at array.jl:270</span>
+</div><div class="line" id="file-learnjulia-jl-LC165"><span class="pl-k">catch</span> e
+</div><div class="line" id="file-learnjulia-jl-LC166">    <span class="pl-s3">println</span>(e)
+</div><div class="line" id="file-learnjulia-jl-LC167"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC168">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC169"><span class="pl-c"># 错误会指出发生的行号，包括标准库</span>
+</div><div class="line" id="file-learnjulia-jl-LC170"><span class="pl-c"># 如果你有 Julia 源代码，你可以找到这些地方</span>
+</div><div class="line" id="file-learnjulia-jl-LC171">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC172"><span class="pl-c"># 可以用 range 初始化数组</span>
+</div><div class="line" id="file-learnjulia-jl-LC173">a <span class="pl-k">=</span> [<span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">5</span>] <span class="pl-c"># =&gt; 5-element Int64 Array: [1,2,3,4,5]</span>
+</div><div class="line" id="file-learnjulia-jl-LC174">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC175"><span class="pl-c"># 可以切割数组</span>
+</div><div class="line" id="file-learnjulia-jl-LC176">a[<span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">3</span>] <span class="pl-c"># =&gt; [1, 2, 3]</span>
+</div><div class="line" id="file-learnjulia-jl-LC177">a[<span class="pl-c1">2</span><span class="pl-c1">:end</span>] <span class="pl-c"># =&gt; [2, 3, 4, 5]</span>
+</div><div class="line" id="file-learnjulia-jl-LC178">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC179"><span class="pl-c"># 用 splice! 切割原数组</span>
+</div><div class="line" id="file-learnjulia-jl-LC180">arr <span class="pl-k">=</span> [<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>]
+</div><div class="line" id="file-learnjulia-jl-LC181"><span class="pl-s3">splice!</span>(arr,<span class="pl-c1">2</span>) <span class="pl-c"># =&gt; 4 ; arr 变成了 [3,5]</span>
+</div><div class="line" id="file-learnjulia-jl-LC182">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC183"><span class="pl-c"># 用 append! 连接数组</span>
+</div><div class="line" id="file-learnjulia-jl-LC184">b <span class="pl-k">=</span> [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]
+</div><div class="line" id="file-learnjulia-jl-LC185"><span class="pl-s3">append!</span>(a,b) <span class="pl-c"># a 变成了 [1, 2, 3, 4, 5, 1, 2, 3]</span>
+</div><div class="line" id="file-learnjulia-jl-LC186">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC187"><span class="pl-c"># 检查元素是否在数组中</span>
+</div><div class="line" id="file-learnjulia-jl-LC188"><span class="pl-s3">in</span>(<span class="pl-c1">1</span>, a) <span class="pl-c"># =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC189">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC190"><span class="pl-c"># 用 length 获得数组长度</span>
+</div><div class="line" id="file-learnjulia-jl-LC191"><span class="pl-s3">length</span>(a) <span class="pl-c"># =&gt; 8</span>
+</div><div class="line" id="file-learnjulia-jl-LC192">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC193"><span class="pl-c"># Tuples 是 immutable 的</span>
+</div><div class="line" id="file-learnjulia-jl-LC194">tup <span class="pl-k">=</span> (<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>) <span class="pl-c"># =&gt; (1,2,3) # an (Int64,Int64,Int64) tuple.</span>
+</div><div class="line" id="file-learnjulia-jl-LC195">tup[<span class="pl-c1">1</span>] <span class="pl-c"># =&gt; 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC196"><span class="pl-k">try</span><span class="pl-k">:</span>
+</div><div class="line" id="file-learnjulia-jl-LC197">    tup[<span class="pl-c1">1</span>] <span class="pl-k">=</span> <span class="pl-c1">3</span> <span class="pl-c"># =&gt; ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)</span>
+</div><div class="line" id="file-learnjulia-jl-LC198"><span class="pl-k">catch</span> e
+</div><div class="line" id="file-learnjulia-jl-LC199">    <span class="pl-s3">println</span>(e)
+</div><div class="line" id="file-learnjulia-jl-LC200"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC201">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC202"><span class="pl-c"># 大多数组的函数同样支持 tuples</span>
+</div><div class="line" id="file-learnjulia-jl-LC203"><span class="pl-s3">length</span>(tup) <span class="pl-c"># =&gt; 3</span>
+</div><div class="line" id="file-learnjulia-jl-LC204">tup[<span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">2</span>] <span class="pl-c"># =&gt; (1,2)</span>
+</div><div class="line" id="file-learnjulia-jl-LC205"><span class="pl-s3">in</span>(<span class="pl-c1">2</span>, tup) <span class="pl-c"># =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC206">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC207"><span class="pl-c"># 可以将 tuples 元素分别赋给变量</span>
+</div><div class="line" id="file-learnjulia-jl-LC208">a, b, c <span class="pl-k">=</span> (<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>) <span class="pl-c"># =&gt; (1,2,3)  # a is now 1, b is now 2 and c is now 3</span>
+</div><div class="line" id="file-learnjulia-jl-LC209">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC210"><span class="pl-c"># 不用括号也可以</span>
+</div><div class="line" id="file-learnjulia-jl-LC211">d, e, f <span class="pl-k">=</span> <span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span> <span class="pl-c"># =&gt; (4,5,6)</span>
+</div><div class="line" id="file-learnjulia-jl-LC212">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC213"><span class="pl-c"># 单元素 tuple 不等于其元素值</span>
+</div><div class="line" id="file-learnjulia-jl-LC214">(<span class="pl-c1">1</span>,) <span class="pl-k">==</span> <span class="pl-c1">1</span> <span class="pl-c"># =&gt; false</span>
+</div><div class="line" id="file-learnjulia-jl-LC215">(<span class="pl-c1">1</span>) <span class="pl-k">==</span> <span class="pl-c1">1</span> <span class="pl-c"># =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC216">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC217"><span class="pl-c"># 交换值</span>
+</div><div class="line" id="file-learnjulia-jl-LC218">e, d <span class="pl-k">=</span> d, e  <span class="pl-c"># =&gt; (5,4) # d is now 5 and e is now 4</span>
+</div><div class="line" id="file-learnjulia-jl-LC219">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC220">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC221"><span class="pl-c"># 字典Dictionaries store mappings</span>
+</div><div class="line" id="file-learnjulia-jl-LC222">empty_dict <span class="pl-k">=</span> <span class="pl-s3">Dict</span>() <span class="pl-c"># =&gt; Dict{Any,Any}()</span>
+</div><div class="line" id="file-learnjulia-jl-LC223">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC224"><span class="pl-c"># 也可以用字面量创建字典</span>
+</div><div class="line" id="file-learnjulia-jl-LC225">filled_dict <span class="pl-k">=</span> [<span class="pl-s1"><span class="pl-pds">&quot;</span>one<span class="pl-pds">&quot;</span></span><span class="pl-k">=</span><span class="pl-k">&gt;</span> <span class="pl-c1">1</span>, <span class="pl-s1"><span class="pl-pds">&quot;</span>two<span class="pl-pds">&quot;</span></span><span class="pl-k">=</span><span class="pl-k">&gt;</span> <span class="pl-c1">2</span>, <span class="pl-s1"><span class="pl-pds">&quot;</span>three<span class="pl-pds">&quot;</span></span><span class="pl-k">=</span><span class="pl-k">&gt;</span> <span class="pl-c1">3</span>]
+</div><div class="line" id="file-learnjulia-jl-LC226"><span class="pl-c"># =&gt; Dict{ASCIIString,Int64}</span>
+</div><div class="line" id="file-learnjulia-jl-LC227">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC228"><span class="pl-c"># 用 [] 获得键值</span>
+</div><div class="line" id="file-learnjulia-jl-LC229">filled_dict[<span class="pl-s1"><span class="pl-pds">&quot;</span>one<span class="pl-pds">&quot;</span></span>] <span class="pl-c"># =&gt; 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC230">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC231"><span class="pl-c"># 获得所有键</span>
+</div><div class="line" id="file-learnjulia-jl-LC232"><span class="pl-s3">keys</span>(filled_dict)
+</div><div class="line" id="file-learnjulia-jl-LC233"><span class="pl-c"># =&gt; KeyIterator{Dict{ASCIIString,Int64}}([&quot;three&quot;=&gt;3,&quot;one&quot;=&gt;1,&quot;two&quot;=&gt;2])</span>
+</div><div class="line" id="file-learnjulia-jl-LC234"><span class="pl-c"># 注意，键的顺序不是插入时的顺序</span>
+</div><div class="line" id="file-learnjulia-jl-LC235">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC236"><span class="pl-c"># 获得所有值</span>
+</div><div class="line" id="file-learnjulia-jl-LC237"><span class="pl-s3">values</span>(filled_dict)
+</div><div class="line" id="file-learnjulia-jl-LC238"><span class="pl-c"># =&gt; ValueIterator{Dict{ASCIIString,Int64}}([&quot;three&quot;=&gt;3,&quot;one&quot;=&gt;1,&quot;two&quot;=&gt;2])</span>
+</div><div class="line" id="file-learnjulia-jl-LC239"><span class="pl-c"># 注意，值的顺序也一样</span>
+</div><div class="line" id="file-learnjulia-jl-LC240">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC241"><span class="pl-c"># 用 in 检查键值是否已存在，用 haskey 检查键是否存在</span>
+</div><div class="line" id="file-learnjulia-jl-LC242"><span class="pl-s3">in</span>((<span class="pl-s1"><span class="pl-pds">&quot;</span>one<span class="pl-pds">&quot;</span></span>, <span class="pl-c1">1</span>), filled_dict) <span class="pl-c"># =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC243"><span class="pl-s3">in</span>((<span class="pl-s1"><span class="pl-pds">&quot;</span>two<span class="pl-pds">&quot;</span></span>, <span class="pl-c1">3</span>), filled_dict) <span class="pl-c"># =&gt; false</span>
+</div><div class="line" id="file-learnjulia-jl-LC244"><span class="pl-s3">haskey</span>(filled_dict, <span class="pl-s1"><span class="pl-pds">&quot;</span>one<span class="pl-pds">&quot;</span></span>) <span class="pl-c"># =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC245"><span class="pl-s3">haskey</span>(filled_dict, <span class="pl-c1">1</span>) <span class="pl-c"># =&gt; false</span>
+</div><div class="line" id="file-learnjulia-jl-LC246">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC247"><span class="pl-c"># 获取不存在的键的值会抛出异常</span>
+</div><div class="line" id="file-learnjulia-jl-LC248"><span class="pl-k">try</span>
+</div><div class="line" id="file-learnjulia-jl-LC249">    filled_dict[<span class="pl-s1"><span class="pl-pds">&quot;</span>four<span class="pl-pds">&quot;</span></span>] <span class="pl-c"># =&gt; ERROR: key not found: four in getindex at dict.jl:489</span>
+</div><div class="line" id="file-learnjulia-jl-LC250"><span class="pl-k">catch</span> e
+</div><div class="line" id="file-learnjulia-jl-LC251">    <span class="pl-s3">println</span>(e)
+</div><div class="line" id="file-learnjulia-jl-LC252"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC253">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC254"><span class="pl-c"># 使用 get 可以提供默认值来避免异常</span>
+</div><div class="line" id="file-learnjulia-jl-LC255"><span class="pl-c"># get(dictionary,key,default_value)</span>
+</div><div class="line" id="file-learnjulia-jl-LC256"><span class="pl-s3">get</span>(filled_dict,<span class="pl-s1"><span class="pl-pds">&quot;</span>one<span class="pl-pds">&quot;</span></span>,<span class="pl-c1">4</span>) <span class="pl-c"># =&gt; 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC257"><span class="pl-s3">get</span>(filled_dict,<span class="pl-s1"><span class="pl-pds">&quot;</span>four<span class="pl-pds">&quot;</span></span>,<span class="pl-c1">4</span>) <span class="pl-c"># =&gt; 4</span>
+</div><div class="line" id="file-learnjulia-jl-LC258">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC259"><span class="pl-c"># 用 Sets 表示无序不可重复的值的集合</span>
+</div><div class="line" id="file-learnjulia-jl-LC260">empty_set <span class="pl-k">=</span> <span class="pl-s3">Set</span>() <span class="pl-c"># =&gt; Set{Any}()</span>
+</div><div class="line" id="file-learnjulia-jl-LC261"><span class="pl-c"># 初始化一个 Set 并定义其值</span>
+</div><div class="line" id="file-learnjulia-jl-LC262">filled_set <span class="pl-k">=</span> <span class="pl-s3">Set</span>(<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>) <span class="pl-c"># =&gt; Set{Int64}(1,2,3,4)</span>
+</div><div class="line" id="file-learnjulia-jl-LC263">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC264"><span class="pl-c"># 添加值</span>
+</div><div class="line" id="file-learnjulia-jl-LC265"><span class="pl-s3">push!</span>(filled_set,<span class="pl-c1">5</span>) <span class="pl-c"># =&gt; Set{Int64}(5,4,2,3,1)</span>
+</div><div class="line" id="file-learnjulia-jl-LC266">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC267"><span class="pl-c"># 检查是否存在某值</span>
+</div><div class="line" id="file-learnjulia-jl-LC268"><span class="pl-s3">in</span>(<span class="pl-c1">2</span>, filled_set) <span class="pl-c"># =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC269"><span class="pl-s3">in</span>(<span class="pl-c1">10</span>, filled_set) <span class="pl-c"># =&gt; false</span>
+</div><div class="line" id="file-learnjulia-jl-LC270">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC271"><span class="pl-c"># 交集，并集，差集</span>
+</div><div class="line" id="file-learnjulia-jl-LC272">other_set <span class="pl-k">=</span> <span class="pl-s3">Set</span>(<span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>) <span class="pl-c"># =&gt; Set{Int64}(6,4,5,3)</span>
+</div><div class="line" id="file-learnjulia-jl-LC273"><span class="pl-s3">intersect</span>(filled_set, other_set) <span class="pl-c"># =&gt; Set{Int64}(3,4,5)</span>
+</div><div class="line" id="file-learnjulia-jl-LC274"><span class="pl-s3">union</span>(filled_set, other_set) <span class="pl-c"># =&gt; Set{Int64}(1,2,3,4,5,6)</span>
+</div><div class="line" id="file-learnjulia-jl-LC275"><span class="pl-s3">setdiff</span>(<span class="pl-s3">Set</span>(<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>),<span class="pl-s3">Set</span>(<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">5</span>)) <span class="pl-c"># =&gt; Set{Int64}(1,4)</span>
+</div><div class="line" id="file-learnjulia-jl-LC276">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC277">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC278"><span class="pl-c">####################################################</span>
+</div><div class="line" id="file-learnjulia-jl-LC279"><span class="pl-c">## 3. 控制流</span>
+</div><div class="line" id="file-learnjulia-jl-LC280"><span class="pl-c">####################################################</span>
+</div><div class="line" id="file-learnjulia-jl-LC281">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC282"><span class="pl-c"># 声明一个变量</span>
+</div><div class="line" id="file-learnjulia-jl-LC283">some_var <span class="pl-k">=</span> <span class="pl-c1">5</span>
+</div><div class="line" id="file-learnjulia-jl-LC284">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC285"><span class="pl-c"># 这是一个 if 语句，缩进不是必要的</span>
+</div><div class="line" id="file-learnjulia-jl-LC286"><span class="pl-k">if</span> some_var <span class="pl-k">&gt;</span> <span class="pl-c1">10</span>
+</div><div class="line" id="file-learnjulia-jl-LC287">    <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>some_var is totally bigger than 10.<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC288"><span class="pl-k">elseif</span> some_var <span class="pl-k">&lt;</span> <span class="pl-c1">10</span>    <span class="pl-c"># elseif 是可选的.</span>
+</div><div class="line" id="file-learnjulia-jl-LC289">    <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>some_var is smaller than 10.<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC290"><span class="pl-k">else</span>                    <span class="pl-c"># else 也是可选的.</span>
+</div><div class="line" id="file-learnjulia-jl-LC291">    <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>some_var is indeed 10.<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC292"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC293"><span class="pl-c"># =&gt; prints &quot;some var is smaller than 10&quot;</span>
+</div><div class="line" id="file-learnjulia-jl-LC294">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC295">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC296"><span class="pl-c"># For 循环遍历</span>
+</div><div class="line" id="file-learnjulia-jl-LC297"><span class="pl-c"># Iterable 类型包括 Range, Array, Set, Dict, 以及 String.</span>
+</div><div class="line" id="file-learnjulia-jl-LC298"><span class="pl-k">for</span> animal<span class="pl-k">=</span>[<span class="pl-s1"><span class="pl-pds">&quot;</span>dog<span class="pl-pds">&quot;</span></span>, <span class="pl-s1"><span class="pl-pds">&quot;</span>cat<span class="pl-pds">&quot;</span></span>, <span class="pl-s1"><span class="pl-pds">&quot;</span>mouse<span class="pl-pds">&quot;</span></span>]
+</div><div class="line" id="file-learnjulia-jl-LC299">    <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>$animal is a mammal<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC300">    <span class="pl-c"># 可用 $ 将 variables 或 expression 转换为字符串into strings</span>
+</div><div class="line" id="file-learnjulia-jl-LC301"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC302"><span class="pl-c"># prints:</span>
+</div><div class="line" id="file-learnjulia-jl-LC303"><span class="pl-c">#    dog is a mammal</span>
+</div><div class="line" id="file-learnjulia-jl-LC304"><span class="pl-c">#    cat is a mammal</span>
+</div><div class="line" id="file-learnjulia-jl-LC305"><span class="pl-c">#    mouse is a mammal</span>
+</div><div class="line" id="file-learnjulia-jl-LC306">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC307"><span class="pl-c"># You can use &#39;in&#39; instead of &#39;=&#39;.</span>
+</div><div class="line" id="file-learnjulia-jl-LC308"><span class="pl-k">for</span> animal <span class="pl-k">in</span> [<span class="pl-s1"><span class="pl-pds">&quot;</span>dog<span class="pl-pds">&quot;</span></span>, <span class="pl-s1"><span class="pl-pds">&quot;</span>cat<span class="pl-pds">&quot;</span></span>, <span class="pl-s1"><span class="pl-pds">&quot;</span>mouse<span class="pl-pds">&quot;</span></span>]
+</div><div class="line" id="file-learnjulia-jl-LC309">    <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>$animal is a mammal<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC310"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC311"><span class="pl-c"># prints:</span>
+</div><div class="line" id="file-learnjulia-jl-LC312"><span class="pl-c">#    dog is a mammal</span>
+</div><div class="line" id="file-learnjulia-jl-LC313"><span class="pl-c">#    cat is a mammal</span>
+</div><div class="line" id="file-learnjulia-jl-LC314"><span class="pl-c">#    mouse is a mammal</span>
+</div><div class="line" id="file-learnjulia-jl-LC315">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC316"><span class="pl-k">for</span> a <span class="pl-k">in</span> [<span class="pl-s1"><span class="pl-pds">&quot;</span>dog<span class="pl-pds">&quot;</span></span><span class="pl-k">=</span><span class="pl-k">&gt;</span><span class="pl-s1"><span class="pl-pds">&quot;</span>mammal<span class="pl-pds">&quot;</span></span>,<span class="pl-s1"><span class="pl-pds">&quot;</span>cat<span class="pl-pds">&quot;</span></span><span class="pl-k">=</span><span class="pl-k">&gt;</span><span class="pl-s1"><span class="pl-pds">&quot;</span>mammal<span class="pl-pds">&quot;</span></span>,<span class="pl-s1"><span class="pl-pds">&quot;</span>mouse<span class="pl-pds">&quot;</span></span><span class="pl-k">=</span><span class="pl-k">&gt;</span><span class="pl-s1"><span class="pl-pds">&quot;</span>mammal<span class="pl-pds">&quot;</span></span>]
+</div><div class="line" id="file-learnjulia-jl-LC317">    <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>$(a[1]) is a $(a[2])<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC318"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC319"><span class="pl-c"># prints:</span>
+</div><div class="line" id="file-learnjulia-jl-LC320"><span class="pl-c">#    dog is a mammal</span>
+</div><div class="line" id="file-learnjulia-jl-LC321"><span class="pl-c">#    cat is a mammal</span>
+</div><div class="line" id="file-learnjulia-jl-LC322"><span class="pl-c">#    mouse is a mammal</span>
+</div><div class="line" id="file-learnjulia-jl-LC323">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC324"><span class="pl-k">for</span> (k,v) <span class="pl-k">in</span> [<span class="pl-s1"><span class="pl-pds">&quot;</span>dog<span class="pl-pds">&quot;</span></span><span class="pl-k">=</span><span class="pl-k">&gt;</span><span class="pl-s1"><span class="pl-pds">&quot;</span>mammal<span class="pl-pds">&quot;</span></span>,<span class="pl-s1"><span class="pl-pds">&quot;</span>cat<span class="pl-pds">&quot;</span></span><span class="pl-k">=</span><span class="pl-k">&gt;</span><span class="pl-s1"><span class="pl-pds">&quot;</span>mammal<span class="pl-pds">&quot;</span></span>,<span class="pl-s1"><span class="pl-pds">&quot;</span>mouse<span class="pl-pds">&quot;</span></span><span class="pl-k">=</span><span class="pl-k">&gt;</span><span class="pl-s1"><span class="pl-pds">&quot;</span>mammal<span class="pl-pds">&quot;</span></span>]
+</div><div class="line" id="file-learnjulia-jl-LC325">    <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>$k is a $v<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC326"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC327"><span class="pl-c"># prints:</span>
+</div><div class="line" id="file-learnjulia-jl-LC328"><span class="pl-c">#    dog is a mammal</span>
+</div><div class="line" id="file-learnjulia-jl-LC329"><span class="pl-c">#    cat is a mammal</span>
+</div><div class="line" id="file-learnjulia-jl-LC330"><span class="pl-c">#    mouse is a mammal</span>
+</div><div class="line" id="file-learnjulia-jl-LC331">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC332"><span class="pl-c"># While 循环</span>
+</div><div class="line" id="file-learnjulia-jl-LC333">x <span class="pl-k">=</span> <span class="pl-c1">0</span>
+</div><div class="line" id="file-learnjulia-jl-LC334"><span class="pl-k">while</span> x <span class="pl-k">&lt;</span> <span class="pl-c1">4</span>
+</div><div class="line" id="file-learnjulia-jl-LC335">    <span class="pl-s3">println</span>(x)
+</div><div class="line" id="file-learnjulia-jl-LC336">    x <span class="pl-k">+=</span> <span class="pl-c1">1</span>  <span class="pl-c"># x = x + 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC337"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC338"><span class="pl-c"># prints:</span>
+</div><div class="line" id="file-learnjulia-jl-LC339"><span class="pl-c">#   0</span>
+</div><div class="line" id="file-learnjulia-jl-LC340"><span class="pl-c">#   1</span>
+</div><div class="line" id="file-learnjulia-jl-LC341"><span class="pl-c">#   2</span>
+</div><div class="line" id="file-learnjulia-jl-LC342"><span class="pl-c">#   3</span>
+</div><div class="line" id="file-learnjulia-jl-LC343">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC344"><span class="pl-c"># 用 try/catch 处理异常</span>
+</div><div class="line" id="file-learnjulia-jl-LC345"><span class="pl-k">try</span>
+</div><div class="line" id="file-learnjulia-jl-LC346">   <span class="pl-s3">error</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>help<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC347"><span class="pl-k">catch</span> e
+</div><div class="line" id="file-learnjulia-jl-LC348">   <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>caught it $e<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC349"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC350"><span class="pl-c"># =&gt; caught it ErrorException(&quot;help&quot;)</span>
+</div><div class="line" id="file-learnjulia-jl-LC351">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC352">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC353"><span class="pl-c">####################################################</span>
+</div><div class="line" id="file-learnjulia-jl-LC354"><span class="pl-c">## 4. 函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC355"><span class="pl-c">####################################################</span>
+</div><div class="line" id="file-learnjulia-jl-LC356">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC357"><span class="pl-c"># 用关键字 &#39;function&#39; 可创建一个新函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC358"><span class="pl-c">#function name(arglist)</span>
+</div><div class="line" id="file-learnjulia-jl-LC359"><span class="pl-c">#  body...</span>
+</div><div class="line" id="file-learnjulia-jl-LC360"><span class="pl-c">#end</span>
+</div><div class="line" id="file-learnjulia-jl-LC361"><span class="pl-k">function</span> <span class="pl-en">add</span>(x, y)
+</div><div class="line" id="file-learnjulia-jl-LC362">    <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>x is $x and y is $y<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC363">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC364">    <span class="pl-c"># 最后一行语句的值为返回</span>
+</div><div class="line" id="file-learnjulia-jl-LC365">    x <span class="pl-k">+</span> y
+</div><div class="line" id="file-learnjulia-jl-LC366"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC367">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC368"><span class="pl-s3">add</span>(<span class="pl-c1">5</span>, <span class="pl-c1">6</span>) <span class="pl-c"># =&gt; 在 &quot;x is 5 and y is 6&quot; 后会打印 11</span>
+</div><div class="line" id="file-learnjulia-jl-LC369">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC370"><span class="pl-c"># 还可以定义接收可变长参数的函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC371"><span class="pl-k">function</span> <span class="pl-en">varargs</span>(args<span class="pl-k">...</span>)
+</div><div class="line" id="file-learnjulia-jl-LC372">    <span class="pl-k">return</span> args
+</div><div class="line" id="file-learnjulia-jl-LC373">    <span class="pl-c"># 关键字 return 可在函数内部任何地方返回</span>
+</div><div class="line" id="file-learnjulia-jl-LC374"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC375"><span class="pl-c"># =&gt; varargs (generic function with 1 method)</span>
+</div><div class="line" id="file-learnjulia-jl-LC376">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC377"><span class="pl-s3">varargs</span>(<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>) <span class="pl-c"># =&gt; (1,2,3)</span>
+</div><div class="line" id="file-learnjulia-jl-LC378">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC379"><span class="pl-c"># 省略号 ... 被称为 splat.</span>
+</div><div class="line" id="file-learnjulia-jl-LC380"><span class="pl-c"># 刚刚用在了函数定义中</span>
+</div><div class="line" id="file-learnjulia-jl-LC381"><span class="pl-c"># 还可以用在函数的调用</span>
+</div><div class="line" id="file-learnjulia-jl-LC382"><span class="pl-c"># Array 或者 Tuple 的内容会变成参数列表</span>
+</div><div class="line" id="file-learnjulia-jl-LC383"><span class="pl-s3">Set</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>])    <span class="pl-c"># =&gt; Set{Array{Int64,1}}([1,2,3]) # 获得一个 Array 的 Set</span>
+</div><div class="line" id="file-learnjulia-jl-LC384"><span class="pl-s3">Set</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]<span class="pl-k">.</span><span class="pl-k">..</span>) <span class="pl-c"># =&gt; Set{Int64}(1,2,3) # 相当于 Set(1,2,3)</span>
+</div><div class="line" id="file-learnjulia-jl-LC385">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC386">x <span class="pl-k">=</span> (<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>)     <span class="pl-c"># =&gt; (1,2,3)</span>
+</div><div class="line" id="file-learnjulia-jl-LC387"><span class="pl-s3">Set</span>(x)          <span class="pl-c"># =&gt; Set{(Int64,Int64,Int64)}((1,2,3)) # 一个 Tuple 的 Set</span>
+</div><div class="line" id="file-learnjulia-jl-LC388"><span class="pl-s3">Set</span>(x<span class="pl-k">...</span>)       <span class="pl-c"># =&gt; Set{Int64}(2,3,1)</span>
+</div><div class="line" id="file-learnjulia-jl-LC389">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC390">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC391"><span class="pl-c"># 可定义可选参数的函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC392"><span class="pl-k">function</span> <span class="pl-en">defaults</span>(a,b,x<span class="pl-k">=</span><span class="pl-c1">5</span>,y<span class="pl-k">=</span><span class="pl-c1">6</span>)
+</div><div class="line" id="file-learnjulia-jl-LC393">    <span class="pl-k">return</span> <span class="pl-s1"><span class="pl-pds">&quot;</span>$a $b and $x $y<span class="pl-pds">&quot;</span></span>
+</div><div class="line" id="file-learnjulia-jl-LC394"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC395">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC396"><span class="pl-s3">defaults</span>(<span class="pl-s1"><span class="pl-pds">&#39;</span>h<span class="pl-pds">&#39;</span></span>,<span class="pl-s1"><span class="pl-pds">&#39;</span>g<span class="pl-pds">&#39;</span></span>) <span class="pl-c"># =&gt; &quot;h g and 5 6&quot;</span>
+</div><div class="line" id="file-learnjulia-jl-LC397"><span class="pl-s3">defaults</span>(<span class="pl-s1"><span class="pl-pds">&#39;</span>h<span class="pl-pds">&#39;</span></span>,<span class="pl-s1"><span class="pl-pds">&#39;</span>g<span class="pl-pds">&#39;</span></span>,<span class="pl-s1"><span class="pl-pds">&#39;</span>j<span class="pl-pds">&#39;</span></span>) <span class="pl-c"># =&gt; &quot;h g and j 6&quot;</span>
+</div><div class="line" id="file-learnjulia-jl-LC398"><span class="pl-s3">defaults</span>(<span class="pl-s1"><span class="pl-pds">&#39;</span>h<span class="pl-pds">&#39;</span></span>,<span class="pl-s1"><span class="pl-pds">&#39;</span>g<span class="pl-pds">&#39;</span></span>,<span class="pl-s1"><span class="pl-pds">&#39;</span>j<span class="pl-pds">&#39;</span></span>,<span class="pl-s1"><span class="pl-pds">&#39;</span>k<span class="pl-pds">&#39;</span></span>) <span class="pl-c"># =&gt; &quot;h g and j k&quot;</span>
+</div><div class="line" id="file-learnjulia-jl-LC399"><span class="pl-k">try</span>
+</div><div class="line" id="file-learnjulia-jl-LC400">    <span class="pl-s3">defaults</span>(<span class="pl-s1"><span class="pl-pds">&#39;</span>h<span class="pl-pds">&#39;</span></span>) <span class="pl-c"># =&gt; ERROR: no method defaults(Char,)</span>
+</div><div class="line" id="file-learnjulia-jl-LC401">    <span class="pl-s3">defaults</span>() <span class="pl-c"># =&gt; ERROR: no methods defaults()</span>
+</div><div class="line" id="file-learnjulia-jl-LC402"><span class="pl-k">catch</span> e
+</div><div class="line" id="file-learnjulia-jl-LC403">    <span class="pl-s3">println</span>(e)
+</div><div class="line" id="file-learnjulia-jl-LC404"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC405">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC406"><span class="pl-c"># 还可以定义键值对的参数</span>
+</div><div class="line" id="file-learnjulia-jl-LC407"><span class="pl-k">function</span> <span class="pl-en">keyword_args</span>(;k1<span class="pl-k">=</span><span class="pl-c1">4</span>,name2<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">&quot;</span>hello<span class="pl-pds">&quot;</span></span>) <span class="pl-c"># note the ;</span>
+</div><div class="line" id="file-learnjulia-jl-LC408">    <span class="pl-k">return</span> [<span class="pl-s1"><span class="pl-pds">&quot;</span>k1<span class="pl-pds">&quot;</span></span><span class="pl-k">=</span><span class="pl-k">&gt;</span>k1,<span class="pl-s1"><span class="pl-pds">&quot;</span>name2<span class="pl-pds">&quot;</span></span><span class="pl-k">=</span><span class="pl-k">&gt;</span>name2]
+</div><div class="line" id="file-learnjulia-jl-LC409"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC410">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC411"><span class="pl-s3">keyword_args</span>(name2<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">&quot;</span>ness<span class="pl-pds">&quot;</span></span>) <span class="pl-c"># =&gt; [&quot;name2&quot;=&gt;&quot;ness&quot;,&quot;k1&quot;=&gt;4]</span>
+</div><div class="line" id="file-learnjulia-jl-LC412"><span class="pl-s3">keyword_args</span>(k1<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">&quot;</span>mine<span class="pl-pds">&quot;</span></span>) <span class="pl-c"># =&gt; [&quot;k1&quot;=&gt;&quot;mine&quot;,&quot;name2&quot;=&gt;&quot;hello&quot;]</span>
+</div><div class="line" id="file-learnjulia-jl-LC413"><span class="pl-s3">keyword_args</span>() <span class="pl-c"># =&gt; [&quot;name2&quot;=&gt;&quot;hello&quot;,&quot;k1&quot;=&gt;4]</span>
+</div><div class="line" id="file-learnjulia-jl-LC414">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC415"><span class="pl-c"># 可以组合各种类型的参数在同一个函数的参数列表中</span>
+</div><div class="line" id="file-learnjulia-jl-LC416"><span class="pl-k">function</span> <span class="pl-en">all_the_args</span>(normal_arg, optional_positional_arg<span class="pl-k">=</span><span class="pl-c1">2</span>; keyword_arg<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">&quot;</span>foo<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC417">    <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>normal arg: $normal_arg<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC418">    <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>optional arg: $optional_positional_arg<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC419">    <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>keyword arg: $keyword_arg<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC420"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC421">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC422"><span class="pl-s3">all_the_args</span>(<span class="pl-c1">1</span>, <span class="pl-c1">3</span>, keyword_arg<span class="pl-k">=</span><span class="pl-c1">4</span>)
+</div><div class="line" id="file-learnjulia-jl-LC423"><span class="pl-c"># prints:</span>
+</div><div class="line" id="file-learnjulia-jl-LC424"><span class="pl-c">#   normal arg: 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC425"><span class="pl-c">#   optional arg: 3</span>
+</div><div class="line" id="file-learnjulia-jl-LC426"><span class="pl-c">#   keyword arg: 4</span>
+</div><div class="line" id="file-learnjulia-jl-LC427">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC428"><span class="pl-c"># Julia 有一等函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC429"><span class="pl-k">function</span> <span class="pl-en">create_adder</span>(x)
+</div><div class="line" id="file-learnjulia-jl-LC430">    adder <span class="pl-k">=</span> <span class="pl-k">function</span> (y)
+</div><div class="line" id="file-learnjulia-jl-LC431">        <span class="pl-k">return</span> x <span class="pl-k">+</span> y
+</div><div class="line" id="file-learnjulia-jl-LC432">    <span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC433">    <span class="pl-k">return</span> adder
+</div><div class="line" id="file-learnjulia-jl-LC434"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC435">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC436"><span class="pl-c"># 这是用 &quot;stabby lambda syntax&quot; 创建的匿名函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC437">(x <span class="pl-k">-&gt;</span> x <span class="pl-k">&gt;</span> <span class="pl-c1">2</span>)(<span class="pl-c1">3</span>) <span class="pl-c"># =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC438">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC439"><span class="pl-c"># 这个函数和上面的 create_adder 一模一样</span>
+</div><div class="line" id="file-learnjulia-jl-LC440"><span class="pl-k">function</span> <span class="pl-en">create_adder</span>(x)
+</div><div class="line" id="file-learnjulia-jl-LC441">    y <span class="pl-k">-&gt;</span> x <span class="pl-k">+</span> y
+</div><div class="line" id="file-learnjulia-jl-LC442"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC443">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC444"><span class="pl-c"># 你也可以给内部函数起个名字</span>
+</div><div class="line" id="file-learnjulia-jl-LC445"><span class="pl-k">function</span> <span class="pl-en">create_adder</span>(x)
+</div><div class="line" id="file-learnjulia-jl-LC446">    <span class="pl-k">function</span> <span class="pl-en">adder</span>(y)
+</div><div class="line" id="file-learnjulia-jl-LC447">        x <span class="pl-k">+</span> y
+</div><div class="line" id="file-learnjulia-jl-LC448">    <span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC449">    adder
+</div><div class="line" id="file-learnjulia-jl-LC450"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC451">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC452">add_10 <span class="pl-k">=</span> <span class="pl-s3">create_adder</span>(<span class="pl-c1">10</span>)
+</div><div class="line" id="file-learnjulia-jl-LC453"><span class="pl-s3">add_10</span>(<span class="pl-c1">3</span>) <span class="pl-c"># =&gt; 13</span>
+</div><div class="line" id="file-learnjulia-jl-LC454">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC455">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC456"><span class="pl-c"># 内置的高阶函数有</span>
+</div><div class="line" id="file-learnjulia-jl-LC457"><span class="pl-s3">map</span>(add_10, [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]) <span class="pl-c"># =&gt; [11, 12, 13]</span>
+</div><div class="line" id="file-learnjulia-jl-LC458"><span class="pl-s3">filter</span>(x <span class="pl-k">-&gt;</span> x <span class="pl-k">&gt;</span> <span class="pl-c1">5</span>, [<span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>]) <span class="pl-c"># =&gt; [6, 7]</span>
+</div><div class="line" id="file-learnjulia-jl-LC459">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC460"><span class="pl-c"># 还可以使用 list comprehensions 替代 map</span>
+</div><div class="line" id="file-learnjulia-jl-LC461">[<span class="pl-s3">add_10</span>(i) <span class="pl-k">for</span> i<span class="pl-k">=</span>[<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>]] <span class="pl-c"># =&gt; [11, 12, 13]</span>
+</div><div class="line" id="file-learnjulia-jl-LC462">[<span class="pl-s3">add_10</span>(i) <span class="pl-k">for</span> i <span class="pl-k">in</span> [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>]] <span class="pl-c"># =&gt; [11, 12, 13]</span>
+</div><div class="line" id="file-learnjulia-jl-LC463">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC464"><span class="pl-c">####################################################</span>
+</div><div class="line" id="file-learnjulia-jl-LC465"><span class="pl-c">## 5.  类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC466"><span class="pl-c">####################################################</span>
+</div><div class="line" id="file-learnjulia-jl-LC467">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC468"><span class="pl-c"># Julia 有类型系统</span>
+</div><div class="line" id="file-learnjulia-jl-LC469"><span class="pl-c"># 所有的值都有类型；但变量本身没有类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC470"><span class="pl-c"># 你可以用 `typeof` 函数获得值的类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC471"><span class="pl-s3">typeof</span>(<span class="pl-c1">5</span>) <span class="pl-c"># =&gt; Int64</span>
+</div><div class="line" id="file-learnjulia-jl-LC472">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC473"><span class="pl-c"># 类型是一等值</span>
+</div><div class="line" id="file-learnjulia-jl-LC474"><span class="pl-s3">typeof</span>(Int64) <span class="pl-c"># =&gt; DataType</span>
+</div><div class="line" id="file-learnjulia-jl-LC475"><span class="pl-s3">typeof</span>(DataType) <span class="pl-c"># =&gt; DataType</span>
+</div><div class="line" id="file-learnjulia-jl-LC476"><span class="pl-c"># DataType 是代表类型的类型，也代表他自己的类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC477">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC478"><span class="pl-c"># 类型可用作文档化，优化，以及调度</span>
+</div><div class="line" id="file-learnjulia-jl-LC479"><span class="pl-c"># 并不是静态检查类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC480">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC481"><span class="pl-c"># 用户还可以自定义类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC482"><span class="pl-c"># 跟其他语言的 records 或 structs 一样</span>
+</div><div class="line" id="file-learnjulia-jl-LC483"><span class="pl-c"># 用 `type` 关键字定义新的类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC484">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC485"><span class="pl-c"># type Name</span>
+</div><div class="line" id="file-learnjulia-jl-LC486"><span class="pl-c">#   field::OptionalType</span>
+</div><div class="line" id="file-learnjulia-jl-LC487"><span class="pl-c">#   ...</span>
+</div><div class="line" id="file-learnjulia-jl-LC488"><span class="pl-c"># end</span>
+</div><div class="line" id="file-learnjulia-jl-LC489"><span class="pl-k">type</span> <span class="pl-en">Tiger</span>
+</div><div class="line" id="file-learnjulia-jl-LC490">  taillength<span class="pl-s3">::Float64</span>
+</div><div class="line" id="file-learnjulia-jl-LC491">  coatcolor <span class="pl-c"># 不附带类型标注的相当于 `::Any`</span>
+</div><div class="line" id="file-learnjulia-jl-LC492"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC493">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC494"><span class="pl-c"># 构造函数参数是类型的属性</span>
+</div><div class="line" id="file-learnjulia-jl-LC495">tigger <span class="pl-k">=</span> <span class="pl-s3">Tiger</span>(<span class="pl-c1">3.5</span>,<span class="pl-s1"><span class="pl-pds">&quot;</span>orange<span class="pl-pds">&quot;</span></span>) <span class="pl-c"># =&gt; Tiger(3.5,&quot;orange&quot;)</span>
+</div><div class="line" id="file-learnjulia-jl-LC496">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC497"><span class="pl-c"># 用新类型作为构造函数还会创建一个类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC498">sherekhan <span class="pl-k">=</span> <span class="pl-s3">typeof</span>(tigger)(<span class="pl-c1">5.6</span>,<span class="pl-s1"><span class="pl-pds">&quot;</span>fire<span class="pl-pds">&quot;</span></span>) <span class="pl-c"># =&gt; Tiger(5.6,&quot;fire&quot;)</span>
+</div><div class="line" id="file-learnjulia-jl-LC499">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC500"><span class="pl-c"># struct 类似的类型被称为具体类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC501"><span class="pl-c"># 他们可被实例化但不能有子类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC502"><span class="pl-c"># 另一种类型是抽象类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC503">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC504"><span class="pl-c"># abstract Name</span>
+</div><div class="line" id="file-learnjulia-jl-LC505"><span class="pl-k">abstract</span> Cat <span class="pl-c"># just a name and point in the type hierarchy</span>
+</div><div class="line" id="file-learnjulia-jl-LC506">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC507"><span class="pl-c"># 抽象类型不能被实例化，但是可以有子类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC508"><span class="pl-c"># 例如，Number 就是抽象类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC509"><span class="pl-s3">subtypes</span>(Number) <span class="pl-c"># =&gt; 6-element Array{Any,1}:</span>
+</div><div class="line" id="file-learnjulia-jl-LC510">                 <span class="pl-c">#     Complex{Float16}</span>
+</div><div class="line" id="file-learnjulia-jl-LC511">                 <span class="pl-c">#     Complex{Float32}</span>
+</div><div class="line" id="file-learnjulia-jl-LC512">                 <span class="pl-c">#     Complex{Float64}</span>
+</div><div class="line" id="file-learnjulia-jl-LC513">                 <span class="pl-c">#     Complex{T&lt;:Real}</span>
+</div><div class="line" id="file-learnjulia-jl-LC514">                 <span class="pl-c">#     ImaginaryUnit</span>
+</div><div class="line" id="file-learnjulia-jl-LC515">                 <span class="pl-c">#     Real</span>
+</div><div class="line" id="file-learnjulia-jl-LC516"><span class="pl-s3">subtypes</span>(Cat) <span class="pl-c"># =&gt; 0-element Array{Any,1}</span>
+</div><div class="line" id="file-learnjulia-jl-LC517">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC518"><span class="pl-c"># 所有的类型都有父类型; 可以用函数 `super` 得到父类型.</span>
+</div><div class="line" id="file-learnjulia-jl-LC519"><span class="pl-s3">typeof</span>(<span class="pl-c1">5</span>) <span class="pl-c"># =&gt; Int64</span>
+</div><div class="line" id="file-learnjulia-jl-LC520"><span class="pl-s3">super</span>(Int64) <span class="pl-c"># =&gt; Signed</span>
+</div><div class="line" id="file-learnjulia-jl-LC521"><span class="pl-s3">super</span>(Signed) <span class="pl-c"># =&gt; Real</span>
+</div><div class="line" id="file-learnjulia-jl-LC522"><span class="pl-s3">super</span>(Real) <span class="pl-c"># =&gt; Number</span>
+</div><div class="line" id="file-learnjulia-jl-LC523"><span class="pl-s3">super</span>(Number) <span class="pl-c"># =&gt; Any</span>
+</div><div class="line" id="file-learnjulia-jl-LC524"><span class="pl-s3">super</span>(<span class="pl-s3">super</span>(Signed)) <span class="pl-c"># =&gt; Number</span>
+</div><div class="line" id="file-learnjulia-jl-LC525"><span class="pl-s3">super</span>(Any) <span class="pl-c"># =&gt; Any</span>
+</div><div class="line" id="file-learnjulia-jl-LC526"><span class="pl-c"># 所有这些类型，除了 Int64, 都是抽象类型.</span>
+</div><div class="line" id="file-learnjulia-jl-LC527">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC528"><span class="pl-c"># &lt;: 是类型集成操作符</span>
+</div><div class="line" id="file-learnjulia-jl-LC529"><span class="pl-k">type</span> <span class="pl-en">Lion</span><span class="pl-e"> &lt;: Cat</span> <span class="pl-c"># Lion 是 Cat 的子类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC530">  mane_color
+</div><div class="line" id="file-learnjulia-jl-LC531">  roar<span class="pl-s3">::String</span>
+</div><div class="line" id="file-learnjulia-jl-LC532"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC533">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC534"><span class="pl-c"># 可以继续为你的类型定义构造函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC535"><span class="pl-c"># 只需要定义一个同名的函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC536"><span class="pl-c"># 并调用已有的构造函数设置一个固定参数</span>
+</div><div class="line" id="file-learnjulia-jl-LC537"><span class="pl-en">Lion</span>(roar<span class="pl-s3">::String</span>) <span class="pl-k">=</span> <span class="pl-s3">Lion</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>green<span class="pl-pds">&quot;</span></span>,roar)
+</div><div class="line" id="file-learnjulia-jl-LC538"><span class="pl-c"># 这是一个外部构造函数，因为他再类型定义之外</span>
+</div><div class="line" id="file-learnjulia-jl-LC539">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC540"><span class="pl-k">type</span> <span class="pl-en">Panther</span><span class="pl-e"> &lt;: Cat</span> <span class="pl-c"># Panther 也是 Cat 的子类型</span>
+</div><div class="line" id="file-learnjulia-jl-LC541">  eye_color
+</div><div class="line" id="file-learnjulia-jl-LC542">  <span class="pl-en">Panther</span>() <span class="pl-k">=</span> <span class="pl-s3">new</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>green<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC543">  <span class="pl-c"># Panthers 只有这个构造函数，没有默认构造函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC544"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC545"><span class="pl-c"># 使用内置构造函数，如 Panther，可以让你控制</span>
+</div><div class="line" id="file-learnjulia-jl-LC546"><span class="pl-c"># 如何构造类型的值</span>
+</div><div class="line" id="file-learnjulia-jl-LC547"><span class="pl-c"># 应该尽可能使用外部构造函数而不是内部构造函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC548">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC549"><span class="pl-c">####################################################</span>
+</div><div class="line" id="file-learnjulia-jl-LC550"><span class="pl-c">## 6. 多分派</span>
+</div><div class="line" id="file-learnjulia-jl-LC551"><span class="pl-c">####################################################</span>
+</div><div class="line" id="file-learnjulia-jl-LC552">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC553"><span class="pl-c"># 在Julia中, 所有的具名函数都是类属函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC554"><span class="pl-c"># 这意味着他们都是有很大小方法组成的</span>
+</div><div class="line" id="file-learnjulia-jl-LC555"><span class="pl-c"># 每个 Lion 的构造函数都是类属函数 Lion 的方法</span>
+</div><div class="line" id="file-learnjulia-jl-LC556">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC557"><span class="pl-c"># 我们来看一个非构造函数的例子</span>
+</div><div class="line" id="file-learnjulia-jl-LC558">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC559"><span class="pl-c"># Lion, Panther, Tiger 的 meow 定义为</span>
+</div><div class="line" id="file-learnjulia-jl-LC560"><span class="pl-k">function</span> <span class="pl-en">meow</span>(animal<span class="pl-s3">::Lion</span>)
+</div><div class="line" id="file-learnjulia-jl-LC561">  animal<span class="pl-k">.</span>roar <span class="pl-c"># 使用点符号访问属性</span>
+</div><div class="line" id="file-learnjulia-jl-LC562"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC563">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC564"><span class="pl-k">function</span> <span class="pl-en">meow</span>(animal<span class="pl-s3">::Panther</span>)
+</div><div class="line" id="file-learnjulia-jl-LC565">  <span class="pl-s1"><span class="pl-pds">&quot;</span>grrr<span class="pl-pds">&quot;</span></span>
+</div><div class="line" id="file-learnjulia-jl-LC566"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC567">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC568"><span class="pl-k">function</span> <span class="pl-en">meow</span>(animal<span class="pl-s3">::Tiger</span>)
+</div><div class="line" id="file-learnjulia-jl-LC569">  <span class="pl-s1"><span class="pl-pds">&quot;</span>rawwwr<span class="pl-pds">&quot;</span></span>
+</div><div class="line" id="file-learnjulia-jl-LC570"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC571">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC572"><span class="pl-c"># 试试 meow 函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC573"><span class="pl-s3">meow</span>(tigger) <span class="pl-c"># =&gt; &quot;rawwr&quot;</span>
+</div><div class="line" id="file-learnjulia-jl-LC574"><span class="pl-s3">meow</span>(<span class="pl-s3">Lion</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>brown<span class="pl-pds">&quot;</span></span>,<span class="pl-s1"><span class="pl-pds">&quot;</span>ROAAR<span class="pl-pds">&quot;</span></span>)) <span class="pl-c"># =&gt; &quot;ROAAR&quot;</span>
+</div><div class="line" id="file-learnjulia-jl-LC575"><span class="pl-s3">meow</span>(<span class="pl-s3">Panther</span>()) <span class="pl-c"># =&gt; &quot;grrr&quot;</span>
+</div><div class="line" id="file-learnjulia-jl-LC576">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC577"><span class="pl-c"># 再看看层次结构</span>
+</div><div class="line" id="file-learnjulia-jl-LC578"><span class="pl-s3">issubtype</span>(Tiger,Cat) <span class="pl-c"># =&gt; false</span>
+</div><div class="line" id="file-learnjulia-jl-LC579"><span class="pl-s3">issubtype</span>(Lion,Cat) <span class="pl-c"># =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC580"><span class="pl-s3">issubtype</span>(Panther,Cat) <span class="pl-c"># =&gt; true</span>
+</div><div class="line" id="file-learnjulia-jl-LC581">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC582"><span class="pl-c"># 定义一个接收 Cats 的函数</span>
+</div><div class="line" id="file-learnjulia-jl-LC583"><span class="pl-k">function</span> <span class="pl-en">pet_cat</span>(cat<span class="pl-s3">::Cat</span>)
+</div><div class="line" id="file-learnjulia-jl-LC584">  <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>The cat says $(meow(cat))<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC585"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC586">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC587"><span class="pl-s3">pet_cat</span>(<span class="pl-s3">Lion</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>42<span class="pl-pds">&quot;</span></span>)) <span class="pl-c"># =&gt; prints &quot;The cat says 42&quot;</span>
+</div><div class="line" id="file-learnjulia-jl-LC588"><span class="pl-k">try</span>
+</div><div class="line" id="file-learnjulia-jl-LC589">    <span class="pl-s3">pet_cat</span>(tigger) <span class="pl-c"># =&gt; ERROR: no method pet_cat(Tiger,)</span>
+</div><div class="line" id="file-learnjulia-jl-LC590"><span class="pl-k">catch</span> e
+</div><div class="line" id="file-learnjulia-jl-LC591">    <span class="pl-s3">println</span>(e)
+</div><div class="line" id="file-learnjulia-jl-LC592"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC593">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC594"><span class="pl-c"># 在面向对象语言中，通常都是单分派</span>
+</div><div class="line" id="file-learnjulia-jl-LC595"><span class="pl-c"># 这意味着分派方法是通过第一个参数的类型决定的</span>
+</div><div class="line" id="file-learnjulia-jl-LC596"><span class="pl-c"># 在Julia中, 所有参数类型都会被考虑到</span>
+</div><div class="line" id="file-learnjulia-jl-LC597">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC598"><span class="pl-c"># 让我们定义有多个参数的函数，好看看区别</span>
+</div><div class="line" id="file-learnjulia-jl-LC599"><span class="pl-k">function</span> <span class="pl-en">fight</span>(t<span class="pl-s3">::Tiger</span>,c<span class="pl-s3">::Cat</span>)
+</div><div class="line" id="file-learnjulia-jl-LC600">  <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>The $(t.coatcolor) tiger wins!<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC601"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC602"><span class="pl-c"># =&gt; fight (generic function with 1 method)</span>
+</div><div class="line" id="file-learnjulia-jl-LC603">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC604"><span class="pl-s3">fight</span>(tigger,<span class="pl-s3">Panther</span>()) <span class="pl-c"># =&gt; prints The orange tiger wins!</span>
+</div><div class="line" id="file-learnjulia-jl-LC605"><span class="pl-s3">fight</span>(tigger,<span class="pl-s3">Lion</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>ROAR<span class="pl-pds">&quot;</span></span>)) <span class="pl-c"># =&gt; prints The orange tiger wins!</span>
+</div><div class="line" id="file-learnjulia-jl-LC606">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC607"><span class="pl-c"># 让我们修改一下传入具体为 Lion 类型时的行为</span>
+</div><div class="line" id="file-learnjulia-jl-LC608"><span class="pl-en">fight</span>(t<span class="pl-s3">::Tiger</span>,l<span class="pl-s3">::Lion</span>) <span class="pl-k">=</span> <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>The $(l.mane_color)-maned lion wins!<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC609"><span class="pl-c"># =&gt; fight (generic function with 2 methods)</span>
+</div><div class="line" id="file-learnjulia-jl-LC610">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC611"><span class="pl-s3">fight</span>(tigger,<span class="pl-s3">Panther</span>()) <span class="pl-c"># =&gt; prints The orange tiger wins!</span>
+</div><div class="line" id="file-learnjulia-jl-LC612"><span class="pl-s3">fight</span>(tigger,<span class="pl-s3">Lion</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>ROAR<span class="pl-pds">&quot;</span></span>)) <span class="pl-c"># =&gt; prints The green-maned lion wins!</span>
+</div><div class="line" id="file-learnjulia-jl-LC613">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC614"><span class="pl-c"># 把 Tiger 去掉</span>
+</div><div class="line" id="file-learnjulia-jl-LC615"><span class="pl-en">fight</span>(l<span class="pl-s3">::Lion</span>,c<span class="pl-s3">::Cat</span>) <span class="pl-k">=</span> <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>The victorious cat says $(meow(c))<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC616"><span class="pl-c"># =&gt; fight (generic function with 3 methods)</span>
+</div><div class="line" id="file-learnjulia-jl-LC617">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC618"><span class="pl-s3">fight</span>(<span class="pl-s3">Lion</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>balooga!<span class="pl-pds">&quot;</span></span>),<span class="pl-s3">Panther</span>()) <span class="pl-c"># =&gt; prints The victorious cat says grrr</span>
+</div><div class="line" id="file-learnjulia-jl-LC619"><span class="pl-k">try</span>
+</div><div class="line" id="file-learnjulia-jl-LC620">  <span class="pl-s3">fight</span>(<span class="pl-s3">Panther</span>(),<span class="pl-s3">Lion</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>RAWR<span class="pl-pds">&quot;</span></span>)) <span class="pl-c"># =&gt; ERROR: no method fight(Panther,Lion)</span>
+</div><div class="line" id="file-learnjulia-jl-LC621"><span class="pl-k">catch</span>
+</div><div class="line" id="file-learnjulia-jl-LC622"><span class="pl-k">end</span>
+</div><div class="line" id="file-learnjulia-jl-LC623">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC624"><span class="pl-c"># 在试试让 Cat 在前面</span>
+</div><div class="line" id="file-learnjulia-jl-LC625"><span class="pl-en">fight</span>(c<span class="pl-s3">::Cat</span>,l<span class="pl-s3">::Lion</span>) <span class="pl-k">=</span> <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>The cat beats the Lion<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC626"><span class="pl-c"># =&gt; Warning: New definition</span>
+</div><div class="line" id="file-learnjulia-jl-LC627"><span class="pl-c">#    fight(Cat,Lion) at none:1</span>
+</div><div class="line" id="file-learnjulia-jl-LC628"><span class="pl-c"># is ambiguous with</span>
+</div><div class="line" id="file-learnjulia-jl-LC629"><span class="pl-c">#    fight(Lion,Cat) at none:2.</span>
+</div><div class="line" id="file-learnjulia-jl-LC630"><span class="pl-c"># Make sure</span>
+</div><div class="line" id="file-learnjulia-jl-LC631"><span class="pl-c">#    fight(Lion,Lion)</span>
+</div><div class="line" id="file-learnjulia-jl-LC632"><span class="pl-c"># is defined first.</span>
+</div><div class="line" id="file-learnjulia-jl-LC633"><span class="pl-c">#fight (generic function with 4 methods)</span>
+</div><div class="line" id="file-learnjulia-jl-LC634">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC635"><span class="pl-c"># 警告说明了无法判断使用哪个 fight 方法</span>
+</div><div class="line" id="file-learnjulia-jl-LC636"><span class="pl-s3">fight</span>(<span class="pl-s3">Lion</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>RAR<span class="pl-pds">&quot;</span></span>),<span class="pl-s3">Lion</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>brown<span class="pl-pds">&quot;</span></span>,<span class="pl-s1"><span class="pl-pds">&quot;</span>rarrr<span class="pl-pds">&quot;</span></span>)) <span class="pl-c"># =&gt; prints The victorious cat says rarrr</span>
+</div><div class="line" id="file-learnjulia-jl-LC637"><span class="pl-c"># 结果在老版本 Julia 中可能会不一样</span>
+</div><div class="line" id="file-learnjulia-jl-LC638">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC639"><span class="pl-en">fight</span>(l<span class="pl-s3">::Lion</span>,l2<span class="pl-s3">::Lion</span>) <span class="pl-k">=</span> <span class="pl-s3">println</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>The lions come to a tie<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-learnjulia-jl-LC640"><span class="pl-s3">fight</span>(<span class="pl-s3">Lion</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>RAR<span class="pl-pds">&quot;</span></span>),<span class="pl-s3">Lion</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>brown<span class="pl-pds">&quot;</span></span>,<span class="pl-s1"><span class="pl-pds">&quot;</span>rarrr<span class="pl-pds">&quot;</span></span>)) <span class="pl-c"># =&gt; prints The lions come to a tie</span>
+</div><div class="line" id="file-learnjulia-jl-LC641">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC642">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC643"><span class="pl-c"># Under the hood</span>
+</div><div class="line" id="file-learnjulia-jl-LC644"><span class="pl-c"># 你还可以看看 llvm 以及生成的汇编代码</span>
+</div><div class="line" id="file-learnjulia-jl-LC645">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC646"><span class="pl-en">square_area</span>(l) <span class="pl-k">=</span> l <span class="pl-k">*</span> l      <span class="pl-c"># square_area (generic function with 1 method)</span>
+</div><div class="line" id="file-learnjulia-jl-LC647">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC648"><span class="pl-s3">square_area</span>(<span class="pl-c1">5</span>) <span class="pl-c">#25</span>
+</div><div class="line" id="file-learnjulia-jl-LC649">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC650"><span class="pl-c"># 给 square_area 一个整形时发生什么</span>
+</div><div class="line" id="file-learnjulia-jl-LC651"><span class="pl-s3">code_native</span>(square_area, (Int32,))
+</div><div class="line" id="file-learnjulia-jl-LC652">    <span class="pl-c">#       .section    __TEXT,__text,regular,pure_instructions</span>
+</div><div class="line" id="file-learnjulia-jl-LC653">    <span class="pl-c">#   Filename: none</span>
+</div><div class="line" id="file-learnjulia-jl-LC654">    <span class="pl-c">#   Source line: 1              # Prologue</span>
+</div><div class="line" id="file-learnjulia-jl-LC655">    <span class="pl-c">#       push    RBP</span>
+</div><div class="line" id="file-learnjulia-jl-LC656">    <span class="pl-c">#       mov RBP, RSP</span>
+</div><div class="line" id="file-learnjulia-jl-LC657">    <span class="pl-c">#   Source line: 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC658">    <span class="pl-c">#       movsxd  RAX, EDI        # Fetch l from memory?</span>
+</div><div class="line" id="file-learnjulia-jl-LC659">    <span class="pl-c">#       imul    RAX, RAX        # Square l and store the result in RAX</span>
+</div><div class="line" id="file-learnjulia-jl-LC660">    <span class="pl-c">#       pop RBP                 # Restore old base pointer</span>
+</div><div class="line" id="file-learnjulia-jl-LC661">    <span class="pl-c">#       ret                     # Result will still be in RAX</span>
+</div><div class="line" id="file-learnjulia-jl-LC662">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC663"><span class="pl-s3">code_native</span>(square_area, (Float32,))
+</div><div class="line" id="file-learnjulia-jl-LC664">    <span class="pl-c">#       .section    __TEXT,__text,regular,pure_instructions</span>
+</div><div class="line" id="file-learnjulia-jl-LC665">    <span class="pl-c">#   Filename: none</span>
+</div><div class="line" id="file-learnjulia-jl-LC666">    <span class="pl-c">#   Source line: 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC667">    <span class="pl-c">#       push    RBP</span>
+</div><div class="line" id="file-learnjulia-jl-LC668">    <span class="pl-c">#       mov RBP, RSP</span>
+</div><div class="line" id="file-learnjulia-jl-LC669">    <span class="pl-c">#   Source line: 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC670">    <span class="pl-c">#       vmulss  XMM0, XMM0, XMM0  # Scalar single precision multiply (AVX)</span>
+</div><div class="line" id="file-learnjulia-jl-LC671">    <span class="pl-c">#       pop RBP</span>
+</div><div class="line" id="file-learnjulia-jl-LC672">    <span class="pl-c">#       ret</span>
+</div><div class="line" id="file-learnjulia-jl-LC673">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC674"><span class="pl-s3">code_native</span>(square_area, (Float64,))
+</div><div class="line" id="file-learnjulia-jl-LC675">    <span class="pl-c">#       .section    __TEXT,__text,regular,pure_instructions</span>
+</div><div class="line" id="file-learnjulia-jl-LC676">    <span class="pl-c">#   Filename: none</span>
+</div><div class="line" id="file-learnjulia-jl-LC677">    <span class="pl-c">#   Source line: 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC678">    <span class="pl-c">#       push    RBP</span>
+</div><div class="line" id="file-learnjulia-jl-LC679">    <span class="pl-c">#       mov RBP, RSP</span>
+</div><div class="line" id="file-learnjulia-jl-LC680">    <span class="pl-c">#   Source line: 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC681">    <span class="pl-c">#       vmulsd  XMM0, XMM0, XMM0 # Scalar double precision multiply (AVX)</span>
+</div><div class="line" id="file-learnjulia-jl-LC682">    <span class="pl-c">#       pop RBP</span>
+</div><div class="line" id="file-learnjulia-jl-LC683">    <span class="pl-c">#       ret</span>
+</div><div class="line" id="file-learnjulia-jl-LC684">    <span class="pl-c">#</span>
+</div><div class="line" id="file-learnjulia-jl-LC685"><span class="pl-c"># 注意 只要参数中又浮点类型，Julia 就使用浮点指令</span>
+</div><div class="line" id="file-learnjulia-jl-LC686"><span class="pl-c"># 让我们计算一下圆的面积</span>
+</div><div class="line" id="file-learnjulia-jl-LC687"><span class="pl-en">circle_area</span>(r) <span class="pl-k">=</span> pi <span class="pl-k">*</span> r <span class="pl-k">*</span> r     <span class="pl-c"># circle_area (generic function with 1 method)</span>
+</div><div class="line" id="file-learnjulia-jl-LC688"><span class="pl-s3">circle_area</span>(<span class="pl-c1">5</span>)                  <span class="pl-c"># 78.53981633974483</span>
+</div><div class="line" id="file-learnjulia-jl-LC689">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC690"><span class="pl-s3">code_native</span>(circle_area, (Int32,))
+</div><div class="line" id="file-learnjulia-jl-LC691">    <span class="pl-c">#       .section    __TEXT,__text,regular,pure_instructions</span>
+</div><div class="line" id="file-learnjulia-jl-LC692">    <span class="pl-c">#   Filename: none</span>
+</div><div class="line" id="file-learnjulia-jl-LC693">    <span class="pl-c">#   Source line: 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC694">    <span class="pl-c">#       push    RBP</span>
+</div><div class="line" id="file-learnjulia-jl-LC695">    <span class="pl-c">#       mov RBP, RSP</span>
+</div><div class="line" id="file-learnjulia-jl-LC696">    <span class="pl-c">#   Source line: 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC697">    <span class="pl-c">#       vcvtsi2sd   XMM0, XMM0, EDI          # Load integer (r) from memory</span>
+</div><div class="line" id="file-learnjulia-jl-LC698">    <span class="pl-c">#       movabs  RAX, 4593140240              # Load pi</span>
+</div><div class="line" id="file-learnjulia-jl-LC699">    <span class="pl-c">#       vmulsd  XMM1, XMM0, QWORD PTR [RAX]  # pi * r</span>
+</div><div class="line" id="file-learnjulia-jl-LC700">    <span class="pl-c">#       vmulsd  XMM0, XMM0, XMM1             # (pi * r) * r</span>
+</div><div class="line" id="file-learnjulia-jl-LC701">    <span class="pl-c">#       pop RBP</span>
+</div><div class="line" id="file-learnjulia-jl-LC702">    <span class="pl-c">#       ret</span>
+</div><div class="line" id="file-learnjulia-jl-LC703">    <span class="pl-c">#</span>
+</div><div class="line" id="file-learnjulia-jl-LC704">&nbsp;
+</div><div class="line" id="file-learnjulia-jl-LC705"><span class="pl-s3">code_native</span>(circle_area, (Float64,))
+</div><div class="line" id="file-learnjulia-jl-LC706">    <span class="pl-c">#       .section    __TEXT,__text,regular,pure_instructions</span>
+</div><div class="line" id="file-learnjulia-jl-LC707">    <span class="pl-c">#   Filename: none</span>
+</div><div class="line" id="file-learnjulia-jl-LC708">    <span class="pl-c">#   Source line: 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC709">    <span class="pl-c">#       push    RBP</span>
+</div><div class="line" id="file-learnjulia-jl-LC710">    <span class="pl-c">#       mov RBP, RSP</span>
+</div><div class="line" id="file-learnjulia-jl-LC711">    <span class="pl-c">#       movabs  RAX, 4593140496</span>
+</div><div class="line" id="file-learnjulia-jl-LC712">    <span class="pl-c">#   Source line: 1</span>
+</div><div class="line" id="file-learnjulia-jl-LC713">    <span class="pl-c">#       vmulsd  XMM1, XMM0, QWORD PTR [RAX]</span>
+</div><div class="line" id="file-learnjulia-jl-LC714">    <span class="pl-c">#       vmulsd  XMM0, XMM1, XMM0</span>
+</div><div class="line" id="file-learnjulia-jl-LC715">    <span class="pl-c">#       pop RBP</span>
+</div><div class="line" id="file-learnjulia-jl-LC716">    <span class="pl-c">#       ret</span>
+</div><div class="line" id="file-learnjulia-jl-LC717">    <span class="pl-c">#</span>
+</div></pre>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/10696702/raw/learnjulia.jl" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/10696702#file-learnjulia-jl">learnjulia.jl</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>
