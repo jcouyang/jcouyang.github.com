@@ -1,0 +1,13 @@
+body, html, #content {
+    height: 100%;
+}
+
+body {
+    text-align: center;
+    margin: 0;
+}
+table {
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+}
